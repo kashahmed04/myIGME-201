@@ -29,16 +29,16 @@ namespace SquashTheBugs
             //Bug #2: Logic error: Code runs but does not go from 1-10, only
             //goes from 1-9
             string allNumbers = null;
-            for (i = 1; i < 11; ++i)
+            for (i = 1; i < 11; ++i) //last number usually does not count so it goes up to 10 rather than 11*
                 {
                 // declare string to hold all numbers
                 //string allNumbers = null;
                 //Bug #3 Compile time error: The scope of this var. should be initialized outside the loop
-                //so that allNumbers could be accessed when we have to print to the console.
+                //so that allNumbers could be accessed when we have to print to the console.*
 
                 // output explanation of calculation
                 //Console.Write(i + "/" + i - 1 + " = ");
-                //Bug #4: Run time Error: Trying to add a number and string
+                //Bug #4: Compile time error: Trying to add a number and string**
                 //together so we have to do the math first then add it
                 //to the string. 
                 Console.Write(i + "/" + (i - 1) + " = ");
