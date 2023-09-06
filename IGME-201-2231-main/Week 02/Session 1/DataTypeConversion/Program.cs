@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week_2_1._0
+namespace DataTypeConversion
 {
     static internal class Program
     {
         static void Main(string[] args)
         {
-            //go over implicit and explicit casting**
-            //theres a math static class which has all our math operations in it plus conversions**
-            //which conversions do we have to worry about**
             // we will use double for all of our floating point numbers
             // because that is the type used by most of the Math functions
             // but because it is base-2, it is prone to rounding errors
@@ -29,7 +26,7 @@ namespace Week_2_1._0
             uint uintNum = 786;         // UInt32
             short shortInt = -789;      // Int16
             ushort ushortInt = 456;     // UInt16
-            byte byteNum = 254;         // 8-bit unsigned //how to know which one to use the unsigned or signed** (unsigned means we cant store negatives there right)**
+            byte byteNum = 254;         // 8-bit unsigned
             sbyte sbyteNum = -123;      // 8-bit signed
 
             string myString;
@@ -61,9 +58,6 @@ namespace Week_2_1._0
                 // output message that data will be lost
                 Console.WriteLine("Data was lost!");
             }
-
-
-
         }
     }
 }

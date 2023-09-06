@@ -24,23 +24,23 @@ namespace UserInput
         static void Main(string[] args)
         {
             Console.WriteLine("Please enter the first number: ");
-            string first_Str = Console.ReadLine();
+            string first_str = Console.ReadLine();
 
             Console.WriteLine("Please enter the second number: ");
-            string second_Str = Console.ReadLine();
+            string second_str = Console.ReadLine();
 
             Console.WriteLine("Please enter the third number: ");
-            string third_Str = Console.ReadLine();
+            string third_str = Console.ReadLine();
 
             Console.WriteLine("Please enter the fourth number: ");
-            string fourth_Str = Console.ReadLine();
+            string fourth_str = Console.ReadLine();
 
-            int first_Int = Convert.ToInt32(first_Str);
-            int second_Int = Convert.ToInt32(second_Str);
-            int third_Int = Convert.ToInt32(third_Str);
-            int fourth_Int = Convert.ToInt32(fourth_Str);
+            int first_int = Convert.ToInt32(first_str);
+            int second_int = Convert.ToInt32(second_str);
+            int third_int = Convert.ToInt32(third_str);
+            int fourth_int = Convert.ToInt32(fourth_str);
 
-            int product = (first_Int * second_Int * third_Int * fourth_Int);
+            int product = (first_int * second_int * third_int * fourth_int); 
 
             Console.WriteLine("The product of all the numbers is: " + product); 
 
