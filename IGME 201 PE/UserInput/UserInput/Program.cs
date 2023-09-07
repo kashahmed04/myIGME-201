@@ -19,7 +19,8 @@ namespace UserInput
         // Purpose: Ask user for 4 numbers, convert
         //          them to integers, then multiply
         //          together and print it out into
-        //          the console.
+        //          the console.(Tried to do error checking
+        //          but try catch was not working?)
         // Restrictions: None
         static void Main(string[] args)
         {
@@ -125,6 +126,9 @@ namespace UserInput
             //int product = (first_conversion * second_conversion * third_conversion * fourth_conversion); 
             //
             //Console.WriteLine("The product of all the numbers is: " + product);
+
+
+
         }
     }
 }

@@ -50,7 +50,7 @@ namespace FavoriteColorAndNumber
     // Purpose: Console Read/Write and Exception-handling exercise
     // Restrictions: None
     // in code for Unit 1, always add "static" to any class definitions
-    static internal class Program 
+    static internal class Program
     {
         // Method: WriteMyVar (value variable version)
         // Purpose: Output a passed in number and change it
@@ -79,7 +79,7 @@ namespace FavoriteColorAndNumber
             nParameter = 42;
         }
 
-        static int WriteMyVarFunc(int nParameter) //method declarations should be in the same line indentation like main
+        static int WriteMyVarFunc(int nParameter)
         {
             Console.WriteLine(nParameter);
 
@@ -87,9 +87,7 @@ namespace FavoriteColorAndNumber
             // note that this changes the variable in the code that called this method
             nParameter = 42;
 
-            return( 42 ); //we return the data from the return statment if we want to use it outside the method
-            //we usually make methods in this program class because if we made it in main and had a return statement, 
-            //then it would exit the main because it's a method
+            return( 42 );
         }
 
         // Method: Main
@@ -152,10 +150,10 @@ namespace FavoriteColorAndNumber
             // myInt will be 42 here because WriteMyVar() changed it via the reference variable
 
 
-            // Three types of errors(examples)**
-            // 1. syntax errors (missing semi), doing math operations within a string, scope
-            // 2. logical (code works but doesn't do the right thing), lcv is too short, incrementing too many times
-            // 3. run-time errors (code crashes!), dividing by 0 or converting a string to a number and the string is not a number**
+            // Three types of errors
+            // 1. syntax errors (missing semi)
+            // 2. logical (code works but doesn't do the right thing)
+            // 3. run-time errors (code crashes!)
 
             // PE-2 example:  comment the original code, document the error type and description, fix the code
             // prompt the user for their favorite color
@@ -173,8 +171,7 @@ namespace FavoriteColorAndNumber
 
                 if( sFavoriteColor == "" )
                 {
-                    Console.WriteLine("Enter a color"); //if the input is nothing then it asks again, but what if it's a number or
-                    //something thats not a color**
+                    Console.WriteLine("Enter somethng");
                 }
 
             }
@@ -205,30 +202,15 @@ namespace FavoriteColorAndNumber
                 }
             }
 
-            //cant write methods outside a class, they alwways have to be in a class
-            //use public for method names and variables defined within a class to access it outside of it**
-            //compile error will not let code run while logic error will let the code run but it wiuld be logically incorrect
-            //Consle.WriteLine("here") is a syntax error but if we mistype the string then its a logic error 
+
             // the do/while loop always runs at least once because it checks the while condition at the end
-            //basically a backwards while loop except it always runs once no matter what 
-            //for fabulous question we need to still do the .notation because its super.smashing.great to access whoever is sitting in the house
-            //even if we have a 100 name spaces deep within another namepscae we still access it the same way 
-            //is there a certain situation where we would want to use this instead of a regular loop (usually use it for any appliacation that asks
-            //for user input and we can check if they entered valid data or not and ask them again if they did not enter valid information
-            //usually used when we have to do something once 
-            //if we do a variable ++ within a loop for example, it would take longer but not that long (nanosecond)(but we should put it before like ++ varible))
-            //we usually initizlize variables and not just declare them and initizilaize later (we should initizialize while we declare and if we just declare then
-            //the variable would be equal to 0 if its an int. but if its a str. it initizializes to null
             do
             {
-                sFavoriteNumber = Console.ReadLine();//cant we also put read line into the catch statemnent or do we need it here(we can but we also
-                //have to put the readline above the do so it can read it the first time then do it in the catch but if we did it like this then
-                //it would ask the user for an int. then it would come back yp and read it
+                sFavoriteNumber = Console.ReadLine();
 
                 try
                 {
-                    nFavoriteNumber = Convert.ToInt32(sFavoriteNumber); //common way to convert to an int. or is there a better way we should use
-                    //tryparse is the cleanest one we should use and we dont need the try catch for it so we should usually use that
+                    nFavoriteNumber = Convert.ToInt32(sFavoriteNumber);
                 }
                 catch
                 {
@@ -251,13 +233,8 @@ namespace FavoriteColorAndNumber
                     // sFavoriteNumber.Length = 2  the Length property of the string is the number of characters in the string
 
                     // int.Parse() does the same as Convert.ToInt32()
-                    nFavoriteNumber = int.Parse(sFavoriteNumber); //if we used "42" for example, since it's a number it would convert it to an int.
-                    //but if it's "42hi" then it will not because there are letters within it (run time error because it makes the program crash when trying to convert)
-                    //loop that is infinite is usually a logic error but eventually when it crashes its a run time error because it will run out of memory 
-                    //int.,str., everything is basically an object in c#
-                    //with parsing which data types can we convert to with it (int.,float, and the data types in the
-                    ////data type conversion code and the enumerated types also have a parse
-                }   //parse is usually doing string to another data type 
+                    nFavoriteNumber = int.Parse(sFavoriteNumber);
+                }
                 catch
                 {
                     Console.WriteLine("Please enter an integer.");
@@ -271,38 +248,24 @@ namespace FavoriteColorAndNumber
             {
                 sFavoriteNumber = Console.ReadLine();
 
-                // int.TryParse() tries to parse it and returns true if it was able to parse it to the certain datatype, and false if it was not successful
+                // int.TryParse() tries to parse it and returns true if it was able to, and false if it was not successful
                 // it does not raise an exception if it fails
                 // so we need to save the return value of whether it was successful
                 // and we pass the int as an output variable, which behaves the same as a reference variable,
-                // but is used when we only care about the output value.  Note that the TryParse() method signature expects an int, not an int?**
-                // so we need a new variable defined, nFavoriteNumberInt, to pass to it
+                // but is used when we only care about the output value.  Note that the TryParse() method signature expects an int, not an int?
+                // so we need a new variable defined on line #246 to pass to it
                 // TryParse() is preferable because we do not need the complexity of try/catch
                 bValid = int.TryParse(sFavoriteNumber, out nFavoriteNumberInt);
-                //Tryprase takes ths str. and tries to convert it and the out is basically the value that is set equal to the thing that it
-                //converted and it reutursn true or false if it was converted and the first, para. is basically the thing we are converting and the new
-                //converted value will be stored in the out varible (usually declare and initialize the out variable outside of this so we can use it here
-                //to substitute in)
-                //out is a ref. keyword which means we only care about its output value and not the value we initizliaed it to in the start
-                //ref. can access the value of the var. thats passed in but if its out, then we cant use the value thats passed in and cant even look at it and
-                //the whole point of out is changing the value first then using it while red. we can see it whenever and change it whenver 
 
                 // check the return value for valid input
                 // the "!" is the boolean "not" operator
-                if (!bValid) //if its true it would say if not true which is false and the if statment/loop does not run on a false
-                             ////condition in general so if it was false it would say not false which is true making us go into the if statement in
-                             /////general and the while loop in general
+                if (!bValid)
                 // it is the same as
                 //if (bValid == false)
                 {
                     Console.WriteLine("Please enter an integer.");
 
                 }
-
-                else
-                {
-                    nFavoriteNumber = nFavoriteNumberInt;
-                } 
             } while (nFavoriteNumber == null);
 
             // be sure our variables are set to the same value
@@ -313,19 +276,15 @@ namespace FavoriteColorAndNumber
             {
                 // we cannot create a variable with the same name as is already defined in a parent code block
                 // int myInt = 5;
-                //If we define a variable in a child then after outside in the parent, we still can't do that even though we initialized it after the child
-                //and not before
-                //if it's in the same level but completely different code blocks (ex. 4th tab in for both), then we can create mystring for example, and
-                //it would be 2 different variables 
 
                 int myInt2 = 0;
 
                 {
-                    // myInt is defined in the parent code block line #119ish, so we have access to it
+                    // myInt is defined in the parent code block line #117, so we have access to it
                     myInt = 3;
                     myInt = 5;
 
-                    // myInt2 is defined in the parent code block at line #292 so we have access to it
+                    // myInt2 is defined in the parent code block at line #280 so we have access to it
                     myInt2 = 89;
 
                     // we can create new variables in this code block
@@ -338,24 +297,17 @@ namespace FavoriteColorAndNumber
                 // but myInt2 is still available
                 myInt2 = 90;
 
-                //so basically if we make it in the parent we can access it anywhere even inside the child and change it then
-                //access the changed variable outside the child
-                //but if we define it in the child we can't use it in the parent outside because of scope
-
             }
 
             // return favorite color as lower case
-            // BUT this won't change the string contents because toLower makes a copy of the string (value data type)
+            // BUT this won't change the string contents
             sFavoriteColor.ToLower();
 
             // we would need to set sFavoriteColor equal to the return value of ToLower() to change it
             //sFavoriteColor = sFavoriteColor.ToLower();
 
-            
-            //how to know when to use switch statements.vs.if else statments**
             // change the console output color to match their fav color
-            switch (sFavoriteColor.ToLower()) //switch is used to compare a statement or output to see the possible options there is
-                //and give a proper action for that option chosen
+            switch (sFavoriteColor.ToLower())
             {
                 case "red":
                 // without the ToLower() we would have to check every case permutation
@@ -365,23 +317,20 @@ namespace FavoriteColorAndNumber
                 //case "reD":
                     Console.ForegroundColor = ConsoleColor.Red;
                     break;
-            
+
                 case "blue":
                     Console.ForegroundColor = ConsoleColor.Blue;
                     break;
-            
+
                 case "green":
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
-            
+
                 default:
-                    Console.ForegroundColor = ConsoleColor.White; //usually put a default just in case (but its optional and nothing
-                    //happens and it just leaves statement if no condition matches)
-                    break; //break statements are required even for the last statement (syntax error if we dont)
-                    //to autofill code for us press tab 
-                    //shift alt then let go then do the "/" to make a bunch a comment 
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
             }
-            
+
             // the switch statement is similar to an if... then... else if... then... else
             // note how much more work is involved to do the same code as the string needs to be lowercased everytime
             // double equals is used to test for equality in C#
@@ -413,8 +362,7 @@ namespace FavoriteColorAndNumber
             // postfixed (placed after the variable)
             //y = x++;  // y = 5,   x = 6
 
-
-            // a loop that outputs their fav color, their fav num times
+            // a loop that outputs their fav color fav num times
             // use a for(initialization;condition;operation) loop to output their favorite color the number of times as their favorite number
             // The three statements within the for() statement:
             //      1. initialization statement(s):  (i = 0) any variable initialization
@@ -422,46 +370,29 @@ namespace FavoriteColorAndNumber
             //              For example:   for( i=0, y=0, color=Console.ReadLine(); i < favNum; ++i)
             //
             //      2. condition check:  (i < favNum) what to check at the beginning of the loop each time it loops (including the first time)
-                    //usually use boolean operators wtih multiple variables like and and or the or 
             //
             //      3. operation: (++i)  any operations to execute upon each subsequent start of the loop (not including the first time)
             //          Note that this can include multiple comma-separated statements.
             //              For example:   for( i=0, y=0, color=Console.ReadLine(); i < favNum; ++i, ++y)
             //
             //          Note that using the "continue" statement to return to the top of the loop will execute the operation statement(s)
-            //          so that if you need to do something N times, you may have to --i before the "continue" to repeat the same value of i. 
-                        //for loop talking about temp. if its cold, we want to stop and wait until its hotter and when we go back to the top
-                        //of the loop, and incremeent basically a retry to see if we can skip the contintue statement, after if we skip the
-                        //continue then we can incremeent and keep going about the code but if we do the continue we need a rettry so we decrement
-                        //then increment againn
-
-
-
-                        //& = bitwise and operator
-                        //| = bitwise or operator 
-                        //the and and as well as the or or only checks the one ex. true or == true or false and = false
-                        //and the single ones check both the values before 
-                        //on the operations it evaluates from left to right and not highest to lowest based from left to right 
-                        //unary is the sign of the number being pos. or neg.
-                        //usually use the double symbols 
+            //          so that if you need to do something N times, you may have to --i before the "continue" to repeat the same value of i.
             //
             for ( int i = 0; i < nFavoriteNumber;  ++i)
             {
                 // different ways to generate output
-                // appending strings using the "+" operator what about ,**
+                // appending strings using the "+" operator
                 Console.WriteLine("Your favorite color is " + sFavoriteColor + "!");
 
-                // embedding code blocks using string interpolation**
+                // embedding code blocks using string interpolation
                 Console.WriteLine($"Your favorite color is {sFavoriteColor + "!"}");
 
                 // substituting numbered tokens with comma-separated arguments
                 Console.WriteLine("Your {0} favorite color is {1}{2}", "most", sFavoriteColor, "!");
 
-                //which way is printing to the console more common or better**
-
                 // what does this line output?
                 //Console.WriteLine("5 + 5 = " + x + x);
-                // C# is implicitly doing the following: implicitly (in the background or under the hood without telling us)**
+                // C# is implicitly doing the following:
                 //Console.WriteLine("5 + 5 = " + x.ToString() + x.ToString());
 
                 // use parentheses to change order of operation to get correct result
@@ -475,12 +406,3 @@ namespace FavoriteColorAndNumber
         }
     }
 }
-
-
-
-//Definitions**
-//continue ends the current loop and goes back up to the condition for the new loop
-//return exits the whole loop and method
-//break exits the loop only, not the method 
-//goto allows us to jump out of our loop if we wanted (or not) and go to
-//a specific area outside of our loop (or within our loop)

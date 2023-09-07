@@ -90,13 +90,13 @@ namespace FavoriteColorAndNumber
         {
             // we can access other namespaces by walking through their lineage
             // so to access EColors, we use the dot to unlock each namespace "gate"
-            ColorsAndNumbers.Colors.EColors eColors1 = EColors.blue;
+            ColorsAndNumbers.Colors.EColors eColors1;
 
             // or via the above using statement, we can avoid the prefixes
-            EColors eColors2 = EColors.red;
+            EColors eColors2;
 
             // or via the above namespace alias, we can be more explicit
-            ColorsAlias.EColors eColors3 = EColors.orange;
+            ColorsAlias.EColors eColors3;
 
             // always define your variables and initialize them at the top of your methods
             // strings can be set to null, which means the string does not exist yet
@@ -126,7 +126,7 @@ namespace FavoriteColorAndNumber
             // Console.Write() does not add the newline character
 
             // value variables copy the contents from one variable to another
-            // anotherInt will be 0 (different from js because it was ref. there) 
+            // anotherInt will be 0
             anotherInt = myInt;
 
             // pass myInt by value (ie. make a copy of it in the method)
