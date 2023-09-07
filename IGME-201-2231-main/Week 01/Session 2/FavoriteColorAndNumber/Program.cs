@@ -90,13 +90,13 @@ namespace FavoriteColorAndNumber
         {
             // we can access other namespaces by walking through their lineage
             // so to access EColors, we use the dot to unlock each namespace "gate"
-            ColorsAndNumbers.Colors.EColors eColors1;
+            ColorsAndNumbers.Colors.EColors eColors1 = EColors.blue;
 
             // or via the above using statement, we can avoid the prefixes
-            EColors eColors2;
+            EColors eColors2 = EColors.red;
 
             // or via the above namespace alias, we can be more explicit
-            ColorsAlias.EColors eColors3;
+            ColorsAlias.EColors eColors3 = EColors.orange;
 
             // always define your variables and initialize them at the top of your methods
             // strings can be set to null, which means the string does not exist yet

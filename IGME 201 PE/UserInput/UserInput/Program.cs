@@ -42,12 +42,7 @@ namespace UserInput
 
             int product = (first_int * second_int * third_int * fourth_int); 
 
-            Console.WriteLine("The product of all the numbers is: " + product); 
-
-
-
-
-
+            Console.WriteLine("The product of all the numbers is: " + product);
         }
     }
 }
