@@ -6,13 +6,28 @@ using System.Threading.Tasks;
 
 namespace Flow_Control
 {
+    // Class Program
+    // Author: Kahsaf Ahmed
+    // Purpose: Getting numbers from the user
+    //and displaying them to the console based on 
+    //if one of the numbers were less than 10.
+    // Restrictions: None
     internal class Program
     {
+        // Method: Main
+        // Purpose: Ask the user to enter 2 numbers and
+        //use while loops to check if what they entered were even numbers
+        //and if they werent we keep asking, but if they enter a number,
+        //then we exit the loop. After, I check if both the numbers we had gotten
+        //were greater than 10, then we loop to make sure we get at least 
+        //1 number being less than 10 as well as looping to see if they user even enters a 
+        //number in the first place. After those loops, we tell the user what their numbers
+        //were because they may have forgotten their numbers after all of this takes place.
+        // Restrictions: None
         static void Main(string[] args)
         {
-            int? firstNumber = null; //tryParse does not accept a variable that has a ? defined to have null**
-            int? secondNumber = null; //should we know all 3 methods of conversion
-            //Is there a way to simplifiy this code?**
+            int? firstNumber = null; 
+            int? secondNumber = null;
 
             Console.WriteLine("Please enter a number: ");
             string firstNumberStr = Console.ReadLine();

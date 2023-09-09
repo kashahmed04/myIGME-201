@@ -108,7 +108,7 @@ namespace Mandelbrot
                     }
                     catch
                     {
-                        Console.WriteLine("Enter a number for the starting imagniary number: ");
+                        Console.WriteLine("Enter a valid number for the starting imagniary number: ");
                         startImagVal = Console.ReadLine();
 
                     }
@@ -122,7 +122,7 @@ namespace Mandelbrot
                     }
                     catch
                     {
-                        Console.WriteLine("Enter a number for the starting imagniary number: ");
+                        Console.WriteLine("Enter a valid number for the starting imagniary number: ");
                         endImagVal = Console.ReadLine();
 
                     }
@@ -139,7 +139,7 @@ namespace Mandelbrot
                     }
                     catch
                     {
-                        Console.WriteLine("Enter a number for the ending imagniary number: ");
+                        Console.WriteLine("Enter a valid number for the ending imagniary number: ");
                         startReal = Console.ReadLine();
 
                     }
@@ -153,7 +153,7 @@ namespace Mandelbrot
                     }
                     catch
                     {
-                        Console.WriteLine("Enter a number for the ending imagniary number: ");
+                        Console.WriteLine("Enter a valid number for the ending imagniary number: ");
                         endReal = Console.ReadLine();
 
                     }
