@@ -10,14 +10,14 @@ namespace Flow_Control
     {
         static void Main(string[] args)
         {
-            int? firstNumber  = null; //tryParse does not accept a variable that has a ? defined to have null
+            int? firstNumber = null; //tryParse does not accept a variable that has a ? defined to have null**
             int? secondNumber = null; //should we know all 3 methods of conversion
-            //Is there a way to simplifiy this code?
+            //Is there a way to simplifiy this code?**
 
             Console.WriteLine("Please enter a number: ");
             string firstNumberStr = Console.ReadLine();
 
-            while(firstNumber == null)
+            while (firstNumber == null)
             {
                 try
                 {
@@ -48,49 +48,52 @@ namespace Flow_Control
                 }
             }
 
-            while (firstNumber > 10)
+            while(firstNumber > 10 && secondNumber > 10)
             {
-                Console.WriteLine("Second number is greater than 10 try again: ");
+                Console.WriteLine("Please enter another first number: ");
                 firstNumberStr = Console.ReadLine();
-                try
+                firstNumber = null;
+                while (firstNumber == null)
                 {
-                    firstNumber = Convert.ToInt32(firstNumberStr);
-                }
-                catch
-                {
-                    Console.WriteLine("That is not a number enter again: ");
-                    firstNumberStr = Console.ReadLine();
-
-                }
-            }
-
-
+                    try
+                    {
+                        firstNumber = Convert.ToInt32(firstNumberStr);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("That is not a number enter again: ");
+                        firstNumberStr = Console.ReadLine();
             
-            while (secondNumber > 10)
-            {
-                Console.WriteLine("Second number is greater than 10 try again: ");
+                    }
+                }
+            
+                Console.WriteLine("Please enter another second number: ");
                 secondNumberStr = Console.ReadLine();
-                try
+                secondNumber = null;
+                while (secondNumber == null)
                 {
-                    secondNumber = Convert.ToInt32(secondNumberStr);
+                    try
+                    {
+                        secondNumber = Convert.ToInt32(secondNumberStr);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("That is not a number enter again: ");
+                        secondNumberStr = Console.ReadLine();
+            
+                    }
                 }
-                catch
-                {
-                    Console.WriteLine("That is not a number enter again: ");
-                    secondNumberStr = Console.ReadLine();
-
-                }
+            
             }
-
             Console.WriteLine("The numbers are: " + firstNumber + " and " + secondNumber);
-
-
-            }
-
-
 
 
 
         }
-    }
 
+
+
+
+
+    }
+}

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EE23D84E-80CB-4478-8E15-3C10DB486371}</ProjectGuid>
+    <ProjectGuid>{3235CF7A-BD61-46CE-9442-49EE2E6419F3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Week_2_1._0</RootNamespace>
-    <AssemblyName>Week 2 1.0</AssemblyName>
+    <RootNamespace>Mandelbrot</RootNamespace>
+    <AssemblyName>Mandelbrot</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conversions.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilscs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

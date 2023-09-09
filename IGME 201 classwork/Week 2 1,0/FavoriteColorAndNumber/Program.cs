@@ -256,7 +256,7 @@ namespace FavoriteColorAndNumber
                     //loop that is infinite is usually a logic error but eventually when it crashes its a run time error because it will run out of memory 
                     //int.,str., everything is basically an object in c#
                     //with parsing which data types can we convert to with it (int.,float, and the data types in the
-                    ////data type conversion code and the enumerated types also have a parse
+                    ////data type conversion code and the enumerated types also have a parse to get it to the index of the value in the list)
                 }   //parse is usually doing string to another data type 
                 catch
                 {
@@ -285,7 +285,7 @@ namespace FavoriteColorAndNumber
                 //to substitute in)
                 //out is a ref. keyword which means we only care about its output value and not the value we initizliaed it to in the start
                 //ref. can access the value of the var. thats passed in but if its out, then we cant use the value thats passed in and cant even look at it and
-                //the whole point of out is changing the value first then using it while red. we can see it whenever and change it whenver 
+                //the whole point of out is changing the value first then using it while ref. we can see it whenever and change it whenver 
 
                 // check the return value for valid input
                 // the "!" is the boolean "not" operator
@@ -478,8 +478,8 @@ namespace FavoriteColorAndNumber
 
 
 
-//Definitions**
-//continue ends the current loop and goes back up to the condition for the new loop
+//Definitions
+//continue ends the current loop and goes back up to the condition then increments i then checks the condition
 //return exits the whole loop and method
 //break exits the loop only, not the method 
 //goto allows us to jump out of our loop if we wanted (or not) and go to

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EE23D84E-80CB-4478-8E15-3C10DB486371}</ProjectGuid>
+    <ProjectGuid>{68D678EA-C388-4E00-A0BC-6FC5E7B0AAD8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Week_2_1._0</RootNamespace>
-    <AssemblyName>Week 2 1.0</AssemblyName>
+    <RootNamespace>DataTypeConversion</RootNamespace>
+    <AssemblyName>DataTypeConversion</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Conversions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilscs.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
