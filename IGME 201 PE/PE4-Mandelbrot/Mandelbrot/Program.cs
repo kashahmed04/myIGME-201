@@ -16,6 +16,12 @@ namespace Mandelbrot
         /// <summary>
         /// This is the Main() method for Class1 -
         /// this is where we call the Mandelbrot generator!
+        /// We ask for user input and make sure that certain
+        /// conditions are met before letting those variables be
+        /// used within the loop so the proper display can show up.
+        /// If the user does not give a number, or does not stay in bounds 
+        /// keep asking them to enter numbers over and over until
+        /// they are in bounds and have submitted an actual number.
         /// </summary>
         /// <param name="args">
         /// The args parameter is used to read in
@@ -30,16 +36,16 @@ namespace Mandelbrot
             double? startRealNum = null;
             double? endRealNum = null;
 
-            Console.WriteLine("Enter a number for the starting imagniary number: ");
+            Console.WriteLine("Enter a number for the starting imagniary number (a good starting point would be at 1.2): ");
             string startImagVal = Console.ReadLine();
             
-            Console.WriteLine("Enter a number for the ending imaginary number: ");
+            Console.WriteLine("Enter a number for the ending imaginary number (a good ending point would be at -1.2): ");
             string endImagVal = Console.ReadLine();
 
-            Console.WriteLine("Enter a number for the starting real number: ");
+            Console.WriteLine("Enter a number for the starting real number (a good starting point would be -0.6): ");
             string startReal = Console.ReadLine();
 
-            Console.WriteLine("Enter a number for the starting real number: ");
+            Console.WriteLine("Enter a number for the starting real number (a good ending point would be 1.77): ");
             string endReal = Console.ReadLine();
 
             while(startImagValNum == null)
@@ -50,7 +56,7 @@ namespace Mandelbrot
                 }
                 catch
                 {
-                    Console.WriteLine("Enter a number for the starting imagniary number: ");
+                    Console.WriteLine("Enter an actual number for the starting imagniary number (a good starting point would be at 1.2): ");
                     startImagVal = Console.ReadLine();
 
                 }
@@ -64,9 +70,16 @@ namespace Mandelbrot
                 }
                 catch
                 {
-                    Console.WriteLine("Enter a number for the starting imagniary number: ");
+                    Console.WriteLine("Enter an acutal number less than " + startImagValNum + " for the ending imagniary number (a good ending point would be at -1.2): ");
                     endImagVal = Console.ReadLine();
 
+                }
+
+                if (endImagValNum > startImagValNum)
+                {
+                    Console.WriteLine("Enter an acutal number less than " + startImagValNum + " for the ending imagniary number (a good ending point would be at -1.2): ");
+                    endImagVal = Console.ReadLine();
+                    continue;
                 }
             }
 
@@ -78,7 +91,7 @@ namespace Mandelbrot
                 }
                 catch
                 {
-                    Console.WriteLine("Enter a number for the ending imagniary number: ");
+                    Console.WriteLine("Enter an actual number for the starting real number (a good starting point would be -0.6): ");
                     startReal = Console.ReadLine();
 
                 }
@@ -92,88 +105,26 @@ namespace Mandelbrot
                 }
                 catch
                 {
-                    Console.WriteLine("Enter a number for the ending imagniary number: ");
+                    Console.WriteLine("Enter an actual number greater than " + startRealNum + " for the ending real number (a good ending point would be 1.77): ");
                     endReal = Console.ReadLine();
 
                 }
-            }
 
-            while(endImagValNum > startImagValNum)
-            {
-                while (startImagValNum == null)
+                if (endRealNum < startRealNum)
                 {
-                    try
-                    {
-                        startImagValNum = Convert.ToDouble(startImagVal);
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Enter a valid number for the starting imagniary number: ");
-                        startImagVal = Console.ReadLine();
-
-                    }
-                }
-
-                while (endImagValNum == null)
-                {
-                    try
-                    {
-                        endImagValNum = Convert.ToDouble(endImagVal);
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Enter a valid number for the starting imagniary number: ");
-                        endImagVal = Console.ReadLine();
-
-                    }
+                    Console.WriteLine("Enter an actual number greater than " + startRealNum + " for the ending real number (a good ending point would be 1.77): ");
+                    endReal = Console.ReadLine();
+                    continue;
                 }
             }
-
-            while (endRealNum > startRealNum)
-            {
-                while (startRealNum == null)
-                {
-                    try
-                    {
-                        startRealNum = Convert.ToDouble(startReal);
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Enter a valid number for the ending imagniary number: ");
-                        startReal = Console.ReadLine();
-
-                    }
-                }
-
-                while (endRealNum == null)
-                {
-                    try
-                    {
-                        endRealNum = Convert.ToDouble(endReal);
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Enter a valid number for the ending imagniary number: ");
-                        endReal = Console.ReadLine();
-
-                    }
-                }
-            }
-
-
-
-
-
-
-
 
 
             double realCoord, imagCoord;
             double realTemp, imagTemp, realTemp2, arg;
             int iterations;
-            for (imagCoord = 1.2; imagCoord >= -1.2; imagCoord -= ((double)startImagValNum - (double)endImagValNum) / 48)
+            for (imagCoord = (double)startImagValNum; imagCoord >= (double)endImagValNum; imagCoord -= ((double)startImagValNum - (double)endImagValNum) / 48)
             {
-                for (realCoord = -0.6; realCoord <= 1.77; realCoord += ((double)endRealNum - (double)startRealNum) / 80 )
+                for (realCoord = (double)startRealNum; realCoord <= (double)endRealNum; realCoord += ((double)endRealNum - (double)startRealNum) / 80 )
                 {
                     iterations = 0;
                     realTemp = realCoord;
@@ -204,8 +155,7 @@ namespace Mandelbrot
                             break;
                     }
                 }
-                Console.Write("\n");
-                Console.Out.WriteLine("50 plus 25 is " + 50 + 25);
+                
 
             }
         }
