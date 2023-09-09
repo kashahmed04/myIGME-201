@@ -8,7 +8,7 @@ namespace Flow_Control
 {
     // Class Program
     // Author: Kahsaf Ahmed
-    // Purpose: Getting numbers from the user
+    // Purpose: Getting numbers from the users
     //and displaying them to the console based on 
     //if one of the numbers were less than 10.
     // Restrictions: None
