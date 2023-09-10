@@ -1,4 +1,4 @@
-﻿namespace MyFirstWindowsFormApp
+﻿namespace MyFirstWindowsFormsApp
 {
     partial class HoudiniForm
     {
