@@ -140,6 +140,7 @@ namespace FavoriteColorAndNumber
             // value variables copy the contents from one variable to another
             // anotherInt will be 0
             anotherInt = myInt;
+            //Console.WriteLine(anotherInt);
 
             // pass myInt by value (ie. make a copy of it in the method)
             WriteMyVar(myInt);

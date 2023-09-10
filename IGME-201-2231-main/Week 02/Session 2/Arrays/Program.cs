@@ -18,7 +18,7 @@ namespace Arrays
 
             {
                 int[] myIntArray = new int[8] { 5, 6, 7, 8, 9, 23, 123, -90 }; //here we can specify a specific size whereas
-                //the first one we could do as many values as we want**
+                //the first one we could do as many values as we want or are we adding a new value**
                 //can arrays have multiple datatypes within them**
             }
 
@@ -35,7 +35,7 @@ namespace Arrays
                 //be a run time error because our program runs, but it gives an error in the console
 
                 int[] myIntArray2;
-                myIntArray2 = myIntArray;
+                myIntArray2 = myIntArray; //call by ref.**
 
                 myIntArray2[0] = 55; //changes the 0 element to 55 in myIntArray1 because** 
                 //they have a ref. to the same location and are not 2 different arrays 
@@ -69,18 +69,18 @@ namespace Arrays
 
                 // for example: y = 2 * x^2 + 3
                 // fill the array for -10 <= x <= 10 (21 data points)
-                for (x = -10; x <= 10; ++x, ++xCntr)
+                for (x = -10; x <= 10; ++x, ++xCntr) //first loop does increment but after it does**
                 {
                     // Math.Pow() returns a double, so we need to cast as int
                     y = 2 * (int)Math.Pow(x, 2) + 3;
 
                     // the array indexer must be a positive integer and 0-based
                     // (ie. we cannot store funcVal[-10])
-                    funcVal[xCntr] = y;
-                    xArray[xCntr] = x;
+                    funcVal[xCntr] = y; //store the y value at a certain index according to the loop number we are on and the y is calaulated**
+                    xArray[xCntr] = x; //store the x values based on the loop number as well and the x goes from -10 to 10**
                 }
 
-                int[,] funcVal2 = new int[21, 2];
+                int[,] funcVal2 = new int[21, 2]; //21 inputs but we want to have 2 inputs per index with a comma seperator?? or is this 2 arrays with 21 inputs**
 
                 for (x = -10; x <= 10; ++x, ++xCntr)
                 {
@@ -89,8 +89,9 @@ namespace Arrays
 
                     // the array indexer must be a positive integer and 0-based
                     // (ie. we cannot store funcVal[-10])
-                    funcVal2[xCntr, 0] = y;
-                    funcVal2[xCntr, 1] = x;
+                    funcVal2[xCntr, 0] = y; //the first array stores the y (the 0 is the array and the index it will be stored at)**
+                    funcVal2[xCntr, 1] = x; //the second array stores the x based on the index (the array being the second one started at 1 though because
+                    //array numbers and indexes are 0 based)**
                 }
             }
 
@@ -153,6 +154,7 @@ namespace Arrays
 
                 {
                     // a jagged array lets you have a different number of values per "line" of the array
+                    //not 2D**
                     // line #1 supports 3 values: 1,2,3
                     // line #2 supports 4 values: 1,2,3,4
                 }

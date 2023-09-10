@@ -23,7 +23,7 @@ namespace DataTypeConversion
     {
         // event though there are 2 MyAdder() methods, C# will call the correct one that matches the method signature
         // if both parameters are int's, this one will be called
-        static int MyAdder(int a, int b) 
+        static int MyAdder(int a, int b) //can use similar functins that do the same thing, but method signoature must differ**
         {
             return 1;
         }
@@ -81,7 +81,9 @@ namespace DataTypeConversion
             try
             {
                 // checked() and Convert will raise an exception if data will be lost 
-                byteNum = checked((byte)shortInt);
+                byteNum = checked((byte)shortInt); //do we usually put checked in the beginning of the try then we can convert?**
+                //because if we put it in the beginning then it would go to catch without even converting unless that it what we wanted?**
+                //if an error happens does it not even  do the rest of the try and skips over to the catch??** 
 
                 // we saw Convert.ToInt32(), there are conversions for all data types!
                 // convert the shortInt to a byte
@@ -105,7 +107,8 @@ namespace DataTypeConversion
             // you will have a compile-time error and need to cast the result to the target data type
             doubleNum = longInt / shortInt;  // answer will be int
             doubleNum = (double)longInt / shortInt;  // answer will be double because we cast longInt as a double
-            doubleNum = shortInt;
+            doubleNum = shortInt; //are these value of reference data types can we even do this because  doublenum is a double
+            //but we are setting equal a double to an int. which is not the same data type** (would result in error?)**
 
             shortInt = (short)3.94;  // shortInt = 3, the number will be truncated, not rounded
 
