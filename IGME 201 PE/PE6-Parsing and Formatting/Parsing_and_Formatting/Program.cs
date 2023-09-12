@@ -64,6 +64,8 @@ namespace Parsing_and_Formatting
                 {
                     i++; //increment for all 3 based on their guesses or should I not incremement if they are correct as well(6)
                     //is my console statements ok or does it look too cluttered?(7)
+                    //are my console statements ok if they are a bit different from the documentation because I tried to make them more specific
+                    //than the ones wirrten in the documentation(8)
                     Console.WriteLine("The answer is correct!");
                     Console.WriteLine("You guessed the number in " + i + " turns!");
                     break;
