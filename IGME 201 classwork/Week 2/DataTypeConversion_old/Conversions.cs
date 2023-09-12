@@ -77,10 +77,10 @@ namespace DataTypeConversion
             // because those commands will cause a runtime error if data will be lost by the conversion
             // For example, if shortInt = 1000, that is 0011 1110 1000 in binary
             // Copying that to a byte, only copies the lower 8 bits: 1110 1000 which is 232
-            // so because data will be lost, a runtime exception will occur
+            // so because data will be lost, a runtime exception will occur when it tries to convert the data type**
             try
             {
-                // checked() and Convert will raise an exception if data will be lost 
+                // checked() and Convert will raise an exception if data will be lost** 
                 byteNum = checked((byte)shortInt); //do we usually put checked in the beginning of the try then we can convert?**
                 //because if we put it in the beginning then it would go to catch without even converting unless that it what we wanted?**
                 //if an error happens does it not even  do the rest of the try and skips over to the catch??** 
@@ -102,12 +102,13 @@ namespace DataTypeConversion
             // when doing math, C# will return the highest precision data type of an equation
             // so int/int = int
             // int/double = double
-            // note that the return type does not matter on the target data type
+            // note that the return type does not matter on the target data type**
             // but that if the target data type is a lower precision than the highest precision data type in the equation
             // you will have a compile-time error and need to cast the result to the target data type
             doubleNum = longInt / shortInt;  // answer will be int
-            doubleNum = (double)longInt / shortInt;  // answer will be double because we cast longInt as a double
-            doubleNum = shortInt; //are these value of reference data types can we even do this because  doublenum is a double
+            doubleNum = (double)longInt / shortInt;  // answer will be double because we cast longInt as a double and short int. would be implicitly casted as a double
+            //because we use the method with 2 doubles in it**
+            doubleNum = shortInt; //are these value or reference data types can we even do this because  doublenum is a double
             //but we are setting equal a double to an int. which is not the same data type** (would result in error?)**
 
             shortInt = (short)3.94;  // shortInt = 3, the number will be truncated, not rounded
@@ -122,7 +123,8 @@ namespace DataTypeConversion
             // either parameter could be a double
             MyAdder(shortInt, doubleNum);
 
-            // MyDivider() is defined in Utils.cs and is available because it is in the same namespace and class
+            // MyDivider() is defined in Utils.cs and is available because it is in the same namespace and class (can even access methods in here
+            //from other source files as well)(are these basically classes)**
             MyDivider(byteNum, shortInt);
         }
     }
