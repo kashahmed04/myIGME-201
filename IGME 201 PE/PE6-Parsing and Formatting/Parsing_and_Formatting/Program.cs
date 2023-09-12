@@ -63,6 +63,7 @@ namespace Parsing_and_Formatting
                 if (randomConvertedNum == randomNumber)
                 {
                     i++; //increment for all 3 based on their guesses or should I not incremement if they are correct as well(6)
+                    //is my console statements ok or does it look too cluttered?(7)
                     Console.WriteLine("The answer is correct!");
                     Console.WriteLine("You guessed the number in " + i + " turns!");
                     break;
