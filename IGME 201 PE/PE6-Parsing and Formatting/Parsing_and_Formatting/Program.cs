@@ -23,7 +23,7 @@ namespace Parsing_and_Formatting
 
             //Console.WriteLine("Guess a random number between 0 and 100");
             //string ran_num_str = Console.ReadLine();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++) //fixed loop control var. now it does 8 values instead of 9
             {
                 Start: //basicaly we start back in the while so we can use goto on this(3)
                 //are we allowed to use start and goto in this code? (4)

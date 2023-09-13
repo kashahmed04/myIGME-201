@@ -37,8 +37,7 @@ static class Program
         int nOp = 0;
 
         // operands and solution
-        int val1 = 0; //when we implement division, use doubles for the anawer at least (also operands??)** (make sure one of our operands is a double
-                      // by doing (double) or 1.0 tom make sure its a double**
+        int val1 = 0; 
         int val2 = 0;
         int nAnswer = 0;
 
@@ -56,7 +55,7 @@ static class Program
         Console.ForegroundColor = ConsoleColor.White;
 
         // seed the random number generator
-        Random rand = new Random(); //Random is an object and the ran object lets us create random numbers and we use.next to pick the next number**
+        Random rand = new Random(); 
 
         Console.WriteLine("Math Quiz!");
         Console.WriteLine();
@@ -76,8 +75,7 @@ static class Program
 
     // label to return to if they want to play again
     start: 
-            //allow us to jump around our code with the goto statments (this is where we want to go back to if they want to play the game again so we use this in
-            //in a goto statemtn**
+           
 
         // initialize correct responses for each time around
         nCorrect = 0;

@@ -123,7 +123,7 @@ namespace Mandelbrot
 
             double realCoord, imagCoord;
             double realTemp, imagTemp, realTemp2, arg;
-            int iterations;
+            int iterations; //why cant we say double? here instead of double**
             for (imagCoord = (double)startImagValNum; imagCoord >= (double)endImagValNum; imagCoord -= ((double)startImagValNum - (double)endImagValNum) / 48)
             {
                 for (realCoord = (double)startRealNum; realCoord <= (double)endRealNum; realCoord += ((double)endRealNum - (double)startRealNum) / 80 )

@@ -11,20 +11,22 @@ namespace Arrays
         static void Main(string[] args)
         {
             {
-                int[] myIntArray = { 5, 6, 7, 8, 9, 23, 123, -90 }; //we usually initialize arrays with int[] then use
+                int[] myIntArray = { 5, 6, 7, 8, 9, 23, 123, -90 }; //we usually initialize arrays with int[] or can it be another data type** 
                 //and in this case it can be infinite values within the array because theres no new int[] within it
+                //and so we can only initizalize it though not add to it from somewhere else unless we used a loop like talked about below**
                 //myIntArray[0] 
 
                 //if we wanted to add another element to it, we would have to make a new array and increase the size of the current array
                 //then use a for loop to go through the original array and we need to copy the index of the first array we are on into the index
                 //of the second array, then we make the new value equal to a new number 
 
-                //copy the contents of the first array into the second array 
+                //copy the contents of the first array into the second array via a foreach (cant edit content) or for loop then add thr last value
             }
 
             {
                 int[] myIntArray = new int[8] { 5, 6, 7, 8, 9, 23, 123, -90 }; //This creates a new array with size of 8
-                //can arrays have multiple datatypes within them**
+                //can arrays have multiple datatypes within them (when we initizlaize arrays like this we can add from anywhere in the code whereas
+                ////the top solution, we can only initizialize it**
             }
 
             {
@@ -37,7 +39,7 @@ namespace Arrays
                 myIntArray[5] = 23;
                 myIntArray[6] = 123;
                 myIntArray[7] = -90; //if we went outside of bounds in this case, if we added more than 8 elements would that
-                //be a run time error because our program runs, but it gives an error in the console
+                //be a run time error because our program runs, but it gives an error in the console**
 
                 int[] myIntArray2;
                 myIntArray2 = myIntArray; //call by ref.
@@ -77,12 +79,14 @@ namespace Arrays
                 for (x = -10, xCntr = 0; x <= 10; ++x, ++xCntr) //first loop does increment but after it does**
                 {
                     // Math.Pow() returns a double, so we need to cast as int
+                    //when we cast as an int. does it cut off the other part of the double or does it round**
                     y = 2 * (int)Math.Pow(x, 2) + 3;
 
                     // the array indexer must be a positive integer and 0-based
                     // (ie. we cannot store funcVal[-10])
-                    funcVal[xCntr] = y; //store the y value at a certain index according to the loop number we are on and the y is calaulated**
-                    xArray[xCntr] = x; //store the x values based on the loop number as well and the x goes from -10 to 10**
+                    funcVal[xCntr] = y; //store the y value at a certain index according to the loop number we are on and the y is calaulated (the column)****
+                    xArray[xCntr] = x; //store the x values based on the loop number as well and the x goes from -10 to 10 (the rows or lines)**
+                    //in this case, for each index it would store and x and a y value within each column but how would the lines (or rows) be referrenced and their labels**
                 }
 
                 int[,] funcVal2 = new int[21, 2]; //21 inputs but we want to have 2 inputs per index with a comma seperator?? or is this 2 arrays with 21 inputs**
@@ -90,14 +94,17 @@ namespace Arrays
 
                 //if we want a 2D array we can use a comma in the braackets as well as if we want 3 2D dimensions, creates a 21 by 2 possible values (42 different
                 //cells we can hold) to acces them we use the index, y notation 
-                //our  array can go from 0-20
-                //and our same  array can go from 0-1
+                //our  array can go from 0-20**
+                //and our same  array can go from 0-1**
                 //out x values can go from -10 to 10 and for each x value we get our index value and we cant use negative numbers for array indexing 
                 //and it has to be an integer
                 //out first integer for x is -10 so we put xCntr instead to start at index 0 to represent the -10 index
                 //xcntr is the rows (21 rows) and 2 columns for our y values 
                 //A column would be x values from -10 to 10, and our b values would hold the x and y values (going y,x)
                 //for each x dimension from -10 to 10, there are 2 values that can be accessed the y and x 
+
+                //so basically its 21 rows (lines) and for each of those rows or lines, there are 2 values, and x and a y (is this technically like an array within
+                //an array because for each index we haev 2 valeus so would that be an array within an array**
 
 
 
@@ -113,9 +120,8 @@ namespace Arrays
 
                     // the array indexer must be a positive integer and 0-based
                     // (ie. we cannot store funcVal[-10])
-                    funcVal2[xCntr, 0] = y; //the first array stores the y (the 0 is the array and the index it will be stored at)**
-                    funcVal2[xCntr, 1] = x; //the second array stores the x based on the index (the array being the second one started at 1 though because
-                    //array numbers and indexes are 0 based)**
+                    funcVal2[xCntr, 0] = y; 
+                    funcVal2[xCntr, 1] = x; 
                 }
             }
 
@@ -142,10 +148,16 @@ namespace Arrays
 
 
                 //if its 3D, then our first dimension 81 is the rows representing the x, and we have 36 values of y that can be stored in
-                //each column, and then for each of the y, and the third one is representing storing x y and z
+                //each column, and then for each of the y, the third one is representing storing x y and z
 
                 //for each value of x (rows) we have 5 values of y in each column and for each value of y we have 3 values in the third dimension
-                //and for each value of x, we have 15 values [5,5,3]
+                //and for each value of x, we have 15 values for y** [5,5,3] 
+                
+                //so basically we wil have 5 values of x for the lines or rows,5 values for y in the columns for each x, then for each y, we would
+                //have the 3 values of x,y,z, making it 15 values of x,y,z for each x value**
+
+                //and if we had 81 values of x(rows or lines), then for each x, there would be 36 values of y(columns), then for each y there would be 3 values of x,y,z,
+                //making there be a total of 36*3 values of x,y,z for each value of x (108 values of x,y,x for each x)**
 
 
 
@@ -169,8 +181,10 @@ namespace Arrays
 
                         z = Math.Round(z, 3);
 
-                        zFunc[nX, nY, 0] = x; //each array they are using (nx, then each index within that array is ny and we are putting values into
-                        //their specified array**
+                        zFunc[nX, nY, 0] = x; //for each index of the  nx and ny, basically the nx is the current x (rows or lines), and the curruent,
+                        //y is the ny, but we have 3 parts to the array (or 3 arrays within an array)** and basically 0 is the x (rows), and y is the columns
+                        //for each y, the z is the 3 values of x,y,z for that spcific x we are on (the inner loop does this for each value of y)(the loop
+                        ////does not use 36 values of y for its loop condition though)**
                         zFunc[nX, nY, 1] = y; //would be 2D instead of jagged
                         zFunc[nX, nY, 2] = z;
                     }
@@ -180,10 +194,11 @@ namespace Arrays
             {
                 int[][] jaggedIntArray = new int[2][];
                 //we can only initizalize size of the first dimension in jagged arrays and to do the second array we have to access the first
-                //element in the first dimension(0)
+                //element in the first dimension(0)**
                 //the [2] tells us how many rows (lines) we use and for the second[] it tells us how many columns there is going to be 
-                //our first line [0] had 3 lines the new int.[3]
-                //and our second line (row) had 4 columns by the new int.[4]
+                //our first line [0] had 3 lines the new int.[3]**
+                //and our second line (row) had 4 columns by the new int.[4]**
+                //basically first part is rows, second part is columns, then third part if needed would be the values for the secnod part**
 
 
 
@@ -203,18 +218,18 @@ namespace Arrays
                 //1 2
                 //1 3
 
-                jaggedIntArray[0][0] = 1; //can have 3 values in 0th index
+                jaggedIntArray[0][0] = 1; //can have 3 values in first dimension out of the [2]
                 jaggedIntArray[0][1] = 2;
                 jaggedIntArray[0][2] = 3;
 
-                jaggedIntArray[1][0] = 1; //but our index of 1 can have 4 values because w created them individually rather than a rectangle 
+                jaggedIntArray[1][0] = 1; //but our index of 1 can have 4 values because we created them individually rather than a rectangle 
                 jaggedIntArray[1][1] = 2;
                 jaggedIntArray[1][2] = 3;
                 jaggedIntArray[1][3] = 4;
 
                 {
                     // a jagged array lets you have a different number of values per "line" of the array
-                    //not 2D (jagged  = [][], while 2D is [,])
+                    //not 2D (jagged  = [][], while 2D is [,])**
                     // line #1 supports 3 values: 1,2,3
                     // line #2 supports 4 values: 1,2,3,4
                 }
@@ -239,13 +254,14 @@ namespace Arrays
                 //        81 values of x
                 //        36 values of y for each value of x
                 //        3 values for each data point: the x, y and z
-                double[][][] zFunc = new double[81][][];
+                double[][][] zFunc = new double[81][][]; //why do we initizialize to a douvle here and the loop above, but not the
+                //very first loop with 1D arrays**
 
                 // we need to allocate each dimension of the array separately
                 for (nX = 0; nX < 81; ++nX)
                 {
                     // allocate the 36 "y" elements for each of the 81 "x" elements
-                    zFunc[nX] = new double[36][];
+                    zFunc[nX] = new double[36][]; //why could we put numbers in the brackets here, but not the above part in the intro. to jagged arrays**
 
                     for (nThirdDim = 0; nThirdDim < 3; ++nThirdDim)
                     {

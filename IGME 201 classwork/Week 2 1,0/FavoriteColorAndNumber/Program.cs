@@ -142,6 +142,7 @@ namespace FavoriteColorAndNumber
             anotherInt = myInt;
             //Console.WriteLine(anotherInt);
 
+
             // pass myInt by value (ie. make a copy of it in the method)
             WriteMyVar(myInt);
 
