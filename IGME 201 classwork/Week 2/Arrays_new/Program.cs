@@ -266,7 +266,8 @@ namespace Arrays
                     for (nThirdDim = 0; nThirdDim < 3; ++nThirdDim)
                     {
                         // allocate the 3 elements of the 3rd dimension for each [x][y] dimension
-                        zFunc[nX][nThirdDim] = new double[3];
+                        zFunc[nX][nThirdDim] = new double[3]; //within the y value, within that index, we want to have an index for the x,y,z vaues as well
+                        //for each value of y**
                     }
                 }
 
@@ -286,7 +287,9 @@ namespace Arrays
                         z = Math.Round(z, 3);
 
                         zFunc[nX][nY][0] = x; //nX and nY are the integer indexes into our array and at that specific index, it inserts the specific x in that line
-                        zFunc[nX][nY][1] = y;
+                        zFunc[nX][nY][1] = y; //the 0,1,2, represent the 81 values of x, 36 values of y, and 3 x,y,z values**
+                                              //at this current x and y index, insert this x value at the first dimension(row or line), y value at the first dimension
+                                              //(comlumn),and in the third dimension x,y,z value (for each value of y)**
                         zFunc[nX][nY][2] = z;
                     }
                 }
