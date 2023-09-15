@@ -34,7 +34,7 @@ namespace SquashTheBugs
                 // declare string to hold all numbers
                 //string allNumbers = null;
                 //Bug #3 Compile time error: The scope of this var. should be initialized outside the loop
-                //so that allNumbers could be accessed when we have to print to the console. (scope is compile time error)**
+                //so that allNumbers could be accessed when we have to print to the console. (scope is compile time error)
 
                 // output explanation of calculation
                 //Console.Write(i + "/" + i - 1 + " = ");

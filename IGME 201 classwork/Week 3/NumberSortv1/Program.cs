@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
+
+//in the background it has unsrtoed index cards and blank index cards, and we go through the unsorted list, find the lowest number
+//then copy that number to the sorted list (empty index cards), then throw out that number from the unsorted list 
 namespace NumberSortV1
 {
     // Class: Program
@@ -24,13 +29,14 @@ namespace NumberSortV1
             double[] aUnsorted; //we have an unsorted and sorted array but we dont know how many numbers they stpre yet 
             //so there is no pointer to an array yet, so its kind of like the null value 
             //no value associated with them
-            //arrays can be any data type but we can only access the array using integers 
+            //arrays can be any data type but we can only access the array using integers (index)
             //and since arrays can only take 1 datatype, here we only take doubles and if the user enters an int. then it will be implicitly casted as an double 
             //we maed it a double so the user can also enter doubles 
             ////but if we use Object instead, we can store multiple data types
             //cant index by a negative, or a decimal value, only whole numbers 
-            //we can even define and array of ecolors from favcolorandnumber 
+            //we can even define an array of ecolors from favcolorandnumber 
             double[] aSorted;
+            //when we declare an array, we dont declare the size wiht it, we would be saying that we will declare it later like we did in our code below 
 
         // a label to allow us to easily loop back to the start if there are input issues
         start:
@@ -39,8 +45,9 @@ namespace NumberSortV1
             // read the space-separated string of numbers
             string sNumberString = Console.ReadLine();
 
-            // split the string into the an array of strings which are the individual numbers**
-            // (not in a loop so how would it do everything that the user said)**
+            // split the string into the an array of strings which are the individual numbers
+            // split goes through the whole string by default and makes it into an array (array elements per each number inputted as a string)
+            //we could use trim to trim the ends if needed
             string[] sNumbers = sNumberString.Split(' '); //split the string into an array by splitting on the space character 
             //and it will give us an array of strings which is each number , seperated 
 
@@ -50,7 +57,8 @@ namespace NumberSortV1
             // a double used for parsing the current array element into a double when we read it from a string
             double nThisNumber;
 
-            // you can read through an array using the index**
+            // you can read through an array using the index
+            //array has a property call length that can read the length of the array (also for strings too it can do that)
             //int nCntr = 0;
             //for( nCntr = 0; nCntr < sNumbers.Length; ++nCntr) //sNumbers is the array we split 
             //{
@@ -61,12 +69,15 @@ namespace NumberSortV1
             // or you can use the foreach() loop which provides an "iterator" variable
             // pointing to each array element
             // a limitation of foreach() is that the iterator cannot modify the array's contents
-            // it is read-only (so usually use a for loop to change the value at the current index if needed)**
+            // it is read-only (so usually use a for loop to change the value at the current index if needed)
             // iterate through the array of number strings and we can change values here whereas in the foreach its only used for arrays
             //and we cant change the array contents 
        
-            foreach (string sThisNumber in sNumbers) //iterates through the array and sThisNumber is a loca variable and it set equa; to each value
+            foreach (string sThisNumber in sNumbers) //iterates through the array and sThisNumber is a local variable and it set equal to each value
                 //in the sNumbers array as we go through the array 
+                //sthisnumber is only local to this foreach and we cant use it outside of the loop
+                //for each is cleaner
+                //check if all the numbers are valid and how many valid numbers they entered 
             {
                 // you cannot modify the iterator
                 // this will cause a compile-time error
@@ -83,7 +94,8 @@ namespace NumberSortV1
                 try
                 {
                     // try to parse the current string into a double
-                    nThisNumber = double.Parse(sThisNumber);
+                    nThisNumber = double.Parse(sThisNumber); //if the parse fails then it jumps right to the catch and it does not execute the incrementation
+                    //of the unsorted array length 
 
                     // if it's successful, increment the number of unsorted numbers length in the array 
                     ++nUnsortedLength;
@@ -93,10 +105,11 @@ namespace NumberSortV1
                     // if an exception occurs
                     // indicate which number is invalid
                     Console.WriteLine($"Number #{nUnsortedLength + 1} is not a valid number."); //if we cant convert to a double
-                    //then it tells us which element in the list (the index + 1 because its 0 based) was not valid and it skips that elemnt
+                    //then it tells us which element in the list (the index + 1 because its 0 based) was not valid and it skips that element
                     //and does not add it and goes back to the start
 
                     // loop back to the start
+                    //in this case would we want this or could we had just done continue and not incremented why do we have to reset the program basically**
                     goto start;
                 }
             }
@@ -105,13 +118,16 @@ namespace NumberSortV1
             // allocate the size of the unsorted array
             aUnsorted = new double[nUnsortedLength]; //we make the unsorted array now equal to a new array of the length of the array we just got from the
             //for each loop from above 
+            //now we can initialize the array and say this is how many things are going to be in the unsorted array 
 
             // reset nUnsortedLength back to 0 to use as the index to store the numbers in the unsorted array
-            //and now we can sort the elements in the array from the sNumbers array 
+            //and now we can put the elements in the array from the sNumbers array into the unsorted array 
             //we know they are all valid numbers, because we checked in the above loop 
             nUnsortedLength = 0; //reset the length to 1 so we can insert values into the unsorted array from sNumbers
             //snumbers is an array of strings and the unsorted array is the doubles that are parsed now
             foreach (string sThisNumber in sNumbers)
+                //loop through it again because we know its all valid numbers and put it in the new array we had allocated space 
+                //for in the unsrtoed array 
             {
                 // still skip the blank strings
                 if (sThisNumber.Length == 0)
@@ -131,8 +147,9 @@ namespace NumberSortV1
 
             // allocate the size of the sorted array (sorted array of doubles)(same size as unsorted array)
             aSorted = new double[nUnsortedLength]; 
+            //allocate space for our sorted array now being equal to the elements in the unsorted array
 
-            // start the sorted length at 0 to use as sorted index element**
+            // start the sorted length at 0 to use as sorted index element
             int nSortedLength = 0;
 
             // while there are unsorted values to sort (within the unsorted list)(once all numbers are removed from the unsrtoed array we are done)
@@ -142,13 +159,13 @@ namespace NumberSortV1
                 aSorted[nSortedLength] = FindLowestValue(aUnsorted); //findlowestvalue is a method is it loops through the array and looks for the lowest value and at the
                 //end of the method it returns that value (we take that lowest value and store it in our sorted array at that current index)
 
-                // remove the current sorted value and does it replace it with the current value** but nothing is in aSorted so
-                //how would that work**
                 RemoveUnsortedValue(aSorted[nSortedLength], ref aUnsorted);
                 //removeunsortedvalue is a method we wrote and we are passing it the value we are removing whhich is the current
                 //value in our sorted array and we remove that value we just put in the sorted array from the unsorted array
                 //and we want to pass it as a reference variable because we are going to change the variable (the array) to remove a value from the array
-                //in the method the second para. is also a reference  to an array to remove the value
+                //in the method the second para. is a reference to an array to remove the value
+                //pass in the value we want to remoave (the lowest value) and the array we want to remove it form (the unsorted array)
+                //any time we want to change a value within a method pass it as a ref. so it can point to the same place and change it 
 
                 // increment the number of values in the sorted array to find the next sorted value to add into the sorted array 
                 ++nSortedLength;
@@ -224,6 +241,7 @@ namespace NumberSortV1
 
             // the same value may occur multiple times in the array, so skip occurrences of the same number and only remove one of them
             bool bAlreadyRemoved = false; //not already removed so false
+            //have we removed the element already or not 
 
             // iterate through the source array
             foreach (double srcNumber in array)

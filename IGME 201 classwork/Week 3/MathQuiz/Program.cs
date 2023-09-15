@@ -37,7 +37,7 @@ static class Program
         int nCntr = 0; 
         int nCorrect = 0;
 
-        // operator picker**
+        // operator picker
         int nOp = 0;
 
         // operands and solution
@@ -49,6 +49,7 @@ static class Program
         // string and int for the response
         string sResponse = "";
         Int32 nResponse = 0;// why need both because it only prints a string to the console
+        //is intiailizating to int32 the same thing as doing int**
 
         // play again?
         string sAgain = "";
@@ -56,17 +57,16 @@ static class Program
         // valid state
         bool bValid = false;
 
-        //what do these do**
+        //set the background color of the text and the text color itself
         Console.BackgroundColor = ConsoleColor.Black;
         Console.ForegroundColor = ConsoleColor.White;
 
         // seed the random number generator
-        Random rand = new Random(); //Random is an object and the ran object lets us create random numbers and we use.next to pick the next number 
+        Random rand = new Random(); //Random is an object and the rand object lets us create random numbers and we use.next to pick the next number 
         //even if varibales are class variables then its CamelCase
 
         Console.WriteLine("Math Quiz!");
-        Console.WriteLine(); //do we do a blank here for the \n basically to skip a line,
-                             //why dont we do just \n within the first writeline
+        Console.WriteLine(); 
 
         // fetch the user's name into myName
         while (true)
@@ -83,7 +83,7 @@ static class Program
     // label to return to if they want to play again
     start: //do we usually set these "points" for the goto by any name and what are the capitalization rules for it**
            //allow us to jump around our code with the goto statments (this is where we want to go back to if they want to play the game again so we use this in
-           //in a goto statemtn**
+           //in a goto statemtn
 
         // initialize correct responses for each time around (for each time we start a new quiz)
         nCorrect = 0;
@@ -96,7 +96,7 @@ static class Program
             Console.Write("How many questions-> ");
             sQuestions = Console.ReadLine();
             //bValid = int.TryParse(sQuestions, out nQuestions);
-        } while (!int.TryParse(sQuestions, out nQuestions)); //sets nQuestions equal to the value of sQuestions we get and that will
+        } while (!int.TryParse(sQuestions, out nQuestions)); //sets nQuestions equal to the value of sQuestions converted we get and that will
         //set equal only if the int.TryParse works
         //} while ( !bValid );
 
@@ -107,7 +107,7 @@ static class Program
         {
             Console.Write("Difficulty level (easy, medium, hard)-> ");
             sDifficulty = Console.ReadLine();
-            sDifficulty = sDifficulty.ToLower().Trim(); //trim does the white space on the ends only right
+            sDifficulty = sDifficulty.ToLower().Trim(); //trim does the white space on the ends only 
                                                         //split returns an array of the things , seperated based the delimeter
                                                         //but if thats multiple spaces in a row (ex. more than 1 space then we get an extra entry for each
                                                         //space greater than 1
@@ -120,12 +120,12 @@ static class Program
                 sDifficulty != "hard"
                 );
 
-        Console.WriteLine(); //why is there another one here**
+        Console.WriteLine(); 
 
         // if they choose easy, then set nMaxRange = MAX_BASE, unless myName == "David", then set difficulty to hard
-        // if they choose medium, set nMaxRange = MAX_BASE * 2 (both values used in the for loop)**
+        // if they choose medium, set nMaxRange = MAX_BASE * 2 (both values used in the for loop)
         // if they choose hard, set nMaxRange = MAX_BASE * 3
-        switch (sDifficulty )//go over this****
+        switch (sDifficulty) //in this case would we also lower here so our cases are contstatn with being lowercase**
         {
             case "easy":
                 nMaxRange = MAX_BASE;
@@ -152,7 +152,7 @@ static class Program
             // generate a random number between 0 inclusive and 3 exclusive to get the operation**
             nOp = rand.Next(0, 3); //it will go from 0-2 the 3 is exclusive for random (last number exclusive for ranom) and it returns the number for the operation
             //needing to be done 
-            //double d = rand.NextDouble() returns a float number from 0-1 only, we dont put anything in it (and multiply by 10 to get a rnadom number between 0-10
+            //double d = rand.NextDouble() returns a float number from 0-1 only, we dont put anything in it (and multiply by 10 to get a rnadom number between 0-10)
 
             val1 = rand.Next(0, nMaxRange) + nMaxRange; // choose the numbers based on the range given in the above statement
             val2 = rand.Next(0, nMaxRange);
@@ -247,6 +247,7 @@ static class Program
         Console.WriteLine($"You got {nCorrect} of {nQuestions} correct. That is a score of {100*(Math.Round((double)nCorrect/nQuestions))} %");
         //get the percent by converting the nCorrect by the total questions then multiplying by 100 to get a percentage (could cast either of them as a double though
         //but if we did not make it a double then round cant round because its an int so it would not work because we need a percentage so we need a deciaml for the percentage
+        //we could also multilply one of them numbers by 1.0 to get a double (but we should cast it as a double though)
 
         Console.WriteLine();
 
