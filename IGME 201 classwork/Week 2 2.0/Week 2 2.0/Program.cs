@@ -10,11 +10,11 @@ namespace Week_2_2._0
     {
         static void Main(string[] args)
         {
-            { //arrays are a list of values and we use [] to define it as an array**
+            { //arrays are a list of values and we use [] to define it as an array
               //arrays are stored in a block of memory and the values within that array are stroed right next to each other**
-              //have to define data type of the array and cant just be mixed data types**
+              //have to define data type of the array and cant just be mixed data types or can use object to have mixed types of data 
                 int[] myIntArray = { 5, 6, 7, 8, 9, 23, 123, -90 };
-                myIntArray[0] //start form index 0 to access first value (this is a 1 dimensional array like an x on a graph instead of x,y)**
+                myIntArray[0] //start form index 0 to access first value (this is a 1 dimensional array like an x on a graph instead of x,y)
             }
 
             {
@@ -35,27 +35,28 @@ namespace Week_2_2._0
                 myIntArray[7] = -90;
 
                 //arrays are a ref. data type and when we create an array by using the [] or the new keyword a block of memory
-                //was set aside for us (an object is the block of memory) and the pointer is pointing to that block of memory**
+                //was set aside for us (an object is the block of memory) and the pointer is pointing to that block of memory
 
                 //when we declare the pointer has a towel over it 
                 int[] myIntArray2;
                 myIntArray2 = myIntArray;
                 //when we set intarray 2 and int array they are pointing to the same object and if we change myarray2 then the value
-                //in intarray will also be changed (both mirrors look at the same thing) not 2 seperate arrays that do the same thing**
+                //in intarray will also be changed (both mirrors look at the same thing) not 2 seperate arrays that do the same thing
 
                 myIntArray2[0] = 55; //both arrays see the changes made and both get changed the exact same way because they point
-                //to the same block of memory and both get changed** 
+                //to the same block of memory and get changed
 
-                //an object takes up memory and value data types as well difference?**
+                //an object takes up memory and value data types as well 
 
                 myIntArray = null; //we have just pointed the pointer away from the data and its basically putting a towel
-                //over the mirror and now we cant access the array anymore from the first intarray but we could from the second??**
+                //over the mirror and now we cant access the array anymore from the first intarray but we could from the second because
+                //its still pointing to the array in memory before we set it equal to null
                 myIntArray2 = null; //now that both of them are null we lose the object and we can no longer access it
                 
-                //we do not copy data, we just change the pointer to look at the same location in memory for objects**
+                //we do not copy data, we just change the pointer to look at the same location in memory for objects
 
                 //a garbage collector is when a varibale is no longer being used or a local variable that is no longer accessible 
-                //outside the scope, it will be put in the garbage collector and be cleaned up so it decreases the file size**
+                //outside the scope, it will be put in the garbage collector and be cleaned up so it decreases the file size
                
 
             }
@@ -70,7 +71,7 @@ namespace Week_2_2._0
                 //cant access arrays with negative numbers (only goes from 0 to number of elements minus 1 because
                 //we start from 0)
                 //to add dimensions to the array we add a ","
-                int[,] funcVal2 = new int[21, 2]; //stores both the x and the y (2 dimensioonal)**
+                int[,] funcVal2 = new int[21, 2]; //stores both the x and the y (2 dimensional)
                
             }
 
