@@ -40,7 +40,7 @@ namespace Madlibs
             string line = null;
             while ((line = input.ReadLine()) != null) //read each line from the file and we can also use readline for the streamreader
                                                       //and it reads from each line within the file sep. by the \n** (set a variable equal to the reading each line and stay in the loop
-                                                      //as long as the line is not equal to null (not at the end of the file yet)**
+                                                      //as long as the line is not equal to null (not at the end of the file yet)
             {
                 ++numLibs; //increment how many mad libs are in the file (increments each mad lib itself)
             }
@@ -64,19 +64,23 @@ namespace Madlibs
                 madLibs[cntr] = madLibs[cntr].Replace("\\n", "\n"); //we can use replace method of the string type to replace the \\ with a escape character
                 //the \n (if we want to replace the \n with a newline character and in c# we need to say the \\ so it gets converted into \n
                 //which is not the newline charatcer, but the new line character is a \n)
-                //(1) I am still kind of confused about the \\n and \n so I was wondering if you could explain again?*************
+                //(1)*****so basically, in this case we are checking if there is a backslash charatcer by first saying this should be a backslash with the first "\"
+                //then the second "\" is the actual new line character, and replacing it with just 1 newline character because there was a spcace plus
+                // a newline chracter in the original text file?
 
                 ++cntr;
             }
 
-            input.Close();//(2) what does intput.Close() do? And also are my names ok for my mad libs or were there certain naming
-                          //conditions*****************
+            input.Close();//(2) Closes the file for us once we are done reading it and the information for that file is
+            //gone except for whatever we store in variables (why would we want to close it usually and we only usuually open and close the same file once per file
+            //right or is there another case for that)**********
 
             string userInput = null;
             int tries = 0;
             Console.WriteLine("Would you like to play? (Reply yes or no)");
             userInput = Console.ReadLine();
-            while(userInput != null) {
+            while(!userInput.ToLower().StartsWith("y") && !userInput.ToLower().StartsWith("n")) { //(3)can we still include the conditionals inside of the loop
+                //when we fix it or should we put it outside since the while loop checks if y or n was entered**********
                 if (userInput.ToLower().StartsWith("y"))
                 {
                     break;
@@ -97,7 +101,6 @@ namespace Madlibs
                     userInput = Console.ReadLine();
                     continue;
                 }
-                //(3)is this ok or should I try to simplify it even more*******************
             }
             start:
             // prompt the user for which Mad Lib they want to play (nChoice) (do ask them a numebr from 1-6 but its 0 based so we shuld add a plus 1 to our output)
@@ -124,11 +127,23 @@ namespace Madlibs
                 if(nChoice == 0)
                 {
                     Console.WriteLine("Please enter a valid choice between 1-6!");
-                    libChoice = Console.ReadLine(); //(4) is it ok if the user enters a number bigger than 6 and the index
-                    //error occurs or should we account for that too
-                    //because I tried to account for that and I ended up getting an infinite
-                    //loop in for the WriteLine statement saying to choose a number between 1-6***************
-                    continue;
+                    libChoice = Console.ReadLine(); //(4)is it necessary to put continue here because it would go back to the while loop regardless*******
+                    
+                }
+                try
+                {
+                    if (nChoice >= 7) //(5) I am a bit confused here for checking if the value entered was greater than or equal to 7 because
+                        //I tried to do a try catch but I don't know if I should do a conditional here or not because the conditional would not run when nChoice >=7
+                        //and when I checked in the console, it still gave me an error regardless of if I did the try catch or not******
+                    {
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a valid choice between 1-6!");
+                    libChoice = Console.ReadLine();
+                    nChoice = 0;
+
                 }
             }
 
@@ -144,20 +159,13 @@ namespace Madlibs
                 if (word[0] == '{')
                 {
                     string unknownWord = word.Replace("{", "").Replace("}", "").Replace("_", " "); 
-                    //(5)replace the {} with nothing and take them out,
+                    //replace the {} with nothing and take them out,
                     //and the _ will get rid of the _ and add a space
-                    // prompt the user for the replacement (this is how the replace works right)************
+                    // prompt the user for the replacement (this is how the replace works right)
                     Console.Write("Input a {0}: ", unknownWord);
 
                     // and append the user response to the result string
-                    finalStory += " "; //(6)is this ok to apply the space here for the output because it puts a space between the periods as well
-                    //or should I have a conditional for that*****************
-                    //(7)how would we use split because even if we did put the final story into an array, we cant
-                    //really split because there is a charatcer (a space per word) to split by (this was my alternative idea
-                    //if my current one was not allowed************
-                    
-                    //(8)on a side note, for the chinese resturant story the comma gets inserted when it asks the user for a pop star I think it was
-                    //so is that ok?**************8
+                    finalStory += " ";
                     finalStory += Console.ReadLine();
                 }
                 // else append word to the result string
@@ -172,7 +180,7 @@ namespace Madlibs
             
             Console.WriteLine("Would you like to play again? (Reply yes or no)");
             userInput = Console.ReadLine();
-            while (userInput != null)
+            while (!userInput.ToLower().StartsWith("y") && !userInput.ToLower().StartsWith("n"))
             {
                 if (userInput.ToLower().StartsWith("y"))
                 {
@@ -190,10 +198,6 @@ namespace Madlibs
                     userInput = Console.ReadLine();
                     continue;
                 }
-                //(9)is this ok in terms of having the goto statements "end" and "start" also was it a requirement to make our
-                ////own mad lib as well or optional************
-                //(10)finally should I also have another counter and statement here
-                //to account if the user has not answered the right way more than 3 times like I did above?***************
             }
         end:;
         }
