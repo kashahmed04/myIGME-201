@@ -125,13 +125,18 @@ namespace Madlibs
                 }
                 try
                 {
+                
                     if (nChoice >= 7)
                     {
-                        Console.WriteLine("That is not an option please try again!");
-                        continue;
+                        throw new Exception(); //can have empty exception and it does not matter what error it is and it will be caught 
+                        //then go to catch and catch it 
                     } //(5) I am a bit confused here for checking if the value entered was greater than or equal to 7 because
                         //I tried to do a try catch but I don't know if I should do a conditional here or not because the conditional would not run when nChoice >=7
                         //and when I checked in the console, it still gave me an error regardless of if I did the try catch or not*****
+                }
+                catch() 
+                {
+                    Console.WriteLine("Please try again!"); 
                 }
                 catch
                 { 

@@ -315,6 +315,9 @@ namespace Arrays
                                               //(comlumn),and in the third dimension x,y,z value (for each value of y) but it's a sep. column for the 3 values
                                               //of x,y,z????******************
                         zFunc[nX][nY][2] = z;
+
+                        //(W) Basically its the -10-10 for the lines or rows, then for the columns its x for the first column, then the y, then the
+                        //x,y,z in a different column, or is it in the same column as the y*************8
                     }
                 }
 

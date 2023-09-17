@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MethodsEnumStruct
 {
-    // enums can be declared in namespace or within class
-    // these enums are accessible to all code in the namespace unless we make it public then we can access it anywhere
+    // enums can be declared in namespace or within class**
+    // these enums are accessible to all code in the namespace (why because its in a sep. code block)** unless we make it public then we can access it anywhere**
     //even different namespaces**
-
-    // private by default
-    enum EGenderPronoun // : int by default
+    //differences between enums and structs and similarities****
+    // private by default(only for enums or structs as well)**
+    enum EGenderPronoun // : int by default**
     {
         him,  // 0
         her,
@@ -21,7 +21,7 @@ namespace MethodsEnumStruct
 
     // can specify public accessibility
     public enum ECollegeYear : byte //we can add the : dataetype exactly like this or can we have no spcaes too (bascially creates the data type of the
-        //"indexes" of the things in the enums)**
+        //"indexes" of the things in the enums and the limit of what types of numbers they can hold(only for indexes or)**)**
     {
         freshman = 27,
         sophomore = 26,
@@ -32,7 +32,7 @@ namespace MethodsEnumStruct
     struct StudentStruct
     {
         public string sName;
-        string password;  // private by default
+        string password;  // private by default**
         public EGenderPronoun eGender;
         public ECollegeYear eCollegeYear;
         public double dGrade;
@@ -41,6 +41,7 @@ namespace MethodsEnumStruct
         // student.Password = "password1234";  // this will call Password.set(value = "password1234")
 
         //when would we use get or set methods and how do they work**
+        //is it required for certain things to have a get or set**
         public string Password  // read-write property with complex get/set methods
         {
             get
@@ -59,7 +60,7 @@ namespace MethodsEnumStruct
             string decryptedValue = "";
             char[] cPassword;
 
-            cPassword = pw.ToCharArray();
+            cPassword = pw.ToCharArray();//what does tochararray do**
             foreach (char c in cPassword)
             {
                 decryptedValue += (c + 1);
@@ -70,7 +71,7 @@ namespace MethodsEnumStruct
 
         private string Encrypt(string pw) //what does this do**
         {
-            string decryptedValue = "";
+            string decryptedValue = ""; //why are we using the decrypted string here**
             char[] cPassword;
 
             cPassword = pw.ToCharArray();
@@ -98,6 +99,8 @@ namespace MethodsEnumStruct
         }
 
         public ECollegeYear PCollegeYear  // write-only property because it only has a set method**
+            //in which case would we have to have both get and set and when can we only use one of them**
+
         {
             set
             {
@@ -110,6 +113,7 @@ namespace MethodsEnumStruct
         // AVOID SELF-REFERENTIAL PROPERTIES!!!
         // this will infinitely recurse!
         //what to do instead**
+        //what does this mean**
         public int SelfRefProperty
         {
             get
@@ -123,9 +127,9 @@ namespace MethodsEnumStruct
             }
         }
 
-        public StudentStruct(string sName, double dGrade)
+        public StudentStruct(string sName, double dGrade) //why can strcutues have para. but enums cant**
         {
-            this.eCollegeYear = ECollegeYear.freshman;
+            this.eCollegeYear = ECollegeYear.freshman; //where was this defined** and the rest of this**
             this.eGender = EGenderPronoun.them;
             this.sName = sName;
             this.dGrade = dGrade;
@@ -134,7 +138,7 @@ namespace MethodsEnumStruct
             // don't have to initialize Properties that have code blocks (go over these)**
         }
 
-        public StudentStruct(string sName)
+        public StudentStruct(string sName)//go over**
         {
             this.eCollegeYear = ECollegeYear.freshman;
             this.eGender = EGenderPronoun.them;
@@ -148,7 +152,7 @@ namespace MethodsEnumStruct
 
     static internal class Program
     {
-        // enums can be declared for use within a class as well
+        // enums can be declared for use within a class as well but what about structs**
         public enum ClassEnum
         {
             IGME_200,
@@ -156,13 +160,13 @@ namespace MethodsEnumStruct
             IGME_202
         }
 
-        public struct ZFunction
+        public struct ZFunction //go over all of this**
         {
             public double dX;
             public double dY;
             public double dZ;
 
-            public ZFunction(double dX, double dY)
+            public ZFunction(double dX, double dY) //publid what??**
             {
                 this.dX = dX;
                 this.dY = dY;
@@ -190,7 +194,7 @@ namespace MethodsEnumStruct
                 // 3-d formula example with rectangular array
 
                 // implement the code to calculate: z = 2x ^ 3 + 3y ^ 3 + 6
-                // for -4 <= x <= 4 in 0.1 increments: there are 81 values of x
+                // for -4 <= x <= 4 in 0.1 increments: there are 81 values of x (what does this mean**)
                 // for -2 <= y <= 5 in 0.2 increments: there are 36 values of y
 
                 double x = 0;

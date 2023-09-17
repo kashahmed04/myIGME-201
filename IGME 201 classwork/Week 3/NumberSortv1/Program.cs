@@ -55,7 +55,7 @@ namespace NumberSortV1
             int nUnsortedLength = 0;
 
             // a double used for parsing the current array element into a double when we read it from a string
-            double nThisNumber;
+            double nThisNumber; //we make it a double just in case they enter decimals
 
             // you can read through an array using the index
             //array has a property call length that can read the length of the array (also for strings too it can do that)
@@ -127,7 +127,7 @@ namespace NumberSortV1
             //snumbers is an array of strings and the unsorted array is the doubles that are parsed now
             foreach (string sThisNumber in sNumbers)
                 //loop through it again because we know its all valid numbers and put it in the new array we had allocated space 
-                //for in the unsrtoed array 
+                //for in the unsrtoed array (dont have to do try catch because we know its valid from above loop)**
             {
                 // still skip the blank strings
                 if (sThisNumber.Length == 0)
@@ -147,7 +147,7 @@ namespace NumberSortV1
 
             // allocate the size of the sorted array (sorted array of doubles)(same size as unsorted array)
             aSorted = new double[nUnsortedLength]; 
-            //allocate space for our sorted array now being equal to the elements in the unsorted array
+            //allocate space for our sorted array now being equal to the number elements in the unsorted array
 
             // start the sorted length at 0 to use as sorted index element
             int nSortedLength = 0;
@@ -186,7 +186,7 @@ namespace NumberSortV1
         // the method "signature" defines a method and consists of the return type (double) and method arguments (double[] array) 
         static double FindLowestValue(double[] array)
         {
-            // define return value
+            // define return value (because it returns a double from the array)
             double returnVal;
 
             // initialize to the first element in the array
@@ -201,7 +201,11 @@ namespace NumberSortV1
                 {
                     // save this as the lowest value and move on 
                     returnVal = thisNum;
-                }
+                } 
+
+                //first loop around they are equal so it goes back to for each then after if the first index element is less than the
+                //0th element then we switch and now return value is the first index elemtn, then we go to to the second index element and if thats less
+                //than the first index element then our new returnVal is the second index element and thats how we move on in the array*****
             }
 
             // return the lowest value
