@@ -80,7 +80,7 @@ namespace Mandelbrot
                     Console.WriteLine("Enter an acutal number less than " + startImagValNum + " for the ending imagniary number (a good ending point would be at -1.2): ");
                     endImagVal = Console.ReadLine();
                     endImagValNum = null;
-                    continue; //never gets set back to null so it would exit the loop when it goes back to condition?
+                    continue;
                 }
             }
 

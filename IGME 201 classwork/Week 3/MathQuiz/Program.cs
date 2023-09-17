@@ -49,7 +49,7 @@ static class Program
         // string and int for the response
         string sResponse = "";
         Int32 nResponse = 0;// why need both because it only prints a string to the console
-        //is intiailizating to int32 the same thing as doing int**
+        //is intiailizating to int32 the same thing as doing int
 
         // play again?
         string sAgain = "";
@@ -81,7 +81,7 @@ static class Program
         }
 
     // label to return to if they want to play again
-    start: //do we usually set these "points" for the goto by any name and what are the capitalization rules for it**
+    start: //do we usually set these "points" for the goto by any name and what are the capitalization rules for it
            //allow us to jump around our code with the goto statments (this is where we want to go back to if they want to play the game again so we use this in
            //in a goto statemtn
 
@@ -125,7 +125,7 @@ static class Program
         // if they choose easy, then set nMaxRange = MAX_BASE, unless myName == "David", then set difficulty to hard
         // if they choose medium, set nMaxRange = MAX_BASE * 2 (both values used in the for loop)
         // if they choose hard, set nMaxRange = MAX_BASE * 3
-        switch (sDifficulty) //in this case would we also lower here so our cases are contstatn with being lowercase**
+        switch (sDifficulty) //in this case would we also lower here so our cases are constant with being lowercasee
         {
             case "easy":
                 nMaxRange = MAX_BASE;
@@ -149,7 +149,7 @@ static class Program
         // ask each question
         for (nCntr = 0; nCntr < nQuestions; ++nCntr )
         {
-            // generate a random number between 0 inclusive and 3 exclusive to get the operation**
+            // generate a random number between 0 inclusive and 3 exclusive to get the operation
             nOp = rand.Next(0, 3); //it will go from 0-2 the 3 is exclusive for random (last number exclusive for ranom) and it returns the number for the operation
             //needing to be done 
             //double d = rand.NextDouble() returns a float number from 0-1 only, we dont put anything in it (and multiply by 10 to get a rnadom number between 0-10)

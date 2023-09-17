@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
+using System.CodeDom;
 
 //mad libs template has just 6 lines of text and ecach line is a story
 //each \n means to insert a newline character within our code (replace that with an empty string character)
@@ -80,31 +81,23 @@ namespace Madlibs
             Console.WriteLine("Would you like to play? (Reply yes or no)");
             userInput = Console.ReadLine();
             while(!userInput.ToLower().StartsWith("y") && !userInput.ToLower().StartsWith("n")) { //(3)can we still include the conditionals inside of the loop
-                //when we fix it or should we put it outside since the while loop checks if y or n was entered**********
-                if (userInput.ToLower().StartsWith("y"))
-                {
-                    break;
-                }
-                else if (userInput.ToLower().StartsWith("n")){
-                    Console.WriteLine("Goodbye!");
-                    goto end;
-                    
-                }
-                else
-                {
+                //when we fix it or should we put it outside since the while loop checks if y or n was entered*********
                     tries++;
                     if (tries >= 3)
                     {
                         Console.WriteLine("Just type yes or no how hard can that be?");
                     }
                     Console.WriteLine("Would you like to play? (Reply yes or no)");
-                    userInput = Console.ReadLine();
-                    continue;
-                }
+                userInput = Console.ReadLine();
+                
+            }
+            if(userInput.ToLower().StartsWith("n")) {
+                Console.WriteLine("Goodbye!");
+                goto end;
             }
             start:
             // prompt the user for which Mad Lib they want to play (nChoice) (do ask them a numebr from 1-6 but its 0 based so we shuld add a plus 1 to our output)
-            Console.WriteLine("Choose a mad lib from 1-5!");
+            Console.WriteLine("Choose a mad lib from 1-6!");
             Console.WriteLine("1. Chinese resturant");
             Console.WriteLine("2. Whacky Recipe");
             Console.WriteLine("3. Health Inspection");
@@ -132,14 +125,16 @@ namespace Madlibs
                 }
                 try
                 {
-                    if (nChoice >= 7) //(5) I am a bit confused here for checking if the value entered was greater than or equal to 7 because
-                        //I tried to do a try catch but I don't know if I should do a conditional here or not because the conditional would not run when nChoice >=7
-                        //and when I checked in the console, it still gave me an error regardless of if I did the try catch or not******
+                    if (nChoice >= 7)
                     {
-                    }
+                        Console.WriteLine("That is not an option please try again!");
+                        continue;
+                    } //(5) I am a bit confused here for checking if the value entered was greater than or equal to 7 because
+                        //I tried to do a try catch but I don't know if I should do a conditional here or not because the conditional would not run when nChoice >=7
+                        //and when I checked in the console, it still gave me an error regardless of if I did the try catch or not*****
                 }
                 catch
-                {
+                { 
                     Console.WriteLine("Please enter a valid choice between 1-6!");
                     libChoice = Console.ReadLine();
                     nChoice = 0;
@@ -178,26 +173,21 @@ namespace Madlibs
 
             Console.WriteLine("Choice #" + (nChoice + 1) + ":" + "\n"+ finalStory);
             
-            Console.WriteLine("Would you like to play again? (Reply yes or no)");
+            Console.WriteLine("Would you like to play again? (Reply yes or no)"); 
             userInput = Console.ReadLine();
             while (!userInput.ToLower().StartsWith("y") && !userInput.ToLower().StartsWith("n"))
+            { 
+                Console.WriteLine("Would you like to play? (Reply yes or no)");
+                userInput = Console.ReadLine();
+            }
+            if (userInput.ToLower().StartsWith("n"))
             {
-                if (userInput.ToLower().StartsWith("y"))
-                {
-                    goto start;
-                }
-                else if (userInput.ToLower().StartsWith("n"))
-                {
-                    Console.WriteLine("Goodbye!");
-                    goto end;
-
-                }
-                else
-                {
-                    Console.WriteLine("Would you like to play? (Reply yes or no)");
-                    userInput = Console.ReadLine();
-                    continue;
-                }
+                Console.WriteLine("Goodbye!");
+                goto end;
+            }
+            if (userInput.ToLower().StartsWith("y"))
+            { 
+                goto start;
             }
         end:;
         }

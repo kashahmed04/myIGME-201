@@ -23,7 +23,7 @@ namespace Week_2_1._0
         static void Main(string[] args)
         {
             //go over implicit and explicit casting**
-            //theres a math static class which has all our math operations in it plus conversions**
+            //theres a math static class which has all our math operations in it plus conversions
             //which conversions do we have to worry about**
             // we will use double for all of our floating point numbers
             // because that is the type used by most of the Math functions
