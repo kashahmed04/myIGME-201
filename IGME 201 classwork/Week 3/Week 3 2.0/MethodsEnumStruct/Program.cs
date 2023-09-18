@@ -63,7 +63,7 @@ namespace MethodsEnumStruct
             cPassword = pw.ToCharArray();//what does tochararray do**
             foreach (char c in cPassword)
             {
-                decryptedValue += (c + 1);
+                decryptedValue += (c + 1); //does it add each element consecutively next to each other or is it actual addition of each elemtn**
             }
 
             return decryptedValue;
@@ -77,7 +77,7 @@ namespace MethodsEnumStruct
             cPassword = pw.ToCharArray();
             foreach (char c in cPassword)
             {
-                decryptedValue += (c - 1);
+                decryptedValue += (c - 1); //why are we using it here as well because we are encrypting**
             }
 
             return decryptedValue;
@@ -135,7 +135,8 @@ namespace MethodsEnumStruct
             this.dGrade = dGrade;
             password = "";
             Age = 0;
-            // don't have to initialize Properties that have code blocks (go over these)**
+            // don't have to initialize Properties that have code blocks (go over these)/
+            // are these prop. or constructors**
         }
 
         public StudentStruct(string sName)//go over**
@@ -182,10 +183,13 @@ namespace MethodsEnumStruct
             {
                 StudentStruct student = new StudentStruct(); //can we mix enums and structs** how**
                 student.Password = "pass1234";
-                StudentStruct maxStudent = new StudentStruct("Max Lama");
+                StudentStruct maxStudent = new StudentStruct("Max Lama"); //basically we call the structures and within the () are the values for the 
+                //properties we set up and based on which information we put in, it would go to a different strucutre**
+                //can we have very similar structures like we can with methods like we did with myAdder**
                 StudentStruct maxGStudent = new StudentStruct("Max Lama", 3.5);
                 maxStudent.dGrade = 3.5;
-                maxStudent.PCollegeYear = ECollegeYear.senior;
+                maxStudent.PCollegeYear = ECollegeYear.senior; //we rather create properties by doing . notation in any order or within the ()
+                //within the struct declaration in order to the way we defined the properties within the struct**
                 maxStudent.SelfRefProperty = 42;
 
             }

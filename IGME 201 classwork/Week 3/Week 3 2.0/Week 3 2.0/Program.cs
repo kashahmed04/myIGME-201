@@ -21,28 +21,31 @@ using System.Threading.Tasks;
 //so we put public if we want to access it outside of the enum (same for struct)**
 
 //if enums and structs are used to hold daat types how are they different then because they can hold specific or similar information**
-//can enums also have objects associated with them like structs??**
+//can enums also have objects associated with them like structs as well as properties and constructors?? What is the difference between a class and a struct**
 
 
 
 //we can also use stuructures to create our own datatypes (stuct) 
 //for example, there might be a record for a specific student so the name,gender,college year, grade, etc. would be in a struct (organzie data about a certain topic)
-//a structure defines the associated data for just 1 of that type of object**
-//each of our students has individual name,graduation year,etc. (these are considered different objects for each student then??**)
+//a structure defines the associated data for just 1 of that type of object basically we cant have a copy of an object and they all must be different**
+//each of our students has individual name,graduation year,etc. (are these are considered different objects or properties for each student then?? and each student would be
+////and object**)
 //way to organize the data so if we had 20 students in the class, we could have an array of 20 structures instead of different arrays for ecah topic like
 //name, grade,etc.**
 //with structs we can just oraganize all the info. into one unit
-//we can put structures within stuctures (ex. another stucture within the academic strucutre talking about the classes the student is taking)**
+//we can put structures within stuctures (ex. another stucture within the academic strucutre talking about the classes the student is taking)
+////how would we reference that when creating a student object then**
 //public defines the accessibility of the value or variable (both or just 1**)
 //(any other namepace can access the information if it public)(if its not defined like password its private by defult and 
 //if we specify private, it's also avialable within the code structure block)**
-//we can also put priperties within structures and its a combinaiotion between a field and a method**
-//the property has a get method**
+//we can also put priperties within structures (this.name ,etc.) and its a combinaiotion between a field and a method**
+//the property has a get method(this.name having a get and set method as well as the rest of the properties)****
 //(write our own method code within the coede block so that when this property called password is accessed it will call our get method and run the code
 //we have to get that data withiin the get (the password)**
 //peroperties within structs have a get and set method (both or only one or does it not matter**)(what about enums)**
 //properties are pascalcase because it a method and a field (for enums as well or only structs)(example**)**
-//ex. its a string that has methods associated with it if we used the propertty with a string and have get and set**
+//ex. its a string that has methods associated with it if we used the propertty with a string and have get and set
+////do we make get and set or is it just there and do we ref. it like this.prop.get or set or does it do that itself**
 //the this keyword means we areaccessing the field within the current context so when we work with a student structure (1 student object**)
 //we use the data type whhich is studentstruct and
 //we declare our variable name and if we access structustudent.password and set it equal to "pass123" what its doing, its that its calling the password propertty and using the
@@ -50,9 +53,10 @@ using System.Threading.Tasks;
 //the thiw keyword thats in get and set it refers to the password variable and its associated with the stduentstruct variable and its referring the currnet
 //object we are in** (this is the current object we are in)**
 //get is what we use to return value of our proroperty snd in this case its called the decrypt** 
-//we can also have strings,enum,properties(defined with get and set methods), and we can have methods within structs**
+//we can also have strings,enum,properties(defined with get and set methods), and we can have methods within structs
+////if we have a return within the method  in the struct does it also exit the struct****
 ////enums only property and values**
-//we dont use static because we need to be abe to call the moethods based on the individual student 
+//we dont use static because we need to be able to call the moethods based on the individual student 
 
 
 //recursive means that it calls itself and refers to itself**
@@ -72,7 +76,7 @@ namespace Week_3_2._0
                 //set takes the value thats passed in (right of equal sign when we pass password in from input)**
                 //structs can take methods but no static keyword in front of them becuse they are associated with the instance of that strucuture**
                 //we can only get the grade, see it, with the get method while set basically sets the value**
-                //
+                //so we dont need static anymore because**
             }
         }
         static void Main(string[] args)

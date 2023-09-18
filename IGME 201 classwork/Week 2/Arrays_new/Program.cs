@@ -85,12 +85,12 @@ namespace Arrays
                     // (ie. we cannot store funcVal[-10])
                     funcVal[xCntr] = y; //(C)store the y value at a certain index according to the loop number we are on and the y is calaulated (the column)********
                     xArray[xCntr] = x; //(D)store the x values based on the loop number (the column next to y) as well and the x goes from -10 to 10 which are the rows??*****
-                    //(E)in this case, for each index it would store and x in one column, and a y value in a different column right? But how would we know
+                    //(E)in this case, for each index it would store and x in one column, and a y value in a different column right? or are they in the same column?? But how would we know
                     ////what the rows or lines would be because we dont specifically say where to put the -10-10 it and only use it within our loop condition????***************
                 }
 
                 int[,] funcVal2 = new int[21, 2]; //(F)21 inputs but we want to have 2 inputs per index with a comma seperator?? Is that technically an array
-                                                  //of 2 values within an array of 21 values then????*********
+                                                  //of 2 values within an array of 21 values then???? and it displays as y,x in one column rather than 2 different ones??*********
 
 
                 //if we want a 2D array we can use a comma in the braackets as well as if we want 3 2D dimensions, creates a 21 by 2 possible values (42 different
@@ -107,7 +107,7 @@ namespace Arrays
                 
                 
                 //(G)for each x dimension row from -10 to 10, there are 2 values that can be accessed the y and x (why do we have 2 x values in this case
-                //we have -10 to 10 and another x value????)*****
+                //we have -10 to 10 and another x value with the y,x in the columns????)*****
 
 
                 
@@ -193,11 +193,11 @@ namespace Arrays
                         //y is the ny, but we have 3 parts to the array (or 3 arrays within an array??)***********
                         
                         //(K)Basically 0 is the x (rows), and y is the columns
-                        //for each y, the z is the 3 values of x,y,z for that spcific x we are on (the inner loop does this for each value of y) but for z
+                        //for each y, the z is the 3 values of x,y,z for that spcific x we are on (the inner loop does this for each value of y) 
                        
                         //(L)is the z it going to be in a sep. column, or within the y column????*********
                         
-                        //(M)The inner loop does not use 36 values of y for its loop condition though so how would if put 36 values
+                        //(M)The inner loop does not use 36 values of y (0-35) for its loop condition though so how would if put 36 values
                         ////of y for each x***********
 
                         zFunc[nX, nY, 1] = y; //would be 2D instead of jagged
@@ -215,7 +215,7 @@ namespace Arrays
                 //the [2] tells us how many rows (lines) we use and for the second[] it tells us how many columns there is going to be 
                 //our first line [0] had 3 columns the new int.[3]
                 //and our second line (row) had 4 columns by the new int.[4]
-                //basically first part is rows, second part is columns, then third part if needed would be the values for the second part to be set equal to
+                //basically first part is rows, second part is columns, then third part if needed would be the values for the second part (columns) to be set equal to
                 //as an array inside of another array?????
 
 
