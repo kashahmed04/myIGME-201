@@ -19,8 +19,24 @@ using System.CodeDom;
 
 namespace Madlibs
 {
+    // Class Program
+    // Author: Kashaf Ahmed
+    // Purpose: Ask a user to pick a mad lib and tell them
+    //to fill in the blanks, then fill in the blanks based on what
+    //the user had put in and output the mad lib to them.
+    // Restrictions: None
     class Program
     {
+        // Method: Main
+        // Purpose: Read the mad libs file and count the number of mad libs there are
+        //in the file, then ask the user if they want to play or not, if they said something other than
+        //yes or no, we tell the user to keep entering until they say yse or no, if they enter no we
+        //dont do anything and just say "goodbye", otherwise if they say yes, then we ask them to choose
+        //a mad lib between 1 and 6 and if they dont input correctly we ask them to input a value from 1 to 6,
+        //then we tell them to fill in the blanks based on the mad lib and put it together and output it to
+        //the console based on what they had put in.
+        // Restrictions: Could not get error checking correct so I just commented out what I had done.
+        //There were also about 6 questions on here as well if you could answer them whenever you were free
         static void Main(string[] args)
         {
             int numLibs = 0; //variable that has how many mad libs are in our file
@@ -116,6 +132,7 @@ namespace Madlibs
                 {
                     Console.WriteLine("Please enter a valid choice between 1-6!");
                     libChoice = Console.ReadLine();
+                    continue;
                 }
                 if(nChoice == 0)
                 {
@@ -123,28 +140,25 @@ namespace Madlibs
                     libChoice = Console.ReadLine(); //(4)is it necessary to put continue here because it would go back to the while loop regardless*******
                     
                 }
-                try
-                {
-                
-                    if (nChoice >= 7)
-                    {
-                        throw new Exception(); //can have empty exception and it does not matter what error it is and it will be caught 
-                        //then go to catch and catch it 
-                    } //(5) I am a bit confused here for checking if the value entered was greater than or equal to 7 because
-                        //I tried to do a try catch but I don't know if I should do a conditional here or not because the conditional would not run when nChoice >=7
-                        //and when I checked in the console, it still gave me an error regardless of if I did the try catch or not*****
-                }
-                catch() 
-                {
-                    Console.WriteLine("Please try again!"); 
-                }
-                catch
-                { 
-                    Console.WriteLine("Please enter a valid choice between 1-6!");
-                    libChoice = Console.ReadLine();
-                    nChoice = 0;
+                //try
+                //{
+                //
+                //    if (nChoice >= 7)
+                //    {
+                //
+                //    } //(5) I am a bit confused here for checking if the value entered was greater than or equal to 7 because
+                //      //I tried to do a try catch but I don't know if I should do a conditional here or not because the conditional would not run when nChoice >=7
+                //      //and when I checked in the console, it still gave me an error regardless of if I did the try catch or not*****
 
-                }
+                //}     //(6) if there is another try catch within this while loop, if theres a catch happens does it go back to
+                //      //the top of the loop, or does it still go all the way through??*********************************
+                //catch
+                //{
+                //    Console.WriteLine("Please enter a valid choice between 1-6!");
+                //    libChoice = Console.ReadLine();
+                //    nChoice = 0;
+                //
+                //}
             }
 
             // split the Mad Lib into separate words

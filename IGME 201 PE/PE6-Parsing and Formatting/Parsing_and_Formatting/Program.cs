@@ -78,7 +78,7 @@ namespace Parsing_and_Formatting
                 {
                     Console.WriteLine("No more gueses! The answer was " + randomNumber);
                     break; 
-                    //conditional is not necessary but if we would not have it we would go from 1-8 instead and make the statements below, else if statements
+                    //loop is not necessary but if we would not have it we would go from 1-8 instead and make the statements below, else if statements
                     //and dont need break because we are not in a loop anymore and we need else if not if statements sep. so that only one of them
                     //would run and not the rest of them would run because of the else
                 }

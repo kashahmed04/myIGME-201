@@ -41,14 +41,14 @@ static class Program
         int nOp = 0;
 
         // operands and solution
-        int val1 = 0; //when we implement division, use doubles for the anawer at least (also operands??)** (make sure one of our operands is a double
+        int val1 = 0; //when we implement division, use doubles for the anawer at least (also operands??) (make sure one of our operands is a double
                       // by doing (double) or 1.0 to make sure its a double
         int val2 = 0;
         int nAnswer = 0;
 
         // string and int for the response
         string sResponse = "";
-        Int32 nResponse = 0;// why need both because it only prints a string to the console
+        Int32 nResponse = 0;// why need both because it only prints a string to the console(we need both so it can check if the answer put in was correct)
         //is intiailizating to int32 the same thing as doing int
 
         // play again?
