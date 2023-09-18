@@ -145,10 +145,12 @@ namespace Madlibs
                 //
                 //    if (nChoice >= 7)
                 //    {
+                //        throw new Exception();
                 //
                 //    } //(5) I am a bit confused here for checking if the value entered was greater than or equal to 7 because
-                //      //I tried to do a try catch but I don't know if I should do a conditional here or not because the conditional would not run when nChoice >=7
-                //      //and when I checked in the console, it still gave me an error regardless of if I did the try catch or not*****
+                //      //I tried to do a try catch but I was a bit confused about what to do after I threw the exception because I went to the
+                //      catch and tried to actually catch the exception but it was not working out for me so I deleted it and I was confused on how
+                //      to do this part. I was also confused if it was ok to leave the () blank or actually do an index exception*****
 
                 //}     //(6) if there is another try catch within this while loop, if theres a catch happens does it go back to
                 //      //the top of the loop, or does it still go all the way through??*********************************
