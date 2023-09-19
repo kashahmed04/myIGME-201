@@ -38,7 +38,9 @@ namespace Madlibs
         // Restrictions: Could not get error checking correct so I just commented out what I had done.
         //There were also about 6 questions on here as well if you could answer them whenever you were free
         static void Main(string[] args)
-        {
+        { 
+
+
             int numLibs = 0; //variable that has how many mad libs are in our file
             int cntr = 0; //counter
             int nChoice = 0; //ask the player which mad lib they want to play and they input a number from 1-6 or list them out by category then number them
@@ -70,7 +72,7 @@ namespace Madlibs
 
             // read the Mad Libs into the array of strings
             input = new StreamReader("c:\\templates\\MadLibsTemplate.txt"); //open the file again 
-
+            //(0)Why do we have to open the streamreader twice here and why do we set it to a new variable and say new each time**********************
             line = null;
             while ((line = input.ReadLine()) != null) //want to read each line again until we reach the end of the file 
             {
@@ -81,9 +83,8 @@ namespace Madlibs
                 madLibs[cntr] = madLibs[cntr].Replace("\\n", "\n"); //we can use replace method of the string type to replace the \\ with a escape character
                 //the \n (if we want to replace the \n with a newline character and in c# we need to say the \\ so it gets converted into \n
                 //which is not the newline charatcer, but the new line character is a \n)
-                //(1)*****so basically, in this case we are checking if there is a backslash charatcer by first saying this should be a backslash with the first "\"
-                //then the second "\" is the actual new line character, and replacing it with just 1 newline character because there was a spcace plus
-                // a newline chracter in the original text file?
+                //(1)so basically, in this case it checks for a physical \n character so we ref. it with two \\, then when it actually replaces it,
+                //its an actual space character*******************
 
                 ++cntr;
             }
@@ -211,7 +212,9 @@ namespace Madlibs
                 goto start;
             }
         end:;
+            
         }
+       
     }
 }
 
