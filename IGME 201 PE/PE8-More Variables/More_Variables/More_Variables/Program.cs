@@ -70,9 +70,21 @@ namespace More_Variables
             //Question 8:
             Console.WriteLine("Please enter a sentence containing the words yes and/or no");
             string answer = Console.ReadLine();
-            answer.ToLower().Replace("yes", "no");
-            answer.ToLower().Replace("no","yes");
-            Console.WriteLine(answer);
+            string newAnswer = "";
+            if (answer.ToLower() == "yes") //is this ok or should we do a loop with an array to change the value if it was a sentence of yes*************
+                //or no's
+            {
+                newAnswer += answer.ToLower().Replace("yes", "no");
+            }
+            else if (answer.ToLower() == "no")
+            {
+                newAnswer += answer.ToLower().Replace("no", "yes");
+            }
+            else
+            {
+                newAnswer += answer;
+            }
+            Console.WriteLine(newAnswer);
 
 
 
