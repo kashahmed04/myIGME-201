@@ -5,42 +5,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
  
+
+//CAN WE USE SAME OBJECT FOR STRUCTS BECAUSE IF WE HAVE 2 DIFFERENT STRUCTS CAN WE USE THE OBJEECT WE DEFINED WITH BOTH OF THEM*****
+//can enums have an object reference it**
+//what is the difference between a struct and a class and are structs and enums a value data type meaning they make a copy when an object is made**
+//whereas a class does not do that and its called by reference and we can change the contents inside**
 //Enums and Structs
 //Enums are a way we can define human readable datatypes (like int and str)
 //enums let us create our own datatypes and let us create the values that we want to use (we create them) by creaitn data types you mean like how int is in c# and we create
-//something like that but with our data**
+//something like that but with our data but we can mix other data types within enums and structs****
 //the values under the hood in enums are basically indexes like 0,1,2,etc. for each identifier we have within the enum
 //enum type is defined by enum, the name we want to give it (put "E" in front of name to make it an enumerated type)**
 //after we declare the name of our enum (our own creation/datatypes) and we can put a ":" after it to use which type of
 //numeric value we want to use to store it (its an int. by defualt)(for the indexes in the enum??)**
 //if we do : byte after the enum and name, we can only use from 0-255 values instead of the int. being 2 billion numbers
 //and if we use more than 255 values for the byte, then it wont work (which type of error)**
-//list of values are seperated by commas in the enum, and by default it sets the first value equal to 0, or we can
+//list of values are seperated by commas in the enum (what about structs)**, and by default it sets the first value equal to 0, or we can
 //override them with other numbers for the index**
 //"public" defines accessibility of the variables of values and by default enum, are private so they are only avaiable within the namespace
-//so we put public if we want to access it outside of the enum (same for struct)**
+//so we put public if we want to access it outside of the enum (same for struct)**(but if its in the namespace isnt it technically accessible everywhere inside that)**
 
 //if enums and structs are used to hold daat types how are they different then because they can hold specific or similar information**
 //can enums also have objects associated with them like structs as well as properties and constructors?? What is the difference between a class and a struct**
+//properties.vs.constructors**
 
 
 
 //we can also use stuructures to create our own datatypes (stuct) 
-//for example, there might be a record for a specific student so the name,gender,college year, grade, etc. would be in a struct (organzie data about a certain topic)
+//for example, there might be a record for a specific student so the name,gender,college year, grade, etc. would be in a struct
+////(organzie data about a certain topic)(many types of data)**
 //a structure defines the associated data for just 1 of that type of object basically we cant have a copy of an object and they all must be different**
 //each of our students has individual name,graduation year,etc. (are these are considered different objects or properties for each student then?? and each student would be
-////and object**)
+////an object**)
 //way to organize the data so if we had 20 students in the class, we could have an array of 20 structures instead of different arrays for ecah topic like
 //name, grade,etc.**
 //with structs we can just oraganize all the info. into one unit
-//we can put structures within stuctures (ex. another stucture within the academic strucutre talking about the classes the student is taking)
+//we can put structures within stuctures (ex. another stucture within the academic strucutre talking about the classes the student is taking)(an extra . noatiaton to access it??**
 ////how would we reference that when creating a student object then**
-//public defines the accessibility of the value or variable (both or just 1**)
+//public defines the accessibility of the value or variable (both of them or just 1**)
 //(any other namepace can access the information if it public)(if its not defined like password its private by defult and 
 //if we specify private, it's also avialable within the code structure block)**
 //we can also put priperties within structures (this.name ,etc.) and its a combinaiotion between a field and a method**
 //the property has a get method(this.name having a get and set method as well as the rest of the properties)****
-//(write our own method code within the coede block so that when this property called password is accessed it will call our get method and run the code
+//(write our own method code within the coede block (namespace)** so that when this property called password is accessed it will call our get method and run the code
 //we have to get that data withiin the get (the password)**
 //peroperties within structs have a get and set method (both or only one or does it not matter**)(what about enums)**
 //properties are pascalcase because it a method and a field (for enums as well or only structs)(example**)**
@@ -53,10 +60,11 @@ using System.Threading.Tasks;
 //the thiw keyword thats in get and set it refers to the password variable and its associated with the stduentstruct variable and its referring the currnet
 //object we are in** (this is the current object we are in)**
 //get is what we use to return value of our proroperty snd in this case its called the decrypt** 
-//we can also have strings,enum,properties(defined with get and set methods), and we can have methods within structs
+//we can also have strings,enum,properties(defined with get and set methods)(is the sscope only in those methods then or namepscpae)**
+////and we can have methods within structs(exmaple)**
 ////if we have a return within the method  in the struct does it also exit the struct****
 ////enums only property and values**
-//we dont use static because we need to be able to call the moethods based on the individual student 
+//we dont use static because we need to be able to call the moethods based on the individual student** 
 
 
 //recursive means that it calls itself and refers to itself**
@@ -68,7 +76,7 @@ namespace Week_3_2._0
         {
             get
             {
-                return this.RecursivePrperty; //always include this keyword when refering to things in our structs**
+                return this.RecursivePrperty; //always include this keyword when refering to things in our structs**(what about enums)**
                 //the get method needs to return a value no matter what**
                 //when we refer to the property itself it will call its get method and in this case it will keep calling the get method until
                 //we get a runtime error because our application will run out of spcae**

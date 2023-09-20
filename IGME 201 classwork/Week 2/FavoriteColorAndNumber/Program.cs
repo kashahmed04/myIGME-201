@@ -50,7 +50,7 @@ namespace FavoriteColorAndNumber
     // Purpose: Console Read/Write and Exception-handling exercise
     // Restrictions: None
     // in code for Unit 1, always add "static" to any class definitions
-    static internal class Program
+     internal class Program
     {
         // Method: WriteMyVar (value variable version)
         // Purpose: Output a passed in number and change it

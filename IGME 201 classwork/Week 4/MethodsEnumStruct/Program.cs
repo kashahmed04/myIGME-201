@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace MethodsEnumStruct
 {
-    // enums can be declared in namespace or within class**
-    // these enums are accessible to all code in the namespace (why because its in a sep. code block)** unless we make it public then we can access it anywhere**
-    //even different namespaces**
-    //differences between enums and structs and similarities and classes****
-    // private by default(only for enums or structs as well)**
-    enum EGenderPronoun // : int by default**
+    // enums can be declared in namespace or within class
+    // these enums are accessible to all code in the namespace
+
+    // private by default
+    enum EGenderPronoun // : int by default
     {
         him,  // 0
         her,
@@ -20,8 +19,7 @@ namespace MethodsEnumStruct
     }
 
     // can specify public accessibility
-    public enum ECollegeYear : byte //we can add the : dataetype exactly like this or can we have no spcaes too (bascially creates the data type of the
-        //"indexes" of the things in the enums and the limit of what types of numbers they can hold(only for indexes or)**)**
+    public enum ECollegeYear : byte
     {
         freshman = 27,
         sophomore = 26,
@@ -31,18 +29,14 @@ namespace MethodsEnumStruct
 
     struct StudentStruct
     {
-        public string sName; //public: field available outside the strucuture or namespcace**
-        string password;  // private by default and available inside the structure only and if it says private also its only defined within the structure**
+        public string sName;
+        string password;  // private by default
         public EGenderPronoun eGender;
         public ECollegeYear eCollegeYear;
         public double dGrade;
 
-        // property = meth-ield (combination of a method and a field)**
-        //are structures classes how are they different**
+        // property = meth-ield
         // student.Password = "password1234";  // this will call Password.set(value = "password1234")
-
-        //when would we use get or set methods and how do they work**
-        //is it required for certain things to have a get or set**
         public string Password  // read-write property with complex get/set methods
         {
             get
@@ -56,42 +50,42 @@ namespace MethodsEnumStruct
             }
         }
 
-        private string Decrypt(string pw) //what does this do**
+        private string Decrypt(string pw)
         {
             string decryptedValue = "";
-            char[] cPassword;
-
-            cPassword = pw.ToCharArray();//what does tochararray do**
-            foreach (char c in cPassword)
-            {
-                decryptedValue += (c + 1); //does it add each element consecutively next to each other or is it actual addition of each elemtn**
-            }
-
-            return decryptedValue;
-        }
-
-        private string Encrypt(string pw) //what does this do**
-        {
-            string decryptedValue = ""; //why are we using the decrypted string here**
             char[] cPassword;
 
             cPassword = pw.ToCharArray();
             foreach (char c in cPassword)
             {
-                decryptedValue += (c - 1); //why are we using it here as well because we are encrypting**
+                decryptedValue += (c + 1);
+            }
+
+            return decryptedValue;
+        }
+
+        private string Encrypt(string pw)
+        {
+            string decryptedValue = "";
+            char[] cPassword;
+
+            cPassword = pw.ToCharArray();
+            foreach (char c in cPassword)
+            {
+                decryptedValue += (c - 1);
             }
 
             return decryptedValue;
         }
 
         // int nAge
-        public int Age  // read/write property with only the default get/set methods, so it acts just like an int field**
+        public int Age  // read/write property with only the default get/set methods, so it acts just like an int field
         {
-            get; //if we want a property to act just like a field then use the get and set methods**
+            get;
             set;
         }
 
-        public double Grade  // read-only property because it only has a get method**
+        public double Grade  // read-only property because it only has a get method
         {
             get
             {
@@ -99,9 +93,7 @@ namespace MethodsEnumStruct
             }
         }
 
-        public ECollegeYear PCollegeYear  // write-only property because it only has a set method**
-            //in which case would we have to have both get and set and when can we only use one of them**
-
+        public ECollegeYear PCollegeYear  // write-only property because it only has a set method
         {
             set
             {
@@ -113,8 +105,6 @@ namespace MethodsEnumStruct
         // int s = studentStruct.SelfRefProperty;
         // AVOID SELF-REFERENTIAL PROPERTIES!!!
         // this will infinitely recurse!
-        //what to do instead**
-        //what does this mean**
         public int SelfRefProperty
         {
             get
@@ -128,21 +118,18 @@ namespace MethodsEnumStruct
             }
         }
 
-        public StudentStruct(string sName, double dGrade) //why can strcutues have para. but enums cant**
+        public StudentStruct(string sName, double dGrade)
         {
-            this.eCollegeYear = ECollegeYear.freshman; //where was this defined** and the rest of this**
+            this.eCollegeYear = ECollegeYear.freshman;
             this.eGender = EGenderPronoun.them;
-            this.sName = sName; //a constructor for a strcuture has the same name as the structure and it does not have a return type because**
-            //they only have to accessibility level of publix or rpivate then the name of the constructure then the para. we want to define our new constructure variiable**
+            this.sName = sName;
             this.dGrade = dGrade;
             password = "";
             Age = 0;
-            // don't have to initialize Properties that have code blocks (go over these)/
-            // are these prop. or constructors**
+            // don't have to initialize Properties that have code blocks
         }
 
-        public StudentStruct(string sName)//go over**
-            //
+        public StudentStruct(string sName)
         {
             this.eCollegeYear = ECollegeYear.freshman;
             this.eGender = EGenderPronoun.them;
@@ -156,7 +143,7 @@ namespace MethodsEnumStruct
 
     static internal class Program
     {
-        // enums can be declared for use within a class as well but what about structs**
+        // enums can be declared for use within a class as well
         public enum ClassEnum
         {
             IGME_200,
@@ -164,13 +151,13 @@ namespace MethodsEnumStruct
             IGME_202
         }
 
-        public struct ZFunction //go over all of this**
+        public struct ZFunction
         {
             public double dX;
             public double dY;
             public double dZ;
 
-            public ZFunction(double dX, double dY) //publid what??**
+            public ZFunction(double dX, double dY)
             {
                 this.dX = dX;
                 this.dY = dY;
@@ -184,15 +171,12 @@ namespace MethodsEnumStruct
             int i = (int)ConsoleColor.Black;
 
             {
-                StudentStruct student = new StudentStruct(); //can we mix enums and structs** how**
+                StudentStruct student = new StudentStruct();
                 student.Password = "pass1234";
-                StudentStruct maxStudent = new StudentStruct("Max Lama"); //basically we call the structures and within the () are the values for the 
-                //properties we set up and based on which information we put in, it would go to a different strucutre**
-                //can we have very similar structures like we can with methods like we did with myAdder**
+                StudentStruct maxStudent = new StudentStruct("Max Lama");
                 StudentStruct maxGStudent = new StudentStruct("Max Lama", 3.5);
                 maxStudent.dGrade = 3.5;
-                maxStudent.PCollegeYear = ECollegeYear.senior; //we rather create properties by doing . notation in any order or within the ()
-                //within the struct declaration in order to the way we defined the properties within the struct**
+                maxStudent.PCollegeYear = ECollegeYear.senior;
                 maxStudent.SelfRefProperty = 42;
 
             }
@@ -201,7 +185,7 @@ namespace MethodsEnumStruct
                 // 3-d formula example with rectangular array
 
                 // implement the code to calculate: z = 2x ^ 3 + 3y ^ 3 + 6
-                // for -4 <= x <= 4 in 0.1 increments: there are 81 values of x (what does this mean**)
+                // for -4 <= x <= 4 in 0.1 increments: there are 81 values of x
                 // for -2 <= y <= 5 in 0.2 increments: there are 36 values of y
 
                 double x = 0;

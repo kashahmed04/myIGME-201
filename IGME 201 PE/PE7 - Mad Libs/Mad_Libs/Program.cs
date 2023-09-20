@@ -25,7 +25,7 @@ namespace Madlibs
     //to fill in the blanks, then fill in the blanks based on what
     //the user had put in and output the mad lib to them.
     // Restrictions: None
-    class Program
+    static class Program
     {
         // Method: Main
         // Purpose: Read the mad libs file and count the number of mad libs there are
@@ -165,12 +165,12 @@ namespace Madlibs
             }
 
             // split the Mad Lib into separate words
-                --nChoice;
+                --nChoice; //have to do this because its 0 based and it would go to 2 instead if we chose option one so we have to subtract
                 string[] words = madLibs[nChoice].Split(' '); //seperate that story into indiviidual words and look for the words that have the {} around them
                                                               //so they can be reapcled (we want to split our story based on spaces so it creates an array of strings where each string is a word in our story
             foreach (string word in words) //loop thourgh all words in our story and check if the first character is a {, then if it is we want to prompt the
                                            //user to enter the replacement and usr the token subs. with the token with the replaced word and we add what they types to our final sotry
-                                           //if the word is not a placeholder, we just add it to the final story and that it our story
+                                           //if the word is not a placeholder, we just add it to the final story and that is our story
             {
                 // if word is a placeholder
                 if (word[0] == '{')
