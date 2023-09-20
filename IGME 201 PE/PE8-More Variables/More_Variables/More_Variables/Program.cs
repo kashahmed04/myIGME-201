@@ -20,7 +20,7 @@ namespace More_Variables
             int nY = 0;
 
             double[,,] zFunc = new double[21,31,3];
-            //(0) there are to questions down below*****
+            //(0) there are two questions down below*****
             //we have 21 because we count an extra value for the 0 
             //and we have 31 because we start at 1 and we count the extra value of 
             //getting to 4 from?

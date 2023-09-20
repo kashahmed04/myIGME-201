@@ -89,13 +89,15 @@ namespace MethodsEnumStruct
         {
             get; //if we want a property to act just like a field then use the get and set methods**
             set;
-        }
+        } //is get and set only in enums or can structs have it as well**
 
         public double Grade  // read-only property because it only has a get method**
+            //are enums the only ones with prop. or also structs**
         {
             get
             {
-                return (this.dGrade);
+                return (this.dGrade); //alawys need a return in the get**
+                //is get and set under the hood or do we have to make it**
             }
         }
 
@@ -130,7 +132,8 @@ namespace MethodsEnumStruct
 
         public StudentStruct(string sName, double dGrade) //why can strcutues have para. but enums cant**
         {
-            this.eCollegeYear = ECollegeYear.freshman; //where was this defined** and the rest of this**
+            this.eCollegeYear = ECollegeYear.freshman; //are we creating a property for an object in the struct with a this. keyword for the current object
+            //then within that we are saying in this enumerator its equal to a freshman
             this.eGender = EGenderPronoun.them;
             this.sName = sName; //a constructor for a strcuture has the same name as the structure and it does not have a return type because**
             //they only have to accessibility level of publix or rpivate then the name of the constructure then the para. we want to define our new constructure variiable**
@@ -170,7 +173,7 @@ namespace MethodsEnumStruct
             public double dY;
             public double dZ;
 
-            public ZFunction(double dX, double dY) //publid what??**
+            public ZFunction(double dX, double dY) //public what??**
             {
                 this.dX = dX;
                 this.dY = dY;
