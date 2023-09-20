@@ -23,7 +23,7 @@ namespace More_Variables
             //(0) there are to questions down below*****
             //we have 21 because we count an extra value for the 0 
             //and we have 31 because we start at 1 and we count the extra value of 
-            //getting to 4 from
+            //getting to 4 from?
 
             for (x = -1; x <= 1; x += 0.1, nX++)
             {
