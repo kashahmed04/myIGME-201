@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MethodsEnumStruct
 {
-    // enums can be declared in namespace or within class**
+    // enums can be declared in namespace or within class (declare it in a namespace or in a class but not a method)
     // these enums are accessible to all code in the namespace (why because its in a sep. code block)** unless we make it public then we can access it anywhere**
     //even different namespaces**
     //differences between enums and structs and similarities and classes****
@@ -15,48 +15,57 @@ namespace MethodsEnumStruct
     enum EGenderPronoun // : int by default**
     {
         him,  // 0
-        her,
+        her,   
         them
     }
+    //enumerates types give us data types that we can read in enlish (human readable), they always break down to just a number (just an index) and they
+    //are a list of possible of values, and we can have an enumerated type that contains gender and by default they are stored as integers which means they can hold values
+    //minus 2 billion to 2 billio (4 billion values by default) for an int. and we can do other datatype by using a : datatype but it has to be a number and make sure
+    //it does not go beyond the data type(for indexes) 
 
     // can specify public accessibility
-    public enum ECollegeYear : byte //we can add the : dataetype exactly like this or can we have no spcaes too (bascially creates the data type of the
-        //"indexes" of the things in the enums and the limit of what types of numbers they can hold(only for indexes or)**)**
+    public enum ECollegeYear : byte //we can add the : dataetype exactly like this or can we have no spcaes too 
     {
-        freshman = 27,
+        freshman = 27, //can override the indexes by putting our values there and we can have 2 values equal to 27
         sophomore = 26,
         junior = 25,
         senior = 24
     }
 
+    //structures are just blocks of data like strings doubles or ints or delegates 
+    //and we cant change them like we do with classes 
     struct StudentStruct
     {
-        public string sName; //public: field available outside the strucuture or namespcace**
-        string password;  // private by default and available inside the structure only and if it says private also its only defined within the structure**
-        public EGenderPronoun eGender;
+        public string sName; //public: field available outside the strucuture or namespcace
+        string password;  // private by default and available inside the structure only and if it says private also its only defined within the structure
+        //private means its only available within the structure and only availabel within the structure code block (we can ref. it in the property 
+        //password because its within the structure
+        public EGenderPronoun eGender; //we can use enums in structs and structures can contain any data type within them and even delegate data types
         public ECollegeYear eCollegeYear;
         public double dGrade;
+        //the things above here are the fields 
 
-        // property = meth-ield (combination of a method and a field)**
-        //are structures classes how are they different**
-        // student.Password = "password1234";  // this will call Password.set(value = "password1234")
+        // property = meth-ield (combination of a method and a field)
+        //are structures classes how are they different because structures are value data types and classes are ref. data types 
+        // student.Password = "password1234";  // this will call Password.set(value = "password1234") (if we created student variable (a student structure),
+        //and we set the password to this password as a string, it will call the set method in the password property and pass whats on the right side of the ewuals
+        //sign as this sepecial para. called value (for set we use value so we can set the method)
 
-        //when would we use get or set methods and how do they work**
-        //is it required for certain things to have a get or set**
+        //properties can contain up to 2 methods (a get and set method)(a property is like a smart field because it can have code or rules in it)
         public string Password  // read-write property with complex get/set methods
         {
             get
             {
-                return (Decrypt(this.password));
+                return (Decrypt(this.password)); //use return with get always because it means return soemthing 
             }
 
             set
             {
-                this.password = Encrypt(value);
+                this.password = Encrypt(value); //we dont have to use this if we have no code blocks  like we did with the age 
             }
         }
 
-        private string Decrypt(string pw) //what does this do**
+        private string Decrypt(string pw) 
         {
             string decryptedValue = "";
             char[] cPassword;
@@ -85,29 +94,34 @@ namespace MethodsEnumStruct
         }
 
         // int nAge
-        public int Age  // read/write property with only the default get/set methods, so it acts just like an int field**
+        //a strcuture could even contain a class and the other way around 
+        public int Age  // read/write property with only the default get/set methods, so it acts just like an int field because age is an int
+            //properties are pascalcase here but the actual values fields are camelcase
+            //enums are pascalcase but the list in the enumerated type can be any case but usually camelcase 
         {
-            get; //if we want a property to act just like a field then use the get and set methods**
+            get; //if we want a property to act just like a field then use the get and set methods
             set;
-        } //is get and set only in enums or can structs have it as well**
+        } //enums only hold human readable code (list) while structs have properties and fields 
+        //the age prop. works like a normal integer field  and we are not doing anything extra but when we add code, then its a property (use pascalcase)
 
-        public double Grade  // read-only property because it only has a get method**
-            //are enums the only ones with prop. or also structs**
+        public double Grade  // read-only property because it only has a get method
         {
             get
             {
-                return (this.dGrade); //alawys need a return in the get**
-                //is get and set under the hood or do we have to make it**
+                return (this.dGrade); //alawys need a return in the get (always put get and set its not under the good) (we can only get their grade
+                //not set it so others cant change it)
             }
         }
 
-        public ECollegeYear PCollegeYear  // write-only property because it only has a set method**
-            //in which case would we have to have both get and set and when can we only use one of them**
+        public ECollegeYear PCollegeYear  // write-only property because it only has a set method
+            //in which case would we have to have both get and set and when can we only use one of them
+            //
 
         {
             set
             {
-                this.eCollegeYear = value;
+                this.eCollegeYear = value; //we can only set it and not allowed to read it but an example would be private information that we can store it but 
+                //cant read it because its private and restricts access to data 
             }
         }
 
@@ -115,16 +129,15 @@ namespace MethodsEnumStruct
         // int s = studentStruct.SelfRefProperty;
         // AVOID SELF-REFERENTIAL PROPERTIES!!!
         // this will infinitely recurse!
-        //what to do instead**
-        //what does this mean**
-        public int SelfRefProperty
+        public int SelfRefProperty //when we write code to access this field and when we want to return a value, and if we return itself it will keep going and going
+            //and it would be an infinite loop because it refers back to itself 
         {
             get
             {
-                return (this.SelfRefProperty);
+                return (this.SelfRefProperty); //just use get; so it can return itself 
             }
 
-            set
+            set //when we use default get use default set (always) (bohth have to have code blocks or not have code blocks)
             {
                 this.SelfRefProperty = value;
             }

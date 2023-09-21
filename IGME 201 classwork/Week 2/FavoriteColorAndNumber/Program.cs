@@ -45,12 +45,13 @@ namespace FavoriteColorAndNumber
     // we can define a namespace alias for more concise access
     using ColorsAlias = ColorsAndNumbers.Colors;
 
+
     // Class: Program
     // Author: David Schuh
     // Purpose: Console Read/Write and Exception-handling exercise
     // Restrictions: None
     // in code for Unit 1, always add "static" to any class definitions
-     internal class Program
+    internal class Program
     {
         // Method: WriteMyVar (value variable version)
         // Purpose: Output a passed in number and change it
@@ -407,6 +408,8 @@ namespace FavoriteColorAndNumber
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.WriteLine("Great!");
+
+
         }
     }
 }
