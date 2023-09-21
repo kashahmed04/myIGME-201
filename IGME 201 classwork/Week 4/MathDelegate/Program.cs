@@ -192,7 +192,7 @@ namespace MathDelegate
             }
             else
             {
-                //nAnswer = Divide(nNum1, nNum2); regular function call**
+                //nAnswer = Divide(nNum1, nNum2); regular function call
                 //processDivMult = new MathFunction(Divide); delegate way (first approach) to use the divide but we are storing the divide within a variable now
                 //we did not use it yet (we use when the user enters a d)
                 //call the function divide with nanswer if its the user entered a d for division 

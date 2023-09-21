@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE-9 MathTimer", "PE-9 MathTimer.csproj", "{8E231917-6157-41D9-879C-A29FD5725A7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E231917-6157-41D9-879C-A29FD5725A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E231917-6157-41D9-879C-A29FD5725A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E231917-6157-41D9-879C-A29FD5725A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E231917-6157-41D9-879C-A29FD5725A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FFFA2578-BD1D-48E8-ADDC-F1BF094BAADD}
+	EndGlobalSection
+EndGlobal
