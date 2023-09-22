@@ -33,7 +33,7 @@ namespace MethodsEnumStruct
     }
 
     //structures are just blocks of data like strings doubles or ints or delegates 
-    //and we cant change them like we do with classes 
+    //and we cant change them like we do with classes (ref. data type while classes are value data types)
     struct StudentStruct
     {
         public string sName; //public: field available outside the strucuture or namespcace
@@ -108,7 +108,7 @@ namespace MethodsEnumStruct
         {
             get
             {
-                return (this.dGrade); //alawys need a return in the get (always put get and set its not under the good) (we can only get their grade
+                return (this.dGrade); //alawys need a return in the get (always put get and set its not under the hood) (we can only get their grade
                 //not set it so others cant change it)
             }
         }

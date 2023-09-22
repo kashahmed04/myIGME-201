@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers; //set the timer in a using statement**
+using System.Timers; //set the timer in a using statement
 
 
-//what cases are delgates enums and structs and classes like timers are they all pascal as well as what we define inside of them**
 /// delegate steps
 /// 1. define the delegate method data type based on the method signature
 ///         delegate double MathFunction(double n1, double n2);

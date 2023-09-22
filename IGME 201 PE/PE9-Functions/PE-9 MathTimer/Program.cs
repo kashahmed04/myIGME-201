@@ -9,8 +9,8 @@ using System.Timers;
 namespace PE_9_MathTimer
 {
     // Class: Program
-    // Author: David Schuh
-    // Purpose: A simple MathQuiz application that is limited to +, - and *
+    // Author: Kashaf Ahmed
+    // Purpose: A simple MathQuiz application that is limited to +, - and * and a timer for 5 sec for each question 
     // Restrictions: None
     static class Program
     {
@@ -140,7 +140,7 @@ namespace PE_9_MathTimer
             }
 
             // ask each question
-            for (nCntr = 1; nCntr <= nQuestions; ++nCntr) //why do I have to change it to
+            for (nCntr = 0; nCntr < nQuestions; ++nCntr) //why do I have to change it to
                 //0 now when it started at 1 before********(2)
             {
                 // generate a random number between 0 inclusive and 3 exclusive to get the operation
@@ -200,16 +200,17 @@ namespace PE_9_MathTimer
                 {
                     Console.WriteLine(sQuestions);
                     timeOutTimer.Start();
+                    bTimeOut = false; //reset it for false for each question because then it would be always true for them being wrong 
                     sResponse = Console.ReadLine();
                     timeOutTimer.Stop();
 
                     // can use either TryParse
                     bValid = int.TryParse(sResponse, out nResponse);
 
-                    if (!bValid)
-                    {
-                        Console.WriteLine("Please enter an integer");
-                    }
+                    //if (!bValid && !bTimeOut)
+                    //{
+                    //    Console.WriteLine("Please enter an integer");
+                    //}
 
 
                     // or try/catch with Parse() or Convert.ToInt32()
@@ -221,11 +222,35 @@ namespace PE_9_MathTimer
                     }
                     catch
                     {
-                        Console.WriteLine("Please enter an integer");
-                        bValid = false;
+                        if (!bTimeOut)
+                        {
+                            Console.WriteLine("Please enter an integer");
+                            bValid = false;
+                        }
+                       
                     }
-                } while (!bValid);
 
+
+                    //if (nResponse == nAnswer && !bTimeOut)
+                    //{
+                    //    Console.BackgroundColor = ConsoleColor.Blue;
+                    //    Console.ForegroundColor = ConsoleColor.Magenta;
+                    //    Console.WriteLine("Well done, {0}!!", myName);
+                    //    ++nCorrect;
+                    //    break;
+                    //}
+                    //// else output stark answer
+                    //else
+                    //{
+                    //    Console.BackgroundColor = ConsoleColor.Black;
+                    //    Console.ForegroundColor = ConsoleColor.Red;
+                    //    Console.WriteLine("I'm sorry {0}, the answer is {1}", myName, nAnswer);
+
+                    //    bTimeOut = true;
+                    //    break; //goes to the next question
+                    //}
+                } while (!bValid && !bTimeOut);
+            
                 // if response == answer, output flashy reward and increment # correct
                 if (nResponse == nAnswer && !bTimeOut)
                 {

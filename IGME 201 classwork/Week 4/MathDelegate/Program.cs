@@ -8,10 +8,10 @@ namespace MathDelegate
 {
     /// delegate steps
     /// 1. define the delegate method data type based on the method signature
-    ///         delegate double MathFunction(double n1, double n2); (when we base it on the method signature does that refer to the para. only or the return type as well)(yes)
+    ///         delegate double MathFunction(double n1, double n2); (when we base it on the method signature does that refer to the para. and the return type as well)(yes)
     ///         (has to follow method signatire)
     /// 2. declare the delegate method variable
-    ///         MathFunction processDivMult; (matfunction is a type and we are making a variable of that type and delegates are a data type so we use pascalcase
+    ///         MathFunction processDivMult; (mathfunction is a datatype and we are making a variable of that datatype and delegates are a data type so we use pascalcase
     ///         but we need variable of that type to do things)(the data type is like the mold for the variable and its the shape of that type (shape of a math function)
     /// 3. point the variable to the method that it should call (make a new delegate to hold the certain method but it has to have the same para. type and return type
     ///                                                          to work)
@@ -24,15 +24,16 @@ namespace MathDelegate
     ///                                                        we can have as many constructors as we want becase we can make their method signatures different
     ///                                                        so basically store each new mathfuncion in a variable and that will get used if needed
     ///                                                        
-    ///                                                        we make sep. variables if we want to use another function bu has to have the same method signature and return
+    ///                                                        we make sep. variables if we want to use another function bu has to have the same method signature (type it 
+    ///                                                        //it takes in) and return
     ///                                                        as the delegate 
     ///                                                        we can make as many delegates as we want in an applicaiton
     /// 4. call the delegate method
     ///         nAnswer = processDivMult(n1, n2); (we store it in a variable because whatever this method returns we need to hold it) (which processdivmult are we reffering
-    ///                                             we dont have to have a method that returns something and can have a delegate method that returns to that
+    ///                                            
     ///                                             use this appracoh usually
     ///                                             we use our variable as the method with the parameters and we store the answer in the variable because
-    ///                                             we return it with whatever processdivmult is 
+    ///                                             we output it with whatever processdivmult is 
     ///                                             
 
 
@@ -41,9 +42,9 @@ namespace MathDelegate
 
     // define a custom delegate data type whose variable can point to a method that
     // accepts 2 doubles and returns a double
-    delegate double MathFunction(double n1, double n2); //method signature in this case for this type of delegate consisting of the delegeate and the return and the
-    //name of the delegate and the para and their data types (this is used for the first way to make delegates (step 1 of 4)
-    //what if the actual method does not have a return type are we allowed to put void because I know func does not allow it and we need a return type
+    delegate double MathFunction(double n1, double n2); //method signature in this case for this type of delegate consisting of the delegeate and the return type, and the
+    //name of the delegate and the para. and their data types (this is used for the first way to make delegates (step 1 of 4)
+    //we can have the delegate have a void retunr type if our methods also had that though because method signatures need to match 
 
     internal class Program
     {
@@ -92,7 +93,6 @@ namespace MathDelegate
 
             // declare a variable of our custom delegate type
                 //MathFunction processDivMult; //use this to declare a delegate (1st way) example of int varible; then insitializing it later like we did with lamda
-            //when we use ref. variables we dont have to 
             //do we usually just decalre and not initizialize and then do it later with delegates like we did here
             //in this case our delegate was named Mathfunction and now we are declaring a varibale of that delegate processdivmult to hold an instance
             //of a method that has the same return type and para. types (step 2-4 for above approach)
@@ -103,7 +103,8 @@ namespace MathDelegate
             //type, and the very last value is the return type (cant have void usually have a datatype), func is the data type
             //and processdivmult is the variable 
             //last varlue in the <> are the return type 
-            Func<double, double, double> processDivMult = null; //second way to dclare the delegate(set equal to null beforehand)(dont need the ? with the ref. dtaa types)
+            Func<double, double, double> processDivMult = null; //second way to dclare the delegate(set equal to null beforehand)(dont need the ? with the ref. dtaa types
+                                                                ////when we want to set equal to null)(set to null by default though if we only initiailize
 
             // if the method does not return data, then use the Action<> generic delegate type
             //here is a third way of using a delegate (also built in like func), but we want to
@@ -144,6 +145,7 @@ namespace MathDelegate
                 // use an anonymous codeblock using the delegate keyword (another way to make a delegate)
                 //(4th way to make a delegate, first is func, then action, then self defined delegate)
                 processDivMult = delegate (double n1, double n2) //make the delegate variable in a variable (we claimed it above always claim the delegate then do it)
+                //we claim the delegate beforehand like this MathFunction processDivMult; then we can use it in an arrow function**
                 //(delegates we dont tell it the return type over here because it not like a method),
                 //after we store the return val and do the math adn return it and now the variable holds that
                 //cant set a variable equal to it but we have to call it with the para. so it works and set it equal to var. so it works 

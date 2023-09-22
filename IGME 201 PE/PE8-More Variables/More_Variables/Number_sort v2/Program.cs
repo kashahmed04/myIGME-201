@@ -122,7 +122,7 @@ namespace NumberSortV1
             Console.WriteLine("sort by ascending or descedning order");
             string sAscDesc = Console.ReadLine();
             loworhigh lowestorhighest; //decalre the 
-            if (sAscDesc.ToLower())
+            if (sAscDesc.ToLower() == "ascending")
             {
                 lowestorhighest = new loworhigh(FindLowestValue);
             }
@@ -176,7 +176,7 @@ namespace NumberSortV1
                 //end of the method it returns that value (we take that lowest value and store it in our sorted array at that current index)
 
                 aSorted[nSortedLength] = FindHighestValue(aUnsorted); //find highest value and we can use delegate method to store the hgghest or lowest value
-                
+
                 RemoveUnsortedValue(aSorted[nSortedLength], ref aUnsorted);
                 //removeunsortedvalue is a method we wrote and we are passing it the value we are removing whhich is the current
                 //value in our sorted array and we remove that value we just put in the sorted array from the unsorted array
