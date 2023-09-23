@@ -21,26 +21,21 @@ namespace PE9_Functions
         public string itemName;
         public int unitCount;
         public double unitCost;
-        public double OrderTotal (int count, double cost)
-            //I was really confused on this question****
-            //why do we have to name the para. the same as the fields****(1)
-            //and redefine the data type*****(2)
-            //should we put sttaic here****(3)
-            //should we make methods public within a struct****(4)
-            //is this how we do it****(5)
+        public double OrderTotal ()//have these down below so data type is not redefined
+            //should we put sttaic here (we wont because its reffering to the fields in the instance of the strucutre and when we use the this keyword
+            //thats when we dont use sttaic)
         {
 
             //double totalPrice = count * cost;
-            return count * cost;  //becomes implicitly casted to a double when the mult.
-            //can we define variables in here why cant we use
-            // a field for it*****(6)
+            return this.unitCount * this.unitCost;  //becomes implicitly casted to a double when the mult.
+            //we could define our own field (totalPrice) to the struct or we can leave it to be a derived value like in the reuturn)
         }
         public string StringTotal(int count, string item, double cost)
         {
             count.ToString();
             cost.ToString();
-            return(count + " " + item + " items at " + "$" + cost +
-                " each, " + "total cost " + "$" + OrderTotal(count,cost));
+            return(this.unitCount.ToString() + " " + this.itemName + " items at " + "$" + this.unitCost.ToString() +
+                " each, " + "total cost " + "$" + OrderTotal());//we can just ref. it by the this. keyword here
         }
     }
 
@@ -64,9 +59,8 @@ namespace PE9_Functions
     // Purpose: Create a delegate for reading in user input 
     // Restrictions: None
     static internal class Program //structs and enums can be set within the namespace
-        //or class right but not within the main**(7)
-    {
-       
+                                  //or class right but not within the main**(7)
+    { 
 
         delegate string Readline();
         static string Input()
@@ -81,11 +75,8 @@ namespace PE9_Functions
         {
             string userInputRead = "";
             Readline userInput;
-            userInput = new Readline(Input);
+            userInput = new Readline(Input); //or we could say userInput = new Readline(Console.ReadLine()); so we dont need and input method
             userInputRead = userInput();
-
-
-            //if no constructor then we ref. the structure like this otherwise if there is constructors then we have the ()******(9)
 
             //Order randomVal = new Order(); 
             //randomVal.itemName = "something";
