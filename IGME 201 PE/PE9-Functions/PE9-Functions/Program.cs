@@ -32,8 +32,8 @@ namespace PE9_Functions
         }
         public string StringTotal(int count, string item, double cost)
         {
-            count.ToString();
-            cost.ToString();
+            //count.ToString();
+            //cost.ToString();
             return(this.unitCount.ToString() + " " + this.itemName + " items at " + "$" + this.unitCost.ToString() +
                 " each, " + "total cost " + "$" + OrderTotal());//we can just ref. it by the this. keyword here
         }
@@ -83,6 +83,9 @@ namespace PE9_Functions
             //randomVal.unitCount = 2;
             //randomVal.unitCost = 1.50;
             //Console.WriteLine(randomVal.StringTotal(randomVal.unitCount, randomVal.itemName, randomVal.unitCost));
+
+
+
         }
     }
 }

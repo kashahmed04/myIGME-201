@@ -15,10 +15,11 @@ using static System.Net.Mime.MediaTypeNames;
     ///         processDivMult = new MathFunction(Multiply);
     /// 4. call the delegate method
     ///         nAnswer = processDivMult(n1, n2);
+    ///        
 
 namespace Delegates
 {
-    delegate double MathFunction(double x, int y); //returns a double and we take in an int and double******(0)
+    delegate double MathFunction(double x, int y); 
 
     // Class: Program
     // Author: Kashaf Ahmed
@@ -35,8 +36,7 @@ namespace Delegates
         // Restrictions: None
         static double Rounds(double x, int y)
         {
-            return Math.Round(x, y); //are we allowed to use the round method here or is there another way** (1)*******************
-            //are these the methods that are needed*********************
+            return Math.Round(x, y); 
         }
 
         // Method: OutPutAnswer
@@ -81,7 +81,7 @@ namespace Delegates
             outputAnswer = new Action<double,int>(OutputAnswer);
 
             //check answer
-            //outputAnswer(2.534522, 4);
+           // outputAnswer(2.534522, 4);
 
             //anon. method
             MathFunction processRound3;
@@ -118,6 +118,9 @@ namespace Delegates
 
             //check answer
             //Console.WriteLine(processRound5(2.534522, 4));
+
+
+           
         }
     }
 }

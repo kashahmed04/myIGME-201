@@ -1,8 +1,6 @@
 ﻿using System.IO;
 using System;
 
-//Does spacing matter in programs as well as the ghilghitng of blue going to the next line****************
-
 // Class: Program
 // Author: Kashaf Ahmed
 // Purpose: A simple MathQuiz application that is limited to +, -, *, and /
@@ -201,7 +199,7 @@ static class Program
             // display the question and prompt for the answer until they enter a valid number
             do
             {
-                Console.WriteLine(sQuestions);
+                Console.Write(sQuestions);
                 sResponse = Console.ReadLine();
 
 

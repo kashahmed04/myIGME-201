@@ -18,7 +18,7 @@ namespace Questions1_3
 
         static Timer timeOutTimer; //set up the timer and the timer being a false variable saying that the timer did not run out
         static bool bTimeOut = false;
-        static string realAnswer = ""; //can we define this out here as static or is it not needed****(1)***************8
+        static string realAnswer = ""; 
 
         // Method: Main()
         // Purpose: Ask the user to pick a question between 1-3, then time them for 5 sec to put in their answer and if they get it correct in the right amount of
@@ -155,6 +155,9 @@ namespace Questions1_3
         }
 
 
+        // Method: Main()
+        // Purpose: When the timer is up it tells the user the answer and tells them to press enter
+        // Restrictions:None
         static void TimesUp(object sender, ElapsedEventArgs e) //method that runs if the timer is up
         {
             // send a newline to the console to interrupt the user entry
