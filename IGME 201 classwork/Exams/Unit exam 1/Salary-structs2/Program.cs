@@ -20,7 +20,7 @@ namespace Salary_structs2
     //have access to the employee object we had created in main (points in the same location in memory).
     //If the name == "kash" when we do .toLower, then we incrase their salary and tell them they got a raise
     //otherwise we display to the console that they did not get a raise 
-    // Restrictions: None
+    // Restrictions: Nonee
     static internal class Program
     {
 
