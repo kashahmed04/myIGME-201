@@ -17,7 +17,7 @@ static class Program
         // store user name
         string myName = "";
 
-        // string and int of # of questions
+        // string and int of # of the questions
         string sQuestions = "";
         int nQuestions = 0;
 
