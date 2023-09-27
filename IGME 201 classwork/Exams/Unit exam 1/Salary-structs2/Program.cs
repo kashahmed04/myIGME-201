@@ -7,6 +7,7 @@ using System.Xml.Linq;
 
 namespace Salary_structs2
 {
+    //struct for Employee inform.
     struct Employee
     {
         public string sName;

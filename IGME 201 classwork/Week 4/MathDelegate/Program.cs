@@ -157,6 +157,9 @@ namespace MathDelegate
                     //returns a double because of our delgate  (C# keeps track of that)
                 };
 
+                //for anon. methods if we dont have a delegate declared ahead of time, then we use the above method to make the anon. moethd otherwise bottom would work
+                //because the already defined the mathfunction****************************************
+
                 // use an anonymous codeblock using the lambda operator "=>"
                 //(basically replacing the delegate keyword with an arrow function)(how does it know)
                 //its a delegate then we declared it up top

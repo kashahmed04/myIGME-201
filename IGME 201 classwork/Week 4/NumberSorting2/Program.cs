@@ -23,7 +23,7 @@ namespace NumberSortV1
 
         //c# has a datatype built into it a list***
         //it allows us to**
-        //list daat type within the <> put the data types we store within the list (only 1??)**
+        //list data type within the <> and its usually only the type it takes in and nothing else**
 
         static void Main(string[] args)
         {
@@ -65,6 +65,7 @@ namespace NumberSortV1
                 try
                 {
                     // try to parse the current string into a double
+                    //why is it the case we have to set a variable equal to it if we are only checking not setting**
                     nThisNumber = double.Parse(sThisNumber);
 
                     // if it's successful, increment the number of unsorted numbers
@@ -83,6 +84,7 @@ namespace NumberSortV1
 
             // now we know how many unsorted numbers there are
             // allocate the size of the unsorted array
+            //this is already set, to when we change the length back to 0, down below, it does not change it here because we decaled it beofrehand**
             aUnsorted = new double[nUnsortedLength];
 
             // reset nUnsortedLength back to 0 to use as the index to store the numbers in the unsorted array
