@@ -21,20 +21,11 @@ namespace NumberSortV1
     {
         delegate double LowestOrHighestFunction(double[] a);
 
-        //c# has a datatype built into it a list***
-        //it allows us to**
-        //list data type within the <> and its usually only the type it takes in and nothing else**
-
         static void Main(string[] args)
         {
             // declare the unsorted and sorted arrays
-            //double[] aUnsorted;
-            //double[] aSorted;
-
-            List<double> aUnsorted;
-            List<double> ansorted;
-
-
+            double[] aUnsorted;
+            double[] aSorted;
 
         // a label to allow us to easily loop back to the start if there are input issues
         start:
@@ -65,7 +56,6 @@ namespace NumberSortV1
                 try
                 {
                     // try to parse the current string into a double
-                    //why is it the case we have to set a variable equal to it if we are only checking not setting**
                     nThisNumber = double.Parse(sThisNumber);
 
                     // if it's successful, increment the number of unsorted numbers
@@ -84,7 +74,6 @@ namespace NumberSortV1
 
             // now we know how many unsorted numbers there are
             // allocate the size of the unsorted array
-            //this is already set, to when we change the length 
             aUnsorted = new double[nUnsortedLength];
 
             // reset nUnsortedLength back to 0 to use as the index to store the numbers in the unsorted array
@@ -117,7 +106,7 @@ namespace NumberSortV1
             LowestOrHighestFunction lowestOrHighest;
 
             // point the variable to the appropriate method to call based on user input
-            if (sAscDesc.ToLower().StartsWith("a"))
+            if( sAscDesc.ToLower().StartsWith("a"))
             {
                 lowestOrHighest = new LowestOrHighestFunction(FindLowestValue);
             }
@@ -136,15 +125,12 @@ namespace NumberSortV1
             // while there are unsorted values to sort
             while (aUnsorted.Length > 0)
             {
-                // store the lowest unsorted value as the next sorted value (in this case we would have 2 conditinals to check if they entered a or d
-                //then srt it based on whatever they said)************************
+                // store the lowest unsorted value as the next sorted value
                 //aSorted[nSortedLength] = FindLowestValue(aUnsorted);
                 //aSorted[nSortedLength] = FindHighestValue(aUnsorted);
 
                 // call the delegate method
-                aSorted[nSortedLength] = lowestOrHighest(aUnsorted); //based on what the user put the proper method will get called
-                //according if they put a or d and it will get the value from the unsorted array and put it in the sorted array
-                //then will remove the value from the unsorted array like normal**********
+                aSorted[nSortedLength] = lowestOrHighest(aUnsorted);
 
                 // remove the current sorted value
                 RemoveUnsortedValue(aSorted[nSortedLength], ref aUnsorted);
@@ -178,7 +164,6 @@ namespace NumberSortV1
             // loop through the array
             foreach (double thisNum in array)
             {
-                //the first loop nothing happens because it would both be starting at the 0 index*********
                 // if the current value is less than the saved lowest value
                 if (thisNum < returnVal)
                 {
