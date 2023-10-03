@@ -17,23 +17,17 @@ namespace NumberSortV1
     ///         nAnswer = processDivMult(n1, n2); <summary>
     /// delegate steps
     /// </summary>
-    static class Program //always put static in front of our class program so it forces us to put static in front of the class program
+    static class Program
     {
         delegate double LowestOrHighestFunction(double[] a);
 
-        //c# has a datatype built into it a list
-        //a list data type is whats called a generic template datatype which means within the <> we can specify what the list is going to hold
-        //instead of an array of doubles we have an list (we use a list because build into this data structure has the function to increase or decrease the size
-        //of the list whereas for the array we had to create a new array to decrease or incrase the size)
-        //list data type within the <> and its usually only the type it takes in and nothing else
         static void Main(string[] args)
         {
             // declare the unsorted and sorted arrays
             //double[] aUnsorted;
             //double[] aSorted;
-            //to create the list object we need to use new operator otherwise its just a varuable of the list
-            List<double> aUnsorted = new List<double>();
-            List<double> aSorted = new List<double>();
+            List<double> aUnsorted;
+            List<double> aSorted;
 
 
         // a label to allow us to easily loop back to the start if there are input issues
@@ -83,8 +77,7 @@ namespace NumberSortV1
 
             // now we know how many unsorted numbers there are
             // allocate the size of the unsorted array
-            //aUnsorted = new double[nUnsortedLength];
-            //dont need this because we made a list
+            aUnsorted = new double[nUnsortedLength];
 
             // reset nUnsortedLength back to 0 to use as the index to store the numbers in the unsorted array
             nUnsortedLength = 0;
@@ -100,10 +93,10 @@ namespace NumberSortV1
                 nThisNumber = double.Parse(sThisNumber);
 
                 // store the value into the array
-                aUnsorted.Add(nThisNumber); //this is how we add elements to a list
+                aUnsorted[nUnsortedLength] = nThisNumber;
 
                 // increment the array index
-                //nUnsortedLength++;
+                nUnsortedLength++;
             }
 
             string sAscDesc = "";
@@ -112,53 +105,42 @@ namespace NumberSortV1
             Console.Write("Sort by (a)scending or (d)escending: ");
             sAscDesc = Console.ReadLine();
 
-
-            // allocate the size of the sorted array
-            //aSorted = new double[nUnsortedLength]; (we already made a list above)
-
-            aSorted = aUnsorted.GetRange(0, aUnsorted.Count);//gets the elements from the unsorted list all the way to to the last item within our underosted
-                                                             //list and copies it into our sorted list (always start from 0)
-
-
-
             // declare delegate method variable
             LowestOrHighestFunction lowestOrHighest;
 
             // point the variable to the appropriate method to call based on user input
             if (sAscDesc.ToLower().StartsWith("a"))
             {
-                aSorted.Sort(); //we can just use the built in sort instead of doing manually with array*
-                //lowestOrHighest = new LowestOrHighestFunction(FindLowestValue);
+                lowestOrHighest = new LowestOrHighestFunction(FindLowestValue);
             }
             else
             {
-                aSorted.Sort();
-                aSorted.Reverse(); //sort it first then remove it
-                //when we work with arrays but it is not built into it but the list class has it built into it**
-                //lowestOrHighest = new LowestOrHighestFunction(FindHighestValue);
+                lowestOrHighest = new LowestOrHighestFunction(FindHighestValue);
             }
 
+
+            // allocate the size of the sorted array
+            aSorted = new double[nUnsortedLength];
 
             // start the sorted length at 0 to use as sorted index element
             int nSortedLength = 0;
 
             // while there are unsorted values to sort
-            //no longer needed because we used a list**
-            //while (aUnsorted.Length > 0)
-            //{
-            //    // store the lowest unsorted value as the next sorted value
-            //    //aSorted[nSortedLength] = FindLowestValue(aUnsorted);
-            //    //aSorted[nSortedLength] = FindHighestValue(aUnsorted);
-            //
-            //    // call the delegate method
-            //    aSorted[nSortedLength] = lowestOrHighest(aUnsorted);
-            //
-            //    // remove the current sorted value
-            //    RemoveUnsortedValue(aSorted[nSortedLength], ref aUnsorted);
-            //
-            //    // increment the number of values in the sorted array
-            //    ++nSortedLength;
-            //}
+            while (aUnsorted.Length > 0)
+            {
+                // store the lowest unsorted value as the next sorted value
+                //aSorted[nSortedLength] = FindLowestValue(aUnsorted);
+                //aSorted[nSortedLength] = FindHighestValue(aUnsorted);
+
+                // call the delegate method
+                aSorted[nSortedLength] = lowestOrHighest(aUnsorted);
+
+                // remove the current sorted value
+                RemoveUnsortedValue(aSorted[nSortedLength], ref aUnsorted);
+
+                // increment the number of values in the sorted array
+                ++nSortedLength;
+            }
 
 
             // write the sorted array of numbers
@@ -171,8 +153,6 @@ namespace NumberSortV1
             Console.WriteLine();
         }
 
-
-        //these methods are not needed because we commented out the delegates and the list already does it for us**
         // find the lowest value in the array of ints
         // the method "signature" defines a method and consists of the return type (double) and method arguments (double[] array)
         static double FindLowestValue(double[] array)

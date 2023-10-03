@@ -57,7 +57,7 @@ namespace Salary_structs2
         // Purpose: Ref. the Employee object we had made in main and we check if the name == "kash"
         //in .toLower, and if its is we increase their salary and return true, otherwise return false
         // Restrictions: None
-        static bool GiveRaise(ref Employee employee) //gives us access to the employee object in main 
+        static bool GiveRaise(ref Employee employee) //gives us access to the employee object in main  
         {
             if (employee.sName.ToLower() == "kash")
             {

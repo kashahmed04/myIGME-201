@@ -59,13 +59,14 @@ namespace MethodsEnumStruct
     }
 
     //strucures are value datatypes and can contain fields,prop.,methods, and sttaic members
-    //sttaic members are when we cant change the value by making an object out of the structure and the only way to change it is a method
+    //sttaic members are when we cant change the value by making an object out of the structure and the only way to change it is a method or incremement via calling the
+    //StudentStruct or whatever datatype we decalred . the field and change it that way
     // so basically if we want something to stay common within all the instances of the objects we create for a struct we make a static member of the struct
     //instance mmebers are that we have to change or make equal to a value when we create an instance of that object and now we can access the fields from
     //the constructors and not the struct down here because its the datatype (depends on the signature for whatever constructor it needs to go into)
     //and if we want custom information we could just make a new instance of the object and use the . notation after the object ref. (new) and put our own values within those 
     //fields 
-
+    
     //for the studentstruct we created a datatype a template a design basically for doing something but we did not create an object and we create an object with the new
     //keyword
     //we initialize different fields in the constructor and if we wanted to do something special we set some special things within the constructor
@@ -78,9 +79,9 @@ namespace MethodsEnumStruct
     //any static varibale always instizalizes to its default value and for an int its 0 unless we set seomthing equal to it
     //to access enrollment we need to use the daat type itself to access it 
     //in our constructors we can increment the enrollment of a student but always access the static with the structname then . enollment 
-    //same if we want to access methods that the strucure gives us**
+    //same if we want to access static methods that the strucure gives us
     struct StudentStruct //when we create a structure by default it sets its members to their default values like all the numeric values to 0 and all the strings
-                            //to empty strings (when we use default constructor)(or we could initizliaze)
+                            //to empty strings (when we use default constructor)(or we could initizliaze like we do with constructors)
                     
     {
         public string sName; //if we make a blank object instance then the shoebox has all of these fields in it (makes a copy) and fills in each type we set equal to 
@@ -90,7 +91,7 @@ namespace MethodsEnumStruct
         public double dGrade;
 
         static public int enrollment;
-        //static varuable that is for the students # of enrollment and applies to all of our students (objects)
+        //static varuable that is for the students # of enrollment and applies to all of our students (instance of object)
         //we use static when we want to apply it to all members or variables of this data type
         //(same value for it and we cant change it unless we use a method or we can change it by accessing the studentstruct.enrollment (always))
 
@@ -99,13 +100,15 @@ namespace MethodsEnumStruct
         //overloaded are specifcally called boolean overloaded and they are used to see if they are equal to or not equal to each other,etc.
         //and put the matching boolean overload methods so it works even though we need to only use 1 and if we never use it then have it do the same thing and be sure
         //to document it (make it equal to false or something because its never used)
-        //we usually write these in structs or classes so we can use it when we create the instance of the object (only used for comparing out structures or classes)
-        //use keyword operator to tell it its an opertator (always)(we have to define to have comparison of the datatype when making instances of objects)
+        //we usually write these in structs or classes so we can use it when we create the instance of the object (only used for comparing our structures or classes)
+        //use keyword operator to tell it its an opertator (always)(we have to define to have comparison of the datatype so it knows which is it when doing comparison of
+        // instances of objects)
         //they are both the types of strudent struct so thats why we can use it with the instance of the struct
 
-        //and when we create the method we dont need to put anything in ti because these operators do it 
+        //and when we create the method we dont need to put anything in it because these operators do it and its called by value so it would make a copy
+        //and not change anything we pass in and only make a copy and use that
 
-        //we can use the .notation with the instance of the object so compare or have the operator without the . noation 
+        //we can use the .notation with the instance of the object so compare or have the operator without the . noation if its an overloaded operator
 
         //we have to say static in our boolean operators because its a method 
 
@@ -142,11 +145,11 @@ namespace MethodsEnumStruct
             return left.Age > right.Age;
         }
 
-        public static void SetEnrollment(int enrollment)//we could have a ststic feidl called enrollment or a static method called setenrollment
+        public static void SetEnrollment(int enrollment)//we could have a ststic feidl called enrollment and a static method called setenrollment
             //and have our sttaic method change our static field (the method does not have to be static but the enrollment variable does)
             //we cant change enrollment so we make it static and we can only change it with the studentstruct (the student struct itself)
-            //static does not allow us to call instances of our structure but if we want to change the structure, we have to put the structure within the para.
-            //with ref. (basically static only takes in value types and if we want to have objects like structs and classes we have to put them in the para.
+            //static does not allow us to call instances of our structure but if we want to change the instance of the structure, we have to put the instance within the para.
+            //with ref. (basically static only takes in value types and if we want to have objects like structs and classes we have to put them in the para. 
             //within the static methods and put ref. to change it so it does not make a copy)
             //if we did not do it by ref., we only changed the copy of the struct and only exsts within the code block 
         {
@@ -205,7 +208,7 @@ namespace MethodsEnumStruct
         
         //an object is any instance of a data type (the caterogies of the data types or int. and enum and structs, etc.)
         //the object would be when we create a variable of that type (ex. how we create the dGrade of the object data type and object and instance are interchangeable) 
-        //instance fields are availabel when we change it in the instance of the object and the static is a just a field 
+        //instance fields are availabel when we change it in the instance of the object and the static is a just a field that does not have to get initialized
         //methods that are not static are instance methods and can only be called using the instance of the structure like instance fields (same for fields) 
         //if it does not have static then its an instance member 
 
@@ -247,7 +250,7 @@ namespace MethodsEnumStruct
         {
             get
             {
-                return (this.dGrade);
+                return (this.dGrade); //always have return with get 
             }
         }
 
@@ -420,7 +423,7 @@ namespace MethodsEnumStruct
                 //they are very different data types 
                 //delegates cant hold data they just point thats why we need variables to hold the inform.
                 //while structs hold all the data in it and when we make an instance of the struct object it copies those
-                //fields and properties into it as we initalize the fields and properties go in themselevs and we dont have to initialize
+                //fields and properties into it as we initalize 
 
               
                 if(student < maxStudent) //now we can compre our structs once we do the statements above with the operator
@@ -496,6 +499,7 @@ namespace MethodsEnumStruct
 
                         // zArray[dataPointCntr++] = new ZFunction(x,y); //these 3 lines could be written as this one line 
                         //zArray is defined above just do new operator heere and do the new structure for that array elemtn 
+                        //zarray already is a zfunction type thats why this works
 
                         //just write the 3 lines above (perrferred)
                         
