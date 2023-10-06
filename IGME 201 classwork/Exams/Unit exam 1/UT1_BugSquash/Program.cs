@@ -88,10 +88,7 @@ namespace UT1_BugSquash
                 // compute the subsequent values using nExponent-1 to eventually reach the base case
                 nextVal = Power(nBase, nExponent + 1);
 
-                //(Bug #10: Run time error: Put +1 instead of -1 for the nExponent)
-                //nextVal = Power(nBase, nExponent + 1); it gives us stack overflow exception
-
-                // multiply the base with all subsequent values
+                //(Bug #10: Logic error (should have done nExponent +1)
                 returnVal = nBase * nextVal;
             }
 

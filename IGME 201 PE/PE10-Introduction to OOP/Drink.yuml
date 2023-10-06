@@ -1,0 +1,19 @@
+
+// {type:class}
+// {generate:true}
+// {direction:topDown}
+
+
+//add the things from the interface in the children because they are related to it
+[+A:HotDrink||+Drink();+AddMilk();+AddSugar();+Milk:string;+Sugar:string|]
+[+CupOfCoffee||+BeanType:string;Refill();Wash();Color:string;Volume:int|]
+[+ICup| Refill();Wash();Color:string;Volume:int]
+[+CupOfTea||+LeafType:string;Refill();Wash();Color:string;Volume:int|] 
+[+ICup] ^ [+CupOfTea] 
+[+ICup] ^ [+CupOfCoffee] 
+[+A:HotDrink] <-.- [+CupOfTea]
+[+A:HotDrink] <-.- [+CupOfCoffee]
+
+//the interface itself can be public but the methods/properties we dont specify the accesiblity
+//and cant be overridden (only define ref. to names and properties the interfaces
+//accesses)

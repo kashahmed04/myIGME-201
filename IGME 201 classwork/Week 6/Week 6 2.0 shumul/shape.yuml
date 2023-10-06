@@ -1,0 +1,49 @@
+
+// {type:class}
+// {generate:true}
+// {direction:topDown} 
+//tells what type of yuml we are making and its a class type that goes from bottom
+//to top and could do left to right but we do down to up**
+//the generate tells us**
+//square brackets define each box of diagram
+//I: = interface
+//| symbol lets us move on to next part of box 
+//an svg file gets created when we do a shumul in our folder where we created the file
+
+
+//interface box
+[+I:IDrawObject|DrawMe()]
+
+//blood class (no fields so empty then move on to propeties/methods section(virtual
+//so put :v at the end))
+//no constructor so put another |
+[+Blood||DrawMe():v|]
+
+//for inheritence we have to reference the first part of the boxes and do the ^ for
+//interfaces 
+[+I:IDrawObject] ^ [+Blood]
+
+//do the shape class, then do fields in second box, then third box
+//is the methods and prop., and the fourth box is any constructors
+//  (; adds a newline within sections)**
+//default constructor is whatsver the type is private public,etc. then ()
+//and the second one takes in 2 doubles 
+[+A:Shape|+PI:double;=x:double;=y:double;-myInt:int|+Area():double:v;+DrawMe():a|+(); +(x:double,y:double)]
+
+//the shape class inherits the interface
+[+I:IDrawObject] ^ [+A:Shape]
+
+//do the circle class(child)
+//same process as parent class
+//the area method returns a double and the :o means it overrides the parent
+//same for the DrawMe because it was an abstact and it still means its overridden
+//constrcutor is named r and is named double and it calls the base constructor
+//and passes r and 0 into the base constructor** so do we over ride the constructor basically when
+//we do this for child classes?****
+[+Circle||+Area():double:o; +DrawMe():o|+(r:double):base(r,0)]
+
+//circle inherits the parent class Shape (abstract so dotted line)
+[+A:Shape] <-.- [+Circle]
+
+//want a line from circle to the interface
+[+I:IDrawObject] ^ [+Circle]
