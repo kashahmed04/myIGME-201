@@ -31,11 +31,11 @@ namespace Traffic
         // Author: Kashaf Ahmed
         // Purpose: Calls the LoadPassanger method when we pass in an an object that the interface references and then takes that object and does the toString() method to it
         // Restrictions: None
-        static void AddPassanger(IPassangerCarrier passangerCarrier)
+        static void AddPassanger(IPassangerCarrier passangerCarrier) //why do we have to convert explicitly if we are saying its this interface type in this statement(5)*****
         {
             passangerCarrier.LoadPassanger();
             Console.WriteLine(passangerCarrier.ToString()); //what happens when we make
-                                                              //instances a string(5)*******
+                                                              //instances a string(6)*******
         }
     }
 }

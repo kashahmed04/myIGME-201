@@ -2,6 +2,12 @@
 // {type:class}
 // {generate:true}
 // {direction:topDown} 
+
+//the interface itself can be public but the methods/properties we dont specify the accesiblity
+//and cant be overridden (only define ref. to names and properties the interfaces
+//accesses)
+
+//add the things from the interface in the children because they are related to it
 //tells what type of yuml we are making and its a class type that goes from bottom
 //to top and could do left to right but we do down to up**
 //the generate tells us**
