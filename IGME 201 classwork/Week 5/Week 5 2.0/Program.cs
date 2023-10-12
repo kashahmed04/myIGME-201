@@ -21,6 +21,7 @@ namespace Week_5_1._0
         static void Main(string[] args)
         {
             Dictionary<string, int> dPersonAge = new Dictionary<string, int>();
+            //takes only 2 arguments for key and value nothing more****
             //has a key to look up values within the list (like a word decitionary and the word is the key, and the definition is the value)
             //the key is normally a string (in this case the lookup (key) is the name and the value it will return will be the age)
             //when we construct the data type on the rght hand side of = side, then it creates the constrctor with the new keyword and the () (This can also*****
@@ -51,19 +52,19 @@ namespace Week_5_1._0
 
             SortedList<string,int> personAge = new SortedList<string, int>(); //sorts the values in the dict and we can have key value pairs in lists??
             //dPersonAge.Add("sue", 84); //this is how we created a sorted list as we put the values in so it gets stored 
-            dPersonAge["david"] = 50; 
+            personAge["david"] = 50;
+            personAge["poe"] = 80; 
             personAge["joe"] = 80;
-            //personAge["poe"] = 80;
 
 
 
             //if we want to remove an item then do this and do it by the key always
             //values can repeat in a dict.
-            personAge.Remove("joe");
+            //personAge.Remove("joe");
             foreach (KeyValuePair<string, int> valuePair in personAge)
             {
                 Console.WriteLine($"person[{valuePair.Key}] = {valuePair.Value}");
-            } //joe does not show up here anymore because we removed him from the sorted list
+            } //joe does not show up here anymore because we removed him from the sorted list originally 
 
             //the dict. lets us read the list(dict). using a name and we can access it quicker by saying the key and indexing rather than if it was a list we would
             //have to read through all the students then (with dict. we can index through a key not a number)
@@ -90,7 +91,7 @@ namespace Week_5_1._0
             nAnswer = 1;
             while(nNumber > 0) //factorial is like 4*3*2*1 (multilpes all of the numbers before the number we put in an multiply it)**
             {
-                nAnswer *= nNumber; //was this a way of doing the same thing but non recursive**
+                nAnswer *= nNumber; //was this a way of doing the same thing but non recursive** for this case if nNumber is equal to 0 would we just do nothing or return 1
                 --nNumber; 
             }
 
@@ -131,7 +132,8 @@ namespace Week_5_1._0
 
 
                 nAnswer = nNumber * Factorial(nNumber - 1); //takes our current number and multiply it by our next value which is n - 1 and keeps going by
-                                                            //calling itself but its in an inifinite loop so we need a base case so it can stop inifinite looping and it can stop recusing**
+                                                            //calling itself but its in an inifinite loop so we need a base case so it can stop
+                                                            //inifinite looping and it can stop recusing**
                 
             }
             return (nAnswer);
@@ -139,7 +141,7 @@ namespace Week_5_1._0
            
         }
         //Factorial(2) = 2 * f(1) //it comes in and does the else statment for the first loop and it waits for the answer for the first time it calls itself and now:
-        //Factorial(1) = 1 * f(0) //and now it has been called twice and its called itself again and does the math and now its waiting in the else nAswer for another answer
+        //Factorial(1) = 1 * f(0) //and now it has been called twice and its called itself again waits to do math based on base case
         //
         //Factorial(0) = 1 //now we reach 0 and it returns 1 and it gets passed to the facotrial of 1 case and now it can complete its work for f(1)
         //
@@ -147,7 +149,7 @@ namespace Week_5_1._0
         //
         //Factorial(2) = 2 * 1 = 2 //when the method calls itself it launces a new instance of itself and it spawns a new instance of the method running 
             //its making a copy of itself to continue doing the work in the else and when it got the answer we are no longer waiting and it can return the answer of 2 back to
-            //the calling line in
+            //the calling line 
 
             //when they call themselves they make a copy of themself then wait for base case then do the math and return final answer after every recursion
 

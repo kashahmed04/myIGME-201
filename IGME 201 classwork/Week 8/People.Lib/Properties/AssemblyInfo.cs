@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PE-12 Class-Members")]
+[assembly: AssemblyTitle("People.Lib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP")]
-[assembly: AssemblyProduct("PE-12 Class-Members")]
+[assembly: AssemblyProduct("People.Lib")]
 [assembly: AssemblyCopyright("Copyright © HP 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b256020d-5bba-4844-a9cf-3cfc4809431f")]
+[assembly: Guid("dca38d2b-90aa-4958-9fe5-f48b9f02cb70")]
 
 // Version information for an assembly consists of the following four values:
 //
