@@ -73,7 +73,7 @@ namespace CourseLib
         public string teacherEmail;
         public Schedule schedule;
 
-        public Courses() //this is a constructor not a method?? Why is this saying theres no return type??(2)**
+        public Course() //this is a constructor not a method?? Why is this saying theres no return type??(2)**
         {
             Course thisCourse;
             Schedule thisSchedule;

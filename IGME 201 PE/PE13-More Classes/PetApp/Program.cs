@@ -121,24 +121,24 @@ namespace PetApp
     public class Cat: Pet, ICat
     {
         public override void Eat()
-        {   
-           //is this where we do the console statement**
+        {
+            Console.WriteLine("Yuck, I don't like that!");
         }
         public override void Play()
         {
-
+            Console.WriteLine("Where's that mouse....");
         }
         public void Purr()
         {
-
+            Console.WriteLine("Purrrrrrrrrrrrrrrrrrrr....");
         }
         public void Scratch()
         {
-
+            Console.WriteLine("Purrrrrrrrrrrrrrrrrrrr....");
         }
         public override void GotoVet()
         {
-
+            Console.WriteLine("Hiss!");
         }
 
         public Cat()
@@ -151,23 +151,23 @@ namespace PetApp
     {
         public override void Eat()
         {
-
+            Console.WriteLine("Yummy, I will eat anything!");
         }
         public override void Play()
         {
-
+            Console.WriteLine("Throw the ball, throw the ball!");
         }
         public void Bark()
         {
-
+            Console.WriteLine("Woof woof!");
         }
         public void NeedWalk()
         {
-
+            Console.WriteLine("Woof woof, I need to go out");
         }
         public override void GotoVet()
         {
-
+            Console.WriteLine("Whimper, whimper, no vet!");
         }
 
         public Dog(string szLicense, string szName, int nAge) : base(szName, nAge) //do we still have to to this. for rest of things in constructor**

@@ -4,13 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PeopleLib
-{
-    public class Class1
-    {
-    }
-}
-
 /*
  * each source file (each class source file should contain only one class but if the classes are really tiny like PE11 its ok to have multiplt classes in one file)
  * If we need more class files we right click on the project then add an existing item, new item, or class which means******(
