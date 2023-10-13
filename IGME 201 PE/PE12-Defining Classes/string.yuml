@@ -1,0 +1,12 @@
+
+// {type:class}
+// {generate:true}
+// {direction:topDown} 
+
+//shumul does not metntion a return type but should we add for methods before
+//the override or virtual,etc.**
+
+[+MyClass| -myString:string|+GetString():string:v; +MyString:string:w|]
+[+MyDerivedClass||+GetString():string:o]
+
+[+MyClass] <- [+MyDerivedClass]

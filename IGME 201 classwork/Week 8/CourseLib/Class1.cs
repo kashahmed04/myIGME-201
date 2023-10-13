@@ -12,11 +12,11 @@ namespace CourseLib
     public class Courses //this is going to have a sorted list for the string which is the course
                          //code and the Course object (instance) which is the value (1)****
     {
-        SortedList<string, Course> sortedList = new SortedList<string, Course>();
+        public SortedList<string, Course> sortedList = new SortedList<string, Course>(); //is default public for lists and sorted lists
 
         public void Remove(string courseCode)
         {
-            if(courseCode != null)
+            if (courseCode != null)
             {
                 sortedList.Remove(courseCode); // does this get the instance and remove it if it exists? (we are not accessing the key in this case
                                                // or does the courseCode refer to the key in this case since its a string??)(2)****
@@ -27,7 +27,7 @@ namespace CourseLib
         {
             get
             {
-                Course returnVal; 
+                Course returnVal;
                 try
                 {
                     returnVal = (Course)sortedList[courseCode]; //why do we have to explicitly cast here(3)***** 
@@ -44,40 +44,36 @@ namespace CourseLib
             {
                 try
                 {
-                    sortedList[courseCode] = value; 
+                    sortedList[courseCode] = value;
                 }
                 catch
                 {
-                   
+                     //what would we put in catch?? It does not specify(1)**
                 }
             }
         }
 
-        public Courses(); //is this how we implement the deault constructor why am I getting an error(5)****
-    }
+        public Courses()
+        {
 
+        }
+
+    } 
     public class Schedule 
     {
         public DateTime startTime; //what does DateTime refer to in this case(6)****
         public DateTime endTime;
-        List<DayOfWeek> daysOfWeek = new List<DayOfWeek>(); //should we make this public
-        //so it works with the constructor in Course??)(7)****
-        //how does this list work(8)****
+        public List<DayOfWeek> daysOfWeek = new List<DayOfWeek>(); //how does this work****
     }
 
-    public class Course 
+    public class Course
     {
-        public courseCode string; //are these correct why are these error(9)****
-        public description string;
-        public teacherEmail string;
-        public schedule Schedule;
+        public string courseCode; //these were in backwards order its not courseCode string
+        public string description;
+        public string teacherEmail;
+        public Schedule schedule;
 
-        public Course(); //how do we know if its public or not by default because there is not specification in shumul(10)****
-                         //is this in addition to the default constructor****
-                         //we have to copy and paste(11)**
-        public Course(string courseCode, string description); //is this how we create the constructor for the Course Class(12)****
-
-        public Courses()
+        public Courses() //this is a constructor not a method?? Why is this saying theres no return type??(2)**
         {
             Course thisCourse;
             Schedule thisSchedule;
@@ -114,8 +110,21 @@ namespace CourseLib
                 thisCourse.schedule = thisSchedule;
 
                 // add this course to the SortedList
+
+                //What does this error mean??(3)****
                 this[thisCourse.courseCode] = thisCourse;
             }
+        }
+
+        public Course() //can you go over why we don't need this here if we don't because in yUML it says to implement one
+            //but its saying its defined somewhere else already??(4)****
+        {
+
+        }
+        public Course(string courseCode, string description)
+        {
+            this.courseCode = courseCode;
+            this.description = description;
         }
 
     }

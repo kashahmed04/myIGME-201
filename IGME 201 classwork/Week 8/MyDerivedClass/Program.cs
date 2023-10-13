@@ -17,33 +17,40 @@ namespace MyDerivedClass
             return myString;
         }
 
-        public string MyString
+        public string MyString //is this ok because accessibility was not defined as well**
+
         {
             set
             {
-                myString = value; //what is value used for again*****
-            }
-        }
-
-        //derive a class means a child class*****
-        public class MyDerivedClass: MyClass
-        {
-            public override string GetString() //when we override we have to same exact signature as virtual
-                //or abstract but we have to say over ride instead of abstract or virtual******
-            {
-                return base.GetString();
+                myString = value; //value is used for whatever we put in or whatever the user puts in (basically
+                                    //the input)
+                //is this ok or should we get input from the user****
             }
         }
     }
 
-
-    internal class Program
+    //derive refers to creating a child class 
+    public class MyDerivedClass: MyClass
     {
-        static void Main(string[] args)
+        public override string GetString() //when we override we have to same exact signature as virtual
+            //or abstract but we have to say over ride instead of abstract or virtual******
         {
-            MyDerivedClass derived = new MyDerivedClass();//*****
-            string newStr = derived.GetString();
-            Console.WriteLine(newStr);//is this how we do it****
+            return base.GetString() + " output from derived class";
+            //when we use it here the stirng also outputs with it
+            //but if its just parent only the getstring will get printed out 
+
         }
     }
+    
+
+
+   static internal class Program
+   {
+       static void Main(string[] args)
+       {
+           MyDerivedClass derived = new MyDerivedClass();//create instance of the child
+           string newStr = derived.GetString(); //the instance of the child calls its own overridden method
+           Console.WriteLine(newStr);//outputs the getstring from the from the child
+       }
+   }
 }
