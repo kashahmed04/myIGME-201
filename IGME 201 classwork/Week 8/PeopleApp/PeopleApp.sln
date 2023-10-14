@@ -6,9 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleApp", "PeopleApp.csproj", "{916473B9-0E0F-4083-B258-93558962AEB3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C73347EB-4B37-4046-AC7A-0B9A7C46657C} = {C73347EB-4B37-4046-AC7A-0B9A7C46657C}
+		{EFA12E2C-52FC-4649-82A9-45E0690822B7} = {EFA12E2C-52FC-4649-82A9-45E0690822B7}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleLib", "..\PeopleLib\PeopleLib.csproj", "{C73347EB-4B37-4046-AC7A-0B9A7C46657C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseLib", "..\CourseLib\CourseLib.csproj", "{EFA12E2C-52FC-4649-82A9-45E0690822B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +27,10 @@ Global
 		{C73347EB-4B37-4046-AC7A-0B9A7C46657C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C73347EB-4B37-4046-AC7A-0B9A7C46657C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C73347EB-4B37-4046-AC7A-0B9A7C46657C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA12E2C-52FC-4649-82A9-45E0690822B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA12E2C-52FC-4649-82A9-45E0690822B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA12E2C-52FC-4649-82A9-45E0690822B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA12E2C-52FC-4649-82A9-45E0690822B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +14,6 @@ namespace CourseLib
                          //code and the Course object (instance) which is the value (1)****
     {
         public SortedList<string, Course> sortedList = new SortedList<string, Course>(); //is default public for lists and sorted lists
-
         public void Remove(string courseCode)
         {
             if (courseCode != null)
@@ -53,27 +53,9 @@ namespace CourseLib
             }
         }
 
+
+
         public Courses()
-        {
-
-        }
-
-    } 
-    public class Schedule 
-    {
-        public DateTime startTime; //what does DateTime refer to in this case(6)****
-        public DateTime endTime;
-        public List<DayOfWeek> daysOfWeek = new List<DayOfWeek>(); //how does this work****
-    }
-
-    public class Course
-    {
-        public string courseCode; //these were in backwards order its not courseCode string
-        public string description;
-        public string teacherEmail;
-        public Schedule schedule;
-
-        public Course() //this is a constructor not a method?? Why is this saying theres no return type??(2)**
         {
             Course thisCourse;
             Schedule thisSchedule;
@@ -110,22 +92,42 @@ namespace CourseLib
                 thisCourse.schedule = thisSchedule;
 
                 // add this course to the SortedList
-
-                //What does this error mean??(3)****
                 this[thisCourse.courseCode] = thisCourse;
             }
         }
 
-        public Course() //can you go over why we don't need this here if we don't because in yUML it says to implement one
-            //but its saying its defined somewhere else already??(4)****
-        {
 
-        }
+
+
+
+    }
+    public class Schedule 
+    {
+        public DateTime startTime; //what does DateTime refer to in this case(6)****
+        public DateTime endTime;
+        public List<DayOfWeek> daysOfWeek = new List<DayOfWeek>(); //how does this work****
+    }
+
+    public class Course
+    {
+        public string courseCode; //these were in backwards order its not courseCode string
+        public string description;
+        public string teacherEmail;
+        public Schedule schedule;
+
+       
         public Course(string courseCode, string description)
         {
             this.courseCode = courseCode;
             this.description = description;
         }
 
+        public Course()
+        {
+
+        }
+
     }
 }
+
+

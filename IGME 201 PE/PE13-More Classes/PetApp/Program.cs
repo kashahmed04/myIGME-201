@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//in shumul only the lines with arrows are the inheritences 
 namespace PetApp
 {
     public interface ICat //is this an interface**
@@ -33,12 +34,12 @@ namespace PetApp
         {
             get
             {
-                return;  
+                return this.name;  
             }
 
             set
             {
-
+                this.name = value; //value basically is used based on whatever the user puts in or we put in ourselrves??**
             }
         }
 
@@ -112,9 +113,9 @@ namespace PetApp
         {
             petList.Remove(pet); //what do these do**
         }
-        public void RemoveAt(PetEI int) //why am I getting an error
+        public void RemoveAt(int PetEI) 
         {
-            petList.RemoveAt(petEI); //what do these do**
+            petList.RemoveAt(petEI); //why do we have another remove here if we have it on the top (why am I getting an error)****
         }
     }
 
@@ -172,13 +173,33 @@ namespace PetApp
 
         public Dog(string szLicense, string szName, int nAge) : base(szName, nAge) //do we still have to to this. for rest of things in constructor**
         {
-
+            this.szLicense = szLicense; //why am I getting an error? Would we have to define szLicense somewhere else to use it
+            //if we are defining a constructor value only in the child?****
         }
     }
     static internal class Program
     {
         static void Main(string[] args)
         {
+            Pet thisPet = null; //whats the difference between this and having an instance with new****
+            Dog dog = null;
+            Cat cat = null;
+            IDog iDog = null;
+            ICat iCat = null;
+
+            Pets pets = new Pets(); //how does it know to create a list if we just make an instance**
+            Random rand = new Random();
+
+            for(int i = 0; i < 50; i++)
+            {
+                if(rand.Next(1,11) == 1)
+                {
+                    if(rand.Next(0,2) == 0)
+                    {
+                        thisPet.petList.Add();
+                    }
+                }
+            }
 
         }
     }

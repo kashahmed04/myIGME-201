@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using PeopleLib;
+using CourseLib;
 
 //copy the.cs file into our folder so we can add an existing item and can only be in the folder*****
 //we then add a reference of people lib by adding the reference then after we right click the actual project then add the existing project then we add
@@ -252,6 +253,17 @@ namespace PeopleApp
                     }
                 } while (true);
             }
+
+            Console.Write($"Course Code=> ({thisPerson.courseCode}) => ");
+            string code = Console.ReadLine();
+            while(code.Length > 0)
+            {
+                thisPerson.courseCodes.Add(code);
+                Console.Write($"Course Code=> ({thisPerson.courseCode}) => "); //I am very confused on steps 7C,7D, and, 7E
+                //I tried to implement as best as I could but I was just so confused I did not know what to do......
+                code = Console.ReadLine();
+            }
+            
 
             if (thisPerson.GetType() == typeof(Teacher))
             {
