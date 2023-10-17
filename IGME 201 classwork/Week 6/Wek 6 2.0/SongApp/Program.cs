@@ -29,7 +29,9 @@ using System.Threading.Tasks;
 
 //for dependence it knows it has to build something first because it depends on it (dependancy) (priority over it because it depends on it)
 
-
+//Creates a private field called parentString and we can access the private
+//string via a property when we create an instance of a child so it can inherit the property and be able to access the
+//private property.*******
 
 //songlib
 //generates a dll file and now we can use it in our application 

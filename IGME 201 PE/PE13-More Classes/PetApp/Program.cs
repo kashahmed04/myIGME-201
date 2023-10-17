@@ -313,6 +313,10 @@ namespace PetApp
                 {
                     thisPet = pets[rand.Next(0, pets.petList.Count)];
 
+                    if(thisPet == null)
+                    {
+                        continue; //we are allowed to do this because its in the loop even though its in a seperate block
+                    }
 
                     //do we have to set thisPet equal****
                     //to pets because it we are getting a pet object and it needs to be stored in a pet object so when*****
@@ -328,10 +332,10 @@ namespace PetApp
                                 iDog.Eat();
                                 break;
                             case 1:
-                                iDog.Play();
+                                iDog.Bark();
                                 break;
                             case 2:
-                                iDog.Bark();
+                                iDog.Play();
                                 break;
                             case 3:
                                 iDog.NeedWalk();
