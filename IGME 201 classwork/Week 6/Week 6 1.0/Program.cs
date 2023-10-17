@@ -34,12 +34,12 @@ using System.Threading.Tasks;
 
 //why cant we have protected for interface because isnt it techinically referencing things within the child and parent classes so dont they inherit from the interface 
 //(the interface is outside of the class and is different and the class is inheriting the interface)
-//same for the DrawMe because it was an abstact and it still means its overridden and it's only going to be used throughougt the classes only****(can classes be protected)****
+//same for the DrawMe because it was an abstact and it still means its overridden and it's only going to be used throughougt the classes only****(can classes be protected(no))****
 //does protected not allow instances (we are still allowed to create instances of classes when its protected and the protected fields can only be accessed from the class with this.
 //not the instance .)(we can access it internally but not externally)
 //constrcutor is named r and is named double and it calls the base constructor
 //and passes r and 0 into the base constructor** so do we over ride the constructor basically when
-//we do this for child classes with their own values?
+//we do this for child classes with their own values? (we create its own constructor)
 //when we do new it creates a new object and when we did new circle and we passed in raidus we passed r to the circle class and that created an object for us 
 //and then when we created the circle object it puts all the members in the instance and now the when we use circle consuructor it gets passed to the parent
 //because we used base and r for x and 0 for y and then after that and the constructor allows us to set the members of new object we created when it ref. child class
@@ -48,7 +48,6 @@ using System.Threading.Tasks;
 //the base version still in the child (circle) we would do base.Area() and it would call the version in the parent and not the childs over ridden version of it)
 //we can have an if statament if circle was a rectangle then we could do the base.Area()
 //we would seal a class for secuuity features so we cant inherit or in some way hack the secuirty features (if we inherit we can impersnate the parent class)
-//why are childclasses camel case in question 2 in PE11 it was**
 //in this case if we had static things within a class (is it common?(no)) we would use the class name then . notation to access the method or variable or whatever
 //is sttaic (static members apply to everything in the class/struct including its children and parent)(same as structures to access)
 //do we have to create a constructor within the child always(we have to ref. the base constructor for the child classes like we did with each child class to make
@@ -70,7 +69,8 @@ using System.Threading.Tasks;
 //in consutrctors we can do anything in them as well as initialize fields 
 //since static members dont count as instances that means we have to explicitly change the values within the children (if we make static within parent 
 //then we can use the parentclass.static thing but if in child its only accessible within the child and only access with childclass.static)
-///(we can have private static things but its only accessible within the class and it can be shared within the class and the protected can only be seen with this. not instance)
+///(we can have private static things but its only accessible within the class (codeblock)
+//and it cant be shared within the class and the protected can only be seen with this. not instance)
 //if we had Shapes myRect = new Rectangle(1,2) then to access rectangle stuff within it we would explicitly cast it
 //bool isSquare = ((Rectangle)myRect).IsSquare exactly to access it
 //would this myrect var be equal to a rectangle now instead of shape for the rest of the main block meaning it can also access reectnalge stuff since it was casted (yes)
@@ -80,14 +80,15 @@ using System.Threading.Tasks;
 //since its abstacrtct we can only create the variable then have it point to the child (set it to any of its children) (Shapes shape = new child())(in the case its abstract)
 //interface is more generic and take a varible of it and if class inherits from it we can point to any object of it from the interface (like above statement) (alwyays the case)
 //can use typeof() or something is inctance of something to see if its an instance of something and we can use it with other data types
-//(usually used if(instance.GetType() var. typeof(class)) (used for seeing if its the exact same thing so use same exact class like circle instance and circle class)
-//and the "is" is used for if they are similar like parent and child (if they are related 
+//(usually used if(instance.GetType() == typeof(class)) (used for seeing if its the exact same thing so use same exact class like circle instance and circle class)**
+//and the "is" is used for if they are similar like parent and child (if they are related**
 //alyways put Gettype() when using typeof()
 //we need to have an instance and we need to compare it with the data type always (like classes)
 //put the instance in the first part then compare to a class
 
 //if we use a shape class and define it to be a new shape like rectangle it only does the things that are common within parent and child like the methods and stuff
 //but if we want stuff only within the child accessible then we would access the rectangle class specifcially and not just the parent setting equal to new rectangle 
+//or explicitly cast the parent to the child Shapes myRect = new Rectangle(1,2) then bool isSquare = ((Rectangle)myRect)
 /*
  * what data do I need to save about my shapes and how could I structure it to make it easier to get to 
  * we start by drawing yumul diagrams 
@@ -114,7 +115,7 @@ using System.Threading.Tasks;
  *shumul diagrams:
  * first box is name of class(public means it can be accessed anywhere in our application across out application,(we would access with instance name. or this. within
  * and outside the code block for the class or where its defined for whatever is public)
- * (-symbol in front from shumul for private)
+ * (-symbol in front from shumul for private which means its only available within the code block)
  *when it says same assembly for internal thats only within the same dll files only and we would access it the same way like this. and the instance . outside the class
  *why would we want to use internal within a dll if its only accessible in the dll and the code never even runs in there because theres no main 
  *if we want methods only within the dll itself from within the dll so that we dont expose a bunch or stuff to the outside world that nobodody needs to see 
@@ -202,7 +203,7 @@ using System.Threading.Tasks;
  *1-1 class relationships and 1-to-many on shumul
  *1-1 means 2 classes that are related to each other and it means there can be one instance of wife per husbane
  *we can also have 1-many and we can have customers class which contains customers and we can have one of those then
- *a customer class then have an list of customers in customers class and have one to many relatinoship 
+ *a customer class then have an list of customer in customers class and have one to many relatinoship 
  *the list of the customers is each customer from our customer class (customers has a bunch of customer class objects)
  *
  */
@@ -539,7 +540,7 @@ namespace Shape //namespace could be anything we want and not just the same name
         
         }
 
-        //abstraction is using encapsulation and abstracts the functionality for us so we dont have to know the details of how it works**(phone ex.)*****************
+       
         
     }
 

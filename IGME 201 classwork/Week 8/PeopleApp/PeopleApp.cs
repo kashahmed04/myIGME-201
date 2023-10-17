@@ -7,29 +7,50 @@ using System.Collections;
 using PeopleLib;
 using CourseLib;
 
+//ASK AFTER CLASS TOMORROW**********************************************
+//how to know when to use dll and a main file when it does not say
+//for PE14 is it reffering to a dll and a main
+//for shumul how do we know when to assume a method will be empty or a property for the get and set within the {}
+//how early can we get started on exam and how to know when to do error checking or create a seperate dll for the classes and when will we know all the content for exam
+
+//Shapes applciation**
+
+//abstraction is using encapsulation and abstracts the functionality for us so we dont have to know the details of how it works**(phone ex.)*****************
+
+//  if(shape is IDrawOjbect)
+//{
+//    IDrawOjbect drawOjbect = (IDrawOjbect)shape; //explicitly casting the shape which is a rectangle now to an idrawibject interface(why because its inherited already
+//    from the parent)
+//}
+
+
 //copy the.cs file into our folder so we can add an existing item and can only be in the folder*****
 //we then add a reference of people lib by adding the reference then after we right click the actual project then add the existing project then we add
 //the people lib 
-//the project in bold is the run it will run****
+//the project in bold is the run it will run
 //we go on solution then dependeices then do people app depends on people lib and people lib takes priority and gets build first
-//because people app depends on it and it changes the build order****
+//because people app depends on it and it changes the build order(before what does it usually build if we dont have a dependancy (default))****
 
-//person classes contains student and teachers and person child that inherits from the parent and it has interfaces as well but the methods should be in the second part
-//the student adds gpa field and the teacher class adds thespeciality field and the children inherit the fields from the parent and the licenseID is a private field but**** 
-//public constructor is available*****
+//person classes contains student and teachers and a person child that inherits from the parent and it has interfaces as well but the methods should be in the second part**
+//the last aprt of the classes usually??**
+//the student adds gpa field and the teacher class adds thespeciality field and the children inherit the fields from the parent and the licenseID is a private field but**
+//when we use this. to reference it within the parent in the child then it works because it goes back up to the parent and uses the property for it that was defined
+//for the private field* (is this how to usually access private fields or can we also use methods)**
 
+//is it necessary to have a constructor or call the base constructor or even use base in classes because in this case we didnt but you said in shape that we had to**
+//how big are constructors usually**
 namespace PeopleApp
 {
     class PeopleApp
     {
         static void Main(string[] args) //people app is the only one that has main so its the only one that runs****
         {
-            Courses courses = new Courses(); //we should have 100 classes in there*****
+            Courses courses = new Courses(); //we should have 100 classes in there from class1.cs*****
 
             // create our People SortedList!
             People people = new People();
 
-            // create and initialize our person object
+            // create and initialize our person object (when and why would we want to initialize our instances to null why cant we just say new classname())**
             Person person = null;
             
             string sAction = null;
@@ -37,7 +58,7 @@ namespace PeopleApp
             {
                 Console.WriteLine();
 
-                Console.Write("Add, Edit, Delete, List, Live, Quit => "); //lets us do things to our database 
+                Console.Write("Add, Edit, Delete, List, Live, Quit => "); //lets us do things to our database (lets us access the dll's??)**
                 sAction = Console.ReadLine().ToLower();
 
                 string email = null;
@@ -48,9 +69,9 @@ namespace PeopleApp
                         person = null;
 
                         Console.Write("Person type (student/teacher) => "); //add a student or teacher object and we use the parent class as our variable or as our
-                        //new person and our parent class is Person (Person people = new People())*****
+                        //new person and our parent class is Person (Person people = new Person())*****
                         //we can use a generic person variable to point to our new student or teacher class and gives us access to common things within teacher and whatever
-                        //class was chosen****
+                        //class was chosen**** (what if we wanted to access a students GPA or a teachers speciality)**
                         string sType = Console.ReadLine();
 
                         // create the person object depending on the type they selected
@@ -61,11 +82,11 @@ namespace PeopleApp
                         }
                         else
                         {
-                            person = new Teacher();
+                            person = new Teacher(); //even if they dont type a t and type some other letter it makes a teacher by default then if its anythign other than s**
                         }
 
                         // edit the new person
-                        EditPerson(ref person); //we want to edit that person in this method (we could eleave out ref and it would work the same****
+                        EditPerson(ref person); //we want to edit that person in this method (we could eleave out ref and it would work the same)****
 
                         // add the new person to the SortedList array using the email as index
                         // note that this uses the index property in the class which does additional exception handling
@@ -166,23 +187,29 @@ namespace PeopleApp
                         break;
                 }
             }
+
+            //Person persn = new Student();
+            //Student a = (Student)persn.Eat(); //why doesnt this cast because I tried to access it but it eas gvng me an error 
         }
 
         public static void EditPerson(ref Person thisPerson) //passing in the Person as a ref. variable (we dont need ref. because clas variables are ref. types
             //by default but its recommented to make it as explicit as possible*****
             //if we change anything to the variable within the method it will change the variable back in the calling code*****
+            //we reference the Person object we created by putting the Person reference in the para.)**
         {
-            // for each field, display the current value, if any
+            // for each field, display the current value, if any (basically they see the email that it was set to beofre and they can edit it but if the email was never
+            //existing intitally then it does not show up and it just does the => with no space before it??)**
             // only replace the value if a new value was entered
 
-            Console.Write($"Email ({thisPerson.email}) => "); //set their email to what they set it to****
+            Console.Write($"Email ({thisPerson.email}) => "); //set their email to what they set it to (in the console how does thisPerson.email show up)**
+                                                                //the email can contain anything we want but if its nothing or a bunch of spaces will it just skip it**
             string sEmail = Console.ReadLine();
             if (sEmail.Length > 0)
             {
                 thisPerson.email = sEmail;
             }
 
-            Console.Write($"Name ({thisPerson.name}) => "); //set the name to what they said****
+            Console.Write($"Name ({thisPerson.name}) => "); //set the name to what they said (con contain anything in it as well**
             string sName = Console.ReadLine();
             if (sName.Length > 0)
             {
@@ -191,11 +218,12 @@ namespace PeopleApp
 
             do
             {
-                Console.Write($"Age ({thisPerson.age})=> "); //same for age***
+                Console.Write($"Age ({thisPerson.age})=> "); //same for age but it needs to be checked if it can be parsed into a number first**
                 string sAge = Console.ReadLine();
                 if (sAge.Length > 0)
                 {
-                    if( int.TryParse(sAge, out thisPerson.age ) )
+                    if( int.TryParse(sAge, out thisPerson.age ) ) //if the input is entered wrong it breaks regardless (no try catch)**
+                                                                  //and it does not keep looping so why would we need a loop**
                     {
                         break;
                     }
@@ -208,18 +236,20 @@ namespace PeopleApp
 
             do
             {
-                Console.Write($"Drivers License ID ({thisPerson.LicenseId}) => "); //their drivers license ID which is an integer****
+                Console.Write($"Drivers License ID ({thisPerson.LicenseId}) => "); //their drivers license ID which is an integer (was the main reason we needed
+                                                                                    //to access (have a) person object was because of the license ID)(is this always true
+                                                                                    //or could we also have a child access the property)**
                 string sLicenseID = Console.ReadLine();
                 if (sLicenseID.Length > 0)
                 {
                     int nLicenseId;
                     if ( int.TryParse(sLicenseID, out nLicenseId) )
                     {
-                        // note that we cannot pass an operator field to int.TryParse()
-                        // we need to use a temporary int variable to parse into
+                        // note that we cannot pass an operator field to int.TryParse()**
+                        // we need to use a temporary int variable to parse into** *why could we just use age but here we cant)**
                         // the LicenseId property applies additional rules to setting the licenseId field
                         thisPerson.LicenseId = nLicenseId; //the license ID 
-                        //we need to use an int. for try parse because it expects a variable and it expects and int. and we cant pass in thisPerson.LicenseID****
+                        //why cant we just put in this.LicenseID??** do we do this for all private fields or when should we do this**
                         break;
                     }
                 }
@@ -231,14 +261,16 @@ namespace PeopleApp
 
             if (thisPerson.GetType() == typeof(Student))
             {
-                Student thisStudent = (Student)thisPerson; //to set a more percise to less percise then we have to epxlicitly cast it****
-                //to set student to parent type we set it as a student (we can have parent to child because its more to less generic)*****
+                Student thisStudent = (Student)thisPerson; //to set a more percise to less percise then we have to epxlicitly cast it** (usually the less pericse is parent
+                                                           //nd more percise is the child right)****
+                //to set student to parent type we set it as a student (we can have parent to child because its more to less generic)
+                //and this is only defined in this conditional unless we defined it outside which means then it would be accessible in the whole code block*****
 
                 do
                 {
                     Console.Write($"GPA ({thisStudent.gpa})=> "); //we have additinonal field for student which we populate and if they are a student we create a reference
-                    //variable to cast them as a student and we create a studetn variable to do it via above and now we can
-                    //enter their GPA and if its a teacher then we can access their specicialty field and do that 
+                    //variable to cast the parent as a student** and we create a studetn variable to do it via above and now we can
+                    //enter their GPA and if its a teacher then we can access their specicialty field and do that by explicitly csting to a teacher instead**
                     string sGPA = Console.ReadLine();
                     if (sGPA.Length > 0)
                     {
@@ -254,12 +286,13 @@ namespace PeopleApp
                 } while (true);
             }
 
-            Console.Write($"Course Code=> ({thisPerson.courseCode}) => ");
+            Console.Write($"Course Code=> ({((Student)thisPerson).courseCodes}) => ");
             string code = Console.ReadLine();
             while(code.Length > 0)
             {
-                thisPerson.courseCodes.Add(code);
-                Console.Write($"Course Code=> ({thisPerson.courseCode}) => "); //I am very confused on steps 7C,7D, and, 7E
+                ((Student)thisPerson).courseCodes.Add(code); //do we have to explicitly cast every single time like this unless we make a variable out of it**
+                //is this how we do it**
+                Console.Write($"Course Code=> ({((Student)thisPerson).courseCodes}) => "); //I am very confused on steps 7C,7D, and, 7E
                 //I tried to implement as best as I could but I was just so confused I did not know what to do......
                 code = Console.ReadLine();
             }
@@ -286,7 +319,7 @@ namespace PeopleApp
             //how does thie woerk****
 
             // declare IPerson interface reference variable
-            IPerson iPerson = (IPerson)obj; 
+            IPerson iPerson = (IPerson)obj;  //cast this because parent does not see interface but children do**
 
             // declare IStudent interface reference variable
             // initialize to null because we do not know if obj is Student or Teacher
@@ -297,18 +330,24 @@ namespace PeopleApp
             iPerson.Eat();
 
             // notice how we can use a Person reference to call Work()
-            // because the virtual method is defined in the shared Person class
-            // even though the method implementation is different between the 2 classes
-            person.Work();
+            // because the virtual method is defined in the shared Person class**
+            // even though the method implementation is different between the 2 classes**
+            //it calls the correct one based on whatever class is passed in since its shared with the parent**
+            //and for student it calls the default one in parent because it does not have the override method in it**
+            person.Work(); //cals the one in parent instead because we ref. the parent so if a student or teacher is called it uses the parent here (work work work work)**
 
             // but because Party() is only a member of Student
             // as a result of inheriting IStudent
             // we need to ensure obj is a Student
-            if( obj.GetType() == typeof(Student))
+            //what is obj. here**
+            if( obj.GetType() == typeof(Student)) //if a student object is put in, we check if they are indeed a student then we cast iStudent**
+                //to the person object we passed in (in this case it was set to the parent) and set that variable equal to that then cal the party method**
+                //we need to cast because it was a person variable which only holds the parent**
             {
                 // we use an IStudent reference to call Party()
-                iStudent = (IStudent)person;
-                iStudent.Party();
+                iStudent = (IStudent)person; //have to cast it since person does not see interface only child does (how can it see its type of student when its the parent
+                                             //and it can only see specific thingd whereas "is" is similar so shouldnt we use "is"**
+                iStudent.Party(); //call the party for the student**
             }
         }
     }

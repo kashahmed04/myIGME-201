@@ -50,6 +50,8 @@ namespace MyDerivedClass
        {
            MyDerivedClass derived = new MyDerivedClass();//create instance of the child
            string newStr = derived.GetString(); //the instance of the child calls its own overridden method
+           //MyClass classes = new MyClass(); outputs the my string only from the parent not the added string like it was in child
+           //Console.WriteLine(classes.GetString());
            Console.WriteLine(newStr);//outputs the getstring from the from the child
        }
    }
