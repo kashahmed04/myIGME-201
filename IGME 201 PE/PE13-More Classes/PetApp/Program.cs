@@ -281,7 +281,7 @@ namespace PetApp
                     }
                     else
                     {
-                        Console.WriteLine("You bough a cat!");
+                        Console.WriteLine("You bought a cat!");
                         Console.WriteLine("Cat's name => ");
                         string catName = Console.ReadLine();
                         Console.WriteLine("Age => ");
@@ -363,7 +363,9 @@ namespace PetApp
 
                         }
                     }
+
                 }
+
             }
 
         }

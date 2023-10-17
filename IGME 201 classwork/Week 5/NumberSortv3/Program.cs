@@ -17,6 +17,8 @@ namespace NumberSortV1
     ///         nAnswer = processDivMult(n1, n2); <summary>
     /// delegate steps
     /// </summary>
+    /// 
+    //ths sorted list automatically sorts the list and the dict. allowes us to access with a numeric or strink index for key (only??)**
     static class Program //always put static in front of our class program so it forces us to put static in front of the class program
     {
         delegate double LowestOrHighestFunction(double[] a);
