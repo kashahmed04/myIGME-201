@@ -127,12 +127,19 @@ namespace PetApp
 
         public void Add(Pet pet) //we put void here because there is no : return type after the method name right??**(10)
         {
-            petList.Add(pet);
+            if(pet!= null){
+                petList.Add(pet);
+            }
+
         }
 
         public void Remove(Pet pet)
         {
-            petList.Remove(pet); 
+            if(pet != null)
+            {
+                petList.Remove(pet);
+            }
+            
         }
         public void RemoveAt(int petEI)
         {
@@ -150,23 +157,23 @@ namespace PetApp
     {
         public override void Eat()
         {
-            Console.WriteLine("Yuck, I don't like that!");
+            Console.WriteLine(Name + "Yuck, I don't like that!");
         }
         public override void Play()
         {
-            Console.WriteLine("Where's that mouse....");
+            Console.WriteLine(Name + "Where's that mouse....");
         }
         public void Purr()
         {
-            Console.WriteLine("Purrrrrrrrrrrrrrrrrrrr....");
+            Console.WriteLine(Name + "Purrrrrrrrrrrrrrrrrrrr....");
         }
         public void Scratch()
         {
-            Console.WriteLine("Purrrrrrrrrrrrrrrrrrrr....");
+            Console.WriteLine(Name + "Purrrrrrrrrrrrrrrrrrrr....");
         }
         public override void GotoVet()
         {
-            Console.WriteLine("Hiss!");
+            Console.WriteLine(Name + "Hiss!");
         }
 
         public Cat()
@@ -187,23 +194,23 @@ namespace PetApp
         public string szLicense;
         public override void Eat()
         {
-            Console.WriteLine("Yummy, I will eat anything!");
+            Console.WriteLine(Name + "Yummy, I will eat anything!");
         }
         public override void Play()
         {
-            Console.WriteLine("Throw the ball, throw the ball!");
+            Console.WriteLine(Name + "Throw the ball, throw the ball!");
         }
         public void Bark()
         {
-            Console.WriteLine("Woof woof!");
+            Console.WriteLine(Name + "Woof woof!");
         }
         public void NeedWalk()
         {
-            Console.WriteLine("Woof woof, I need to go out");
+            Console.WriteLine(Name + "Woof woof, I need to go out");
         }
         public override void GotoVet()
         {
-            Console.WriteLine("Whimper, whimper, no vet!");
+            Console.WriteLine(Name + "Whimper, whimper, no vet!");
         }
 
         public Dog(string szLicense, string szName, int nAge) : base(szName, nAge)

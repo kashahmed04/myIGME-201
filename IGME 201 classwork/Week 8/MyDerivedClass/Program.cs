@@ -10,11 +10,11 @@ namespace MyDerivedClass
 
     public class MyClass
     {
-        private string myString = "random string"; //we have to define this in the class because if we defined it in the method it would be only
+        private string myString; //we have to define this in the class because if we defined it in the method it would be only
         //accesible in that code block right??(1)****
         public virtual string GetString()
         {
-            return myString;
+            return this.myString;
         }
 
         public string MyString //is this ok because accessibility was not defined for MyString(2)****
@@ -49,8 +49,9 @@ namespace MyDerivedClass
        static void Main(string[] args)
        {
            MyDerivedClass derived = new MyDerivedClass();//create instance of the child
+           derived.MyString = "random string";
            string newStr = derived.GetString(); //the instance of the child calls its own overridden method
-           //MyClass classes = new MyClass(); outputs the my string only from the parent not the added string like it was in child
+           //MyClass classes = new MyClass(); outputs the my string only from the parent not the added string like it was in child**
            //Console.WriteLine(classes.GetString());
            Console.WriteLine(newStr);//outputs the getstring from the from the child
        }

@@ -9,9 +9,9 @@ using CourseLib;
 
 //ASK AFTER CLASS TOMORROW**********************************************
 //how to know when to use dll and a main file when it does not say
-//for PE14 is it reffering to a dll and a main
-//for shumul how do we know when to assume a method will be empty or a property for the get and set within the {}
-//how early can we get started on exam and how to know when to do error checking or create a seperate dll for the classes and when will we know all the content for exam
+//for PE14 is it reffering to a dll and a main(it will say create a class library)
+//for shumul how do we know when to assume a method will be empty or a property for the get and set within the {}(it will be exlpitily said)
+//how early can we get started on exam and how to know when to do error checking or create a seperate dll for the classes and when will we know all the content for exam(yes)
 
 //Shapes applciation**
 

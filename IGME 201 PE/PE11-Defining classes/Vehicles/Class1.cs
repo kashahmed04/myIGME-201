@@ -79,7 +79,7 @@ namespace Vehicles
     {
         public void LoadPassanger() //only refernce the prop. and methods common in classes within the interface and the interface points to the classes*****
                                     //that has everything common within the interface*****
-                                    //(AN INTERFACE IT NOT A CLASS/INSTANCE CANT HAVE OVERRIDES OR THEY CANT INHERIT)(other*******
+                                    //(AN INTERFACE ITS NOT A CLASS/INSTANCE CANT HAVE OVERRIDES OR THEY CANT INHERIT)(other*******
                                     //classes can inherit from it though?)(is this definition correct of interfaces)(3)********
                                     
         {

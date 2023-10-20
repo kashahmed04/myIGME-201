@@ -89,6 +89,8 @@ namespace UT1_BugSquash
                 nextVal = Power(nBase, nExponent + 1);
 
                 //(Bug #10: Logic error (should have done nExponent +1)
+                //I said compile time at first but then as I saw the my feedback and now it says logic
+                //because I changed it according to the answers but originally I had it as a compile error
                 returnVal = nBase * nextVal;
             }
 
