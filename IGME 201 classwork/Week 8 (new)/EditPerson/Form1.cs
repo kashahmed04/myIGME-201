@@ -4,12 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 //each of these controls is a windows control and in the properties panel we have all of the properties assocated with that control and****
 //we have a typecombobox which has an items property and it has a list of possible values and it pops up a diolouge for a list of strings in the dioglouge*****
@@ -48,28 +46,44 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 //the intializecomponent must be the first function call in our form1 and dont put anything above it*****
 
+//every control has a tag property and when we look at the properties(wrench icon)(look at everything in alpabetical order with the a z icon)**
+//tag is of the object datatype and we can use it to attach any kind of data to the control* 
+//and we want to know if there is valis daat that has been entered in every field and**
+//we do for each control in this.controls (the list of all of the controls in designer)**
+//and we want to set the tag proeprty to false**
+//and for the accept and cancel button in the main form1 of editperson property we can set it ok to cancelbutton****(usually will be there??)**
+
+//go to toolbix then add error provuder by dragging it to the form and it does not show on the form usually but its associated with the form so we can display error messages
+//on the form****
+//we only want to show the ok button if all of the data is valid on the form and we start by initializing our enabled state of our ok button to be false**
 
 namespace EditPerson
 {
-    //every control has a tag property and when we look at the properties(wrench icon)(look at everything in alpabetical order with the a z icon)**
-    //tag is of the object datatype and we can use it to attach any kind of data to the control* 
-    //and we want to know if there is valis daat that has been entered in every field and**
-    //we do for each control in this.controls (the list of all of the controls in designer)**
-    //and we want to set the tag proeprty to false**
-    //and for the accept and cancel button in the main form1 of editperson property we can set it ok to cancelbutton****(usually will be there??)**
-
-    //go to toolbix then add error provuder by dragging it to the form and it does not show on the form usually but its associated with the form so we can display error messages
-    //on the form****
-    public partial class Form1 : Form
+    public partial class PersonEditForm : Form
     {
-        public Form1()
+        public PersonEditForm()
         {
+            /******************************************************************************************
+             **************THIS MUST BE THE FIRST FUNCTION CALL IN YOUR FORM CONSTRUCTOR **************
+             ******************************************************************************************/
             InitializeComponent();
+
+            foreach (Control control in this.Controls)
+            {
+                // use Tag property to indicate valid state
+                control.Tag = false;
+            }
+
+            this.okButton.Enabled = false;
+
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
     }
 }
+
+
