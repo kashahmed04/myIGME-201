@@ -3,26 +3,32 @@
 // {type:class}
 // {generate:true}
 // {direction:topDown} 
-//not need to put :void for greet rightafter it** 
-//and for references in shumul we alwyas put ()**
-//if there is no para. for method in general??**
+//not need to put :void for greet right after it??(1)** 
+//and for references in shumul we alwyas put () in terms of if it's referencing a method from an interface??(2)**
+//Is this the same case if there is no para. for method in general we would just do the ()??(3)**
 [+ICustomer|Greet()]
 [+Customer|+name:string;-creditCardNumber:string|+CreditCardNumber:string:w;+Greet()|] 
 [+ICustomer]^[+Customer]
-//this greet at the every end method is good right since it does not return (not return tyoe)anything for have any**
-//para.** (does not need override or anything if it inherits from interface because the interface is just a pointer)**
-//its always bottom to top for inheritence right**
-[+A:HotDrink|+instant:bool;+milk:bool;-sugar:byte;+brand:string;+size:string|+AddSugar(byte amount):v;+Steam():a|+(brand:string)]
+//this greet at the end of the customer clss is good right since it does not return anything and it's only a console statement??(4)**
+//its always bottom to top for inheritence right??(5)**
+[+A:HotDrink|+instant:bool;+milk:bool;-sugar:byte;+brand:string;+size:string|+AddSugar(amount byte):v;+Steam():a|+();+(brand:string)]
 
-//for public Customer customer just an instance and we dont have to use it in shumul**
-//need to include default constructuor right since we have more than 1**
-//the method is in the bottom but its included in the methods right**
-//we put the name of the para. in like we did for addsugar right but we usually**
-//dont have the virtual methods take in anything or can they and if they do we would do :datatype after the method dclaration
-//then the accessiblity of :v??**
-//for inheritance we just do the arrow we dont specify in boxes right**
+//for the AddSugar() method is it ok that it's going onto the next line like that or how would we fix it(6)**
+
+//for public Customer customer just an instance and we dont have to use it in shumul anywhere??(7)**
+//need to include default constructuor right since we have more than 1 constructor in CupOfCoffee??(8)**
+//even if the order of the fields, methods, properties, and constructors is written different we still implement them in the
+//way the documentation says right not according to the C#??(9)**
+//for inheritance we just do the arrow we dont specify in boxes right??(10)**
 
 [+CupOfCoffee|+beanType:string|+Steam():o|+();+(brand:string):base(brand)]
-//we put in para. always in the methods unless they are in an interface we would just do method() since its a ref.**
+//we put in para. always in the methods unless they are in an interface we would just do method() since its a ref.
+//same for if it was a method that took in no para. right??(11)****
 
 [+A:HotDrink]<-.-[+CupOfCoffee]
+
+//would we implement the new customer object added
+//in the constrcutor of the HotDrink class??(12)****
+
+//even for the AddSugar in HotDrink we would have the para.
+//in opposite order too right in terms of datatype and variable??(13)**

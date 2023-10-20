@@ -6,8 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 /*  
  *  Dictionaies and lists and recursion with factorial 
  
@@ -44,7 +42,7 @@ namespace Week_5_1._0
             dPersonAge["david"] = 60; //we cna change the entires though (value), but not the keys
 
             foreach (KeyValuePair<string, int> valuePair in dPersonAge) //goes through all the keys and values in the dict.
-                //always use the keyvalue pair and name in then go through the dict 
+                //always use the keyvalue pair and name (varibale type) in then go through the dict 
             {
                 Console.WriteLine($"person[{valuePair.Key}] = {valuePair.Value}"); //dict. are not sorted when we add our items in and they are stored in the order we add them
             }

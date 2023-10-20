@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 //the class we could define the interface that only defines the read (get) only which we have done**
 //(Inamereadonly read = new Building() then do read.Name(no () because its a prop.) this was if the obj method was not there and it inherits the interface
 //**(can do this because building inherits from**
-//the interface otheriwse explicitly cast by doing Building build = new Building() then Inamereadonly read = (Inamereadonly)build** (usually the case for explicit casting??)**
+//the interface otheriwse explicitly cast by doing Building build = new Building() then Inamereadonly read = (Inamereadonly)build** (usually the case for explicit casting)
 //for classes and interfcaes??**
 //but how would it work since the interface is only a reference and building does not implement it since it did not inherit (if this was the case)**
 //interfaces can use properties to access other property values based on what class inherited it or if we exlicitly casted (same for methods)**

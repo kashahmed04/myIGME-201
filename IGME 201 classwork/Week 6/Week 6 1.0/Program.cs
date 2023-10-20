@@ -445,15 +445,15 @@ namespace Shape //namespace could be anything we want and not just the same name
             drawOjbect = blood; //ref. variable and now we point it to blood
             
             //this will draw blood
-            drawOjbect.DrawMe(); 
+            drawOjbect.DrawMe();
             //the interface contains the drawme method and we can use it do call the drawme method and same thing for the drawobject point to the circle
             //and change direction of mirror to point to something else and we cnan turn mirror around to point to the drawme method for circle instead of blood now
 
-        //since parent points to it the children would also get the interface??**** (I thought there was no inheritence with interfaces)****
+            //since parent points to it the children would also get the interface??**** (I thought there was no inheritence with interfaces)****
 
             //circle inherits from the IDrawObject interface(do we have to do this for interfaces
             //because shoouldnt everything by default inherit it since its on the top of the application or*************
-            drawObject = circle; 
+            drawOjbect = circle; 
             drawOjbect.DrawMe();
 
             //call the DrawObject with each object instance
