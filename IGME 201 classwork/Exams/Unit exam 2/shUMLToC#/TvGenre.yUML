@@ -1,0 +1,19 @@
+
+// {type:class}
+// {generate:true}
+// {direction:topDown} 
+
+[+A:TvGenre|+tvShow:string|+GetShow:string;+GetSnacks():a;+LocationToWatch():v|]
+[+IReaction|Reaction()]
+[+IRating|Rating()]
+[+Comedy||+GetSnacks():o;+LocationToWatch():o;+Reaction();+Rating()|]
+[+Action||+GetSnacks():o;+LocationToWatch():o;+Reaction();+Rating()|]
+
+[+A:TvGenre] <-.- [+Comedy]
+[+A:TvGenre] <-.- [+Action]
+[+IReaction] ^ [+Comedy]
+[+IRating] ^ [+Comedy]
+[+IReaction] ^ [+Action]
+[+IRating] ^ [+Action]
+
+//do we have to comment this**
