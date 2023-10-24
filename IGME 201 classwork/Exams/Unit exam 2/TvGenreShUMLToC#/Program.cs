@@ -37,7 +37,7 @@ namespace TvGenreShUMLToC_
     // Restrictions: None
     public abstract class TvGenre
     {
-       public string tvShow;
+       public string tvShow; 
         
         public string GetShow
         {
@@ -165,11 +165,11 @@ namespace TvGenreShUMLToC_
                 castReaction.Reaction();
             }
 
-            if(obj is TvGenre)
+            if(obj is TvGenre) 
             {
                 TvGenre castTv = (TvGenre)obj;
                 castTv.GetSnacks();
-                castTv.LocationToWatch(); //we only have to call methods here right not prop. or fields**
+                castTv.LocationToWatch();
             }
         }
     }

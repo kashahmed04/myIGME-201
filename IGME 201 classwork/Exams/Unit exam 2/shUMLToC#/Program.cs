@@ -36,7 +36,7 @@ namespace shUMLToC_
         {
             get
             {
-                return this.phoneNumber;
+                return this.phoneNumber; 
             }
             set
             {
@@ -73,7 +73,7 @@ namespace shUMLToC_
             //Console.WriteLine("Hang Up");
         }
 
-        public override void Connect() //same for the override right
+        public override void Connect() //same for the override right for the void part
         {
           
 
@@ -129,7 +129,7 @@ namespace shUMLToC_
     // Restrictions: None
     public class Tardis: RotaryPhone
     {
-        private bool sonicScrewdriver;
+        private bool sonicScrewdriver; 
         private byte whichDrWho;
         private string femaleSideKick;
         public double exteriorSurfaceArea;
@@ -147,7 +147,7 @@ namespace shUMLToC_
         {
             get
             {
-                return this.femaleSideKick; //can use this. here right
+                return this.femaleSideKick; 
             }
         }
 
