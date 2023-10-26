@@ -280,7 +280,7 @@ namespace shUMLToC_
     // Purpose: Creates objects of the Tardis and PhoneBooth class and calls the
     //UsePhone() method to call the correct method based on what type of object is passed in.
     // Restrictions: None
-    internal class Program
+    static internal class Program
     {
         // Method: Main()
         // Author: Kashaf Ahmed

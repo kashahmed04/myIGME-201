@@ -126,7 +126,7 @@ namespace TvGenreShUMLToC_
     //it based on which object we passed in so we can use the methods according to the
     //object that was passed in 
     // Restrictions: None
-    internal class Program
+    static internal class Program
     {
         // Method: Main
         // Author: Kashaf Ahmed

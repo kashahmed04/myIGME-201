@@ -43,7 +43,7 @@
 <text text-anchor="start" x="207.915" y="-383" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">+A:HotDrink</text>
 <polygon fill="none" stroke="#000000" points="182,-290 182,-370 288,-370 288,-290 182,-290"/>
 <text text-anchor="start" x="206.516" y="-351" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">+instant:bool</text>
-<text text-anchor="start" x="212.3595" y="-339" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">+milk:bool</text>
+<text text-anchor="start" x="208.195" y="-339" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">+mimlk:bool</text>
 <text text-anchor="start" x="209.9945" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">&#45;sugar:byte</text>
 <text text-anchor="start" x="205.686" y="-315" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">+brand:string</text>
 <text text-anchor="start" x="209.5795" y="-303" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">+size:string</text>

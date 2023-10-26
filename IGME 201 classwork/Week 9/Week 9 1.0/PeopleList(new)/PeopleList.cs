@@ -11,31 +11,33 @@ using PeopleAppGlobals;
 using PeopleLib;
 
 
-//we delete the control and make a windows form by going to solution then press add then form**
+//we delete the control and make a windows form by going to solution then press add then form (we can delete it)
 //listview control is used for the class libraries we use and
 //the resulting product is a list of people with teachers and students and we can add people and if we press
 //enter on one of the people then we can edit the person
-//the list view contorl is the same view the****
 
-//the list view control allows us to view by list, icons, details view(we will be using),etc.
-//we have a listview control with peole listview and the name i the prop. are the name of the field in the class**
+//the list view control allows us to view by list, icons, detailed view (we will be using),etc.
+//we have a listview control with peole listview and the name of the columns are the name of the field in the class(peoplelist) (in the documentation)
 //columns for the name, email, etc. (stroed in columns prop. of the list view) (if we click on dots to look at the collection
-//for the columns we can see the headers for each and always look at prop. in alphabetical order)**
+//for the columns we can see the headers for each and always look at prop. in alphabetical order)
 
-//for each of our column headers we have the name of the header (field??)** and the name of the actual box and the alignement
-//of the columns**
+//for each of our column headers we have the name of the header (field) and the name of the actual box and the alignement
+//of the columns
 
-//to add a new column header we do the add we are still where the 3 dots tab is in column and we
+//in forms the class is the form and the fields are what we put into the form right
+
+//to add a new column header we do the add we are still where the 3 dots tab (edit columns)** is in column and we
 //can add a major header for the student and if we wanted to show it as the second instead of 5th then we can click arrow to move it up
 //and when we click ok, it moves the header
 
-//we always add text so we can see the label(what do the other two names do)**
+//we always add text so we can see the label and change the name field
 //we can also press remove in the 3 dots tab as well to remove the column if we want
-//we have to dith as well to display the width in the list view control
+//how to display the width in the list view control like we did with the columns (width element in the columns)
 //outside of the 3 dots in the actual property, we can have gridlines or not and we can allow multi select but for now we 
-//want them to select one person at a time**
-//the view property allows us to change the icons and by default it gives us large icon and we need to set it to detaiils**
-//to get icons to show**
+//want them to select one person at a time
+
+//the view property allows us to change the icons and by default it gives us large icon and we need to set it to detaiils
+//to get icons to show (what else is there is details the most common)
 
 namespace PeopleList
 {
@@ -43,27 +45,29 @@ namespace PeopleList
     {
 
         //we want to be able to create our sample code (our sample data) and to do that we want another dll
-        //people class global dll will contain the list of actual people**
+        //people class global dll will contain the list of actual people and peopleapp still needs access to our people so we need to put
+        //it there (this only gives us the list of people and not the course information thats why we dont put it here)
 
-        //we now want to add peopleappglobals as a reference (rebuild solution) and we need to acccess people
-        //lib again here and not courses because**
+        //and we put using statement above for the peopleappglobals and the peoplelib before didnt it do it automatialcally why do
+        //we have to do it automatically
 
-        //and we put using statement above for the peopleappglobals and the peoplelib**
+        //if we add the reference for the dll and it could add it sometimes or not but the using statement has to be there 
 
         public PeopleList()
         {
-            InitializeComponent(); //put all code below this*
+            InitializeComponent(); //put all code below this
 
-            Globals.AddPeopleSampleData();
-
-            //pressing enter checks for keydown and when we double click it uses itemactivate eventhandler** 
+            Globals.AddPeopleSampleData(); //in the class globals from the peopleappglobals  
 
             //we also need buttons to add and remove a person in the designer
-            //now set up delegate methods for list view**
+            //now set up delegate methods for list view
 
 
             // 1. use the PeopleListView__KeyDown delegate
-            this.peopleListView.KeyDown += new KeyEventHandler(PeopleListView__KeyDown);
+            this.peopleListView.KeyDown += new KeyEventHandler(PeopleListView__KeyDown); 
+            //keydown handles enter on the list and the itemactivate is if we double click with mouse and it allows us to change an object
+
+            //the this. is the field name in the form and then another . for the event handler then after the += its the new event then in () the name of the delegate**
 
             // 2. use the PeopleListView__ItemActivate delegate
             this.peopleListView.ItemActivate += new EventHandler(PeopleListView__ItemActivate);
@@ -72,12 +76,12 @@ namespace PeopleList
             this.addButton.Click += new EventHandler(AddButton__Click);
 
             // 4. use the RemoveButton__Click delegate
-            this.removeButton.Click += new EventHandler(RemoveButton__Click);
+            this.removeButton.Click += new EventHandler(RemoveButton__Click); //gives us our buttons in the bottom of the form
 
             // 5. use the ExitButton__Click delegate
             this.exitButton.Click += new EventHandler(ExitButton__Click);
 
-            PaintListView(null);
+            PaintListView(null); 
         }
 
         // notice that we are making PaintListView public so that it can be called from other classes
