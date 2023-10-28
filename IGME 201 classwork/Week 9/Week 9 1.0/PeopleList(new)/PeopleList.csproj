@@ -48,18 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PeopleList.cs">
+    <Compile Include="PeopleListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PeopleList.Designer.cs">
-      <DependentUpon>PeopleList.cs</DependentUpon>
+    <Compile Include="PeopleListForm.Designer.cs">
+      <DependentUpon>PeopleListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="PeopleList.resx">
-      <DependentUpon>PeopleList.cs</DependentUpon>
+    <EmbeddedResource Include="PeopleListForm.resx">
+      <DependentUpon>PeopleListForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
