@@ -43,10 +43,10 @@
             // 
             this.peopleListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameHeader,
-            this.emailHeader,
             this.ageHeader,
             this.licHeader,
-            this.gpa_specHeader});
+            this.gpa_specHeader,
+            this.emailHeader});
             this.peopleListView.FullRowSelect = true;
             this.peopleListView.GridLines = true;
             this.peopleListView.HideSelection = false;
@@ -67,20 +67,24 @@
             // 
             // emailHeader
             // 
+            this.emailHeader.DisplayIndex = 1;
             this.emailHeader.Text = "Email";
             this.emailHeader.Width = 185;
             // 
             // ageHeader
             // 
+            this.ageHeader.DisplayIndex = 2;
             this.ageHeader.Text = "Age";
             // 
             // licHeader
             // 
+            this.licHeader.DisplayIndex = 3;
             this.licHeader.Text = "License Id";
             this.licHeader.Width = 107;
             // 
             // gpa_specHeader
             // 
+            this.gpa_specHeader.DisplayIndex = 4;
             this.gpa_specHeader.Text = "GPA/Specialty";
             this.gpa_specHeader.Width = 440;
             // 
@@ -88,7 +92,7 @@
             // 
             this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.exitButton.Location = new System.Drawing.Point(693, 416);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 30);
             this.exitButton.TabIndex = 6;
@@ -98,7 +102,7 @@
             // removeButton
             // 
             this.removeButton.Location = new System.Drawing.Point(495, 416);
-            this.removeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removeButton.Margin = new System.Windows.Forms.Padding(4);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(75, 30);
             this.removeButton.TabIndex = 5;
@@ -108,7 +112,7 @@
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(265, 416);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 30);
             this.addButton.TabIndex = 4;
@@ -124,7 +128,7 @@
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.peopleListView);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PeopleListForm";
             this.Text = "PeopleList";
             this.ResumeLayout(false);

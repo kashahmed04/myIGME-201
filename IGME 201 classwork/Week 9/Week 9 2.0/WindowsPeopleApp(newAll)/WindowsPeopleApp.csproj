@@ -34,10 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PeopleAppGlobals">
-      <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
-    </Reference>
-    <Reference Include="PeopleList">
-      <HintPath>..\PeopleList\bin\Debug\PeopleList.dll</HintPath>
+      <HintPath>..\..\..\..\IGME 201 Windows Forms\DynamicPeople\WindowsPeopleApp_12_3\WindowsPeopleApp\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

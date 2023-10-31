@@ -7,18 +7,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PeopleAppGlobals; //list of people (student and teachers)**
+using PeopleAppGlobals; //list of people (student and teachers) and courses**
 using PeopleLib; //the student and teacher  and person objects**
 using EditPerson; //personeditform?? (allows us to edit a person when we double click or press enter on any of their entries or only their email)??**
 
-//I am still confused on why we have to create a reference to peoplelib because we already have our person being accessed in the peopleappglobals 
-//and in personeditform is it because in peeoplelistview__keydown we have to create a new person and make it equal to the person
-//we pressed enter on when we got their name from the list then create a new form with that person we are on so we can edit them??**
 
+//the wdinwos forms contorl document has a summary of all of the controls we will be using this semester 
+//we need to have courselib and peoplelib because they define the student,teacher,and course,and courses class we need for our program
+//we checked to make sure if a field was empty and numeric fields for the editperson.dll and we will refer to people list steps to create a form
+//for the courses**
+
+
+//I am still confused on why we have to create a reference to peoplelib because we already have our person being accessed in the peopleappglobals 
+//is it because in peeoplelistview__keydown we have to point to a a new person and make it equal to the person
+//we pressed enter on when we got their email from the list which returned a person object then create a new form with that person we are on so we can edit them??**
+
+//how do we know whether to make a windows control.vs.a windows forms**
+
+//so basically when we add a control the Name field is the name we access it with in the code and the text is what shows up on the form right**
+//we have a class which is the form, the prop. which is the control but within that prop., we have fields within it to name our control and customize it**
+
+//tag gets or sets with whatever control we use with the . notation**
+
+
+//we wanted to make an interface available to the whole application and if we want accessible to the whole application we want it in a global class
+//and we define it in the globals because we know its shared across everythign and we want to call pintalistview method for the people list so we chanfe people list
+//to inherit that interface and so now anywhere that acccess to the peoplelistform they can now call the paintlistview with the interface because the personeditform
+//can have access to it so we can repaint the list view and move the person to the top (after we finish editing the person
+//we can have para. in the interface (its the method signature so we have to copy it as is)**
+//(how comes person editform does not inherit instead because it needs to be used there)**
 namespace PeopleList
 {
-    public partial class PeopleListForm : Form //does it automatically inherit form or do we put it ourselves what does it mean and when do we know to put it**
+    public partial class PeopleListForm : Form, IListView //does it automatically inherit form or do we put it ourselves what does it mean and when do we know to put it**
                                                 //we need partial in all of our classes because they are being shared with each other in one application**
+
+        //we can now use the interface to call the paintlistview to redraw itself from the email address that the person just edited** (why do we do it here and in globals)**S
+
     {
         public PeopleListForm()
         {
@@ -26,41 +50,46 @@ namespace PeopleList
                                     //file that we don't interact with and it's usually hidden** and we put all code below this 
 
             Globals.AddPeopleSampleData(); //we created a people class instance which the list is stored in peoplelib then we created a reference
-                                            //to the person class or indexer prop.??**
+                                            //to the person class or indexer prop.?? in the globals class**
                                             //in peoplelib which is the indexer prop. to put things within the list and get things within
                                             //the list based on a person object email (teacher or a student)**
                                             //the key is the email to get things and put things within the list and the value is a person object (teacher or a student usually)**
-                                            //how can we edit a person then??)**
+                                            //how can we edit a person then if it was only get and set would that be in the person edit form
+                                            //and here is where we apply those changed to the actual obejct (in editform we were putting in values (editing) and now in
+                                            //here we are setting those values (changes) to an object we want to edit??)**
 
             // 1. use the PeopleListView__KeyDown delegate
             this.peopleListView.KeyDown += new KeyEventHandler(PeopleListView__KeyDown);
 
             // 2. use the PeopleListView__ItemActivate delegate
             this.peopleListView.ItemActivate += new EventHandler(PeopleListView__ItemActivate);
-            //the object name refers to whatever we put in the name section in the properties right**
+            //the object name refers to whatever we put in the name section in the properties right for that control**
             //when we press enter or double click we can do it anywhere right but it has to be in the same
-            //row as the person we want to edit on**
+            //row as the person we want to edit on (can we make it so they can only press enter or double click on something specifially**
 
             // 3. use the AddButton__Click delegate
-            //this.addButton.Click += new EventHandler(AddButton__Click); //why did we comment these out**
+            this.addButton.Click += new EventHandler(AddButton__Click); //why did we comment these out**
             //are we going to use these soon because these are supposed to be the buttons at the bottom of
             //the form**
 
+            //the click method of a button control takes a delegate type of an event handler and the method signature returns void and need to have our standard method name
+            //which is the contorl name__ the event name and it takes objeect sender and event argSs**
+
             // 4. use the RemoveButton__Click delegate
-            //this.removeButton.Click += new EventHandler(RemoveButton__Click);
+            this.removeButton.Click += new EventHandler(RemoveButton__Click);
 
             // 5. use the ExitButton__Click delegate
-            //this.exitButton.Click += new EventHandler(ExitButton__Click);
+            this.exitButton.Click += new EventHandler(ExitButton__Click);
 
             //the this. refers to the form1.designer in windows forms usually why
             //would we want to use it when creating delegates but nowhere else??**
             //the objectName is the field
             //name in the we set in the "Name" field within
             //the form property and then another . for the event then after the += its the
-            //new eventhandler or another event handler then in () the name of the delegate**
+            //new eventhandler or another event handler then in () the name of the delegate method**
 
             //so basically the buttons and toolstrips we create are the properties
-            //and the things we set within them are the fields in the designer??**
+            //and the things we set within them are the fields in the designer like name and customzation within the controls??**
 
             PaintListView(null); //why do we pass null into here and how does it work**
         }
@@ -70,11 +99,31 @@ namespace PeopleList
         //the order of columns is displayed by displayindex
         //for each column we can set width and alignedment and order it displays in 
 
+        //person is an absrtac class so we cant create a person object (instabce)**
+        private void AddButton__Click(object sender, EventArgs e)
+        {
+            Person newPerson = new Student();
+            this.Enabled = false; //cant edit more than one oerson at the same time**
+            new PersonEditForm(newPerson, this); //add the new peroson to the form**
+        }
+
+        private void ExitButton__Click(object sender, EventArgs e)
+        {
+            Application.Exit(); //this removes everything from our form (what about the other way we did which one is more preferrable)**
+            //when we edit a person it should bring us back here**
+        }
+
         private void PeopleListView__KeyDown(object sender, KeyEventArgs e) //object is the list view we pressed enter on****
+            //if they press enter on the list view we want to create a new personeditform passing in the person that was selected (in the tag field of each item in
+            //our listview we save the email associated with that person so we can extrract it when they press enter of double click on the person****
+            //since we added the show method to the constrcutro of our person edit form we dont need to call show externally from the form(ex. epf.form)
+            //the this.show() automatically shows when we create a new form??**
+                                                                          
         {
             ListView lv = (ListView)sender;
             //explicitly cast because its an object(higher than anything in c#)**
             //key code is the key they pressed and we check if they pressed enter**
+         
 
             if (e.KeyCode == Keys.Enter)
             {
@@ -93,7 +142,8 @@ namespace PeopleList
                     //get the email from the list view itme
                     //whichever item is current selected and multiple can be when we set multi selct was set to true in the peopleslistview (if it was true)
                     //but we only allow user to edit one person at a time so we set it to false 
-                    //we only access the 0th index for the current item we are in and the tag is what we are accessing which is the email and we make it s
+                    //we only access the 0th index for the current item we are in (why its the name in our listview))**
+                    //and the tag is what we are accessing which is the email and we make it s**
                     //cast to string because tag is an object??**
                     string email = (string)lv.SelectedItems[0].Tag;
                     //string email = lv.SelectedItems[0].Tag.ToString();
@@ -101,7 +151,7 @@ namespace PeopleList
                     //we do this in a try because there could be no item selected and somebody deleted our list of people and theres nothing in our list so we
                     //make sure (how do we make sure is it just when theres nothing the catch will run but theres nothign in it)**
 
-                    Person person = null; //person object 
+                    Person person = null; //person object pointer??**
                     person = Globals.people[email]; //goes to the globals then goes to the people
                     //list we had created them references the value which is the person based on the email**
 
@@ -114,11 +164,11 @@ namespace PeopleList
                     this.Enabled = false;
 
                     PersonEditForm epf = new PersonEditForm(person, this);
-                    //epf.Show();
+                    //epf.Show(); (shows in the parent form**)
                     //why remove the show here because it's not in the constructor**
 
                     //above creates edit person form and here we want to show it and it handles all of the events against it** 
-                    //when we create forms we need to show them and have them process the user interaction with them**
+                    //when we create forms we need to show them and have them process the user interaction with them which we did in the personeditform**
 
                     //in personeditform we built it as an executable and we can run it 
                     //we never called the show command in the editperson and if we look in the solution exploerer the program.cs was written automatically
@@ -149,9 +199,9 @@ namespace PeopleList
             {
                 string email = (string)lv.SelectedItems[0].Tag; //gets the email 
                 //then we have a person then get the objecy based on the email
-                //then ew set enabled to false so that we can disbale the rest of the form to edit
+                //then we set enabled to false so that we can disbale the rest of the form to edit
                 //one person then we make the new form for that person based on
-                //the perosn objecy and this whic is **
+                //the perosn objecy and this which is the current parent form (the desingner) so we can show the form on the parent application**
 
                 Person person = null;
 
@@ -159,7 +209,7 @@ namespace PeopleList
 
                 this.Enabled = false;
 
-                // only use this method if the Show() is at the end of the constructor!
+                // only use this method if the Show() is at the end of the constructor! (this.show or just show() in the constructor)**
                 new PersonEditForm(person, this);
             }
             catch
@@ -170,7 +220,7 @@ namespace PeopleList
 
 
         // notice that we are making PaintListView public so that it can be called from other classes'
-        //why do we need to call it from the other classes
+        //why do we need to call it from the other classes**
 
         //accepts the first email to show in the list view and the first
         //time we come in we want to start from
@@ -183,13 +233,15 @@ namespace PeopleList
         //each row will consist of 1 person from our people list in our form**
         public void PaintListView(string firstEmail)
         {
-            // a ListView contains an Items field, which is an array of the rows in the ListView.
-            // Items is an array of ListViewItem
+            // a ListView contains an Items field, which is an array of the rows in the ListView.**
+            // Items is an array of ListViewItem**
             ListViewItem lvi = null; //this gives us the first thing in the row which is the name??**
-                                     //this gives us an array of all the names??**
+                                     //this gives us an array of all the names or everything within that row??(which contorl is it usually in)**
 
-            // ListViewItem contains the details of the first column in a row
-            // and an array of ListViewSubItems for all additional columns in the row
+            // ListViewItem contains the details of the first column in a row (name)
+            // and an array of ListViewSubItems for all additional columns in the row (are these both seperate arrays)**(how would it look)**(how does this work)**
+            //it gets the listview which is the name then sets the subitems for that secific name**
+            //which are the rest of the items that go along with the object we are currently on**
             ListViewItem.ListViewSubItem lvsi = null; //this gives us everything else in that row
                                                         //not including the name because the listviewitem
                                                         //was the name and gives us an array
@@ -203,19 +255,19 @@ namespace PeopleList
             // it brings them to the top of the list once we edit them??)**
             // the firstEmail function parameter is the email that should show at the top**
             //whats the difference between this listvieeitem we declared and the one at the top**
-            //if we put the email at the top only how would it add the items at the top??**
+            //if we put the email here how would it add the items at the top??**(go over)**
             ListViewItem firstLVI = null;
 
-            // nStartEl is the SortedList index element that the ListView should start with
-            // based on firstEmail which was passed to our PaintListView() function
+            // nStartEl is the SortedList index element that the ListView should start with**
+            // based on firstEmail which was passed to our PaintListView() function**
             // default to start with the first Person in the SortedList
             int nStartEl = 0;
 
-            //this basically gets the index of the person based on their email within our sortedlist??**
+            //this basically gets the index of the person based on their email within our sortedlist?? (we can index in a sortedlist??)**
             //(if email was passed in then we can check the index down below in the if statement)**
 
             // clear the ListView Items
-            //where did ser set this in designer because there is a differnt name we put in the name section**
+            //why do we want to clear in the whole form**
             this.peopleListView.Items.Clear();
 
             //clear all items in our list view so its empty before we populate then line below we lock it 
@@ -234,7 +286,8 @@ namespace PeopleList
                 // fetch the index of the SortedList
                 nStartEl = Globals.people.sortedList.IndexOfKey(firstEmail);
                 //tells us the index based on the key for indexofkey within the sortedlist**
-                //only used with sortedlists??**
+                //only used with sortedlists?? why would we use it cant we just user the indexer property I though sorted lists did not allow indexing**
+                //why do we specificlaly need the index here**
             }
 
             // use a cntr to check against nStartEl and to enable us to change the
@@ -253,10 +306,10 @@ namespace PeopleList
             {
                 // 6. declare a Person variable called thisPerson and set it to the current keyValuePair Value
                 Person thisPerson = keyValuePair.Value;
-                //variable that points to a key value pair of that type of object** (not a new instance)**
+                //variable that points to a value of that type of object** (not a new instance)**
 
                 // 7. set lvi equal to a new ListViewItem object
-                // this will be the new row we are adding to the ListView
+                // this will be the new row we are adding to the ListView (adds the whole row or only one column entry for the name**)
                 lvi = new ListViewItem();
 
                 // this will be the new row we are adding to the ListView for
@@ -274,17 +327,17 @@ namespace PeopleList
                 }
 
                 // 8. lvi.Text is the text that shows in the first column of the row
-                // set it equal to the person's name
+                // set it equal to the person's name**
                 lvi.Text = thisPerson.name;
 
                 // since the email address is the key into the SortedList
                 // let's save that in the general purpose Tag field
 
-                //store each key that we are currently adding into our listview (current person we are adding)
+                //store each key that we are currently adding into our listview (current person we are adding or email**)
                 //so we can access it easier (the email address is the key)**
                 //save it in the tag field for the current list item (could we have used another varible
                 //other than the tag and how many tags can we have)**(when do we usually use tags)**
-                //when we select a row from our list we will immediately know email address and**
+                //when we select a row from our list we will immediately know email address (how)**
                 lvi.Tag = thisPerson.email; //tag is basically a property then right**
                 //and its usually used for lists to get and set right??**
 
@@ -302,13 +355,15 @@ namespace PeopleList
 
                 // add the ListViewSubItem to the lvi.SubItems array
                 //add the email column to the subiteems (array or list??)**
-                lvi.SubItems.Add(lvsi);
+                lvi.SubItems.Add(lvsi); //why do we do lvi here instead of lvsi is it because we are adding the current subitem we created
+                                        //into the listviwitem array??(how would it look)**
 
                 // 11. we need another column to show the person's age
                 // set lvsi equal to a new ListViewItem.ListViewSubItem object
                 //(follow these same steps to populate the list view for the people(the columns))**
-                //and add the columns for the people)**
-                lvsi = new ListViewItem.ListViewSubItem();
+                //and add the columns for the people) what would we do if we wanted to do rows instead of columns**
+                //(oppossite like filling out name instead for each person then email**
+                lvsi = new ListViewItem.ListViewSubItem(); //holds remainder of the column data**
 
                 // 12. set lvsi.Text equal to the person's age
                 // note that age is an int, so you will need to convert it to a string
@@ -319,7 +374,7 @@ namespace PeopleList
 
                 // 13. add the ListViewSubItem to the lvi.SubItems array
                 //since we are using the same variable once we add it do we override it with a new**
-                //listview item them set the text for whatever column then add it then repeat the process**
+                //listview sub item then set the text for whatever column then add it then repeat the process**
                 //for each column??** how does it know to make it a colunm does listview and listviewsubitem**
                 //already know to do that**
                 lvi.SubItems.Add(lvsi);
@@ -345,7 +400,9 @@ namespace PeopleList
                 // "is" checks for relationship
                 //if( thisPerson is Student )
                 // GetType() / typeof() checks for specific data type, not relationship
-                //its more safer to use gettype and typeof right**
+                //its more safer to use gettype and typeof right to get exact relationship to check is thisPerson is the student for example**
+                //if we used gettype or typeof on rectangle and shape it would be false since they were not the same but if it was an "is" it would be true**
+                //because htye are simialr**
                 if (thisPerson.GetType() == typeof(Student))
                 //if the object we are currently on is from the student class then we want to have a ref.
                 //variable of the student 
@@ -380,17 +437,18 @@ namespace PeopleList
                     // set this ListViewItem to be focused upon (otherwise the current focus defaults to the first in the list)
                     lvi.Focused = true;
 
-                    // save a reference to this ListViewItem object
+                    // save a reference to this ListViewItem object (we set a reference to the current person we have put into the list based on the email)??**
                     firstLVI = lvi;
                 }
 
                 // we completed 1 row of the ListView
                 // we can finally add this ListViewItem to the Items array
-                //why do we do this. here is it because we are now actually adding to the deisgner it self
+                //why do we do this. here is it because we are now actually adding to the deisgner itself
                 //is that what this. means**
-                this.peopleListView.Items.Add(lvi);
+                this.peopleListView.Items.Add(lvi); //so basically this is saying in the main form in the peoplelist add this row of
+                                                    //values for one person(what does the Items do)**
 
-                // increment our row counter
+                // increment our row counter (after each person it alternates from blue to beige**)
                 ++lviCntr;
             }
 
@@ -401,9 +459,8 @@ namespace PeopleList
             // set the Top ListViewItem of the list to show on the screen
             this.peopleListView.TopItem = firstLVI;
             //this sets the current person we had made to be the first thing on the list in our whole
-            //for because of this.**
-            //how would it know though because we ser firstLVI = lvi so wouldnt the fistLVI be lost
-            //and it is now set to the current position of them item**
+            //form because of this.**
+            //how does it know to get the specific value from the condtional above**
         }
 
         // handle clicking the Remove button
@@ -411,8 +468,10 @@ namespace PeopleList
         {
             try
             {
+                //we have a string email thats saved to the tag for the seclted item
+                //so we access the email from the peoplelistview selected items tag and turn it into a string**
                 string email;
-
+                email = this.peopleListView.SelectedItems[0].Tag.ToString();
                 // 24. The ListView has a SelectedItems array field
                 // which is the array of ListViewItems which are currently selected
                 // Since we have MultiSelect set to false, only one row can be selected
@@ -423,8 +482,10 @@ namespace PeopleList
                 // use the ToString() method to convert the object to a string
 
                 // 25. if email is not equal to null
+                if(email != null)
                 {
                     // 26. remove the entry from Globals.people associated with the email address
+                    Globals.people.Remove(email); //pass in email address to remove and now we need to repaint the listview and remove that person we removed**
                 }
             }
             catch
@@ -433,7 +494,12 @@ namespace PeopleList
             }
 
             // 27. repaint the ListView passing null as the email address to start from the top of the SortedList
+            PaintListView(null); //we want to start from the top of the list**
         }
 
     }
 }
+
+
+//peoplelist when we add a new person or edit and existing a person it calls editperson and it calls it with the new person that was the existing person that was
+//selectoed or the new person that was created**

@@ -8,22 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//forgot to add static to internal class program is that ok or should I go back and redo it in exam because by default it was not defined there**
-
 //if we look in the designer and the combobox in window is a textbox that has a limited amount of options
 //and for our person type we want that to be limited to a student and teacher and to define what the available options are we click on the items prop.
 //and its a collection which is just a list and each line is an option in the combobox and the first item is student and the second is teacher
-//and when we check to see which one is selected in c# we count that from the 0th index
+//and when we check to see which one is selected in c# we start from the 0th index
 
 //the & is for a menu item to make it an underlined letter so we can use the keyboard instead of mouse to use the menu
 
 //every one of these controls has a name and its (Name) because we use that name to access the fields in our code we usually put the name of how we want to access
 //something in this .cs file in the "Name" property within our designer 
 
-//the form is the class and the fields are whatever we name the things in the form is the field (pascalcase for the form but camelcase for the fields)
+//the form is the class and the fields are whatever we name the things in the form (pascalcase for the form but camelcase for the fields)
 
 
-//change the "Name" of the form in the Form1 property and its pascalcase because the form itself is the name of our class and the other things within that
+//change the "Name" of the form in the Form1 form and its pascalcase because the form itself is the name of our class and the other things within that
 //class in camelcase
 //each form in windows form is a class and each control is a member of that class
 //the form designer generates our controls and puts it as the intiializecmponent which is build in (we put all of our code below the initizlizecomponent usually)
@@ -52,7 +50,7 @@ using System.Windows.Forms;
 //we want to do specific code when the user changes a value and we use events associated with that contorl and in properties theres an evenet icon and for the combobox
 //control we have 100 possible events that could be triggered and we can add methods in here to be called in here when events are triggered but
 //the mapping is hid in the lightning
-//panel
+//panel(dont use lightning panel)(prop.panel)**
 
 
 //to know what the method needs to look like its in the windows forms control documentation
@@ -69,7 +67,7 @@ using System.Windows.Forms;
 //the intializecomponent must be the first function call in our form1 and dont put anything above it
 
 //every control has a tag property and when we look at the properties(wrench icon)(look at everything in alpabetical order with the a z icon)
-//tag is of the object datatype and we can use it to attach any kind of data to the control
+//tag is of the object datatype and we can use it to attach any kind of data to the control (have to explicitly cast because its an object)
 //and we want to know if there is valid daat that has been entered in every field and
 //we do for each (control in this.controls) (the list of all of the controls in designer)
 
@@ -97,19 +95,20 @@ namespace EditPerson
                 //the tag prop. is like a generic field for anything we want and it's built into every control
                 //way to save any information we want
                 //this means everything on the form starts off as invalid 
-                control.Tag = false;
+                control.Tag = false; //tags gets or sets the item we use . notation with** (in this case we are setting all controls to false which basically**
+                                        //is basically involved in the validator and does not validate (the method)**
             }
 
             //each of our textboxes we want to make sure they are not blank as we submit the form
             this.okButton.Enabled = false;
             //if its set to true it will allow the user to press ok
-            //the this keyword allows the user to do stuff
-            //use += for what(for delegate methods)(we pass in method name for the delegate (the two __) then name of method
+            //the this keyword allows the user to do stuff within our form based on the control
+            //use += for what(for delegate methods)(we pass in method name for the delegate (the two __ for) then name of method
             //when we click the ok button if we dont have any delegate method assigned to it 
 
             //we can add as many delegate methods we want but we do += here
 
-            this.nameTextBox.Validating += new CancelEventHandler(TxtBoxEmpty__Validating); //makes sure no textbox is empty(go over)
+            this.nameTextBox.Validating += new CancelEventHandler(TxtBoxEmpty__Validating); //makes sure no textbox is empty
             this.emailTextBox.Validating += new CancelEventHandler(TxtBoxEmpty__Validating); //the validating methods prevent them from leaving box empty so we can
             //use the same exact method for all of our textboxes because we want the same rule to apply and we used a generic first part txtboxempty
             //and we can apply it to all of the controls so we dont have to write method for same thing over and over so in this case
@@ -154,7 +153,7 @@ namespace EditPerson
 
             //we can also add and remove event handlers as well with += and -=
 
-            //this. field. event then the this. is optional 
+            //this. field(control). event then the this. is optional 
 
             //write all event handlers in constructor so we cna see them and write the methods below
 
@@ -175,9 +174,9 @@ namespace EditPerson
 
         private void TypeComboBox__SelectedIndexChanged(object sender, EventArgs e)//object is a combobox(object is usually the contol)
                                                                                     //student is element 0 and teacher is 1 so we use index 0 and we want
-                                                                                    //speciality label to hide and show the gpa theres
+                                                                                    //speciality label to hide and show the gpa there
                                                                                     //how do we know where the indexes are how do we create them
-                                                                                    //(its in the list defined in the designer)
+                                                                                    //(its in the items collection then click 3 dots to see)
         {
             ComboBox cb = (ComboBox)sender;
 
@@ -240,12 +239,12 @@ namespace EditPerson
         {
             TextBox tb = (TextBox)sender;
 
-            if( Char.IsDigit(e.KeyChar) || e.KeyChar == '\b') //check if something is a digit by using char.IsDigit(the thing that was clicked) and the \b does
-                                                                //e.keychar is
+            if( Char.IsDigit(e.KeyChar) || e.KeyChar == '\b') //check if something is a digit by using char.IsDigit(the thing that was clicked) 
             {
                 e.Handled = false; //handled means if we handle it or not but if we set it to true it means we are doing something special for the event handler
                                    //but if we make it false windows handles it an puts it on the form
                                     //set it to false, then we want windows to do their defulat for keypressed
+
                                     //handled means if the develeoper is doing something or not (false the developer is not doing it and windows
                                     //should do it otherwise true and developer is doing it and windo1s leaves it)
                                   
@@ -289,10 +288,10 @@ namespace EditPerson
                 //and what it means is that if we try to move to that field then it calls the validating for the field we just left not the one
                 //we are entering (if we on name field and wanted to move to email) and if it was set to true on email field then windows calls
                 //validating field on name field first and then in that way we can control if the user can leave the field or not if they entered something or not
-                //(cant leave if its false) (windows should cancel moving to the next field)(e.cancel indicated whether the event can cancel or being not
+                //(can leave if its false) (windows should cancel moving to the next field)(e.cancel indicated whether the event can cancel or being not
                 //and by default is false and if its true the current box will be in focus and if the current textbox is empty they wont be able to leave it until
                 //they enter something)
-                //cancel button is set to false for the causesvalidation so we can press cancel button anytime 
+                //cancel button is set to true for the causesvalidation so we can press cancel button anytime 
 
                 //false does not allow us to leave while true does
                 tb.Tag = false;
@@ -325,9 +324,7 @@ namespace EditPerson
 
 
 
-        //validating event in windows forms control document under the textbox and what happens is that when we click on another
-        //field and if the causesvalidation prop. is set to true (in prop. field in designer) and it will cause the field we left
-        //to be validated by us somehow in our form1.cs when we write the code****
+       
 
         //the cancel button we want causes validation to be false because we alwways want them to click cancel regardless of what there**
         //is entered on the form but the ok button needs validation to mkae sure the form is not empty when we press ok**

@@ -81,7 +81,7 @@ namespace DynamicPeople
                 //if the current entry value which is the object is the list and if that type is a type of teacher
                 //then we want to add a panel for that person(call addpanel)
                 //we can access just teacher because we have a reference to our people from peoplelib
-                if(keyValuePair.Value.GetType() == typeof(Teacher))
+                if (keyValuePair.Value.GetType() == typeof(Teacher))
                 {
                     AddPanel(keyValuePair.Value); //now we add the whole value which is the person object to the panel right(9)**
 
@@ -89,7 +89,7 @@ namespace DynamicPeople
 
                 //now we want to put how many teachers there are on the top right corner of the images
                 //so we set the button equal to the count of the panels in the flowlayoutpanel1.controls.count (why do we have to say
-                //controls cant we just say the flowlayoutpanel1.count??
+                //controls cant we just say the flowlayoutpanel1.count??(9.5)*****
                 //we need to convert that integer to a string so we can actually display it (in the forms we usually make it
                 //a string to display just like console??(10))*****
                 teacherButton.Text = this.flowLayoutPanel1.Controls.Count.ToString();
@@ -105,14 +105,14 @@ namespace DynamicPeople
 
             foreach (KeyValuePair<string, Person> keyValuePair in Globals.people.sortedList)
             {
-               
+
                 if (keyValuePair.Value.GetType() == typeof(Student))
                 {
                     AddPanel(keyValuePair.Value);
 
                 }
 
-                
+
                 studentButton.Text = this.flowLayoutPanel1.Controls.Count.ToString();
 
             }
@@ -142,7 +142,7 @@ namespace DynamicPeople
             //we would want the button image to be a minus so it contracts because it was already opened initially and
             //now we interacted with it to close it 
             //but if it's not checked that means it's contracted initially
-            //and now we want to expand it because it's being interacted with (these statements are correct right(14)****
+            //and now we want to expand it because it's being interacted with (these statements are correct right (the 4 above) (14)****
 
             if (tsb.Checked)
             {
@@ -169,12 +169,12 @@ namespace DynamicPeople
             {
                 tsb.Image = global::DynamicPeople.Properties.Resources.minus; //we set it to minus because
                 //its opened right now so that we can give the open to close the panel
-                p.Size = new System.Drawing.Size(189, 159); 
+                p.Size = new System.Drawing.Size(189, 159);
                 //we are now expanding the panel it's maximum size
-                                                            
+
                 //because we pressed the minus and now it goes from unchecked to check and it goes to the plus symbol for the button right
                 //I just wanted to make sure I understood the logic(20)****
-                                                            
+
                 //we want to make it checked now so that it won't stay at the same state when we click again
                 tsb.Checked = true;
             }
@@ -215,11 +215,11 @@ namespace DynamicPeople
             //because we need to fetch the updated details for the person for the parent form once they press ok so it updated
             //and we can only do one person at a time so we need to disable the parent form so multiple people cant be edited at the same
             //time**
-            PersonEditForm pef = new PersonEditForm((Person)p.Tag,this);
+            PersonEditForm pef = new PersonEditForm((Person)p.Tag, this);
 
             //we created the person editform so they popup window to edit a person is automatically activated and we dont want that
             //when this new personedit form is created its immediately activated and processing input and we dont want that
-            
+
             //so basically we can override that by just making the form invisble so the child form in personeditform won't
             //show up as soon as the parent form (dynamic person) loads in and instead we make it so it loads in
             //when we click on the actual persons name for the editpersonform right??(26)**
@@ -268,88 +268,86 @@ namespace DynamicPeople
             //how do we know when to copy from the .NET generated code??****(31) I know we need to copy the things in the panel
             //to create new panels for every person but I am confused as to how to know when to go to .NET and copy and paste(32)**
 
-            
+
         }
 
-    }
+        //takes in a person because each person represents a panel
+        //here we are creating panels initially for each person right (33)**
+        private void AddPanel(Person person)
+        {
+            //we won't say this.panel because we have to create a new panel and this.panel refers to 
+            //the object that was created in initialize component and we are creating a new panel for each person 
+            //so in our addpanel method we need to create a new panel method each time a person is added
 
-    //takes in a person because each person represents a panel
-    //here we are creating panels initially for each person right (33)**
-    private void AddPanel(Person person)
-    {
-        //we won't say this.panel because we have to create a new panel and this.panel refers to 
-        //the object that was created in initialize component and we are creating a new panel for each person 
-        //so in our addpanel method we need to create a new panel method each time a person is added
-        
-        //if we used this.panel what would happen because I am still confused about the "this." would it just add everything in that
-        //panel in initialize component we have set up??****(34) why would we not want to do this because don't we technically have to edit the form
-        //and the "this." references the form??(35)**
-        Panel panel1 = new System.Windows.Forms.Panel();
+            //if we used this.panel what would happen because I am still confused about the "this." would it just add everything in that
+            //panel in initialize component we have set up??****(34) why would we not want to do this because don't we technically have to edit the form
+            //and the "this." references the form??(35)**
+            Panel panel1 = new System.Windows.Forms.Panel();
 
-        //this panel refers to each person but these controls need to updated if a person is updated so these controls need to
-        //be part of addpersontopanel method (we need to seperate what needs to go where)
-        
-
-        //we need to call addpersontopanel 
-        //we put the current panel we are on (why would we need to call this here because in this method
-        //we are creating a person but in the second method we are editing a person so how can we edit a person that we just created??)(36)**
-        AddPersonToPanel(ref panel1, person);
-       
-
-        //the last thing that needs to happen when the panel is fully created is adding the panel control to the flowlayoutpanel
-        //so we have all of our people on the flowpanel
-
-        //access the controls then add panel1 to the flowlayoutpanel container
-
-        //why can't we just say flowLayoutPanel1.Add(panel1) what does Controls exactly do??(37)**
-        this.flowLayoutPanel1.Controls.Add(panel1);
-
-        //we also want to make sure they appear in the right order so in the controls collection theres a method called
-        //setchildindex and we want to access the controls in flowlayoutpanels1 and set the child index of the panel we just
-        //added and we want to set it to be an incremenetal number so we ensure it appears in the sequential order we added them
-        //because we don't have total control on how .NET allocates memory and when we add items to collections or arrays it's
-        //never completly guarenteed that the things will be fetched in the order we added them
-        this.flowLayoutPanel1.Controls.SetChildIndex(panel1, flowLayoutPanel1.Controls.Count);
-        //we increment the count of the
-        //panels in the flowlayoutpanel1
-        //(so basically the first para. is the child of the flowlayout panel
-        //and the second para. is the count of the panels we have to far??)(38)**
-        //(here again I am confused on why we need .controls)(39)**
-        //how do we know when to use .controls with the things in our forms(40)**
+            //this panel refers to each person but these controls need to updated if a person is updated so these controls need to
+            //be part of addpersontopanel method (we need to seperate what needs to go where)
 
 
-    }
+            //we need to call addpersontopanel 
+            //we put the current panel we are on (why would we need to call this here because in this method
+            //we are creating a person but in the second method we are editing a person so how can we edit a person that we just created??)(36)**
+            AddPersonToPanel(ref panel1, person);
 
-    //here we are updating a panel based on what person is changed
-    //this takes in the panel we are updating and a person object from the people list we are editing
-    private void AddPersonToPanel(ref Panel panel1, Person person) //we need to reference the panel because we are actually changing it
-                                                                    //not making a copy
-    {
-        //because each of the controls in the panel is associated with the person in the panel we have the child contorls of the
-        //panel here (these are the child controls of the panel right)**(41)
-        //we dont use this. because they all need to be their own variables (why dont we use this. though I am still confused)(42)**
-        //(why do these need to go in addpersontopanel and not addpanel because we technically need these to make a new panel)(43)****
-        ToolStrip toolStrip1 = new System.Windows.Forms.ToolStrip();
-        ToolStripButton toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-        ToolStripLabel toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-        Label emailLabel = new System.Windows.Forms.Label();
-        GroupBox photoGroupBox = new System.Windows.Forms.GroupBox();
-        PictureBox photoPictureBox = new System.Windows.Forms.PictureBox(); //we are creating each of these controls which
-        //is going to be contined within the panel
 
-        //now we need to look at what .NET did for us to create all of these objects 
-        //we see our panel there and we copy all of the properties for those controls in the panel and copy and paste them here
-        //so are w creating each of these properties now based on the controls we created above??(44)**
+            //the last thing that needs to happen when the panel is fully created is adding the panel control to the flowlayoutpanel
+            //so we have all of our people on the flowpanel
+
+            //access the controls then add panel1 to the flowlayoutpanel container
+
+            //why can't we just say flowLayoutPanel1.Add(panel1) what does Controls exactly do??(37)**
+            this.flowLayoutPanel1.Controls.Add(panel1);
+
+            //we also want to make sure they appear in the right order so in the controls collection theres a method called
+            //setchildindex and we want to access the controls in flowlayoutpanels1 and set the child index of the panel we just
+            //added and we want to set it to be an incremenetal number so we ensure it appears in the sequential order we added them
+            //because we don't have total control on how .NET allocates memory and when we add items to collections or arrays it's
+            //never completly guarenteed that the things will be fetched in the order we added them
+            this.flowLayoutPanel1.Controls.SetChildIndex(panel1, flowLayoutPanel1.Controls.Count);
+            //we increment the count of the
+            //panels in the flowlayoutpanel1
+            //(so basically the first para. is the child of the flowlayout panel
+            //and the second para. is the count of the panels we have to far??)(38)**
+            //(here again I am confused on why we need .controls)(39)**
+            //how do we know when to use .controls with the things in our forms(40)**
+
+
+        }
+
+        //here we are updating a panel based on what person is changed
+        //this takes in the panel we are updating and a person object from the people list we are editing
+        private void AddPersonToPanel(ref Panel panel1, Person person) //we need to reference the panel because we are actually changing it
+                                                                       //not making a copy
+        {
+            //because each of the controls in the panel is associated with the person in the panel we have the child contorls of the
+            //panel here (these are the child controls of the panel right)**(41)
+            //we dont use this. because they all need to be their own variables (why dont we use this. though I am still confused)(42)**
+            //(why do these need to go in addpersontopanel and not addpanel because we technically need these to make a new panel)(43)****
+            ToolStrip toolStrip1 = new System.Windows.Forms.ToolStrip();
+            ToolStripButton toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            ToolStripLabel toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            Label emailLabel = new System.Windows.Forms.Label();
+            GroupBox photoGroupBox = new System.Windows.Forms.GroupBox();
+            PictureBox photoPictureBox = new System.Windows.Forms.PictureBox(); //we are creating each of these controls which
+                                                                                //is going to be contined within the panel
+
+            //now we need to look at what .NET did for us to create all of these objects 
+            //we see our panel there and we copy all of the properties for those controls in the panel and copy and paste them here
+            //so are w creating each of these properties now based on the controls we created above??(44)**
 
             panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            panel1.Controls.Add(emailLabel); 
-                                            //do we always remove this. when copying code from the .NET??(45)**
+            panel1.Controls.Add(emailLabel);
+            //do we always remove this. when copying code from the .NET??(45)**
             panel1.Controls.Add(photoGroupBox);
             panel1.Controls.Add(toolStrip1);
             panel1.Location = new System.Drawing.Point(3, 3);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(189, 25); //when the panel is first created we don't want it to be the full size
-                                                             //we only want it to be a height of 25 (closed form right??)(46)**
+                                                            //we only want it to be a height of 25 (closed form right??)(46)**
             panel1.TabIndex = 0;
 
             //we want to attach a reference to the person associated with the panel in the panels tag field
@@ -379,13 +377,13 @@ namespace DynamicPeople
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new System.Drawing.Size(29, 24);
             toolStripButton1.Text = "toolStripButton1";
-            toolStripButton1.Click += new EventHandler(ToolStripButton1__Click); 
+            toolStripButton1.Click += new EventHandler(ToolStripButton1__Click);
             //for each panel we have the toolstrip button
-                                                                                        
+
             //and for each toolstrip button on our form we can add the click event
-                                                                                     
+
             //we also want to add the parent panel in the tag field of the toolstripbutton 
-            
+
             toolStripButton1.Tag = panel1; //same situation here why use the tag if we have the panel referenced already in the method(47)****
 
             // 
@@ -418,8 +416,8 @@ namespace DynamicPeople
             photoGroupBox.Controls.Add(photoPictureBox); //we want to get rid of the this. here so 
                                                          //it adds the local picturebox we created and not the global one to the form
 
-                                                         //arent we technically editing the form so why would it not make sense
-                                                         //to use this. here in the .Add??(49)**
+            //arent we technically editing the form so why would it not make sense
+            //to use this. here in the .Add??(49)**
             photoGroupBox.Location = new System.Drawing.Point(4, 65);
             photoGroupBox.Margin = new System.Windows.Forms.Padding(4);
             photoGroupBox.Name = "photoGroupBox";
@@ -447,8 +445,10 @@ namespace DynamicPeople
             //if someone edits a person all of these changes will be applied and updates all their
             //details in the panel associated with them    
 
-    }
+        }
 
+
+    }
 
 
 

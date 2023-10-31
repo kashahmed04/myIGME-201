@@ -8,7 +8,7 @@ using CourseLib;
 
 //it needs to access our people lib and course lib to create the list and we copy and paste the folders into the same folder as the dll and where all of our files are
 //in people lib we want to rebuild the solution and inside of peoplelib inside are the definitions of the peoplelib and inside are the student and teacher objects we create
-//and we have a peolpe class
+//and we have a peolpe class (which contains the list of people (person) which are the students and teachers)
 //we had to copy the peoplelib and the courselib files to the peopleappglobals then add the dll
 //in course lib we also want to rebuild solution so we can make people lib and course lib both dll's and we want to add references to the peopleglobal windows form
 //and we go to debug in course lib and people lub and add that as a reference
@@ -25,7 +25,7 @@ namespace PeopleAppGlobals
 
         //we have a method for adding the courses and people so and we create the people and courses variables
         //(objects) that contains the list of our people(student and teacher)
-        //and courses
+        //and courses (empty lists and now we populate for that object)**
 
     
 

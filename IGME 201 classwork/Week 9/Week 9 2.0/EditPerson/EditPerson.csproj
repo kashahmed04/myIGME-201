@@ -36,8 +36,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PeopleLib">
-      <HintPath>..\PeopleLib\bin\Debug\PeopleLib.dll</HintPath>
+    <Reference Include="People.Lib">
+      <HintPath>..\..\..\Week 8\People.Lib\bin\Debug\People.Lib.exe</HintPath>
+    </Reference>
+    <Reference Include="PeopleAppGlobals">
+      <HintPath>..\..\..\..\IGME 201 Windows Forms\DynamicPeople\WindowsPeopleApp_12_3\WindowsPeopleApp\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

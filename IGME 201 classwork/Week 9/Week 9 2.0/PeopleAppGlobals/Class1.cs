@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 using PeopleLib;
 using CourseLib;
 
+
+//how to know when to add the actual .cs files to the solution exploerer when we are adding a reference to the file or do we just add the refrence and not add
+//the actual .cs file**
+
 namespace PeopleAppGlobals
 {
-    public static class Globals
+    public interface IListView 
     {
-        public static People people = new People();
+        void PaintListView(string firstEmail); //we want our peoplelistform to inherit this because**
+    }
+
+    public static class Globals//making this static because then we would have to use new then access that object everywhere in our application
+                               //if we make it static then its class and its members are aavailable everywhere (so basically we make classes
+                               //sttaic so when its used in other classes we can just say Globals.something instead of creating a new object in every file??)**
+                               //why dont we make it partial because its being accessed in other applications??**
+    {
+        public static People people = new People(); //make it static because we are in a static class (before we were doing it in main and it was static
+                                                    //so why does it not work here)**(by default so we need to make it public so we can access the list of people
+                                                    //and classes in our other programs)**
         public static Courses courses = new Courses();
 
         public static void AddPeopleSampleData()
@@ -53,7 +67,8 @@ namespace PeopleAppGlobals
                 person.email = "person_" + i.ToString() + "@rit.edu";
                 person.name = firstName[rand.Next(0, firstName.Length)] + " " + lastName[rand.Next(0, lastName.Length)];
 
-                people[person.email] = person; //in the people list we want the persons email to be the key and the person object we made to be the value**
+                people[person.email] = person; //in the people list we want the persons email to be the key and the person object we made to be the value rather than be
+                                               //a student or teacher we had created**
             }
         }
 

@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EditPerson">
-      <HintPath>..\EditPerson\bin\Debug\EditPerson.dll</HintPath>
+      <HintPath>..\..\..\..\IGME 201 Windows Forms\DynamicPeople\WindowsPeopleApp_12_3\WindowsPeopleApp\EditPerson\bin\Debug\EditPerson.dll</HintPath>
     </Reference>
     <Reference Include="PeopleAppGlobals">
       <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>

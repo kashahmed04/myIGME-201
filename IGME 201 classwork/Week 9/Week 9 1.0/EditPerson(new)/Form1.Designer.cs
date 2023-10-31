@@ -53,18 +53,20 @@
             // 
             this.cancelButton.CausesValidation = false;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(379, 232);
+            this.cancelButton.Location = new System.Drawing.Point(505, 286);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(56, 24);
+            this.cancelButton.Size = new System.Drawing.Size(75, 30);
             this.cancelButton.TabIndex = 23;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(284, 232);
+            this.okButton.Location = new System.Drawing.Point(379, 286);
+            this.okButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(56, 24);
+            this.okButton.Size = new System.Drawing.Size(75, 30);
             this.okButton.TabIndex = 21;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
@@ -72,113 +74,128 @@
             // 
             // gpaTextBox
             // 
-            this.gpaTextBox.Location = new System.Drawing.Point(83, 196);
+            this.gpaTextBox.Location = new System.Drawing.Point(111, 241);
+            this.gpaTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpaTextBox.Name = "gpaTextBox";
-            this.gpaTextBox.Size = new System.Drawing.Size(60, 20);
+            this.gpaTextBox.Size = new System.Drawing.Size(79, 22);
             this.gpaTextBox.TabIndex = 18;
             // 
             // gpaLabel
             // 
-            this.gpaLabel.Location = new System.Drawing.Point(12, 199);
+            this.gpaLabel.Location = new System.Drawing.Point(16, 245);
+            this.gpaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gpaLabel.Name = "gpaLabel";
-            this.gpaLabel.Size = new System.Drawing.Size(60, 13);
+            this.gpaLabel.Size = new System.Drawing.Size(80, 16);
             this.gpaLabel.TabIndex = 22;
             this.gpaLabel.Text = "GPA:";
             // 
             // specTextBox
             // 
-            this.specTextBox.Location = new System.Drawing.Point(83, 196);
+            this.specTextBox.Location = new System.Drawing.Point(111, 241);
+            this.specTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.specTextBox.Name = "specTextBox";
-            this.specTextBox.Size = new System.Drawing.Size(352, 20);
+            this.specTextBox.Size = new System.Drawing.Size(468, 22);
             this.specTextBox.TabIndex = 19;
             // 
             // specialtyLabel
             // 
-            this.specialtyLabel.Location = new System.Drawing.Point(12, 199);
+            this.specialtyLabel.Location = new System.Drawing.Point(16, 245);
+            this.specialtyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.specialtyLabel.Name = "specialtyLabel";
-            this.specialtyLabel.Size = new System.Drawing.Size(70, 13);
+            this.specialtyLabel.Size = new System.Drawing.Size(93, 16);
             this.specialtyLabel.TabIndex = 20;
             this.specialtyLabel.Text = "Specialty:";
             // 
             // licTextBox
             // 
-            this.licTextBox.Location = new System.Drawing.Point(83, 158);
+            this.licTextBox.Location = new System.Drawing.Point(111, 194);
+            this.licTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.licTextBox.Name = "licTextBox";
-            this.licTextBox.Size = new System.Drawing.Size(119, 20);
+            this.licTextBox.Size = new System.Drawing.Size(157, 22);
             this.licTextBox.TabIndex = 16;
             // 
             // licLabel
             // 
-            this.licLabel.Location = new System.Drawing.Point(12, 160);
+            this.licLabel.Location = new System.Drawing.Point(16, 197);
+            this.licLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.licLabel.Name = "licLabel";
-            this.licLabel.Size = new System.Drawing.Size(70, 13);
+            this.licLabel.Size = new System.Drawing.Size(93, 16);
             this.licLabel.TabIndex = 17;
             this.licLabel.Text = "License Id:";
             // 
             // ageTextBox
             // 
-            this.ageTextBox.Location = new System.Drawing.Point(83, 117);
+            this.ageTextBox.Location = new System.Drawing.Point(111, 144);
+            this.ageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(60, 20);
+            this.ageTextBox.Size = new System.Drawing.Size(79, 22);
             this.ageTextBox.TabIndex = 14;
             // 
             // ageLabel
             // 
-            this.ageLabel.Location = new System.Drawing.Point(12, 120);
+            this.ageLabel.Location = new System.Drawing.Point(16, 148);
+            this.ageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ageLabel.Name = "ageLabel";
-            this.ageLabel.Size = new System.Drawing.Size(70, 13);
+            this.ageLabel.Size = new System.Drawing.Size(93, 16);
             this.ageLabel.TabIndex = 15;
             this.ageLabel.Text = "Age:";
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(83, 78);
+            this.emailTextBox.Location = new System.Drawing.Point(111, 96);
+            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(352, 20);
+            this.emailTextBox.Size = new System.Drawing.Size(468, 22);
             this.emailTextBox.TabIndex = 12;
             // 
             // emailLabel
             // 
-            this.emailLabel.Location = new System.Drawing.Point(12, 81);
+            this.emailLabel.Location = new System.Drawing.Point(16, 100);
+            this.emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(70, 13);
+            this.emailLabel.Size = new System.Drawing.Size(93, 16);
             this.emailLabel.TabIndex = 13;
             this.emailLabel.Text = "Email:";
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(83, 42);
+            this.nameTextBox.Location = new System.Drawing.Point(111, 52);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(207, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(275, 22);
             this.nameTextBox.TabIndex = 10;
             // 
             // nameLabel
             // 
-            this.nameLabel.Location = new System.Drawing.Point(12, 44);
+            this.nameLabel.Location = new System.Drawing.Point(16, 54);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(70, 13);
+            this.nameLabel.Size = new System.Drawing.Size(93, 16);
             this.nameLabel.TabIndex = 11;
             this.nameLabel.Text = "Name:";
             // 
             // typeComboBox
             // 
+            this.typeComboBox.BackColor = System.Drawing.SystemColors.Window;
             this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeComboBox.FormattingEnabled = true;
             this.typeComboBox.Items.AddRange(new object[] {
             "Student",
             "Teacher"});
-            this.typeComboBox.Location = new System.Drawing.Point(83, 7);
+            this.typeComboBox.Location = new System.Drawing.Point(111, 9);
+            this.typeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.typeComboBox.MaxDropDownItems = 2;
             this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(119, 21);
+            this.typeComboBox.Size = new System.Drawing.Size(157, 24);
             this.typeComboBox.TabIndex = 8;
             this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
             // typeVal
             // 
-            this.typeVal.Location = new System.Drawing.Point(12, 9);
+            this.typeVal.Location = new System.Drawing.Point(16, 11);
+            this.typeVal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.typeVal.Name = "typeVal";
-            this.typeVal.Size = new System.Drawing.Size(70, 13);
+            this.typeVal.Size = new System.Drawing.Size(93, 16);
             this.typeVal.TabIndex = 9;
             this.typeVal.Text = "Person type:";
             // 
@@ -189,10 +206,10 @@
             // PersonEditForm
             // 
             this.AcceptButton = this.okButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(441, 266);
+            this.ClientSize = new System.Drawing.Size(588, 327);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.gpaTextBox);
@@ -209,6 +226,7 @@
             this.Controls.Add(this.typeVal);
             this.Controls.Add(this.gpaLabel);
             this.Controls.Add(this.specialtyLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PersonEditForm";
             this.Text = "Person Edit Form";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

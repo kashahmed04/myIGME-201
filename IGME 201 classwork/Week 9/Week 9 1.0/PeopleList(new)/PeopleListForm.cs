@@ -27,17 +27,18 @@ using PeopleLib;
 //of the columns
 
 //to add a new column header we do the add we are still where the 3 dots tab (edit columns) is in column and we
-//can add a major header for the student and if we wanted to show it as the second instead of 5th then we can click arrow to move it up
+//can add a major header for the student and if we wanted to show it as the second instead of 5th then we can change the index in the fields
+//part where we type it in to move it up
 //and when we click ok, it moves the header
 
-//we always add text so we can see the label and change the name field
+//we always add text so we can see the label and we change the name in the text field to show on our form
 //we can also press remove in the 3 dots tab as well to remove the column if we want
 //how to display the width in the list view control like we did with the columns (width element in the columns)
-//outside of the 3 dots in the actual properties, we can have gridlines or not and we can allow multi select but for now we 
+//outside of the 3 dots in the actual properties, we can have gridlines or not (we have gridliens) and we can allow multi select but for now we 
 //want them to select one person at a time
 
 //the view property allows us to change the icons and by default it gives us large icon and we need to set it to detaiils
-//to get icons to show 
+//to get icons to show (the headings for the columns)
 
 namespace PeopleList
 {
@@ -68,7 +69,7 @@ namespace PeopleList
             //keydown handles enter on the list and the itemactivate is if we double click with mouse and it allows us to change an object
             //listview is called peopleListView
 
-            //the this. refers to the form1.designer??** the objectName is the field name in the we set in the "Name" field within
+            //the this. refers to the form1.designer??** the objectName (control name) is the field name in the we set in the "Name" field within
             //the form and then another . for the event then after the += its the new event then in () the name of the delegate
             //so basically the buttons and toolstrips we create are the properties and the things we set within them are the fields??**
 
@@ -99,15 +100,15 @@ namespace PeopleList
 
 
         // notice that we are making PaintListView public so that it can be called from other classes
-        public void PaintListView(string firstEmail) //accepts the first email to showed in the list view and the first time we come in we want to start from
+        public void PaintListView(string firstEmail) //accepts the first email to be shown in the list view and the first time we come in we want to start from
             //the first email in our people list and set null as the first email**
             //items prop. in peeopleslistview and every items prop. has a list view item and its each row thats in the list view
             //the text (shows up in first column of row), subitems (stores data for each additional column in the row so if we had 5 columns in our list view
             //we will have 1 text and 4 sublist view items)**
             //each row will consist of 1 person from our people list in our form**
         {
-            // a ListView contains an Items field, which is an array of the rows in the ListView.
-            // Items is an array of ListViewItem
+            // a ListView contains an Items field, which is an array of the rows in the ListView.**
+            // Items is an array of ListViewItem**(where was this in our controls and which control would it usually be in)**
             ListViewItem lvi = null; //listviewitem is our ref. variable then our subitem and we view it like this to access each and we initally set it to null**
 
             // ListViewItem contains the details of the first column in a row
@@ -154,7 +155,7 @@ namespace PeopleList
                 //the people and each entry ni our list is a key value pair and the key s email and the object is a peson**
             {
                 // 6. declare a Person variable called thisPerson and set it to the current keyValuePair Value
-                //not reating new object just a varuble that points to the object that is in the key value pair**
+                //not creating new object just a varuble that points to the object that is in the key value pair**
                 Person thisPerson = keyValuePair.Value;
 
                 // 7. set lvi equal to a new ListViewItem object
@@ -197,13 +198,13 @@ namespace PeopleList
                 lvi.SubItems.Add(lvsi);
 
                 // 11. we need another column to show the person's age
-                // set lvsi equal to a new ListViewItem.ListViewSubItem object (follow these same steps to populate the list view for the courses)******
+                // set lvsi equal to a new ListViewItem.ListViewSubItem object (follow these same steps to populate the list view for the people)******
                 lvsi = new ListViewItem().ListViewSubItem();
 
                 // 12. set lvsi.Text equal to the person's age
                 // note that age is an int, so you will need to convert it to a string
                 // you can use Convert.ToString(int) or the ToString() method of the integer
-                lvsi.Text = thisPerson.age.ToStrin(); //convert to string because we are storing it as a string
+                lvsi.Text = thisPerson.age.ToString(); //convert to string because we are storing it as a string
 
                 // 13. add the ListViewSubItem to the lvi.SubItems array
                 lvi.SubItems.Add(lvsi);
