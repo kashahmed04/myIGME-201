@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PeopleAppGlobals;
 using PeopleLib;
-using EditPerson;
+using EditPerson; //we do using statements with namepsaces**
 
 namespace PeopleList
 {
@@ -239,7 +239,8 @@ namespace PeopleList
                 lvi.SubItems.Add(lvsi);
 
                 // if this row is the first email that should be shown
-                if (firstEmail == thisPerson.email)
+                //we check if the persons email is set to the current persons email we had passed in 
+                if (nStartEl == lviCntr)
                 {
                     // set this row as being currently selected
                     lvi.Selected = true;

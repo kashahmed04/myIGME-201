@@ -6,6 +6,22 @@ using System.Threading.Tasks;
 
 namespace PeopleLib
 {
+    public enum EFavoriteFood
+    {
+        brocolli,
+        pizza,
+        apples
+    }
+
+    public enum ERating 
+    { 
+        great,
+        ok,
+        meh
+    }
+
+
+
     public enum genderPronoun
     {
         him,
@@ -39,6 +55,8 @@ namespace PeopleLib
         public string photoPath;
         public string homePageURL;
         public DateTime dateOfBirth;
+
+        public EFavoriteFood eFavoriteFood;
 
         private int licenseId;
 
@@ -168,6 +186,8 @@ namespace PeopleLib
     public class Teacher : Person, IPerson, ICourseList
     {
         public string specialty;
+
+        public ERating eRating; //add extra def. for the food*****************
 
         public List<String> CourseList
         {

@@ -75,6 +75,16 @@
             this.timeHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.scheduleTabPage = new System.Windows.Forms.TabPage();
             this.scheduleWebBrowser = new System.Windows.Forms.WebBrowser();
+            this.brocolliRadioButton = new System.Windows.Forms.RadioButton();
+            this.pizzaRadioButton = new System.Windows.Forms.RadioButton();
+            this.applesRadioButton = new System.Windows.Forms.RadioButton();
+            this.greatRadioButton = new System.Windows.Forms.RadioButton();
+            this.okRadioButton = new System.Windows.Forms.RadioButton();
+            this.mehRadioButton = new System.Windows.Forms.RadioButton();
+            this.favFoodGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.ratingGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.ratingLabel2 = new System.Windows.Forms.Label();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.editPersonTabControl.SuspendLayout();
             this.detailsTabPage.SuspendLayout();
@@ -85,6 +95,8 @@
             this.allCoursesGroupBox.SuspendLayout();
             this.selectedCoursesGroupBox.SuspendLayout();
             this.scheduleTabPage.SuspendLayout();
+            this.favFoodGroupBox1.SuspendLayout();
+            this.ratingGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -107,6 +119,8 @@
             // 
             // detailsTabPage
             // 
+            this.detailsTabPage.Controls.Add(this.ratingGroupBox1);
+            this.detailsTabPage.Controls.Add(this.favFoodGroupBox1);
             this.detailsTabPage.Controls.Add(this.label1);
             this.detailsTabPage.Controls.Add(this.homepageTextBox);
             this.detailsTabPage.Controls.Add(this.birthdateLabel);
@@ -353,7 +367,7 @@
             this.homePageTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.homePageTabPage.Name = "homePageTabPage";
             this.homePageTabPage.Padding = new System.Windows.Forms.Padding(4);
-            this.homePageTabPage.Size = new System.Drawing.Size(1129, 511);
+            this.homePageTabPage.Size = new System.Drawing.Size(1218, 581);
             this.homePageTabPage.TabIndex = 1;
             this.homePageTabPage.Text = "Homepage";
             this.homePageTabPage.UseVisualStyleBackColor = true;
@@ -366,7 +380,7 @@
             this.homepageWebBrowser.MinimumSize = new System.Drawing.Size(27, 25);
             this.homepageWebBrowser.Name = "homepageWebBrowser";
             this.homepageWebBrowser.ScriptErrorsSuppressed = true;
-            this.homepageWebBrowser.Size = new System.Drawing.Size(1121, 503);
+            this.homepageWebBrowser.Size = new System.Drawing.Size(1210, 573);
             this.homepageWebBrowser.TabIndex = 0;
             // 
             // coursesTabPage
@@ -376,7 +390,7 @@
             this.coursesTabPage.Location = new System.Drawing.Point(4, 25);
             this.coursesTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.coursesTabPage.Name = "coursesTabPage";
-            this.coursesTabPage.Size = new System.Drawing.Size(1129, 511);
+            this.coursesTabPage.Size = new System.Drawing.Size(1218, 581);
             this.coursesTabPage.TabIndex = 2;
             this.coursesTabPage.Text = "Courses";
             this.coursesTabPage.UseVisualStyleBackColor = true;
@@ -387,11 +401,11 @@
             this.allCoursesGroupBox.Controls.Add(this.courseSearchTextBox);
             this.allCoursesGroupBox.Controls.Add(this.allCoursesListView);
             this.allCoursesGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.allCoursesGroupBox.Location = new System.Drawing.Point(0, 206);
+            this.allCoursesGroupBox.Location = new System.Drawing.Point(0, 276);
             this.allCoursesGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.allCoursesGroupBox.Name = "allCoursesGroupBox";
             this.allCoursesGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.allCoursesGroupBox.Size = new System.Drawing.Size(1129, 305);
+            this.allCoursesGroupBox.Size = new System.Drawing.Size(1218, 305);
             this.allCoursesGroupBox.TabIndex = 2;
             this.allCoursesGroupBox.TabStop = false;
             this.allCoursesGroupBox.Text = "All Courses";
@@ -430,7 +444,7 @@
             this.allCoursesListView.Location = new System.Drawing.Point(4, 55);
             this.allCoursesListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.allCoursesListView.Name = "allCoursesListView";
-            this.allCoursesListView.Size = new System.Drawing.Size(1121, 246);
+            this.allCoursesListView.Size = new System.Drawing.Size(1210, 246);
             this.allCoursesListView.TabIndex = 12;
             this.allCoursesListView.UseCompatibleStateImageBehavior = false;
             this.allCoursesListView.View = System.Windows.Forms.View.Details;
@@ -468,7 +482,7 @@
             this.selectedCoursesGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.selectedCoursesGroupBox.Name = "selectedCoursesGroupBox";
             this.selectedCoursesGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.selectedCoursesGroupBox.Size = new System.Drawing.Size(1129, 187);
+            this.selectedCoursesGroupBox.Size = new System.Drawing.Size(1218, 187);
             this.selectedCoursesGroupBox.TabIndex = 1;
             this.selectedCoursesGroupBox.TabStop = false;
             this.selectedCoursesGroupBox.Text = "Selected Courses";
@@ -489,7 +503,7 @@
             this.selectedCoursesListView.Location = new System.Drawing.Point(4, 19);
             this.selectedCoursesListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectedCoursesListView.Name = "selectedCoursesListView";
-            this.selectedCoursesListView.Size = new System.Drawing.Size(1121, 164);
+            this.selectedCoursesListView.Size = new System.Drawing.Size(1210, 164);
             this.selectedCoursesListView.TabIndex = 11;
             this.selectedCoursesListView.UseCompatibleStateImageBehavior = false;
             this.selectedCoursesListView.View = System.Windows.Forms.View.Details;
@@ -525,7 +539,7 @@
             this.scheduleTabPage.Location = new System.Drawing.Point(4, 25);
             this.scheduleTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.scheduleTabPage.Name = "scheduleTabPage";
-            this.scheduleTabPage.Size = new System.Drawing.Size(1129, 511);
+            this.scheduleTabPage.Size = new System.Drawing.Size(1218, 581);
             this.scheduleTabPage.TabIndex = 3;
             this.scheduleTabPage.Text = "Schedule";
             this.scheduleTabPage.UseVisualStyleBackColor = true;
@@ -538,8 +552,112 @@
             this.scheduleWebBrowser.MinimumSize = new System.Drawing.Size(27, 25);
             this.scheduleWebBrowser.Name = "scheduleWebBrowser";
             this.scheduleWebBrowser.ScriptErrorsSuppressed = true;
-            this.scheduleWebBrowser.Size = new System.Drawing.Size(1129, 511);
+            this.scheduleWebBrowser.Size = new System.Drawing.Size(1218, 581);
             this.scheduleWebBrowser.TabIndex = 0;
+            // 
+            // brocolliRadioButton
+            // 
+            this.brocolliRadioButton.AutoSize = true;
+            this.brocolliRadioButton.Location = new System.Drawing.Point(6, 31);
+            this.brocolliRadioButton.Name = "brocolliRadioButton";
+            this.brocolliRadioButton.Size = new System.Drawing.Size(73, 20);
+            this.brocolliRadioButton.TabIndex = 40;
+            this.brocolliRadioButton.TabStop = true;
+            this.brocolliRadioButton.Text = "Brocolli";
+            this.brocolliRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // pizzaRadioButton
+            // 
+            this.pizzaRadioButton.AutoSize = true;
+            this.pizzaRadioButton.Location = new System.Drawing.Point(6, 68);
+            this.pizzaRadioButton.Name = "pizzaRadioButton";
+            this.pizzaRadioButton.Size = new System.Drawing.Size(60, 20);
+            this.pizzaRadioButton.TabIndex = 41;
+            this.pizzaRadioButton.TabStop = true;
+            this.pizzaRadioButton.Text = "Pizza";
+            this.pizzaRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // applesRadioButton
+            // 
+            this.applesRadioButton.AutoSize = true;
+            this.applesRadioButton.Location = new System.Drawing.Point(6, 105);
+            this.applesRadioButton.Name = "applesRadioButton";
+            this.applesRadioButton.Size = new System.Drawing.Size(71, 20);
+            this.applesRadioButton.TabIndex = 42;
+            this.applesRadioButton.TabStop = true;
+            this.applesRadioButton.Text = "Apples";
+            this.applesRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // greatRadioButton
+            // 
+            this.greatRadioButton.AutoSize = true;
+            this.greatRadioButton.Location = new System.Drawing.Point(16, 27);
+            this.greatRadioButton.Name = "greatRadioButton";
+            this.greatRadioButton.Size = new System.Drawing.Size(61, 20);
+            this.greatRadioButton.TabIndex = 43;
+            this.greatRadioButton.TabStop = true;
+            this.greatRadioButton.Text = "Great";
+            this.greatRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // okRadioButton
+            // 
+            this.okRadioButton.AutoSize = true;
+            this.okRadioButton.Location = new System.Drawing.Point(16, 64);
+            this.okRadioButton.Name = "okRadioButton";
+            this.okRadioButton.Size = new System.Drawing.Size(45, 20);
+            this.okRadioButton.TabIndex = 44;
+            this.okRadioButton.TabStop = true;
+            this.okRadioButton.Text = "Ok";
+            this.okRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // mehRadioButton
+            // 
+            this.mehRadioButton.AutoSize = true;
+            this.mehRadioButton.Location = new System.Drawing.Point(16, 101);
+            this.mehRadioButton.Name = "mehRadioButton";
+            this.mehRadioButton.Size = new System.Drawing.Size(54, 20);
+            this.mehRadioButton.TabIndex = 45;
+            this.mehRadioButton.TabStop = true;
+            this.mehRadioButton.Text = "Meh";
+            this.mehRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // favFoodGroupBox1
+            // 
+            this.favFoodGroupBox1.Controls.Add(this.pizzaRadioButton);
+            this.favFoodGroupBox1.Controls.Add(this.brocolliRadioButton);
+            this.favFoodGroupBox1.Controls.Add(this.applesRadioButton);
+            this.favFoodGroupBox1.Location = new System.Drawing.Point(763, 24);
+            this.favFoodGroupBox1.Name = "favFoodGroupBox1";
+            this.favFoodGroupBox1.Size = new System.Drawing.Size(142, 134);
+            this.favFoodGroupBox1.TabIndex = 46;
+            this.favFoodGroupBox1.TabStop = false;
+            this.favFoodGroupBox1.Text = "Favorite Food";
+            // 
+            // ratingGroupBox1
+            // 
+            this.ratingGroupBox1.Controls.Add(this.ratingLabel2);
+            this.ratingGroupBox1.Controls.Add(this.mehRadioButton);
+            this.ratingGroupBox1.Controls.Add(this.greatRadioButton);
+            this.ratingGroupBox1.Controls.Add(this.okRadioButton);
+            this.ratingGroupBox1.Location = new System.Drawing.Point(952, 26);
+            this.ratingGroupBox1.Name = "ratingGroupBox1";
+            this.ratingGroupBox1.Size = new System.Drawing.Size(108, 155);
+            this.ratingGroupBox1.TabIndex = 47;
+            this.ratingGroupBox1.TabStop = false;
+            this.ratingGroupBox1.Text = "Rating";
+            // 
+            // ratingLabel2
+            // 
+            this.ratingLabel2.AutoSize = true;
+            this.ratingLabel2.Location = new System.Drawing.Point(26, 136);
+            this.ratingLabel2.Name = "ratingLabel2";
+            this.ratingLabel2.Size = new System.Drawing.Size(44, 16);
+            this.ratingLabel2.TabIndex = 46;
+            this.ratingLabel2.Text = "label2";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
             // 
             // PersonEditForm
             // 
@@ -547,7 +665,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1226, 610);
             this.Controls.Add(this.editPersonTabControl);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PersonEditForm";
             this.Text = "Person Edit Form";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -562,6 +680,10 @@
             this.allCoursesGroupBox.PerformLayout();
             this.selectedCoursesGroupBox.ResumeLayout(false);
             this.scheduleTabPage.ResumeLayout(false);
+            this.favFoodGroupBox1.ResumeLayout(false);
+            this.favFoodGroupBox1.PerformLayout();
+            this.ratingGroupBox1.ResumeLayout(false);
+            this.ratingGroupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -613,6 +735,16 @@
         private System.Windows.Forms.ColumnHeader timeHdr;
         private System.Windows.Forms.TabPage scheduleTabPage;
         private System.Windows.Forms.WebBrowser scheduleWebBrowser;
+        private System.Windows.Forms.RadioButton mehRadioButton;
+        private System.Windows.Forms.RadioButton okRadioButton;
+        private System.Windows.Forms.RadioButton greatRadioButton;
+        private System.Windows.Forms.RadioButton applesRadioButton;
+        private System.Windows.Forms.RadioButton pizzaRadioButton;
+        private System.Windows.Forms.RadioButton brocolliRadioButton;
+        private System.Windows.Forms.GroupBox favFoodGroupBox1;
+        private System.Windows.Forms.GroupBox ratingGroupBox1;
+        private System.Windows.Forms.Label ratingLabel2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

@@ -14,17 +14,16 @@ namespace PeopleAppGlobals
 {
     public interface IListView 
     {
-        void PaintListView(string firstEmail); //we want our peoplelistform to inherit this because**
+        void PaintListView(string firstEmail); //we want our peoplelistform to inherit this because(12)*****************
     }
 
     public static class Globals//making this static because then we would have to use new then access that object everywhere in our application
                                //if we make it static then its class and its members are aavailable everywhere (so basically we make classes
                                //sttaic so when its used in other classes we can just say Globals.something instead of creating a new object in every file??)**
-                               //why dont we make it partial because its being accessed in other applications??**
+                               //and we can just access it as Globals. once we add the file as a reference??**
     {
-        public static People people = new People(); //make it static because we are in a static class (before we were doing it in main and it was static
-                                                    //so why does it not work here)**(by default so we need to make it public so we can access the list of people
-                                                    //and classes in our other programs)**
+        public static People people = new People(); //(by default so we need to make it public so we can access the list of people
+                                                    //and classes in our other programs)***************(11)
         public static Courses courses = new Courses();
 
         public static void AddPeopleSampleData()

@@ -15,6 +15,7 @@ namespace EditPerson
     public partial class PersonEditForm : Form
     {
         public Person formPerson;
+        //Font formFont = new Font("Arial", 30);
 
         public PersonEditForm(Person person, Form parentForm )
         {
@@ -66,6 +67,12 @@ namespace EditPerson
             this.cancelButton.Click += new EventHandler(CancelButton__Click);
             this.okButton.Click += new EventHandler(OkButton__Click);
 
+            this.freshmanRadioButton.CheckedChanged += new EventHandler(ClassRadioButton__CheckedChanged); 
+            this.sophomoreRadioButton.CheckedChanged += new EventHandler(ClassRadioButton__CheckedChanged);
+            this.juniorRadioButton.CheckedChanged += new EventHandler(ClassRadioButton__CheckedChanged);
+            this.seniorRadioButton.CheckedChanged += new EventHandler(ClassRadioButton__CheckedChanged); 
+
+
 
 
             // after all contols are configured then we can manipulate the data
@@ -75,12 +82,42 @@ namespace EditPerson
             this.ageTextBox.Text = person.age.ToString();
             this.licTextBox.Text = person.LicenseId.ToString();
 
-            if( person.GetType() == typeof(Student) )
+            if (person.GetType() == typeof(Student))
             {
                 this.typeComboBox.SelectedIndex = 0;
 
                 Student student = (Student)person;
                 this.gpaTextBox.Text = student.gpa.ToString();
+
+                if(person.name == "") //when we initially come in we want default values since noththing will be selected**
+                {
+                    student.eCollegeYear = collegeYear.senior; //we can't use person because it's only in a student**
+                }
+
+                switch (student.eCollegeYear) 
+                {
+                    case collegeYear.freshman:
+                        this.freshmanRadioButton.Checked = true; //we have to specifically access from the enumerated
+                        //type to see which of the 4 options it was because student only contains one of those options
+                        //which was chosen and we need to have all 4 options to see which one was selcted
+                        //this is only when we first enter the form though in the ok button is where
+                        //we edit it*****
+                        break;
+
+                    case collegeYear.sophomore:
+                        this.sophomoreRadioButton.Checked = true;
+                        break;
+
+                    case collegeYear.junior:
+                        this.juniorRadioButton.Checked = true;
+                        break;
+
+                    case collegeYear.senior:
+                        this.seniorRadioButton.Checked = true;
+                        break;
+                }
+
+
             }
             else
             {
@@ -91,8 +128,64 @@ namespace EditPerson
             }
 
 
+            
+
+            if(person.name == "")
+            {
+                person.eGender = genderPronoun.them; //is this how we access because it's used in teacher
+                    //and student so we have to use person for both cases**
+            }
+
+            switch(person.eGender)
+            {
+                case genderPronoun.him:
+                    this.himRadioButton.Checked = true;
+                    break;
+
+                case genderPronoun.her:
+                    this.herRadioButton.Checked = true;
+                    break;
+
+                case genderPronoun.them:
+                    this.themRadioButton.Checked = true;
+                    break;
+            }
+
+           
+
             this.Show();
+
         }
+
+        private void ClassRadioButton__CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            if (rb.Checked)
+            {
+                if(rb == this.freshmanRadioButton)
+                {
+                    this.classLabel.Text = "Class of 2024";
+                }
+
+                if (rb == this.sophomoreRadioButton)
+                {
+                    this.classLabel.Text = "Class of 2023"; //how does this work when we seelct radio
+                    //buttons because for senior it displays class of 2020 and not 2024**
+                }
+
+                if (rb == this.juniorRadioButton)
+                {
+                    this.classLabel.Text = "Class of 2022";
+                }
+
+                if (rb == this.seniorRadioButton)
+                {
+                    this.classLabel.Text = "Class of 2021";
+                }
+
+            }
+        }
+
 
         private void OkButton__Click(object sender, EventArgs e)
         {
@@ -118,9 +211,53 @@ namespace EditPerson
             person.age = Convert.ToInt32(this.ageTextBox.Text);
             person.LicenseId = Convert.ToInt32(this.licTextBox.Text);
 
-            if( person.GetType() == typeof(Student))
+            if (this.himRadioButton.Checked)
+            {
+                person.eGender = genderPronoun.him; //now we set the actual radio button to what was selected
+                //when we press ok so it gets saved when we save the person as well as when we are editing it selects
+                //what we have currently selected*****
+            }
+
+            if (this.herRadioButton.Checked)
+            {
+                person.eGender = genderPronoun.her;
+            }
+
+            if (this.themRadioButton.Checked)
+            {
+                person.eGender = genderPronoun.them;
+            }
+
+            if (person.GetType() == typeof(Student))
             {
                 student.gpa = Convert.ToDouble(this.gpaTextBox.Text);
+
+                if (this.freshmanRadioButton.Checked)
+                {
+                    student.eCollegeYear = collegeYear.freshman;
+                }
+
+
+                if (this.sophomoreRadioButton.Checked)
+                {
+                    student.eCollegeYear = collegeYear.sophomore;
+                }
+
+
+
+                if (this.juniorRadioButton.Checked)
+                {
+                    student.eCollegeYear = collegeYear.junior;
+                }
+
+
+
+                if (this.seniorRadioButton.Checked) //can we also do else if instead of doing if over and over**
+                {
+                    student.eCollegeYear = collegeYear.senior;
+                }
+
+
             }
             else
             {
@@ -170,6 +307,17 @@ namespace EditPerson
                 this.gpaTextBox.Visible = true;
 
                 this.gpaTextBox.Tag = (this.gpaTextBox.Text.Length > 0);
+
+                this.classGroupBox.Visible = true; //sets the groupbox and radio buttons to
+                //be shown if its a student**
+
+                if (!this.freshmanRadioButton.Checked && !this.sophomoreRadioButton.Checked && !this.juniorRadioButton.Checked && !this.seniorRadioButton.Checked)
+                {
+                    this.seniorRadioButton.Checked = true;
+                    //for this part does it just make it so that if the index is changed and nothing is seclted
+                    //we want to make a default**
+                }
+
             }
             else
             {
@@ -182,6 +330,8 @@ namespace EditPerson
                 this.gpaTextBox.Visible = false;
 
                 this.specTextBox.Tag = (this.specTextBox.Text.Length > 0);
+
+                this.classGroupBox.Visible = false; //if its a teacher we dont want it to show**
             }
 
             ValidateAll();
@@ -190,7 +340,8 @@ namespace EditPerson
         private void TxtBoxEmpty__TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if( tb.Text.Length == 0)
+            //tb.Font = this.formFont;
+            if ( tb.Text.Length == 0)
             {
                 this.errorProvider1.SetError(tb, "This field cannot be empty");
                 tb.Tag = false;
@@ -200,6 +351,8 @@ namespace EditPerson
                 this.errorProvider1.SetError(tb, null);
                 tb.Tag = true;
             }
+
+            
 
             ValidateAll();
         }
@@ -234,8 +387,8 @@ namespace EditPerson
         public void TxtBoxEmpty__Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-
-            if(tb.Text.Length == 0)
+            //tb.Font = this.formFont;
+            if (tb.Text.Length == 0)
             {
                 this.errorProvider1.SetError(tb, "This field cannot be empty.");
                 e.Cancel = true;

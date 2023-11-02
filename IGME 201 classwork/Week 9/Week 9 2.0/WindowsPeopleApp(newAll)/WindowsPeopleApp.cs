@@ -31,7 +31,7 @@ namespace WindowsPeopleApp
             //in the peoplelistform which is the main form that will run and the other forms are bsically support for the main form**
             //why did we have another .cs program that had personeditform as the main program do we deleet that??** we cant have 2 main forms
 
-            //the main form only has this within it right**
+            //the main form only has this within it right(yes)
             Application.Run(new PeopleListForm());
         }
     }
