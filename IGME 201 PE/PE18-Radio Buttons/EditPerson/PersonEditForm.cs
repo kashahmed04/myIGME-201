@@ -15,7 +15,6 @@ namespace EditPerson
     public partial class PersonEditForm : Form
     {
         public Person formPerson;
-        //Font formFont = new Font("Arial", 30);
 
         public PersonEditForm(Person person, Form parentForm )
         {
@@ -150,7 +149,6 @@ namespace EditPerson
                     this.themRadioButton.Checked = true;
                     break;
             }
-
            
 
             this.Show();
@@ -340,7 +338,6 @@ namespace EditPerson
         private void TxtBoxEmpty__TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            //tb.Font = this.formFont;
             if ( tb.Text.Length == 0)
             {
                 this.errorProvider1.SetError(tb, "This field cannot be empty");
@@ -387,7 +384,6 @@ namespace EditPerson
         public void TxtBoxEmpty__Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            //tb.Font = this.formFont;
             if (tb.Text.Length == 0)
             {
                 this.errorProvider1.SetError(tb, "This field cannot be empty.");

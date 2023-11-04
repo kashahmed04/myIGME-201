@@ -67,6 +67,7 @@ namespace EditPerson
              ******************************************************************************************/
             InitializeComponent();
 
+            //why do we have loop for controls here but not in the peoplelistform how do we know to have a loop for the controls**********************(15)
             foreach (Control control in this.detailsTabPage.Controls) //these controls not longer exist directly in the form this.Controls
                                                                       //and now in the details tab page that we created in the designer
                 //we need to modify the foreach loop to look at the details view tab controls rather than the main
@@ -148,16 +149,6 @@ namespace EditPerson
             //after all contorls are configured then we can manipulate the data like we did down below in our methods and it also calls event triggers like it would with
             //user interaction if we manipulated something in our code to cause an event**
 
-            //add the checked changed for all 3 teacher buttons since their rating buttons have change so the text also needs to change******
-            //we can use the same delegate for all of our buttons because they all do the same thing is they are checked or not (changed)**************
-            this.greatRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckChanged); //use eventhandler when its used generically and shared across controls******
-            this.okRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckChanged);
-            this.mehRadioButton.CheckedChanged += new EventHandler(RatingRadioButton__CheckChanged);
-
-
-            //first set up all eventhandlers then manipukate controls******
-            //we want them to be able to click the picture and have a open file disologue control so that they can add their own photo*****S
-            this.photoPictureBox.Click += new EventHandler(PhotoPictureBox__Click);
 
             //we initialize the fields that are passed in that are common to both sutdent and tacher now**
             this.nameTextBox.Text = person.name; //when we set these variables these go to the delegate because the text is being changed as well
@@ -166,40 +157,6 @@ namespace EditPerson
             this.ageTextBox.Text = person.age.ToString(); //we need to cast the age to a string so for that person we pass in their data gets stored as a string**
             this.licTextBox.Text = person.LicenseId.ToString(); //saves the data in these variables for the teacher and student person we pass in (which ever one it was)**
 
-
-            if(person.name == "") //if their name is empty then we know its a new person being added so we set their food to a default value******
-            {
-                person.eFavoriteFood = EFavoriteFood.Pizza; //by default it will say their favorite food is broccolli so we change that*****
-
-            }
-
-            //we want to start by setting the actual date of our control to be the minimum date
-            //we want to show the data blank by default and we use the 1753 as the blank date when nothing is entered******
-            this.birthdateLabel.Value = this.birthdateLabel.MinDate;
-
-            //have an event handler assocaited with it now to have default blank date****
-            //if the birthdate which is the default min date then we want to show it as blank rather than the Jnauary 1 1753
-            this.birthDateTimePicker
-
-            //RADIO BUTTONS (set it as their favorite food)
-            //we want to see what the enumrerated type is set to
-            switch (person.eFavoriteFood)
-            {
-                case EFavoriteFood.brocolli;
-                    this.brocolliRadioButton.Checked = true; //these two handles the shared radio button but now we want to handle just a teacher****
-                    break;
-                case EFavoriteFood.pizza;
-                    this.pizzaRadioButton.Checked = true;
-                    break;
-                case EFavoriteFood.apples;
-                    this.applesRadioButton.Checked = true;
-                    break;
-
-
-            }
-
-            //load the picturebox here now*****
-            this.photoPictureBox.ImageLocation = person.photoPath; //string that contains path to their photo so we can load it onto the picturebox*****
 
 
             //we need to know what type of person was passed in so we know what fields will show like gpa or specifalty for the teacher**
@@ -231,26 +188,6 @@ namespace EditPerson
                 Teacher teacher = (Teacher)person;
                 this.specTextBox.Text = teacher.specialty; //this sets all of our fields to whatever person was passed in**
 
-                //set up teacher radio button*****
-                if(person.name == "")
-                {
-                    teacher.eRating = ERating.ok;
-                }
-
-                switch (teacher.eRating) 
-                { 
-                    case ERating.great;
-                        this.greatRadioButton.Checked = true; 
-                        break;
-                    case ERating.ok;
-                        this.okRadioButton.Checked = true;
-                        break;
-                    case ERating.meh;
-                        this.mehRadioButton.Checked = true; //when we check a radio button it unchecks all the others in the same container****
-                        //only one favorite food and one erating can be checked so we put a group box so it wont do one or the other******
-                        break;
-                }
-
 
 
             }
@@ -259,49 +196,6 @@ namespace EditPerson
 
             this.Show();
 
-        }
-
-        //the group box just gives us the label and the caption for the picturebox that why we have the picturebox clicked to go to our files then add the hpoto
-        // with open dialooge****
-        private void PhotoPictureBox__Click(object sender, EventArgs e)
-        {
-            PictureBox pb = (PictureBox)sender;
-            //we want to pop up the open file dislouge 
-            if(this.openFileDialog.ShowDialog() == DialogResult.OK) //if the result fo showing openfilediglogue (they clciked ok) then we set the picturebox
-                //image location equal to the filename that they chose to display the photo*****
-            {
-                //object.ReferenceEquals = this.openFileDialog.FileName;
-            }
-
-
-
-
-        }
-        private void RatingRadioButton__CheckChanged(object sender, EventArgs e )
-        {
-            RadioButton rb = (RadioButton)sender;
-            if (rb.Checked) //checkchanged unchecks another radio button first if another one was selected initially*****
-                //it will call checked change twice to uncheck previous button and check the one we just clicked on when we check another radio button*****
-            {
-                if(rb == this.greatRadioButton)
-                {
-                    this.ratingLabel2.Text = "sign me up";
-                }
-
-                if (rb == this.okRadioButton)
-                {
-                    this.ratingLabel2.Text = "ok";
-                }
-
-                if (rb == this.mehRadioButton)
-                {
-                    this.ratingLabel2.Text = "run away!"; //each time a radio button is changed it updates the label for the teacher
-                    //we need to default our radio button so it does not show label2 by default
-                    //when we press great it calls the meh radio button to unchecked then calls it again to hve the great button checked
-
-                    //by default we can multiseclted checkboxes not radiobuttons though its only one at a time so thats why we made a groupbox*****
-                }
-            }
         }
 
         private void OkButton__Click(object sender, EventArgs e)
@@ -373,27 +267,7 @@ namespace EditPerson
                                                                       //not strings so we can store the person and the data in our textboxes is string so when we put it on the form its a string
                                                                       //any time we put stuff on the form it has to be a string
 
-
-
-            //when we click ok we want to store their food data and teacher data if they were a teacher based on the radio buttons******
-            //store their data based on whatever they clicked******
-            if (this.brocolliRadioButton.Checked)
-            {
-                person.eFavoriteFood = EFavoriteFood.brocolli;
-            }
-
-            if (this.pizzaRadioButton.Checked)
-            {
-                person.eFavoriteFood = EFavoriteFood.pizza;
-            }
-
-            if (this.applesRadioButton.Checked)
-            {
-                person.eFavoriteFood = EFavoriteFood.apples;
-            }
-
-            this.photoPictureBox.ImageLocation = person.photoPath; //this implements our pgoto picturebox****************** (put it in backwards order)****
-
+           
             if (person.GetType() == typeof(Student))
             {
                 student.gpa = Convert.ToDouble(this.gpaTextBox.Text); //save the data based on the object and it knows its a person so it will store along with the shared fields
@@ -404,23 +278,6 @@ namespace EditPerson
             else
             {
                 teacher.specialty = this.specTextBox.Text;
-
-
-                //we need to explicitly check each radio button when they click ok*******
-                if (this.greatRadioButton.Checked)
-                {
-                    teacher.eRating = ERating.great;
-                }
-
-                if (this.okRadioButton.Checked)
-                {
-                    teacher.eRating = ERating.ok;
-                }
-
-                if (this.mehRadioButton.Checked)
-                {
-                    teacher.eRating = ERating.meh;
-                }
 
             }
 
@@ -497,7 +354,7 @@ namespace EditPerson
                 //why did we not just set it equal to false so that they input a GPA rather than having a teacher speciality stored in it so that we can
                 //press ok when the GPA was entered instead of storing teacher specialty**
 
-                this.ratingGroupBox1.Visible = false;
+              
             }
             else
             {
@@ -510,16 +367,6 @@ namespace EditPerson
                 this.gpaTextBox.Visible = false;
 
                 this.specTextBox.Tag = (this.specTextBox.Text.Length > 0);
-
-                this.ratingGroupBox1.Visible = true; //shows the groupbox if its a teacher for the rating
-                //if a container is visible or not it effects everything in that box and makes it visble or not******
-
-                //if we show the rating groupbox we need to check and see if none of the are checked and we set a default
-                //and it will automatically put the label on it because it starts off as being checked by default*******
-                if(!this.greatRadioButton.Checked && !this.okRadioButton.Checked && !this.mehRadioButton.Checked)
-                {
-                    this.okRadioButton.Checked;
-                }
             }
 
             ValidateAll(); //why do we have to call validate here as well because it's not a bool. value so how does it check it in terms of the statements

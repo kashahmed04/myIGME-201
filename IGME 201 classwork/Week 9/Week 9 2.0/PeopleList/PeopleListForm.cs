@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PeopleAppGlobals; //list of people (student and teachers) and courses**
 using PeopleLib; //the student and teacher  and person objects**
-using EditPerson; //personeditform?? (allows us to edit a person when we double click or press enter on any of their entries or only their email)??***********************(14)
+using EditPerson; //personeditform?? 
 
 
 //all courses listview has all courses from 200-299 and the top listview for the courses contains the selected courses for the students
@@ -69,13 +69,13 @@ namespace PeopleList
     public partial class PeopleListForm : Form, IListView //does it automatically inherit form or do we put it ourselves what does it mean and when do we know to put it**
                                                 //we need partial in all of our classes because its a windows forms and it retuqires it to be partial
                                                 //bcause its designer extends the code defintion and it's shared code between the designer and our .cs file**
+                                                //by default windows forms attaches a forms inheritence to our cs files that have the desinger within it**************(14)
 
         //we can now use the interface to call the paintlistview to redraw itself from the email address that the person just edited** (why do we have an inheritence of it i
         //this form
        
     {
-        private int columnIndex = 1; //which index our listview is sorted on and we start with the email column**************
-        private int columnSortOrder = 1; //ascending order of the column and descending would be negative 1*************
+       
 
         public PeopleListForm()
         {
@@ -83,13 +83,6 @@ namespace PeopleList
                                     //file that we don't interact with and it's usually hidden** and we put all code below this 
 
             //Globals.AddPeopleSampleData(); //remove it because its done in the main already 
-
-            //we can remove this here right since we called it in windowspeopleapp and now we dont need to call it here right since it already
-            //created the list of courses and people and we can just access it now via Globals.people.sortedList**
-
-
-            //START HERE******
-            //WE WANT TO SORT BY COLUMN
 
             // 1. use the PeopleListView__KeyDown delegate
             this.peopleListView.KeyDown += new KeyEventHandler(PeopleListView__KeyDown);
@@ -121,121 +114,12 @@ namespace PeopleList
             //the form property and then another . for the event then after the += its the
             //new eventhandler or another event handler then in () the name of the delegate method which is the control name in pascalcase__eventname (yes)
 
-            //the control itself is the property and the things we can edit in the property are also properties (have get and set functions)
+            //the control itself is the property and the things we can edit in the property are also properties (have get and set functions)      
 
 
-            //we want to execute our new code to sort our list on that column by setting up an event handler on the column click event**********
-            this.peopleListView.ColumnClick += new ColumnClickEventHandler(PeopleListView__ColumnClick);
-
-            //we want to update the column appearence and whatever column is sorted on it will show a diamond based on which column is sorted on rahter in a or d order****
-            UpdateColumnAppearance(columnIndex);
-
-
-            PaintListView(null); //why do we pass null (we pass null because it starts at the top then when we first start creating the list)**
+            PaintListView(null); //why do we pass null (we pass null because it starts at the top then when we first start creating the list)
         }
-
-        //which column is sorted in which is the column index in the class defintion and a or d order (-1 for d and 1 for a ) in class def. and the listview contorl has
-        //a column click event so we have it so when the click on the column in our method below if its the same column we are sorting on
-        //then we want to reverse it (plus or minus 1) otherwise they clicked on a new column then we want to set our column index to which column we are indexing on
-        //for a order
-
-        //our lv contorl has the listview item sorter and it has a class that defines how to sort the columns and the requirement for the class
-        //is the compare method that compares the items as we move on in the columns and we need to associate a class object with our column then sort
-        //the list then added a method to put the dismaonds to show which is being sorted
-
-        //and the default is the email column to a order
-        private void PeopleListView__ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            ListView lv = (ListView)sender;
-
-            if(e.Column == columnIndex)
-            {
-                columnSortOrder *= 1;
-            }//if the column they clicked on then****************
-
-            else
-            {
-                columnIndex = e.Column;
-                columnSortOrder = 1; 
-            }
-
-            lv.ListViewItemSorter = new ListViewItemComparer(e.Column, columnSortOrder);
-            //defines what to use for sorted the columns in the listview and we need to pass a class defintiion that defines that sorting logic
-            //so we have the class below for it and now we want to create a new object to sort the columns*****
-
-            lv.Sort(); //sorts our list and puts it on the list based on our column
-
-            //call this after they have clicked on the header******
-            UpdateColumnAppearance(columnIndex);
-        }
-
-        private void UpdateColumnAppearance(columnIndex)
-        {
-            //takes an index of the column that we are now sorting on******
-            foreach(ColumnHeader columnHeader in this.peopleListView.Columns)
-            {
-               //if its a then we show up diamond otherwise we do down arrow for d order
-
-            } //go through all columns of our listvieww and for each of those we want to set the column header with null characters****
-
-            //if the column order is 1 set the up arrow otherwise the down array****
-            string arrow = ;
-
-            //then we set the text of our column we are currentyl sorting on to the arrow (adds it as a suffix to the etxt in that column)*******
-
-        }
-
-        class ListViewItemComparer : IComparer 
-        {
-            private int columnIndex;
-            private int sortOrder;
-
-            public ListViewItemComparer(int column, int order)
-            {
-                columnIndex = column;
-                sortOrder = order;
-
-            }
-
-            public int Compare(object x, object y)
-            {
-                ListViewItem itemX = (ListViewItem)x; //comapres every item in the list and compares everything in the list
-                
-                ListViewItem itemY = (ListViewItem)y;
-
-                if(itemX == null || itemY == null)
-                {
-                    return 0;
-                }
-
-                //if they aboth arent null we grab the text property from those two items which are***********
-                //out listview items contains our main column and our subitems array it contains the additonal colum data*****
-                string textX = itemX.SubItems[columnIndex].Text;
-                string textY = itemX.SubItems[columnIndex].Text;
-
-                //now we compare these two using the string.Compare method()*********
-                return string.Compare(textX, textY) * sortOrder; //comapres the two strings then muktiplying it by sort order
-                //and its -1 is x is less than y and 1 is x is greater than y then we sort by a or d and its based on whether x is greater than or less than y and
-                //its from things that were greater than or less than our tings from our list 
-
-            }
-
-        }//build in interface and requires us to implement a method that compares two objects
-        
-
-
-
-
-
-
-
-
-        //the columns property order has nothing to do with the order on the form and the order on the form is by the displayIndex not just moving around
-        //the blocks for the index
-        //the order of columns is displayed by displayindex
-        //for each column we can set width and alignedment and order it displays in 
-
-        //person is an absrtac class so we cant create a person object (instabce) we can have a pointer though**
+     
         private void AddButton__Click(object sender, EventArgs e)
         {
             Person newPerson = new Student(); //add a new student by default in our form

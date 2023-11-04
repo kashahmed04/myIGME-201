@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PeopleAppGlobals;
 using PeopleLib;
+using PeopleAppGlobals;
 using EditPerson;
 
-namespace PeopleList
+
+namespace PeopleWinApp
 {
     public partial class PeopleListForm : Form, IListView
     {
@@ -21,87 +22,25 @@ namespace PeopleList
 
             Globals.AddPeopleSampleData();
 
+            // referring to the Windows Form Controls document, 
+            // add the event handlers for the following 5 events
+
             // 1. use the PeopleListView__KeyDown delegate
             this.peopleListView.KeyDown += new KeyEventHandler(PeopleListView__KeyDown);
 
             // 2. use the PeopleListView__ItemActivate delegate
-            this.peopleListView.ItemActivate += new EventHandler(PeopleListView__ItemActivate);
+            this.peopleListView.ItemActivate += new EventHandler(this.PeopleListView__ItemActivate);
 
-            // 3. use the AddButton__Click delegate
-            this.addButton.Click += new EventHandler(AddButton__Click);
+            // 3. use the AddBtn__Click delegate
+            this.addBtn.Click += new EventHandler(this.AddBtn__Click);
 
-            // 4. use the RemoveButton__Click delegate
-            this.removeButton.Click += new EventHandler(RemoveButton__Click);
+            // 4. use the RemoveBtn__Click delegate
+            this.removeBtn.Click += new EventHandler(this.RemoveBtn__Click);
 
-            // 5. use the ExitButton__Click delegate
-            this.exitButton.Click += new EventHandler(ExitButton__Click);
+            // 5. use the ExitBtn__Click delegate
+            this.exitBtn.Click += new EventHandler(this.ExitBtn__Click);
 
             PaintListView(null);
-        }
-
-        private void ExitButton__Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void AddButton__Click(object sender, EventArgs e)
-        {
-            Person newPerson = new Student();
-
-            this.Enabled = false;
-
-            new PersonEditForm(newPerson, this);
-        }
-
-        private void PeopleListView__KeyDown(object sender, KeyEventArgs e)
-        {
-            ListView lv = (ListView)sender;
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-
-                try
-                {
-                    string email = (string)lv.SelectedItems[0].Tag;
-                    //string email = lv.SelectedItems[0].Tag.ToString();
-
-                    Person person = null;
-                    person = Globals.people[email];
-
-                    this.Enabled = false;
-
-                    PersonEditForm epf = new PersonEditForm(person, this);
-                    epf.Show();
-                }
-                catch
-                {
-
-                }
-            }
-        }
-
-        private void PeopleListView__ItemActivate(object sender, EventArgs e)
-        {
-            ListView lv = (ListView)sender;
-
-            try
-            {
-                string email = (string)lv.SelectedItems[0].Tag;
-
-                Person person = null;
-
-                person = Globals.people[email];
-
-                this.Enabled = false;
-
-                // only use this method if the Show() is at the end of the constructor!
-                new PersonEditForm(person, this);
-            }
-            catch
-            {
-
-            }
         }
 
 
@@ -140,7 +79,7 @@ namespace PeopleList
                 nStartEl = Globals.people.sortedList.IndexOfKey(firstEmail);
             }
 
-            // use a cntr to check against nStartEl and to enable us to change the
+            // use a cntr to check against nStartEl and to enable us to change the 
             // background color of each row to make the SortedList more readable
             int lviCntr = 0;
 
@@ -214,13 +153,10 @@ namespace PeopleList
 
                 // 18. if thisPerson is a Student
                 // refer to class code examples for how to use GetType() and typeof()
-                // "is" checks for relationship
-                //if( thisPerson is Student )
-                // GetType() / typeof() checks for specific data type, not relationship
-                if (thisPerson.GetType() == typeof(Student))
+                if( thisPerson.GetType() == typeof(Student) )
                 {
                     // 19. declare a Student variable set to thisPerson cast as a (Student)
-                    Student student = (Student)thisPerson;
+                    Student student = (Student) thisPerson;
 
                     // 20. set lvsi.Text equal to the student's GPA
                     // note that gpa is a double, so you will need to convert it to a string
@@ -239,7 +175,7 @@ namespace PeopleList
                 lvi.SubItems.Add(lvsi);
 
                 // if this row is the first email that should be shown
-                if (nStartEl == lviCntr)
+                if (lviCntr == nStartEl)
                 {
                     // set this row as being currently selected
                     lvi.Selected = true;
@@ -266,14 +202,21 @@ namespace PeopleList
             this.peopleListView.TopItem = firstLVI;
         }
 
+        // handle clicking the Exit button
+        private void ExitBtn__Click(object sender, EventArgs e)
+        {
+            // Application.Exit() closes the current running application
+            Application.Exit();
+        }
+
         // handle clicking the Remove button
-        private void RemoveButton__Click(object sender, EventArgs e)
+        private void RemoveBtn__Click(object sender, EventArgs e)
         {
             try
             {
                 string email;
 
-                // 24. The ListView has a SelectedItems array field
+                // 24. The ListView has a SelectedItems array field 
                 // which is the array of ListViewItems which are currently selected
                 // Since we have MultiSelect set to false, only one row can be selected
                 // so we only check SelectedItems[0]
@@ -281,10 +224,10 @@ namespace PeopleList
                 // Set email = the email address saved in the Tag field for SelectedItems[0]
                 // Since Tag is a System.Object,
                 // use the ToString() method to convert the object to a string
-                email = this.peopleListView.SelectedItems[0].Tag.ToString();
+                email = peopleListView.SelectedItems[0].Tag.ToString();
 
                 // 25. if email is not equal to null
-                if( email != null )
+                if ( email != null )
                 {
                     // 26. remove the entry from Globals.people associated with the email address
                     Globals.people.Remove(email);
@@ -299,5 +242,66 @@ namespace PeopleList
             PaintListView(null);
         }
 
+        // handle clicking the Add button
+        private void AddBtn__Click(object sender, EventArgs e)
+        {
+            // create a new Student object
+            Person newPerson = new Student();
+
+            // disable this form
+            this.Enabled = false;
+
+            // create a new PersonEditForm and edit the newPerson
+            new PersonEditForm(newPerson, this);
+        }
+
+        // Event handler for processing pressing the Enter key on a row of the ListView
+        private void PeopleListView__KeyDown(object sender, KeyEventArgs e)
+        {
+            ListView lv = (ListView)sender;
+
+            // if the user pressed Enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                // have .NET suppress the keypress, we are handing it
+                e.SuppressKeyPress = true;
+
+                try
+                {
+                    // try to fetch the email from the selected row
+                    string email = lv.SelectedItems[0].Tag.ToString();
+
+                    // create Person reference variable
+                    Person person = null;
+
+                    // set person to the indexed Person object in the SortedList<>
+                    person = Globals.people[email];
+
+                    // disable the current form
+                    this.Enabled = false;
+
+                    // execute the PersonEditForm to edit the selected person
+                    new PersonEditForm(person, this);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        // Event handler for processing double-click on a row of the ListView
+        private void PeopleListView__ItemActivate(object sender, EventArgs e)
+        {
+            Person person = null;
+
+            ListView lv = (ListView)sender;
+
+            string email = lv.SelectedItems[0].Tag.ToString();
+            person = Globals.people[email];
+
+            this.Enabled = false;
+            new PersonEditForm(person, this);
+        }
     }
 }
