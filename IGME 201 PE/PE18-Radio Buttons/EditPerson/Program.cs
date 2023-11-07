@@ -16,7 +16,7 @@ namespace EditPerson
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new PersonEditForm());
+            Application.Run(new PersonEditForm());
         }
     }
 }

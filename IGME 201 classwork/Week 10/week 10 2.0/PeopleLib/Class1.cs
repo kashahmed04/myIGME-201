@@ -128,7 +128,7 @@ namespace PeopleLib
         public collegeYear eCollegeYear;
         //public List<string> courseCodes = new List<string>();
 
-        public List<String> CourseList
+        public List<String> CourseList //we have a list of strings which is the course codes the person has reguastered for******
         {   
             get;
             set;
@@ -186,6 +186,7 @@ namespace PeopleLib
         public string specialty;
 
         public ERating eRating;
+        //public List<string> courseCodes = new List<string>();
 
         public List<String> CourseList
         {

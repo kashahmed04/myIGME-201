@@ -34,11 +34,11 @@
             this.bioLabel = new System.Windows.Forms.Label();
             this.dmButton = new System.Windows.Forms.Button();
             this.statsListView = new System.Windows.Forms.ListView();
-            this.gpa_specHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.matchupHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.rankHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rankHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.matchupHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gpa_specHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.photoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +50,7 @@
             this.photoGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.photoGroupBox.Name = "photoGroupBox";
             this.photoGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.photoGroupBox.Size = new System.Drawing.Size(331, 263);
+            this.photoGroupBox.Size = new System.Drawing.Size(388, 319);
             this.photoGroupBox.TabIndex = 53;
             this.photoGroupBox.TabStop = false;
             this.photoGroupBox.Enter += new System.EventHandler(this.photoGroupBox_Enter);
@@ -62,14 +62,14 @@
             this.photoPictureBox.Location = new System.Drawing.Point(4, 19);
             this.photoPictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.photoPictureBox.Name = "photoPictureBox";
-            this.photoPictureBox.Size = new System.Drawing.Size(323, 240);
+            this.photoPictureBox.Size = new System.Drawing.Size(380, 296);
             this.photoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.photoPictureBox.TabIndex = 0;
             this.photoPictureBox.TabStop = false;
             // 
             // usernameLabel
             // 
-            this.usernameLabel.Location = new System.Drawing.Point(408, 67);
+            this.usernameLabel.Location = new System.Drawing.Point(424, 66);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(236, 41);
             this.usernameLabel.TabIndex = 54;
@@ -78,7 +78,7 @@
             // 
             // bioLabel
             // 
-            this.bioLabel.Location = new System.Drawing.Point(408, 146);
+            this.bioLabel.Location = new System.Drawing.Point(424, 146);
             this.bioLabel.Name = "bioLabel";
             this.bioLabel.Size = new System.Drawing.Size(475, 126);
             this.bioLabel.TabIndex = 55;
@@ -86,12 +86,13 @@
             // 
             // dmButton
             // 
-            this.dmButton.Location = new System.Drawing.Point(17, 293);
+            this.dmButton.Location = new System.Drawing.Point(17, 416);
             this.dmButton.Name = "dmButton";
-            this.dmButton.Size = new System.Drawing.Size(327, 46);
+            this.dmButton.Size = new System.Drawing.Size(380, 70);
             this.dmButton.TabIndex = 56;
             this.dmButton.Text = "Message";
             this.dmButton.UseVisualStyleBackColor = true;
+            this.dmButton.Click += new System.EventHandler(this.dmButton_Click);
             // 
             // statsListView
             // 
@@ -104,39 +105,40 @@
             this.statsListView.FullRowSelect = true;
             this.statsListView.GridLines = true;
             this.statsListView.HideSelection = false;
-            this.statsListView.Location = new System.Drawing.Point(17, 351);
+            this.statsListView.Location = new System.Drawing.Point(450, 297);
             this.statsListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.statsListView.MultiSelect = false;
             this.statsListView.Name = "statsListView";
-            this.statsListView.Size = new System.Drawing.Size(866, 226);
+            this.statsListView.Size = new System.Drawing.Size(399, 226);
             this.statsListView.TabIndex = 57;
             this.statsListView.UseCompatibleStateImageBehavior = false;
             this.statsListView.View = System.Windows.Forms.View.Details;
+            this.statsListView.SelectedIndexChanged += new System.EventHandler(this.statsListView_SelectedIndexChanged);
             // 
-            // gpa_specHeader
+            // gameHeader
             // 
-            this.gpa_specHeader.Text = "get rid";
-            this.gpa_specHeader.Width = 440;
-            // 
-            // matchupHeader
-            // 
-            this.matchupHeader.Text = "Matchup %";
-            this.matchupHeader.Width = 107;
-            // 
-            // rankHeader
-            // 
-            this.rankHeader.Text = "Rank";
-            this.rankHeader.Width = 110;
+            this.gameHeader.Text = "Games";
+            this.gameHeader.Width = 185;
             // 
             // timeHeader
             // 
             this.timeHeader.Text = "Time";
             this.timeHeader.Width = 100;
             // 
-            // gameHeader
+            // rankHeader
             // 
-            this.gameHeader.Text = "Games";
-            this.gameHeader.Width = 185;
+            this.rankHeader.Text = "Rank";
+            this.rankHeader.Width = 110;
+            // 
+            // matchupHeader
+            // 
+            this.matchupHeader.Text = "Matchup %";
+            this.matchupHeader.Width = 107;
+            // 
+            // gpa_specHeader
+            // 
+            this.gpa_specHeader.Text = "get rid";
+            this.gpa_specHeader.Width = 440;
             // 
             // DisplayProfile
             // 

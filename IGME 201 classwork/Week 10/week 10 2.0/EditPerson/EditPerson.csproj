@@ -37,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PeopleAppGlobals">
-      <HintPath>..\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
+      <HintPath>..\..\..\..\IGME 201 Windows Forms\DynamicPeople\WindowsPeopleApp_12_3\WindowsPeopleApp\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
     <Reference Include="PeopleLib">
-      <HintPath>..\PeopleLib\bin\Debug\PeopleLib.dll</HintPath>
+      <HintPath>..\..\..\..\IGME 201 Windows Forms\DynamicPeople\WindowsPeopleApp_12_3\WindowsPeopleApp\PeopleLib\bin\Debug\PeopleLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

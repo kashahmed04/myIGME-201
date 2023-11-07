@@ -1,0 +1,10 @@
+
+// {type:class}
+// {generate:true}
+// {direction:topDown}
+
+[+Profiles||+DMButton__Click();+StatsListView__ItemActivate();-UsernameLabel();-BioLabel();+PhotoPictureBox__Click()]
+[+GameInfo|+game:string|+GameInfo():string:o;]<-[+Profiles]
+[+PlayerInfo|+username:string|+PlayerInfo():string:o;]<-[+Profiles]
+[+Rank|+playerRank:int|+SortPlayerRank():int]<-[+Profiles]
+[+FilterBy|+time:int;+score:int|+ByTime()|+ByScore()]<-[+Profiles]

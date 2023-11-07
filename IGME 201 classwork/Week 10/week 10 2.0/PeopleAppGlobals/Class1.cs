@@ -10,7 +10,9 @@ namespace PeopleAppGlobals
 {
     public interface IListView
     {
-        void PaintListView(string firstEmail);
+        void PaintListView(string firstEmail); //this does not need a reference to peoplelistform and it would still work (peoplekistform has a reference
+        //to peopleappglobals though) why does this work** (how does this work why did we put interface here and also the inheritence had to happen
+        //in peplelistform because it holds that method and not personedit form because**)
     }
 
     public static class Globals

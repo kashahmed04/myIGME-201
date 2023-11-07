@@ -36,5 +36,15 @@ namespace Profile_Display
         {
 
         }
+
+        private void statsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dmButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

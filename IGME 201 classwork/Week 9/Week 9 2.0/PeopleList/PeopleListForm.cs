@@ -13,22 +13,6 @@ using PeopleLib; //the student and teacher  and person objects**
 using EditPerson; //personeditform?? 
 
 
-//all courses listview has all courses from 200-299 and the top listview for the courses contains the selected courses for the students
-//on the details page we have a lot more controls and now we want to do the picturebox control
-//picturebox lets us show images on our form and we can customize the shape to have any shape we want and the picturebox is inside the groupbox
-//and allows us to give the caption and border around the picture itself******
-
-
-//when our application runs we want to be able to click the photo and what image we want to put for the student*********
-//and it stores the imave that we have put in the photobox for the student****
-//we first want to handle when they click the picture box (clicked event in constructor)*****
-//for exam 3 we will be writing president application
-
-//whatever contorl shows up on the bottom its not visual and opens seperately or its not associated with any specific location
-//on the form*********************************
-//the opendislouge allowws us to open the file exploerer functinoality*****
-
-
 //the wdinwos forms contorl document has a summary of all of the controls we will be using this semester 
 //we need to have courselib and peoplelib (here specifiacally or in peopleappglobals)**
 //because they define the student,teacher,and course,and courses class we need for our program
@@ -40,15 +24,45 @@ using EditPerson; //personeditform??
 //I am still confused on why we have to create a reference to peoplelib because we already have our person being accessed in the peopleappglobals 
 //is it because in peeoplelistview__keydown we have to point to a a new person and make it equal to the person
 //we pressed enter on when we got their email from the list which returned a person object then create a new form with that person we are on so we can edit them??**
-//we were just created a referrnce variable to hold an instance of the person class not a new object so thats why we need to have peoplelib defined here**
 
-//how do we know whether to make a windows control.vs.a windows forms**
+//we had to have a using statement for peoplelib in personlistform because
+//we wanted to create a variable (a reference) to the Person class in PeopleListView__KeyDown right?********************************************(1.0)
+
+//how do we know whether to make a windows control.vs.a windows form?************************(2.0)
 
 //so basically when we add a control the Name field is the name we access it with in the code and the text is what shows up on the form right**
 //we have a class which is the form, the prop. which is the control but within that prop., we have fields within it to name our control and customize it**
 
 //tag gets or sets with whatever control we use with the . notation**
 
+
+//In terms of the interface IListView we had created, I just wanted to know why we specifically created it within the PeopleAppGlobals file?
+//Was it because it was accessible to both personeditform and personlistform so it was kind of like a bridge between the two files
+//so that personeditform could have access to personlistform?************************(3.0)
+
+//We had to make personlistform inherit the interface so the interface was able to use that specific method (paintlistview()) within personlistform right?
+//Do we have to do these with all classes that have the same method as the interface so the interface can access those methods?******(4.0)
+
+//I am confused on why we needed an interface and had to cast it when we accessed paintlistview() in personeditform because couldnt we just have had a reference to
+//personlistform in personeditform and do PeopleListForm.paintlistview() by itself?*****************(5.0)
+
+//when we have references to other classes we usually just use the class name.whatever method or variable we want to access right we don't access by the namespace
+//name within the code unless it's the using statement?************(6.0)
+
+//in terms of making a class definition, I know we would want to do that because then our varaibles would only be accessible within the constructor but
+//would the class defined variables be accessible within other files if we had a reference to them via a using statement and the class.whatever we want to access
+//in the code, whereas the things we define in the constructor would not be accessible in other files regardless?************(7.0)
+
+//In terms of interfaces I was still a bit confused so basically within the interfaces we have to have the fucntionName(); or functionName(para.); (depends on method signature)
+//right and not just functionName; to reference a function?*****************(8.0)
+
+//When we created a new person the only thing that defaults is the person being a student right the rest it blank?*******(9.0)
+
+//by default windows forms attaches a forms inheritence to our cs files that have the desinger within it right it basically says there
+//a form attached to this cs file right?**************(10.0)
+
+//the this. in the form refers to the current form right? Like if we did this. in personedit form it would reference personeditform right
+//not the parent file which is personlistform?*************(11.0)
 
 //we wanted to make an interface available to the whole application and if we want accessible to the whole application we want it in a global class
 //and we define it in the globals because we know its shared across everythign and we want to call pintalistview method for the people list so we chanfe people list
@@ -61,8 +75,13 @@ using EditPerson; //personeditform??
 
 
 //peoplelist when we add a new person or edit and existing a person it calls editperson and it calls it with the person that was the existing person that was
-//selectoed or create the new person and everything is blank initially or??**
+//selectoed or create the new person and everything is blank initially except that its a student by default
 
+//basically we use the interhitence here of the interface so the interface has access to the paintlistview since its defined here and since personeditform
+//has a reference to peopleappglobals when we call the paintlistview via the interface from personeditform then it goes to the peoplelistform from there
+//because the interface has access because of the inheritence in the people listfomr***********************(26) and we have to cast the interface to the owner form
+//which is peoplelistform (why because if peoplelistform inherits from the listview cant we just call it idriectly from this.owner)********************(27)
+//basically peopleappglobals is like a bridge from personedit form to peoplelistform to get to the paintlistview method*******(28)
 
 namespace PeopleList
 {
@@ -108,7 +127,7 @@ namespace PeopleList
             this.exitButton.Click += new EventHandler(ExitButton__Click);
 
             //the this. refers to the form1.designer (the current instance of the class)(for the peoplelistform this. refers to the grid form
-            //and the this. in personedit form refers to the dropdown to edit a person in the designer)
+            //and the this. in personedit form refers to the pop up tab to edit a person in the designer)
             //the objectName is the field (yes)
             //name in the we set in the "Name" field within (yes)
             //the form property and then another . for the event then after the += its the
@@ -150,8 +169,9 @@ namespace PeopleList
             //the sender is the listview we pressed enter on so we cast that
             //and use that list view and we index that to 0 because we can only select one thing at a time because we have multiseclt off
              
-            //when we have this.show in the constructor it knows to show the form because we decalre a new instance of an object and for application.run we dont
-            //need the .show for it (application.run is only for main form in the main not anywhere else)
+            //when we have this.show in the constructor it knows to show the form because we decalre a new instance of an object like we did
+            //for personeditform right? And for application.run we dont
+            //need the .show for it because it's the main form*****************(12.0)
                                                                           
         {
             ListView lv = (ListView)sender;
@@ -179,7 +199,7 @@ namespace PeopleList
                     //how does it know to get an email what is this doing**
                     string email = (string)lv.SelectedItems[0].Tag;
                     //lv is our listview and anytime there is an item selected on our listview it will be in our selected items array and its
-                    //the selecteditems array we built in our paintlistview and we added each line to the items array at the very end and it also
+                    //the selecteditems array we built in our paintlistview and we added each line (row) to the items array at the very end and it also
                     //has a selected items array and it contains the currently selected items and in our listview control this.personlistviw.items(lvi)
                     //multiselect was eqaul to false and
                     //we can select one person at a time and basically the selected items of 0 will be the first item we selected and we attached the email to the
@@ -329,7 +349,8 @@ namespace PeopleList
 
             // clear the ListView Items
             //why do we want to clear in the whole form if theres nothing there inititally**
-            this.peopleListView.Items.Clear();//clear the whole form to repaint the list if someone was edited***********(2)
+            this.peopleListView.Items.Clear();
+            //clear the whole form to repaint the list if someone was edited*************(13.0)
 
             //clear all items in our list view so its empty before we populate then line below we lock it 
             //because we may have multiple processes accessing the list
@@ -338,7 +359,8 @@ namespace PeopleList
             //a conflict because 2 things are being done at one time 
             //so we want to do one at a time (like a queue)**
 
-            // lock the ListView to begin updating it (we want to lock the list so the user does not have access to***************(3))
+            // lock the ListView to begin updating it (we want to lock the list so the user does not have access to edit the list while
+            // its being repainted??)***************(14.0)
             this.peopleListView.BeginUpdate();
 
             // if an email was passed in for us to display as the first Person in the ListView (basically when we edit a person this makes it so that person shows
@@ -531,10 +553,11 @@ namespace PeopleList
                     //of the additional columns within each person (each person has their own array of columns and the array is contained within the persons
                     //listviewitem))(each item has an array within it like for each row item it contains the array of the columns)
 
-                    //so basically for each person stored in which is the name in the listview thats the array but within each person it stores the columns*************
-                    //for that person which is the rest of their items which is the subitems*********************************(4)
-                    //and basically each row is the name for the listviewitem and the rest which the columsn for that row are the subitems and these
-                    //are all contained in one array***************************(5)
+                    //so basically for each person stored in which is the "name" in the
+                    //listview thats the array but within each person it stores the rows (the 1 person data)
+                    //for that person which is the rest of their items (listsubitem)
+                    //and basically each row is the name for the listviewitem and the rest of the things in that row are the subitems and these
+                    //are all contained in one array***************************(15.0)
 
                     //and now we can use the email to go through the sorted list to index by their email and get the person object based on that 
                     //ex. people[email]
@@ -567,7 +590,7 @@ namespace PeopleList
 
             // EndUpdate() unlocks the ListView
             this.peopleListView.EndUpdate(); 
-            //why would we wnant to lock the whole form if we are just creating the form**
+            //we unlock the form once we edit the whole list (repaint it)********(16.0)
 
             // set the Top ListViewItem of the list to show on the screen
             this.peopleListView.TopItem = firstLVI; //based on the email that was stored for the current person because it was equal to the para. in the condtional**

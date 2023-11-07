@@ -11,28 +11,16 @@ using System.Windows.Forms.VisualStyles;
 using PeopleLib;
 using PeopleAppGlobals;
 
+//TOMORROW GO OVER THE LISTVIEW INTERFACE****************************(16.0)
 
-//datetime picker is from January 1 1753 and if we go lower then it throws an error*****
-//so we need to have it so if their birthdate is before 1753 it won't throw an error******
-//the contorl date has sa minimum date and the default will be January 1 1753 
-//we want to show the date portion only not the time portion and we use a custom format (in the prop window where the date is)
-//and the customformat is then unlocked for our custom date and year******************************
-
-
-
-//WE NOW WANT TO ADD RADIO BUTTONS TO OUR PERSON EDIT FORM
-//always use the name of the control within the name*************
-//only one radio button can be selected at a time but if we want multiple to be selected at the same time we use the groupbox
-//so it lets us organize things on the form (put them in their own container)********
-//groupboxes allow us to put title on the boxes*****
-//and they allow us to selected multiple radio buttons at a time*****
-
-//TOMORROW GO OVER THE LISTVIEW INTERFACE****************************(6)
-
-//how can we change the email address in personedit form if we have to access by the key (deleted the person so now we cant access by email)**
+//how can we change the email address in personedit form if we have to access by the key (deleted the person so now we cant access by email)
+//aso basically we deleted the person and created a new person with a new email then stored that email in the people list by the email being the key
+//then repainted the listview??**************(17.0)
 
 //our form is the this keyword and the controls is used for all of the controls on the form and its built in for all of our controls (this.Controls??)**
 //this is in the form1.designer.cs and its hidden from us and we dont modify at all because its automatically built in****
+//so basically if we use this. within the current form it will do stuff to that form only not the parent form that will******
+//actually run when we run the applciation***********(18.0)
 
 //we want to do specific code when the user changes a value and we use events associated with that contorl and in properties theres an evenet icon and for the combobox
 //control we have 100 possible events that could be triggered and we can add methods in here to be called in here when events are triggered but
@@ -51,13 +39,16 @@ namespace EditPerson
     public partial class PersonEditForm : Form //use partial in windows forms**
 
         //here we pass in the person and the parent form so we can edit a person that was double clicked or pressed enter on**
-        //for windows forms do we usually put inheritence of Form after ":" for the class that has the designer attached to it**
+        //for windows forms do we usually put inheritence of Form after ":" for the class that has the designer attached to it**************(19.0)
 
     {
         public Person formPerson; //make a person ref. variable because we pass a person variable in the constructor that exists inside the constructor
         //only and since now we have a class scaoped varible now we have access to that person everywhere in our class and we want to make person
         //useabe outside of it because then we could access their old data from the Globals file and to create a new object to save the data form the form
         //(the most edited one)
+        //so basically when a variable is class scoped that means that it can be accessed anywhere in the current file class but can also be accessed in other
+        //files that have the same reference as the current file whereas if it was only in the constructor it would only be avaiblable in that
+        //constructor even if it a public variable in the constructor??********(20.0) 
         public PersonEditForm(Person person, Form parentForm )
         {
 
@@ -72,7 +63,7 @@ namespace EditPerson
                                                                       //and now in the details tab page that we created in the designer
                 //we need to modify the foreach loop to look at the details view tab controls rather than the main
                 //form because thres container within the main form now but it still counts as being in the main form but now it's just in a container (the controls
-                //got moved to the continer in the desginer so we need to adjust for that)**
+                //got moved to the continer in the desginer so we need to adjust for that)
             {
                 // use Tag property to indicate valid state
                 //if the tag is used to store any type of data how does it know that the form starts off as invalid (we did not put it in the validateall method)**
@@ -84,23 +75,28 @@ namespace EditPerson
                 //we cant have loops for how the form can work like the interactive 
                 //we can have loops to access data though and set tags basically things that dont involve the interactivity 
 
-                //this.nameTexBox = false; and do the same for each control manually 
+                //this.nameTexBox = false; (do same for rest of controls) and do the same for each control manually 
             }
 
-            //check to see before working with variables that get passed in if they are valid or not(personlistform) what does null refer to in this case what is this doing**
+            //check to see before working with variables that get passed in if they are valid or not(personlistform)
+            //what does null refer to in this case what is this doing is this saying if the current form is not empty then we want to set the ownre
+            //and center the current form??*******(20)
             if(parentForm != null)
             {
                 //a form has a property called owner and its used to save the owning form (the form that called the current form)** (we can do owner in multiple forms right
-                //but only forms??**
-                //(the parent form?? in this case peoplelistform))**
+                //but only forms??******(21)
+                //(the parent form?? in this case peoplelistform))*******(22)
                 //and this way the varuable will be availabel throughough the class in terms of the parentform being used in this class only** (if we use this.
-                //it does matter matter about the scope it will be available through the whole file not application though??)**
+                //does it  matter matter about the scope it will be available through the whole file (class scoped) not whole application outside of file though
+                //even though we defined the owner within a code block could we do this for owner in general??)*************(23)
                 //(could we have used parentForm instead of this.Owner)**
-                //person and parent form are only defined in this code block not anywhere else and if we need to access it somewhere else then we need to**
+                //person and parent form are only defined in this code block not anywhere else and if we need to access it somewhere else other than constructor
+                //then we need to
+                //use class scoped variables like we did for person and here we are making one for the parent form since it's this.owner??*********(24)
                 this.Owner = parentForm; //refers to the personlistform that gets passed in**
 
                 //we now center the current form to the parent form and what it does is that it centers the parent form to the owner form thats unerlaying it at the moment
-                //makes it appear nice**
+                //makes it appear nice (lets this form show on top of the people list centered according to how big the list form window is**
                 this.CenterToParent();
 
 
@@ -109,8 +105,9 @@ namespace EditPerson
             }
 
             this.formPerson = person; //what does this do** (we created the reference to the person up above and it was class scoped)(why was it class scoped)**
-            //we are now setting our person reference to the person that was passed in)** we use this. because its class scoped and anything thats class scoped
-            //uses this. within the constructors even the controls (the contorls reference the designer code)??**
+            //we are now setting our person reference to the person that was passed in)**
+            //we use this. because its class scoped and anything thats class scoped*************(21.0)
+            //uses this. within the constructors even the controls (the contorls reference the designer code)??***********(22.0)
 
             //disable the ok button when we first come in 
             this.okButton.Enabled = false;
@@ -130,7 +127,9 @@ namespace EditPerson
             this.gpaTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             this.licTextBox.TextChanged += new EventHandler(TxtBoxEmpty__TextChanged);
             //I know that eventhandler is generic but how do we know when to use it .vs.using a more speciifc eventhandler
-            //like cancel or keypress event handlers could we have used eventhandler for those too??**
+            //like cancel or keypress event handlers could we have used eventhandler for those too??****************(23.0)
+            //when multiple controls access the same event and method we can name the method by whatever name related to content__control******(24.0)
+            //multiple methods can run at the same time for an event right**************(25.0)
 
             this.ageTextBox.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
             this.licTextBox.KeyPress += new KeyPressEventHandler(TxtBoxNum__KeyPress);
@@ -140,7 +139,7 @@ namespace EditPerson
 
             this.cancelButton.Click += new EventHandler(CancelButton__Click);
             this.okButton.Click += new EventHandler(OkButton__Click); //we need to update database with the person once they edit the form and press ok**
-            //all fields are camelcase not pascale case like the okbutton here
+            //all poperties are camelcase not pascale case like the okbutton here (only form is pascal case)
 
 
             //we want to set all of the event handlers above (form configurations) should be done first in our constructor before working
@@ -163,12 +162,13 @@ namespace EditPerson
             //the person object that was passed in at the top was rather a student or a teacher and we can implicitly pass variables with the parent type (high to low)**
             if(person.GetType() == typeof(Student)) //if its a student (look at prop. of combobox and look at the items then collection) we see that its the 0th index
                 //so we want to make the selected index that index in the collection because the 0th index is a student**
-                //this will add onto our current properties we have set because its still a type of person for the student or teacher**
+                //this will add onto our current properties we have set above like name and age,etc. because its still a type of person for the student or teacher**
             {
                 this.typeComboBox.SelectedIndex = 0; //when this is executed it will call out selectedindexchanged method we have down below here**
                 //and when we progamatically write code that maniupulates data is also calls the trigger for the event its not just the user who does the event**
+
                 //once we manipulate data it triggeres the selectedindexchanged event because we changed the index and even if it didnt change if we explicitly set it
-                //to something it will call the event because we set something like if we set it to 0 again the selectedindex method would be called still**
+                //to something it will call the event because we set something like if we set it to 0 again the selectedindex method would be called still*********(26.0)
                 //now in our selectedindexchanged it says we have our index equal to 0 in the first conditional and now displays the gpa fields and checks
                 //if there is any data in the texbox and calls validate all to see if ok button can be clicked in the selected index method**
 
@@ -223,11 +223,10 @@ namespace EditPerson
 
             //so above we insiitalized values to go into the form when we first opened the form (in the constructor)
             //when we first want to edit it but then over here we delete the person
-            //but the data is still shown on the form right********************************(10)
+            //but the data is still shown on the form right for their previous data********************************(27.0)
 
-            //remove object from databasse first then re added it from the type that was reflected from the form(the things we have edited)******************(7)
             //remove from the email so it removes the person then create a new person then readd everything back and create the person again and repaint the list
-            //view in our personlistform*******************(8)
+            //view in our personlistform*******************(28.0)
 
             //we lose email here so how would we know what person it is**
 
@@ -298,7 +297,7 @@ namespace EditPerson
                 //we have edited**
                 //if paintlistview is already in the parent form could we have just said this.Owner(or parentForm).paintlistview(person.email)**
 
-                //we do person.email and not person[email] because the first one gets the email and the second one gets the person based on our email****************(9)
+                //we do person.email and not person[email] because the first one gets the email and the second one gets the person based on our email****************(29.0)
             }
 
             this.Close();

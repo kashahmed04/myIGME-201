@@ -14,7 +14,7 @@ namespace PeopleAppGlobals
 {
     public interface IListView 
     {
-        void PaintListView(string firstEmail); //we want our peoplelistform to inherit this because(12)*****************
+        void PaintListView(string firstEmail); //we want our peoplelistform to inherit this because(30.0)*****************
     }
 
     public static class Globals//making this static because then we would have to use new then access that object everywhere in our application
@@ -23,7 +23,9 @@ namespace PeopleAppGlobals
                                //and we can just access it as Globals. once we add the file as a reference??**
     {
         public static People people = new People(); //(by default so we need to make it public so we can access the list of people
-                                                    //and classes in our other programs)***************(11)
+                                                    //and classes in our other programs because its class scoped and public
+                                                    //so we can access if via Globals. when theres a reference to this file within another
+                                                    //file)***************(31.0)
         public static Courses courses = new Courses();
 
         public static void AddPeopleSampleData()

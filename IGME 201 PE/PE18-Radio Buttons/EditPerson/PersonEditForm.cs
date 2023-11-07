@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PeopleLib;
 using PeopleAppGlobals;
 
+//changes I made on form are not showing up when I launch program
 namespace EditPerson
 {
     public partial class PersonEditForm : Form
@@ -88,12 +89,14 @@ namespace EditPerson
                 Student student = (Student)person;
                 this.gpaTextBox.Text = student.gpa.ToString();
 
-                if(person.name == "") //when we initially come in we want default values since noththing will be selected**
+                if(person.name == "") //when we initially have a person we are adding and not editing they
+                                      //dont have a name (defulat name was not set) so we want a default year since noththing will be selected**
                 {
-                    student.eCollegeYear = collegeYear.senior; //we can't use person because it's only in a student**
+                    student.eCollegeYear = collegeYear.senior; //we can't use person because it's only in a student enumerated type**
                 }
 
-                switch (student.eCollegeYear) 
+                switch (student.eCollegeYear) //we set the college year in the ok button click method so now if we want to edit the same person
+                    //again and we reload the person then we have their collegeyear that we stored so we can check which one it was from the switch statement**
                 {
                     case collegeYear.freshman:
                         this.freshmanRadioButton.Checked = true; //we have to specifically access from the enumerated
@@ -312,8 +315,10 @@ namespace EditPerson
                 if (!this.freshmanRadioButton.Checked && !this.sophomoreRadioButton.Checked && !this.juniorRadioButton.Checked && !this.seniorRadioButton.Checked)
                 {
                     this.seniorRadioButton.Checked = true;
-                    //for this part does it just make it so that if the index is changed and nothing is seclted
+                    //for this part does it just make it so that if the index is changed to student and nothing is seclted
                     //we want to make a default**
+                    //also if we had a student before and set their year to freshman then we changed the selected index to a teacher then when we switch back
+                    //to student again would the student freshman radio button we selected still be selected or would no**
                 }
 
             }
