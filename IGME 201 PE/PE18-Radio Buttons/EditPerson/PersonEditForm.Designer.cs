@@ -487,11 +487,11 @@
             // homePageTabPage
             // 
             this.homePageTabPage.Controls.Add(this.homepageWebBrowser);
-            this.homePageTabPage.Location = new System.Drawing.Point(4, 25);
+            this.homePageTabPage.Location = new System.Drawing.Point(4, 23);
             this.homePageTabPage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.homePageTabPage.Name = "homePageTabPage";
             this.homePageTabPage.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.homePageTabPage.Size = new System.Drawing.Size(1129, 410);
+            this.homePageTabPage.Size = new System.Drawing.Size(1129, 412);
             this.homePageTabPage.TabIndex = 1;
             this.homePageTabPage.Text = "Homepage";
             this.homePageTabPage.UseVisualStyleBackColor = true;
@@ -504,17 +504,17 @@
             this.homepageWebBrowser.MinimumSize = new System.Drawing.Size(27, 20);
             this.homepageWebBrowser.Name = "homepageWebBrowser";
             this.homepageWebBrowser.ScriptErrorsSuppressed = true;
-            this.homepageWebBrowser.Size = new System.Drawing.Size(1121, 404);
+            this.homepageWebBrowser.Size = new System.Drawing.Size(1121, 406);
             this.homepageWebBrowser.TabIndex = 0;
             // 
             // coursesTabPage
             // 
             this.coursesTabPage.Controls.Add(this.allCoursesGroupBox);
             this.coursesTabPage.Controls.Add(this.selectedCoursesGroupBox);
-            this.coursesTabPage.Location = new System.Drawing.Point(4, 25);
+            this.coursesTabPage.Location = new System.Drawing.Point(4, 23);
             this.coursesTabPage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.coursesTabPage.Name = "coursesTabPage";
-            this.coursesTabPage.Size = new System.Drawing.Size(1129, 410);
+            this.coursesTabPage.Size = new System.Drawing.Size(1129, 412);
             this.coursesTabPage.TabIndex = 2;
             this.coursesTabPage.Text = "Courses";
             this.coursesTabPage.UseVisualStyleBackColor = true;
@@ -525,7 +525,7 @@
             this.allCoursesGroupBox.Controls.Add(this.courseSearchTextBox);
             this.allCoursesGroupBox.Controls.Add(this.allCoursesListView);
             this.allCoursesGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.allCoursesGroupBox.Location = new System.Drawing.Point(0, 162);
+            this.allCoursesGroupBox.Location = new System.Drawing.Point(0, 164);
             this.allCoursesGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.allCoursesGroupBox.Name = "allCoursesGroupBox";
             this.allCoursesGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -660,10 +660,10 @@
             // scheduleTabPage
             // 
             this.scheduleTabPage.Controls.Add(this.scheduleWebBrowser);
-            this.scheduleTabPage.Location = new System.Drawing.Point(4, 25);
+            this.scheduleTabPage.Location = new System.Drawing.Point(4, 23);
             this.scheduleTabPage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.scheduleTabPage.Name = "scheduleTabPage";
-            this.scheduleTabPage.Size = new System.Drawing.Size(1129, 410);
+            this.scheduleTabPage.Size = new System.Drawing.Size(1129, 412);
             this.scheduleTabPage.TabIndex = 3;
             this.scheduleTabPage.Text = "Schedule";
             this.scheduleTabPage.UseVisualStyleBackColor = true;
@@ -676,7 +676,7 @@
             this.scheduleWebBrowser.MinimumSize = new System.Drawing.Size(27, 20);
             this.scheduleWebBrowser.Name = "scheduleWebBrowser";
             this.scheduleWebBrowser.ScriptErrorsSuppressed = true;
-            this.scheduleWebBrowser.Size = new System.Drawing.Size(1129, 410);
+            this.scheduleWebBrowser.Size = new System.Drawing.Size(1129, 412);
             this.scheduleWebBrowser.TabIndex = 0;
             // 
             // PersonEditForm
@@ -690,6 +690,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "PersonEditForm";
             this.Text = "Person Edit Form";
+            this.Load += new System.EventHandler(this.PersonEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.editPersonTabControl.ResumeLayout(false);
             this.detailsTabPage.ResumeLayout(false);

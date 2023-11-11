@@ -55,6 +55,8 @@ namespace Dyscord
             this.exitButton.Click += new EventHandler(ExitButton__Click);
             this.webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser1__DocumentCompleted);
 
+            this.FormClosing += new FormClosingEventHandler(Form__FormClosing);
+
 
         }
 
@@ -139,6 +141,13 @@ namespace Dyscord
             listener.Close(); //why do we need to close this cant we just do this.close(); and this.Dispose(); like we have been doing(2)**
             thread.Abort();
             Application.Exit();
+
+        }
+
+        private void Form__FormClosing(object sender, FormClosingEventArgs e)
+        {
+            listener.Close(); 
+            thread.Abort(); //so why does the exit button not close out the form itself and how do we know to add a form closing event(2.5)** 
 
         }
 

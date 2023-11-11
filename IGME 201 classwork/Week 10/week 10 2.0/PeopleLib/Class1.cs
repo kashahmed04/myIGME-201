@@ -36,7 +36,10 @@ namespace PeopleLib
 
     public interface ICourseList
     {
-        List<string> CourseList
+        List<string> CourseList //stores the name of the courses and it only applies to student and teacher classes
+            //just a list of the coursecodes that the person is registered for 
+            //and its a prop. so it allows us to use the interface to access it for both students and teachers
+            //the list updates our list for us and in our item activate 
         {
             get;
             set;

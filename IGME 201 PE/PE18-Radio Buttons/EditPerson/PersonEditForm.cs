@@ -420,5 +420,10 @@ namespace EditPerson
         {
 
         }
+
+        private void PersonEditForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -23,11 +23,13 @@ namespace PeopleList
 {
     public partial class PeopleListForm : Form, IListView
     {
-
+        //*****************************************************************************************************************************GO OVER
         //which index our listview is sorted on and we start with the email column which is the first index*************
         private int columnIndex = 1;  // default to email column
         //ascending order of the column and descending would be negative 1*************
         private int columnSortOrder = 1; // default to ascending order
+        //so as soon as we start the form it does the email by default and organizes it in a order**
+        //*****************************************************************************************************************************GO OVER
 
         public PeopleListForm()
         {
@@ -54,9 +56,9 @@ namespace PeopleList
             //SLACK QUESTIONS:
             //in order to access anything from the person class we need to include the peoplelib dll in our project because peoplelist needs
             //to know what the person class looks like because when we click on one of the items
-            //like our item activate we need to fetch the person object from our sorted list and we use the indexer property to get the email
+            //like our item activate we need to fetch the person object from our sorted list and we use the indexer property to get the email key to get the person**
             //and we need to add the peoplelib and we have the have the using peoplelib directive otherwise we would have to use peoplelib.person
-            //to access the indexer property which gives us access to those class definitions
+            //which gives us access to those class definitions to access the indexer property
 
             //we always make windows forms because windows controls are more generic containers which we dont learn about 
             //and when we create a windows forms application we select the windows forms app .NET framework and
@@ -76,7 +78,7 @@ namespace PeopleList
             //windows control makes our code modular and if we each have a dll we are writing and one executable and 5 dlls we can each work on our projecy
             //seperately (modular means so we can work independently as much as possible)
             //so we create dlls for the different parts of our application
-            
+
             //for the interface IListView in the peopleappglobals so it could be accessible across our whole project because peopleappglobals stores
             //all of our data and is accessible everywhere since we referecnced it everywhere like peoplelistform and personeditform
             //and by defining the interface its able to be accessed across the application
@@ -85,7 +87,7 @@ namespace PeopleList
             //in our personedit form when we click ok we want to update the list with the updated person with the data of the person we jsut edited 
             //we know that the owner is the peoplelistform and we want to call the paintlistview for the details
             //to use the form itself to call the method then we do
-            //we have to cast the listview because owner is a form and its above IListView and owner is a peoplelistform but that inherits from form
+            //we have to cast the listview because owner is a form and its above IListView and owner is a peoplelistform but that inherits from form class
             //so owner has been set to a form type so we have to cast it because form is less generic than IListView 
 
             //the owner is the parent form which is the peoplelistform**
@@ -104,6 +106,13 @@ namespace PeopleList
             //if there was no circular dependency we could have used personedit form variable but we would have had to add a reference
             //to the class and the using statement
 
+            //*****************************************************************************************************************************GO OVER
+
+            //how high are forms when we need to cast (how do we know when to cast)
+            //are forms right below objects or where are they in the hierarchy**
+
+            //so windows forms is the main executable where we put our projects together and the windows control
+            //is where the dll's will be and those are the things that will be added on to the main form for functionality**
 
             //we want to execute our new code to sort our list on that column by setting up an event handler on the column click event**********
             //is it one click or double for the column and does it matter where on the column we click**
@@ -113,19 +122,20 @@ namespace PeopleList
             UpdateColumnAppearance(columnIndex);
 
             PaintListView(null);
+            //*****************************************************************************************************************************GO OVER
         }
 
-
+        //*****************************************************************************************************************************GO OVER
         //go over all below*******
 
-        //which column is sorted on which is the column index in the class defintion above and a or d order (-1 for d and 1 for a )
-        //in class def. for the sortorder variable******
+        //which column is sorted on is the column index in the class defintion above and columnsortorder is a or d order (-1 for d and 1 for a )
         //and the listview contorl (only??)** has
         //a column click event so we have it so when the click on the column in our method below if its the same column we are sorting on
         //then we want to reverse it (plus or minus 1) otherwise they clicked on a new column then we want to set our column index to which column we are indexing on
         //and the sort order which is ascending by default*********
 
-        //our lv contorl has the listview item sorter and it has a class that defines how to sort the columns and the requirement for the class*********
+        //our lv contorl in the columnclick method has the listview item sorter and it has a class that defines
+        //how to sort the columns and the requirement for the class*********
         //is the compare method that compares the items as we move on in the columns and the Icomparer interfcae****
         //and we need to associate a class object with our column sorter in the people**
         //listview method then sort**
@@ -152,7 +162,7 @@ namespace PeopleList
         {
             ListView lv = (ListView)sender;
 
-            if( e.Column == columnIndex) //e.column is built in and gets the column that we are indexing on**
+            if( e.Column == columnIndex) //e.column is built in and gets the column that we are indexing on (the one we clicked on)**
             {
                 columnSortOrder *= -1; //if the column that we clicked on was the same as our column index which we set in the else
                 //then we reverse the oritenaton**
@@ -166,8 +176,11 @@ namespace PeopleList
             // need to include the System.Collections namespace
             //defines what to use for sorted the columns in the listview and we need to pass a class defintiion that defines that sorting logic
             //so we have the class below for it and now we want to create a new object to sort the columns*****
-            lv.ListViewItemSorter = new ListViewItemComparer(e.Column, columnSortOrder);
-            lv.Sort(); //sorts our list and puts it on the list based on our column (how does it know what to sort by)**
+            lv.ListViewItemSorter = new ListViewItemComparer(e.Column, columnSortOrder); //could we have also put columnIndex because its equal to e.column**
+            //lsitview item sorter is a prop. that tells the listview how to sort the columns
+            //and its defined as taking in a Icomparer interface and we need to create class that inherits from icompaerer
+
+            lv.Sort(); //sorts our list and puts it on the list based on our column (it knows to sort by the class we made how??)**
 
             //call this after they have clicked on the header and everything has been sorted so we can display the diomand shape on the header**
             UpdateColumnAppearance(columnIndex);
@@ -189,17 +202,22 @@ namespace PeopleList
             string arrow = (columnSortOrder == 1) ? " ▲" : " ▼";
             //then we set the text of our column we are currentyl sorting on to the arrow (adds it as a suffix to the etxt in that column)*******
             //how does it know what columns to do it on since its not in the loop**
-
+           
+            //add the arrow to the column we sort 
             this.peopleListView.Columns[column].Text += arrow; //for that specific column we index by in the listview (the index we passed in) set the arrow
             //if its a plus one up arrow for a order or if its minus one a down arrow for a order****
-
+            //does it put it at the top of the column (the header) by defult how does it know where to put it**
             //we then add the arrow to the text in the column in the listview based on the column we indexed from the whole list view**
         }
 
         class ListViewItemComparer : IComparer //built in interface and requires us to implement a method that compares two objects**
-            //the column click also requires us to have this class if we want to sort by column**
-            //IComparerer is in the systems namespace so we need to include it in our code and by default its systems.collections (generic) which
-            //is a subspace of the systems.collections so we had to include that parent namespace so now it works**
+            //the column click also requires us to have this class if we want to sort by column (what else??)**
+            //IComparerer is in the systems namespace so we need to include it in our code and by default its systems.collectiongens.genric (child namespace) which
+            //is a subspace of the systems.collections so we have to include this parent namespace so now it works**
+
+            //class needs to have the column we are sorting on and if its a or d order from the call in the peolplelistview column click method
+            //and the class has access to those and the construcor briings in the values from the class call then puts it in the class so we can use it
+            
         {
             private int columnIndex;
             private int sortOrder;
@@ -212,32 +230,60 @@ namespace PeopleList
                 sortOrder = order;
             }
 
+
+
+            //compare method that gets called by lv.sort() (this is what calls the method)
+            //to comapre all items in list and we tell is how to compare it 
+            //and we compare the text in eaech column in the current column index which we passed in the constrcutro
+            //and we multilpe the result by the sort order and if its 1 its a order if its -1 then its d order
+            //there is no default sort and we have to make our own class to set up the item sort and if we just do lv.sort() is does not
+            //do anything and it sorted by the email address because our paintlistview is going in alphabetical order
+            //through our sorted list by email address thats why the email is only sorted
+
             public int Compare(object x, object y)
             {
                 ListViewItem itemX = (ListViewItem)x; //how does it know to use the compare method with the things from the column if we don't specifally tell it 
                 //to call this method when we created the instance** (is it because we made a variable for the class that does the sort and now when we 
-                //call sort it does it based on the class??)**(is this always the case if we want to do custom sorting or can there be a defualt)**
-                //we cast our 2 column values that we want to sort as a listviewitem and we cast it because**
+                //call lv.sort in the peoplelist method
+                //it does it based on the class??)**(is this always the case if we want to do custom sorting or can there be a defualt)**
+
+                //we cast our 2 column values that we want to sort as a listviewitem and we cast it because we are casting objects and objects
+                //are the highest type in c#**
+                //we do the item and not subitems becuase**
                 ListViewItem itemY = (ListViewItem)y;
 
                 if( itemX == null || itemY == null )
                 {
-                    return 0; //there could be null items??**
-                    //why do we return 0 wouldnt that just make a column 0  how does it know to check other values in column if we have a return**
+                    return 0; //it skips over the values that are null
+                    //null items wont show up in list 
+                    //and if item x is a null then there will be no subitems of it because x and y are the 
+                    //email and the subitems are the columns after that representing that specific person
+                    //the listviewitem is the column we clicked on and when we called lv.sort it looks at every row in our listview
+                    //and it looks at every row in listview and compare each row with another to see which row is the lowest
+                    //value and it needs to access 2 different rows and the rows are the person object itself and their things
+                    //but when we get the subitems of the columnindex thats when we start sorting the things in that specific column
+                    //which is the subitems of the listviewitem
                 }
 
                 //if they aboth arent null we grab the text property from those two items which are the text or that current column***********
-                //out listviewitems contains our main column array and our subitems array is contained within the listviewitems (listviewitem?? or just our
+                //our listviewitems contains our main column array and our subitems array is contained within the listviewitems (listviewitem?? or just our
                 //listview in general) and it contains the additonal colum data*****
                 //how does it know not to compare heading with something from the listviewitem up above**
 
+                //here subitems of 0 is the name column
+                //so it gets each item from the subitems which is the name if the name column was selected
+                //and the listview item is all the columns of the person
+                //easier because it puts all the items as the subitems
                 string textX = itemX.SubItems[columnIndex].Text; //this gets our 2 items from the column and then we return
                 //the compare method called with those 2 items from the list times the sort order rather a or d order**
                 string textY = itemY.SubItems[columnIndex].Text;
+                //but for the pinatlistview then the listviewitm is the name and the other information for the person and the subitems if everything else in those columns
+                //when we created listview the listview only contained the name column and now each aditonal column was a subitem but after we are done creating it
+                //it moved the first column into the subitems 
 
                 //does this keep callign itself until it reaches the end of the list and it starts from the top by default right**
                 //when we initiallaly enter the class does it basically set our 2 first items for the column then at the end we call the compare then comprees then it does
-                //that over and over and calls itself to sort the next 2 items when we go abck to the top**
+                //that over and over and calls itself to sort the next 2 items when we go back ti these above 2 lines**
 
 
                 //now we compare these two using the string.Compare method()*********
@@ -271,12 +317,17 @@ namespace PeopleList
 
             this.Enabled = false;
 
-            new PersonEditForm(newPerson, this); //we have to pass the current form into the personedit form because we want to make this specific form we pass in
+
+            new PersonEditForm(newPerson, this); //we have to pass the current form (epoplelistform)into**
+                                                 //the personedit form because we want to make this specific form we pass in
                                                  //the owner
             //form as well as center the personedit form to the parent which is the peoplelistform (we have to pass peoplelistform so
             //it knows thats the owner which is reffered to as the parent when we do the center to parent)**
         }
-
+        // e.SuppressKeyPress = true; for keypressed and handled for the events (e) basically it checks at the end of the function only 
+        //not a loop and it makes sure that if its false windows displays it on the form but if its true it does not because we did not display it ourselves
+        //(is there a way to display it ourselves)*********
+        //*****************************************************************************************************************************GO OVER
         private void PeopleListView__KeyDown(object sender, KeyEventArgs e)
         {
             ListView lv = (ListView)sender;
@@ -286,23 +337,31 @@ namespace PeopleList
                 e.SuppressKeyPress = true;
 
                 try
+                //*****************************************************************************************************************************GO OVER
                 {
                     string email = (string)lv.SelectedItems[0].Tag;
                     //string email = lv.SelectedItems[0].Tag.ToString();
                     //when we do this.peopleListView.Items.Add(lvi); in the paintlist view it adds our person and the email stored in the lvi.tag so basically 
-                    //we can access the email because the items has an array of the rows as well as the selected row and what else**
+                    //we can access the email because the items in the items.add above here has an array of the rows as well as the selected row and what else**
                     //and basically we get the selecteditems at index 0 because we only have 1 person we can select at a time since
                     //multiselect it turned off and for that person thats selected we get their tag which is their email we stored for each person**\
                     //we couldnt have accessed person without the .tag because we needed the email key to retriveve the person**
                     //for the person we currently have selected get their email**
 
+                    //will we not deal with multiselect in this class**
+                    //we then have to cast it as a person because it was in an array format so we need
+                    //to actually get the person object based on the email*******
+
                     Person person = null;
                     person = Globals.people[email]; //cant we set this directly equal to the Person person or should we make it null first then pass it in**
+                    
 
                     this.Enabled = false;
-
+                    //we have to pass in this current form into personedit form so it knwos what to make the owner and so we can center to parent so it knows
+                    //what the parent is****
                     PersonEditForm epf = new PersonEditForm(person, this);
                     epf.Show();
+                    //*****************************************************************************************************************************GO OVER
                 }
                 catch
                 {
@@ -334,13 +393,14 @@ namespace PeopleList
             }
         }
 
-
+        //*****************************************************************************************************************************GO OVER
         // notice that we are making PaintListView public so that it can be called from other classes why do we need an interface
-        // cant we just add peoplelistform as a reference and just call it via PeopleListForm.paintlistview(email)*************
-        //so if a method in a class is public if we add a reference to that class in another class we can access the public method within that other class**
-        //with classname.method(para.)**
-        //but for class scoped (private) variables (and things in the constructor?? or if its in the constructor with public we can still access it?? how??)**
+        //so if a method or variable in a class is public if we add a reference to that class in another class we can access the public method or varible
+        //within that other class** 
+        //with classname or variable name.method(para.)** (same for its a pubic class scoped variable or method??)*****
+        //but for private variables (class scoped and not) (and things in the constructor?? or if its in the constructor with public we can still access it?? how??)**
         //we can only acess it within the class and nowerhe else even though there is a reference**
+        //*****************************************************************************************************************************GO OVER
         public void PaintListView(string firstEmail)
         {
             // a ListView contains an Items field, which is an array of the rows in the ListView.
@@ -349,6 +409,12 @@ namespace PeopleList
 
             // ListViewItem contains the details of the first column in a row
             // and an array of ListViewSubItems for all additional columns in the row
+
+            //*****************************************************************************************************************************GO OVER
+            //for the listviewitem its 1 array for column details(names) then another for the subitems are for each addtional columns and
+            //in the column array we have an array for the details of the person
+            //(the columns after the name column for that specific person (basically the row)**
+            //*****************************************************************************************************************************GO OVER
             ListViewItem.ListViewSubItem lvsi = null;
 
             // we can also set the first ListViewItem to show in the list
@@ -362,16 +428,21 @@ namespace PeopleList
             // default to start with the first Person in the SortedList
             int nStartEl = 0;
 
+            //*****************************************************************************************************************************GO OVER
             // clear the ListView Items**
             this.peopleListView.Items.Clear();
 
             // lock the ListView to begin updating it**
             this.peopleListView.BeginUpdate();
-
+            //do we lock to prevent user from doing any edits as we repaint the listview (like pressing a person, or add, or edit, or exit)**
+            //*****************************************************************************************************************************GO OVER
             // if an email was passed in for us to display as the first Person in the ListView
             if (firstEmail != null)
             {
                 // fetch the index of the SortedList
+                //*****************************************************************************************************************************GO OVER
+                //we can index a list and it would return the index for where that key value pair is stored
+                //*****************************************************************************************************************************GO OVER
                 nStartEl = Globals.people.sortedList.IndexOfKey(firstEmail);
             }
 
@@ -452,6 +523,9 @@ namespace PeopleList
                 // "is" checks for relationship
                 //if( thisPerson is Student )
                 // GetType() / typeof() checks for specific data type, not relationship
+                //*****************************************************************************************************************************GO OVER
+                //which one is preferable**
+                //*****************************************************************************************************************************GO OVER
                 if (thisPerson.GetType() == typeof(Student))
                 {
                     // 19. declare a Student variable set to thisPerson cast as a (Student)
@@ -493,6 +567,7 @@ namespace PeopleList
                 // increment our row counter
                 ++lviCntr;
             }
+            //*****************************************************************************************************************************GO OVER
 
             // EndUpdate() unlocks the ListView**
             this.peopleListView.EndUpdate();
@@ -500,6 +575,7 @@ namespace PeopleList
             // set the Top ListViewItem of the list to show on the screen
             //why do we want to do this after we unlock the listview**
             this.peopleListView.TopItem = firstLVI;
+            //*****************************************************************************************************************************GO OVER
         }
 
         // handle clicking the Remove button
@@ -509,6 +585,7 @@ namespace PeopleList
             {
                 string email;
 
+                //*****************************************************************************************************************************GO OVER
                 // 24. The ListView has a SelectedItems array field
                 // which is the array of ListViewItems which are currently selected
                 // Since we have MultiSelect set to false, only one row can be selected
@@ -518,10 +595,11 @@ namespace PeopleList
                 // Since Tag is a System.Object,
                 // use the ToString() method to convert the object to a string
                 email = this.peopleListView.SelectedItems[0].Tag.ToString(); //we can access the selecteditems prop. because its part of the peoplelistview
-                //and theres no scope for it within classes or anything its just part of the listview**
+                //and theres no scope for it within classes or anything its just part of the listview and built in**
+                //*****************************************************************************************************************************GO OVER
 
                 // 25. if email is not equal to null
-                if( email != null )
+                if ( email != null )
                 {
                     // 26. remove the entry from Globals.people associated with the email address
                     Globals.people.Remove(email);

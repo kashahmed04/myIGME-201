@@ -36,6 +36,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CourseLib">
+      <HintPath>..\..\..\..\IGME 201 Windows Forms\DynamicPeople\WindowsPeopleApp_12_3\WindowsPeopleApp\PeopleAppGlobals\bin\Debug\CourseLib.dll</HintPath>
+    </Reference>
     <Reference Include="PeopleAppGlobals">
       <HintPath>..\..\..\..\IGME 201 Windows Forms\DynamicPeople\WindowsPeopleApp_12_3\WindowsPeopleApp\PeopleAppGlobals\bin\Debug\PeopleAppGlobals.dll</HintPath>
     </Reference>
