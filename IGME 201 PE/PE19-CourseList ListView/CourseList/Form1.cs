@@ -296,6 +296,11 @@ namespace CourseList
         }
 
 
+        //what this method does is that it gets the coursecode
+        //then gets the courses list based on the course code (is it a list of courses
+        //or only that specific course based on the coursecode)??**(1)
+        //then displays all of those courses (or is it an individual course??)**(2) and when we press enter we
+        //lock the main form and enable the editing features
         private void CourseListView__KeyDown(object sender, KeyEventArgs e)
         {
             // this is the Event Handler for pressing Enter on a row of the ListView
@@ -308,41 +313,45 @@ namespace CourseList
             if (e.KeyCode == Keys.Enter)
             {
                 // 50. remove the key from the keyboard buffer, we handled it
+                e.SuppressKeyPress = true;
                 
                 
 
                 try
                 {
                     // 51. get the courseCode from the currently selected row
-                    
+                    courseCode = lv.SelectedItems[0].Tag.ToString();
+
 
                     // 52. get the course object associated with this courseCode from Globals.courses
-                    
+                    course = Globals.courses[courseCode];
 
                     if (course != null)
                     {
                         // 53. set courseCodeTextBox to hold the courseCode
-                        
+                        this.courseCodeTextBox.Text = courseCode;
 
                         // 54. set courseDescriptionTextBox to hold the description
-                        
+                        this.courseDescriptionTextBox.Text = course.description;
 
                         // 55. set the reviewRichTextBox to hold the review
-                        
+                        this.reviewRichTextBox.Text = course.review;
 
                         // 56. disable the ListView
-                        
+                        lv.Enabled = false; //can we also do this.courselistview.enabled = false??**(0.5)
 
                         // 57. enable courseCodeTextBox
-                        
+                        this.courseCodeTextBox.Enabled = true;
 
                         // 58. enable courseDescriptionTextBox
-                        
+                        this.courseDescriptionTextBox.Enabled = true;
 
                         // 59. enable reviewRichTextBox
-                        
+                        this.reviewRichTextBox.Enabled = true;
+
 
                         // 60. enable the updateButton
+                        this.updateButton.Enabled = true;
                         
                     }
                 }
@@ -365,9 +374,13 @@ namespace CourseList
             try
             {
                 // 61. get the courseCode from the currently selected row
-                
+                courseCode = lv.SelectedItems[0].Tag.ToString();
+
 
                 // 62. get the course object associated with this courseCode from courses
+                course = Globals.courses[courseCode];
+                //this holds the data only for that one specific code based on the course
+                //code so we can access description,review,etc. for that course??(3)**
                 
             }
             catch
@@ -375,15 +388,19 @@ namespace CourseList
 
             }
 
+            //so why do we display the course informtation again when they click on a row?**(4)
             if (course != null)
             {
                 // 63. set courseCodeTextBox to hold the courseCode
-                
+                this.courseCodeTextBox.Text = courseCode;
+
 
                 // 64. set courseDescriptionTextBox to hold the description
-                
+                this.courseDescriptionTextBox.Text = course.description;
+
 
                 // 65. set the reviewRichTextBox to hold the review
+                reviewRichTextBox.Text = course.review;
                 
             }
         }
@@ -418,13 +435,25 @@ namespace CourseList
             }
 
             // 66. copy courseCodeTextBox into our cloned object copyCourse
-            
+
+            //is this how we access our copied coursecode?? whats the difference
+            //between this and doing courseCodeTextBox.Text = copyCourse.courseCode??(5)**
+
+            //why would we need to copy it into our cloned object because dont cloned
+            //objects copy the value datatypes by default??(6)**
+
+            copyCourse.courseCode = courseCodeTextBox.Text;
+
 
             // 67. copy courseDescriptionTextBox into our cloned object copyCourse
-            
+            copyCourse.description = courseDescriptionTextBox.Text;
 
             // 68. copy reviewRichTextBox into our cloned object copyCourse
+            copyCourse.review = reviewRichTextBox.Text;
             
+
+            //the 2 lines below are kind of confusing because why are we removing
+            //the copued data then adding it back to the courses list??**(7)
 
             // remove the updated courseCode from courses
             Globals.courses.Remove(copyCourse.courseCode);
@@ -433,25 +462,35 @@ namespace CourseList
             Globals.courses[copyCourse.courseCode] = copyCourse;
 
             // 69. enable the courseListView
+            courseListView.Enabled = true; //we never disabled the listview here so how
+            //would this work??**(8)
             
 
             // set the focus to the courseListView
             this.courseListView.Focus();
 
             // 70. disable courseCodeTextBox
-            
+            courseCodeTextBox.Enabled = false;
+
 
             // 71. disable courseDescriptionTextBox
-            
+            courseDescriptionTextBox.Enabled = false;
+
 
             // 72. disable reviewRichTextBox
-            
+            reviewRichTextBox.Enabled = false;
+
 
             // 73. disable updateButton
-            
+            updateButton.Enabled = false;
+
 
             // 74. call PaintListView with the courseCode that should be shown at the top of the list
-            
+            PaintListView(copyCourse.courseCode); //so basically here we target the coursecode we have copied??(9)**
+
+
+            //I am still confused about this method in general why would we want to clone then
+            //just reset everything then add it back to the list??**(10)
         }
 
         private void ExitButton__Click(object sender, EventArgs e)
