@@ -11,6 +11,12 @@ using PeopleLib;
 using CourseLib;
 using PeopleAppGlobals;
 
+
+/*
+ * 
+ * 
+ * */
+
 namespace EditPerson
 {
     public partial class PersonEditForm : Form
@@ -102,6 +108,16 @@ namespace EditPerson
 
             this.homepageWebBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(HomepageWebBrowser__DocumentCompleted);
 
+            //event handlers for the edit and remove button for the course in the css grid**
+            //we put them in the constructor because they wont hcange**
+
+            this.editToolStripMenuItem.Click += new EventHandler(EditToolStripMenuItem__Click);
+            this.removeToolStripMenuItem.Click += new EventHandler(RemoveToolStripMenuItem__Click); //we want to call this when they press the remove in our context tool strip**
+            
+
+            //have the schedule ewb broswer completed delegate method so we can edit the css to show thr schdule**
+
+            this.scheduleWebBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(ScheduleWebBrowser__DocumentCompleted);
 
             // after all contols are configured then we can manipulate the data
 
@@ -181,6 +197,158 @@ namespace EditPerson
             this.Show();
         }
 
+        private void ScheduleWebBrowser__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            WebBrowser webBrowser = (WebBrowser)sender;
+            HtmlElement htmlElement;
+            Course course;
+            ICourseList icourselist = (icourselist)icourselist; //fix in code**
+            string htmlId = null; //**
+
+            foreach(string courseCode in iCourseList.CourseList)
+            {
+                course = Globals.courses[courseCode];
+                //go through says of week this course meets for ech course**
+                foreach(DayOfWeek dayOfWeek in course.schedule.daysOfWeek)
+                {
+                    switch (dayOfWeek)
+                    {
+                        case DayOfWeek.Sunday: //we just need first letter of day of week name if its these days of weeks 
+                        case DayOfWeek.Monday:
+                        case DayOfWeek.Tuesday:
+                        case DayOfWeek.Wednesday:
+                        case DayOfWeek.Friday:
+                            htmlId = (dayOfWeek.ToString())[0].ToString(); //return char as a string to copy it as a string 
+                            break;                                          //and it gets the string of the day of week and the first character and it returns a single character and we copy that character 
+                                                                           //into a string**
+
+                        case DayOfWeek.Thursday:
+                            htmlId = "R";
+                            break;
+                        case DayOfWeek.Saturday:
+                            htmlId = "S";
+                            break;
+                    }
+
+                    //get the hour that the class starts and we get it from the start time field from the courses**
+                    //after colon gives us format from 00 to 23 for hours**
+                    //and this gets the time of the courses for the person we are on**
+                    htmlId += $"{course.schedule.startTime:HH}";
+
+                    htmlElement = webBrowser.Document.GetElementById(htmlId);
+                    if(htmlElement != null)
+                    {
+                        htmlElement.InnerText = course.courseCode;//**
+                        htmlElement.Style += "background-color: red"; //always apend style text (always use += and browser usses last style attribute for any property)**
+
+                        //set the mousedown (if we left click)**
+                        //popus up our contextmnue strip which is the edit for remove**
+                        htmlElement.MouseDown += new HtmlElementEventHandler(SchHtmlElement__MouseDown);
+
+                        //this is only available for html not other windows forms**
+                        //this is more preffereable than doing the property though**
+                        //we need to do this in exam 3 to show every anchor control in the web browser for the wikepedia********8
+                        //html.SetAttribute("title",$"Description: {course.description}\nReview: {course.review}";
+
+                        //we set up the tooltip if we hover over a course**
+                        htmlElement.MouseOver += new HtmlElementEventHandler(SchHtmlElement__MouseOver);
+
+                        //remove eventhandlers because there is no longer a course with the html element when we remove so in the removetoolstrip we do  -=
+                        //with delegate event there**
+                    }
+
+                }
+            }
+        }
+
+        private void SchHtmlElement__MouseOver(object sender, HtmlElementEventArgs e) 
+        {
+            //html element being hovered over is our sender**
+            HtmlElement htmlElement = (HtmlElement)sender;
+            Course course; //course referecne variable equal to the courseobject from our globals database**
+
+            course = Globals.courses[htmlElement.InnerText];
+            if(course != null)
+            {
+                //copy from code**
+                this.schToolTip.Show(); //we want our tooltip to show the string it should show and the review and the control to show the tooltip
+                //on which is our schedulewebbrowser and the x and y locations to show** (we will only be using this type of control**
+                //and the last argument is duration for the tooltip before it disapears and with the windows tooltip we have to specify how long
+                //the tooltip will show but the html implementation with title shows as long as we are hovering over**
+            }
+
+
+        }
+
+        private void SchHtmlElement__MouseDown(object sender, HtmlElementEventArgs e)
+        {
+            //whats passed in is the html element that was clicked on so we cast it**
+            HtmlElement htmlElement = (HtmlElement)sender;
+
+            if(e.MouseButtonsPressed == MouseButtons.Left) //if they left clicked then we want to save the html element that was clicked on in the
+                //schedule context menu strip and every control has a tag property which is a generic onbject and we can use it to save conext data
+            {
+                this.schContextMenuStrip.Tag = htmlElement; //save the htmlelement in a tag because we wll need access to the element we want to add or remove
+                //and we wont have access to that furhter down if we dont get a tag equal to it (not local to the functino)**??
+
+                //when we trigger another control to be active we wont have access to html element and we will be activating the contextmenu strip
+                //and they are seperate processes and all controls are seperate processes and we have had class scoped variable (formperons) so
+                //our form knows whhich person we are editing as well as us using the tag property**
+
+
+                //show the contextmenu strip (acts like a form in itself)
+                this.schContextMenuStrip.Show(this.scheduleWebBrowser, e.MousePosition.X + 5, e.MousePosition.Y + 15);  //moves it to the right by 5 pixels and moves
+                //the y down 15 pixels so when we click we can still the the button and the context menu strip**
+                //show actuvates the menu strip and processes our mouseclicked within that control which means when we click edit
+                //its going to call our edit tool stip menu item method and when we remove it eremoves the course**
+                //we can show the conextmenustrup now and we can pass para. to show where it shows on the fomr
+                //1. pass it a point on ths screen 2. the control to show within and a point on the screen 3. pass in x and y coord. 3. pass it at position and
+                //direction for it to show 4. pass it the control to show within and an x and y location 5. the control a point and a toolstrip drop down direction****
+                //we will be using the one where we pass in the control that our contextmneu strip should show on and the location is based on where they clciked**
+
+            }
+
+        }
+
+        private void EditToolStripMenuItem__Click(object sender, EventArgs e) //click events use the general event args**
+        {
+            //we saved the html eleemtn that was clicked on in the above method in the tag property (tags are global scopes??)**
+            HtmlElement htmlElement = (HtmlElement)this.schContextMenuStrip.Tag; //cast the tag as an html element because it was passed in as an object**
+
+            //if they press edit option then we want to show the form we just created in the editcourseform**
+            //we need to show the course code and the description in our editcourse form and it needs someway to access the course we are editing 
+            //our form needs to be populated with all of the information from the course
+            //and we would pass in the coursecode into editcourseform and we need to update the courseobject within the gloabls from whatever we did in that form**
+
+
+            //we want to create a new edit course form now 
+            EditCourseForm editCourseForm = new EditCourseForm(htmlElement.InnerText); //pass in the course code we saved above in the tag field 
+            //we can just do new since there is show in the constructor (whenever there is a new keyword then a show in the constructor it will run)**
+            //if we did not have the show method then we would need to save variable pointing to the form 
+
+            editCourseForm.Show(); //or we could do this if its not on the constructor and we do this way when we want to show something at certain times**
+
+            //we can show in constructor and do this here and it still shows the form only once**
+
+
+
+
+        }
+
+        private void RemoveToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            //grab html element in focus and clear the innertext and it removes it frmo the schedule page only not the data 
+            HtmlElement htmlElement = (HtmlElement)this.schContextMenuStrip.Tag; //color changes 3 times but the latest css setting is used**s
+
+            htmlElement.InnerText = "";
+
+            htmlElement.Style += "background-color: green";
+
+            htmlElement.MouseDown -= SchHtmlElement__MouseDown;
+            htmlElement.MouseOver -= SchHtmlElement__MouseOver; //rremove both delegate method assocaiedt with course
+            //because the course does not exist anymore (we cant click and do description for these values??)**
+            //do rest form code**
+        }
         private void HomepageWebBrowser__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             WebBrowser wb = (WebBrowser)sender;
@@ -226,7 +394,15 @@ namespace EditPerson
         {
             this.homepageWebBrowser.Navigate("http://m.youtube.com/watch?v=oHg5SJYRHA0");
         }
+        //if we right click on a project we can open it in file epxplorerer and we can go to debug and go to executable 
+        //and any app that uses the web browser control we have to use registery and it should be right after the intialize componenet**
+        //we set it so that windows will use the latest browser control**
+        //in order for registry setting to be set we have to run applicatino as administrator only once so it knows**
+        //(we set person edit form as the run as administrator)**
+        //the last peiece we did was that we added the courses and we were using the form person to save the list of course codes that the persons associated with** (class
+        //scoped variable to store person thats passed into constructor**)
 
+        //we use the form person when we add and remove courses
         private void Example_H1__MouseOver(object sender, HtmlElementEventArgs e)
         {
             HtmlElement htmlElement = (HtmlElement)sender;
@@ -481,6 +657,11 @@ namespace EditPerson
             }
         }
 
+        //when we do view course in our web browser for the css grid we have an ID for each hour of everyday and we have set up css style attributes
+        //for each of thise ID's for the slots and each button has an ID nad the ID can be cluclated based on day and time (button for every hour of the day 0-23)
+        //and using css grid we can lay out the form to have a nce schedule formar now we want tot go through and use dom manipulation to change contents
+        //of each slot to get the courses at that time**
+
         private void BirthDateTimePicker__ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
@@ -530,20 +711,38 @@ namespace EditPerson
 
         private void OkButton__Click(object sender, EventArgs e)
         {
+            //grab person from form person and we need reference variable to point to form person courese
+            //we had our formperson in course view key down**
             Student student = null;
             Teacher teacher = null;
             Person person = null;
+
+            //grab person from form person and we need reference variable to point to form person courese
+            ICourseList icourselist = (IcourseCist)formPerson;//**
 
             Globals.people.Remove(this.formPerson.email);
 
             if( this.typeComboBox.SelectedIndex == 0)
             {
                 student = new Student();
+                student.CourseList = icourselist.courselist; //fix in code)***** copy bottom for teacher as well**
                 person = student;
             }
             else
             {
-                teacher = new Teacher();
+                teacher = new Teacher(); //this basically gets our formperson variable for their list of courses and for that person
+                //if they are a student or a teacher we change their course accordingly when we press ok
+
+                //if we hover over it gives us a review and if we right click we can add a description and review of the course**
+                //we use tooltip control and a context menu strpi that we dynamically add to the form when we click on a course slot**
+                //tooltip usually does not have location on the form**
+                //we could press e or r for unerline letters when we have a context menu strip (keyboard shortcut)(put & in front of the letter
+                //so we can press the key to access the optio)**
+                //some controls have a tooltip prperty but not many of them ad we can set the tooltip that way
+                //we need to add our own tool tip for the textboxes and it will hint us to which # president
+                //and we have to add our own tool tip and we will do that today**
+
+                //when the edit tool strip menu item is clicked then we want to edit the current selected course
                 person = teacher;
             }
 

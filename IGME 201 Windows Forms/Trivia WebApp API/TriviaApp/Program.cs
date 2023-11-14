@@ -7,12 +7,13 @@ using System.Net; //need this to to HTTP request and response
 using Newtonsoft.Json;
 using System.IO; //I was confused if you said this was used for our streamreaders or stringreaders in the video (1)**
 using System.Web; //decode any HTML encoding used in the strings (add system.web via solution exploerer then
+using System.Web.Management;
 //go to project references then add a reference from the assemb. thats system.web
 
 namespace TriviaApp
 {
     //contains the fields in our trivia results
-    class TrviaResult
+    class TriviaResult
     {
         public string category;
         public string type;
@@ -69,7 +70,7 @@ namespace TriviaApp
             StreamReader reader;
 
             //url is the one that was in our web page
-            url = "https://opendb.com/api.php?amount=1";
+            url = "https://opentdb.com/api.php?amount=1&type=multiple";
 
             //now create the http web request object
             //create reference to url
@@ -106,7 +107,33 @@ namespace TriviaApp
             }
 
             Console.WriteLine(trivia.results[0].question);
+            Random randomAnswer = new Random();
+            List<string> tempList = new List<string>();
+            tempList.AddRange(trivia.results[0].incorrect_answers); //goes through incorrect answers an adds all the values from the list (only used with list types)
+            tempList.Add(trivia.results[0].correct_answer);
+            for(int i = 0; i < 4; i++) //go through the templist of correct and incorrect values and print them out for the list choices
+            {
+                int j = randomAnswer.Next(0, tempList.Count);
+                Console.WriteLine(tempList[j]);
+                tempList.Remove(tempList[j]);
+            }
 
+            Console.WriteLine("What is the correct answer?");
+
+            string answer = Console.ReadLine();
+
+            if(answer.Trim().ToLower() == trivia.results[0].correct_answer.ToLower()) //if they answer correct tell them they are correct
+                //and give them the correct answer otherwise tell them they are incorrect and give them the correct answer
+            {
+                Console.WriteLine("Correct the answer is: " + trivia.results[0].correct_answer);
+            }
+            else
+            {
+                Console.WriteLine("Incorrect the answer is: " + trivia.results[0].correct_answer);
+            }
+
+
+            
 
 
         }

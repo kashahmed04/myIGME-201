@@ -8,3 +8,4 @@
 [+PlayerInfo|+username:string|+PlayerInfo():string:o;]<-[+Profiles]
 [+Rank|+playerRank:int|+SortPlayerRank():int]<-[+Profiles]
 [+FilterBy|+time:int;+score:int|+ByTime()|+ByScore()]<-[+Profiles]
+[+Message|text:string;sender:Profile;]<-[+Profiles]

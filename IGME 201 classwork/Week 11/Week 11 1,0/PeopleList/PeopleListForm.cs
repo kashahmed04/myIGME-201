@@ -76,7 +76,7 @@ namespace PeopleList
             }
 
             string arrow = (columnSortOrder == 1) ? " ▲" : " ▼";
-            this.peopleListView.Columns[column].Text += arrow;
+            this.peopleListView.Columns[column].Text += arrow; //how does it know to do column header and not the actual entries in column here**
         }
 
         class ListViewItemComparer : IComparer
