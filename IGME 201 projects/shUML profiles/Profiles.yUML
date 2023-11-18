@@ -3,9 +3,32 @@
 // {generate:true}
 // {direction:topDown}
 
+
+
+[+A:Game|+name:string;+chats:List<Chat>;+meetups:List<Meetup>;|+AddMeetup(meetup:Meetup)]
+[+A:Game]<-[+Chat|+chatName:string;+messages:List<Message>;|+SendMessage(message:Message);]
+[+Chat]<-[+Message|text:string;sender:Profile;]
+[+A:Game]<-[+Meetup|+location:string;+date:DateTime;+attending:List<Profile>]
+
 [+Profiles||+DMButton__Click();+StatsListView__ItemActivate();-UsernameLabel();-BioLabel();+PhotoPictureBox__Click()]
-[+GameInfo|+game:string|+GameInfo():string:o;]<-[+Profiles]
-[+PlayerInfo|+username:string|+PlayerInfo():string:o;]<-[+Profiles]
-[+Rank|+playerRank:int|+SortPlayerRank():int]<-[+Profiles]
-[+FilterBy|+time:int;+score:int|+ByTime()|+ByScore()]<-[+Profiles]
-[+Message|text:string;sender:Profile;]<-[+Profiles]
+
+
+[+A:ALeaderboard||+GameInfo():string|+PlayerInfo():string]
+[+A:ALeaderboard]<-.-[+GameInfo|+game:string|+GameInfo():string:o;]
+[+A:ALeaderboard]<-.-[+PlayerInfo|+username:string|+PlayerInfo():string:o;]
+[+PlayerInfo]<-[+Rank|+playerRank:int|+SortPlayerRank():int]
+[+GameInfo]<-[+Rank]
+[+A:ALeaderboard]<-.-[+FilterBy|+time:int;+score:int|+ByTime()|+ByScore()]
+
+[+GameInfo]<-[+Profiles] 
+[+PlayerInfo]<-[+Profiles] 
+[+FilterBy]<-[+Profiles] 
+[+Message]<-[+Profiles] 
+[+Rank]<-[+Profiles] 
+
+//user profile inherits from profile and user details inherits 
+//from game info. and player info.
+//should I inherit from game info. and player info.
+//if rank is already inherited can we just access
+//the info. from there or should I just access them seperately**
+//

@@ -114,7 +114,7 @@ namespace PeopleList
 
         private void AddButton__Click(object sender, EventArgs e)
         {
-            Person newPerson = new Student();
+            Person newPerson = new Student(); //this is where we create student by defualt
 
             this.Enabled = false;
 

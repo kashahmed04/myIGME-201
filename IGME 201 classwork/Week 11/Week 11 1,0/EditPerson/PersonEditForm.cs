@@ -13,6 +13,9 @@ using PeopleAppGlobals;
 using System.Runtime.CompilerServices;
 
 
+//go over subitems and listview and listview items 
+//how to hover and get image bigger on exam and how to do the laoding for the presidents and how to do the
+//screen if they did well**
 /*
  * Exam:
  * Presidents executable and we have to recreate 
@@ -40,8 +43,8 @@ using System.Runtime.CompilerServices;
  */
 
 /*
- a;l courseslistview is the list of all of our courses in the sorted list and when they enter text in the searchtextbox we want to filter 
- all of the courses if its the coursecode or the desceription in the search box and when we doulbe click or press etner in all courses we want to add
+a;l courseslistview is the list of all of our courses in the sorted list and when they enter text in the searchtextbox we want to filter 
+all of the courses if its the coursecode or the desceription in the search box and when we doulbe click or press etner in all courses we want to add
 that course in the top listview but if its already in the top listview when we press enter or double click then we remove it from the selexted list
 
 So when we want to put a courae in the selected course listview it does not remove it from the all courses list view it still remains in its same place**
