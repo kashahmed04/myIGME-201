@@ -15,7 +15,89 @@ using EditPerson;
 using System.Collections;
 
 namespace PeopleList
+
+    //do a webbrowser navigate for the gif in the web brwoser if they answered everything correctly 
 {
+    //why dont we need a person class variable here but we do in person edit form**
+
+    //EXAM*****************************************
+    //we should scale our computer to 100 percent not 125 in our computers settings for the exam right (yes)
+    //how to make it so that if one textbox is clicked the timer starts and does not stop or reset when they go onto the next one for exam (use variable for it)
+    //we need to have a flag to know the timer has been started or we could check to see what value of progress bar is and each time the timer ticks down
+    //we reduce value of progress bar so we could check if the timer is at 3 or 4 minutes and if the value is 240 then we can assume the timer has not started yet
+    //and once the timer starts its going to count down and we subtract 1 from the value of the timer and we would have if progress bar value is 240 then start
+    //the timer and it will only do it once 
+    //(what is interval and total time for timer and what we decrease by)
+    //the interval defines when the timer elapses and it defined how long a tick is and every time a tick is every one second and in our tick method
+    //we will have a status strip and in the statuc strip theres a dropdown to add progress bar and for the progress bar we set the maximum value for 240 seconds for 4
+    //minutes and theres a value which is the current value it is and we want to start the value at 240 seconds for 4 minutes (we can also adjust the size in properties
+    //the timer is milliseconds and we want the timer to tick every 1 second and we want the preogress bar to go down by one second and we want it to go from
+    //4 minutes to 0 
+    //our progress bar is going to countdown in seconds and we want to define the maximum time they have which is 4 minutes which is 240 seconds for the meximum value and
+    //set the value for our tool strip progress bar value to be the maximum value in the contrustor 
+    //then each second the timer ticks we want to subtract 1 from the tool strip value thats what makes the value go down (we do --toolstripprogressbar1.value in the timer
+    //tick immediately when we enter the method)
+    //so when we are in the checkchanged when we change their link to the web brwoser would we target the web browser we named in our designer and do the
+    //navigate to their page and does it matter if we put it before or after the web browser document completed method for the loop through the anchor tags (does not matter)
+    //when we click on their certain party does it default ti being the first one or do we have to set it ourselves
+    //for the tooltip is it for every textbox or only some because the overlap is not next to the text boxes (its for all textboxes)
+    //(and how long do we set the tooltip for) or can we
+    //do it in designer for textboxes or would it be the this.show then the string then put it within the groupbox itself or would we put the textbox then the coordinates (we
+    //have to do it in designer)
+    //is there anything specical other than the exit button being unlocked and the timer being paused when the user enters everything correct (gif shows up in web brwoser)
+    //can we set all textboxes to be defult as 0 in designer or so you want it in the code (designer)
+    //user can only enter numbers no decimals, letters, or special characters in textboxes
+    //use the this.homepageWebBrowser.ScriptErrorsSuppressed = true;  for the web browser control 
+    //and do web browser document completeed to target
+    //anchor tags and their tooltip
+    //is there a specific naming convention for non-windows forms controls like the threading method for example within a windows form**
+
+    //every texbox has a tooltip (use the this.show for it)
+    
+
+
+    //when the timer ran out nothing happened except timer resetting and texboxes values being reset to 0 
+    //reset timer when timer runs out and only the textboxes reset to 0 (would we have to target all textboxes when the timer is 0 or is there
+    //a way to go through all of them at once from the groupbox******* (same for other controls to access all of them)******
+
+    //
+
+    //error provider needed right for the texbxes if they are empty
+
+    /*
+     * 
+            public void TxtBoxEmpty__Validating(object sender, CancelEventArgs e)
+            {
+                TextBox tb = (TextBox)sender;
+
+                if (tb.Text.Length == 0) //do this for all textboxes and an or (||) if not the textbox tag (for whatever president it is we will set the tag
+                                         //for their control)(also have to cast the tag as a string to check if it's their number not an int. because
+                                         //we are in the texbox which only accepts a string)(we can set the president tag in the constructor via the textlabel or radiobutton)
+                {
+                    this.errorProvider1.SetError(tb, "This field cannot be empty.");
+                    e.Cancel = true; //e.cancel is for every single textbox that gets passed in right for causes validation******
+                    tb.Tag = false; //all have to be true for causes vaidation for exit button to be clicked and use the lebel or radio button as a tag
+                                    //for the presidents number** In validate all we can then check if all of textboxes are checked then unlock the 
+                                    //exit button like we did in personeditform and we can stop the timer there (pause it)*******
+
+    //if we define a tag in the constructor its still available outside the constructor since its assocaited with a control and a contorl
+    //is global to the form class right** (not other classes though unless its defined in the class)**
+                }
+                else
+                {
+                    this.errorProvider1.SetError(tb, null); //else if (textbox tag) then we want to do causes validation to be false and exit**
+                    e.Cancel = false;
+                    tb.Tag = true;
+                }
+
+                ValidateAll();
+            }
+
+    //how to check if all textboxes full can we use the textbox tag then do validation then for the president name (their label) have their tag as their president
+    number then check if that to strning is in the texbox for causes validation for example the control in the deisnger.tag casted as a string
+    would that work since the control is only defined in the constructor or could set it in another method that invloves the radio buttons
+    and have that be the tag to access it here to check or how would that work because of scope*****
+     */
     public partial class PeopleListForm : Form, IListView
     {
         private int columnIndex = 1;  // default to email column
@@ -42,7 +124,9 @@ namespace PeopleList
 
             this.peopleListView.ColumnClick += new ColumnClickEventHandler(PeopleListView__ColumnClick);
 
-            UpdateColumnAppearance(columnIndex);
+            UpdateColumnAppearance(columnIndex); //why do we want to update the column appearence when we first enter is it because
+            //a column that had an arrow on the heading may have been saved before so we want to clear that? What about the sort of that column
+            //will that also reset when we do paintlistview below**
 
             PaintListView(null);
         }
@@ -118,6 +202,8 @@ namespace PeopleList
 
             this.Enabled = false;
 
+            //this.showdialouge(); instead of the above line and just make the new personeditform instance**
+
             new PersonEditForm(newPerson, this);
         }
 
@@ -141,6 +227,7 @@ namespace PeopleList
 
                     PersonEditForm epf = new PersonEditForm(person, this);
                     epf.Show();
+                    //could have done epf.ShowDialouge(); instead if we take out the this.Enabled??**
                 }
                 catch
                 {

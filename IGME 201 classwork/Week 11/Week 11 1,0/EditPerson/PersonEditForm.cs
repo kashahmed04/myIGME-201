@@ -120,7 +120,7 @@ namespace EditPerson
             //or do we have to decalre seperate delegates for each textbox for exam 3 rpesidents**
             //go over threading**
             //and timing boxes**
-            this.emailTextBox.Validating += new CancelEventHandler(TxtBoxEmpty__Validating);
+            this.emailTextBox.Validating += new CancelEventHandler( );
             this.ageTextBox.Validating += new CancelEventHandler(TxtBoxEmpty__Validating);
             this.specTextBox.Validating += new CancelEventHandler(TxtBoxEmpty__Validating);
             this.gpaTextBox.Validating += new CancelEventHandler(TxtBoxEmpty__Validating);
@@ -891,7 +891,8 @@ namespace EditPerson
             {
                 TextBox tb = (TextBox)sender;
 
-                if (tb.Text.Length == 0)
+                if (tb.Text.Length == 0) //do this for all textboxes and an or (||) if not the textbox tag (for whatever president it is we will set the tag
+                                         //for their textbox)
                 {
                     this.errorProvider1.SetError(tb, "This field cannot be empty.");
                     e.Cancel = true; //e.cancel is for every single textbox rgight for causes validation******
@@ -899,7 +900,7 @@ namespace EditPerson
                 }
                 else
                 {
-                    this.errorProvider1.SetError(tb, null);
+                    this.errorProvider1.SetError(tb, null); //else if (textbox tag) then we want to do causes validation to be false and exit**
                     e.Cancel = false;
                     tb.Tag = true;
                 }

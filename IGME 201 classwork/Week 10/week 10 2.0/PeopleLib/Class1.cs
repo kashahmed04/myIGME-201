@@ -1,252 +1,117 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PeopleLib
 {
-    public enum EFavoriteFood
+    //public enum EGames //we could also user enumerated type to store data from sorted lists instead (we can't add spaces to enumerated types so
+    //                    //maybe sorted list would be better for the things that have spaces in between maybe?
+    //{
+    //  Sons_of_The_Forest,
+    //  Rainbow_Six_Siege,
+    //  Valorant,
+    //  Counter_Strike,
+    //  Roblox,
+    //  VRChat
+    //
+    //
+    //}
+    //
+    //public enum ETimes
+    //{
+    //    
+    //}
+    //
+    //public enum ERank
+    //{
+    //    
+    //}
+    //public enum EProfilePhotos
+    //{
+    // 
+    //}
+    //
+    public class User 
     {
-        brocolli,
-        pizza,
-        apples
-    }
 
-    public enum ERating
-    {
-        great,
-        ok,
-        meh
-    }
+        public string username;
+        public int bioLabel;
+        public bool onlineStatus;
 
-    public enum genderPronoun
-    {
-        him,
-        her,
-        them
-    }
-    public enum collegeYear : byte
-    {
-        freshman = 23,
-        sophomore = 22,
-        junior = 21,
-        senior = 20
-    }
+        //sorted list that takes in the username as the key and the games as a value (could use a tuple for the value to store multiple values in)
+        //of if there was an easier way of doing it not too sure 
+        public SortedList<string, string> gameNames = new SortedList<string, string>();
+        //username is key and the time is the value (could also use the tuple approach for the value so we could store multiple things in one value)
+        public SortedList<string, int> times = new SortedList<string, int>();
+        //username is key and the rank is the value(could also use the tuple approach for the value so we could store multiple things in one value)
+        public SortedList<string, int> rank = new SortedList<string, int>();
+        //each user (key) has an associated photopath which is the value 
+        public SortedList<string, string> profilePhotos = new SortedList<string, string>();
 
-    public interface ICourseList
-    {
-        List<string> CourseList //stores the name of the courses and it only applies to student and teacher classes
-            //just a list of the coursecodes that the person is registered for 
-            //and its a prop. so it allows us to use the interface to access it for both students and teachers
-            //the list updates our list for us and in our item activate 
-        {
-            get;
-            set;
-        }
-    }
+        //implement the list in PeopleAppGlobals 
 
-    public abstract class Person
-    {
-        public string name;
-        public int age;
-        public genderPronoun eGender;
-        public string email;
 
-        public EFavoriteFood eFavoriteFood;
-
-        public string photoPath;
-        public string homePageURL;
-        public DateTime dateOfBirth;
-
-        private int licenseId;
-
-        public int LicenseId
-        {
-            get
-            {
-                // get will simply return licenseId but it can do any logic
-                return licenseId;
-            }
-
-            set
-            {
-                // we will only set the licenseId if the person is older than 16
-                if (age > 16)
-                {
-                    licenseId = value;
-                }
-            }
-        }
-
-        public static bool operator <(Person p1, Person p2)
-        {
-            return (p1.age < p2.age);
-        }
-
-        public static bool operator >(Person p1, Person p2)
-        {
-            return (p1.age > p2.age);
-        }
-
-        public static bool operator <=(Person p1, Person p2)
-        {
-            return (p1.age <= p2.age);
-        }
-
-        public static bool operator >=(Person p1, Person p2)
-        {
-            return (p1.age >= p2.age);
-        }
-
-        public static bool operator ==(Person p1, Person p2)
-        {
-            return (p1.age == p2.age);
-        }
-
-        public static bool operator !=(Person p1, Person p2)
-        {
-            return (p1.age != p2.age);
-        }
-
-        public virtual void Work()
-        {
-            Console.WriteLine("work work work");
-        }
-    }
-
-    public interface IStudent
-    {
-        void Party();
-    }
-
-    public interface IPerson
-    {
-        void Eat();
-    }
-
-    public class Student : Person, IPerson, IStudent, ICourseList
-    {
-        public double gpa;
-        public collegeYear eCollegeYear;
-        //public List<string> courseCodes = new List<string>();
-
-        public List<String> CourseList //we have a list of strings which is the course codes the person has reguastered for******
-        {   
-            get;
-            set;
-        }
-
-        public Student()
-        {
-            CourseList = new List<string>();
-        }
-
-        public static bool operator <(Student s1, Student s2)
-        {
-            return (s1.gpa < s2.gpa);
-        }
-
-        public static bool operator <=(Student s1, Student s2)
-        {
-            return (s1.gpa <= s2.gpa);
-        }
-
-        public static bool operator >(Student s1, Student s2)
-        {
-            return (s1.gpa > s2.gpa);
-        }
-
-        public static bool operator >=(Student s1, Student s2)
-        {
-            return (s1.gpa >= s2.gpa);
-        }
-
-        public static bool operator ==(Student s1, Student s2)
-        {
-            return (s1.gpa == s2.gpa);
-        }
-
-        public static bool operator !=(Student s1, Student s2)
-        {
-            return (s1.gpa != s2.gpa);
-        }
-
-        public void Eat()
-        {
-            Console.WriteLine("Order a pizza!");
-        }
-
-        public void Party()
-        {
-            Console.WriteLine("Party on dude");
-        }
-
-    }
-
-    public class Teacher : Person, IPerson, ICourseList
-    {
-        public string specialty;
-
-        public ERating eRating;
-        //public List<string> courseCodes = new List<string>();
-
-        public List<String> CourseList
-        {
-            get;
-            set;
-        }
-
-        public Teacher()
-        {
-            CourseList = new List<String>();
-        }
-
-        public override void Work()
-        {
-            Console.WriteLine($"I'll tell you all about {specialty}.");
-        }
-
-        public void Eat()
-        {
-            Console.WriteLine("I eat lots of apples.");
-        }
+        //was not too sure if we wanted a comparison here either but kept it just in case 
+        //public static bool operator <(Student s1, Student s2)
+        //{
+        //    return (s1.gpa < s2.gpa);
+        //}
+        //
+        //public static bool operator <=(Student s1, Student s2)
+        //{
+        //    return (s1.gpa <= s2.gpa);
+        //}
+        //
+        //public static bool operator >(Student s1, Student s2)
+        //{
+        //    return (s1.gpa > s2.gpa);
+        //}
+        //
+        //public static bool operator >=(Student s1, Student s2)
+        //{
+        //    return (s1.gpa >= s2.gpa);
+        //}
+        //
+        //public static bool operator ==(Student s1, Student s2)
+        //{
+        //    return (s1.gpa == s2.gpa);
+        //}
+        //
+        //public static bool operator !=(Student s1, Student s2)
+        //{
+        //    return (s1.gpa != s2.gpa);
+        //}
     }
 
     // [+People|sortedList:SortedList<string, Person>|this:email|+Remove(email: string)]
-    public class People
+    public class Players //did players here instead of users so it would not be confusing 
     {
-        // the generic SortedList class uses a template <> to store indexed data
-        // the first type is the data type to index on
-        // the second type is the data type to store in the list
-        // create a Sorted List indexed on email (string) and storing Person objects
-        public SortedList<string, Person> sortedList = new SortedList<string, Person>();
+       
+        // create a Sorted List indexed on username (string) and storing User objects
+        public SortedList<string, User> sortedList = new SortedList<string, User>();
 
-        public void Remove(string email)
+        public void Remove(string username)
         {
-            if (email != null)
+            if (username != null)
             {
-                sortedList.Remove(email);
+                sortedList.Remove(username);
             }
         }
 
         // indexer property allows array access to sortedList via the class object
-        // and catching missing keys and duplicate key exceptions 
-        // notice the indexer property definition shows how it will be used in the calling code:
-        // if we have:
-        //     People people;
-        // then we can call:
-        //     people[email] to access the Person object with that email address
-        // and value will be the Person object (person) being added to the list in the case of:
-        //     people[email] = person;
-        public Person this[string email]
+        // and catching missing keys and duplicate key exceptions
+        //gets a player based on the username as the key and the whole object as the value 
+        public Players this[string username]
         {
             get
             {
-                Person returnVal;
+                Players returnVal;
                 try
                 {
-                    returnVal = (Person)sortedList[email];
+                    returnVal = (Players)sortedList[username];
                 }
                 catch
                 {
@@ -260,9 +125,8 @@ namespace PeopleLib
             {
                 try
                 {
-                    // we can add to the list using these 2 methods
-                    //      sortedList.Add(email, value);
-                    sortedList[email] = value;
+                    //we can add to the list if we want by username
+                    sortedList[username] = value;
                 }
                 catch
                 {

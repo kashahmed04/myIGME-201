@@ -15,7 +15,11 @@ namespace EditPerson
 {
     public partial class PersonEditForm : Form
     {
-        public Person formPerson;
+        public Person formPerson; //why dont we have one for course and why do we need a person class variable here specififically
+                                  //is it because we are trying to use the same eprson throughough the class so we define it here and
+                                  //set the peron passed in equal to this so we can use it outside of the constructor** do we not do this in the 
+                                  //peoplelistform because we are acessing the listview which is everyone and we are not accessing a specific person
+                                  //so edit their info.**
 
         public PersonEditForm(Person person, Form parentForm )
         {
@@ -93,7 +97,7 @@ namespace EditPerson
 
             this.birthDateTimePicker.ValueChanged += new EventHandler(BirthDateTimePicker__ValueChanged);
 
-            this.homepageWebBrowser.ScriptErrorsSuppressed = true;
+            this.homepageWebBrowser.ScriptErrorsSuppressed = true; //always set just in case for web browser control**  
 
             this.FormClosing += new FormClosingEventHandler(PersonEditForm__FormClosing);
 
@@ -120,6 +124,8 @@ namespace EditPerson
             this.birthDateTimePicker.Value = this.birthDateTimePicker.MinDate;
 
             // RadioButtons should always default to one of them being checked
+            //why is it just in the constructor like this should we have a case if the person is the student or just put
+            //it in the condtional where it checks if the person is a student**
             this.seniorRadioButton.Checked = true;
 
             if ( person.name == "" )
@@ -160,7 +166,8 @@ namespace EditPerson
                 //Student student = (Student)person;
 
                 this.typeComboBox.SelectedIndex = 0;
-                this.gpaTextBox.Text = student.gpa.ToString();
+                this.gpaTextBox.Text = student.gpa.ToString(); //if its a new student what will the default be or if we don't specify will windows just
+                                                               //make it blank**
 
                 if (student.name == null)
                 {
@@ -236,7 +243,7 @@ namespace EditPerson
                             break;
                     }
 
-                    htmlId += $"{course.schedule.startTime:HH}";
+                    htmlId += $"{course.schedule.startTime:HH}"; 
 
                     htmlElement = webBrowser.Document.GetElementById(htmlId);
 
@@ -256,11 +263,12 @@ namespace EditPerson
 
         private void SchHtmlElement__MouseOver(object sender, HtmlElementEventArgs e)
         {
-            HtmlElement htmlElement = sender as HtmlElement;
+            HtmlElement htmlElement = sender as HtmlElement; //what does this mean**
             Course course;
 
             course = Globals.courses[htmlElement.InnerText];
             if( course != null)
+                //so basically the second parameter in show is the browser so want to show this dialouge on**
             {
                 this.schToolTip.Show($"Description: {course.description}\nReview: {course.review}", this.scheduleWebBrowser, e.MousePosition.X + 5, e.MousePosition.Y + 15, 1500);
             }
@@ -272,14 +280,17 @@ namespace EditPerson
 
             if( e.MouseButtonsPressed == MouseButtons.Left)
             {
-                this.schContextMenuStrip.Tag = htmlElement;
-                this.schContextMenuStrip.Show(this.scheduleWebBrowser, e.MousePosition.X + 5, e.MousePosition.Y + 15);
+                this.schContextMenuStrip.Tag = htmlElement; //why do we need this here is it because we want to set get the spcecific htmlelement that we had clicked
+                                                            //on to edit or remove a course
+                this.schContextMenuStrip.Show(this.scheduleWebBrowser, e.MousePosition.X + 5, e.MousePosition.Y + 15); 
+                //does each control take different amount of parameters for the .show() like the tooltip above and the menu strip here**
             }
         }
 
         private void EditToolStripMenuItem__Click(object sender, EventArgs e)
         {
-            HtmlElement htmlElement = (HtmlElement)this.schContextMenuStrip.Tag;
+            HtmlElement htmlElement = (HtmlElement)this.schContextMenuStrip.Tag; //get the tag as an html element because it gets passed in as an object (got converted
+                                                                                 //implicitly because object is higher than an html element or a control)**
 
             EditCourseForm editCourseForm = new EditCourseForm(htmlElement.InnerText);
             editCourseForm.Show();
@@ -325,7 +336,8 @@ namespace EditPerson
                 HtmlElement htmlElement1 = wb.Document.CreateElement("img");
                 htmlElement1.SetAttribute("src", "https://en.bcdn.biz/Images/2018/6/12/27565ee3-ffc0-4a4d-af63-ce8731b65f26.jpg");
                 htmlElement1.SetAttribute("title", "awwww");
-                htmlElement1.Click += new HtmlElementEventHandler(Example_IMG__Click);
+                htmlElement1.Click += new HtmlElementEventHandler(Example_IMG__Click); //so basically we set up our event handlers then moved on
+                //to set the variables to something else so we can ensure our methods will run so we call the method first then replace the variable**
 
                 htmlElement.InsertAdjacentElement(HtmlElementInsertionOrientation.AfterBegin, htmlElement1);
 
@@ -345,7 +357,9 @@ namespace EditPerson
 
         private void Example_H1__MouseOver(object sender, HtmlElementEventArgs e)
         {
-            HtmlElement htmlElement = (HtmlElement)sender;
+            HtmlElement htmlElement = (HtmlElement)sender; //cast the html element passed in which is the H1 because it got passed in as a sender since it was
+                                                            //impliticly casted and object is higher than any data type in c#** (is there anything higher than
+                                                            //and object in c#)**
             HtmlElementCollection htmlElementCollection;
 
             if( htmlElement.InnerText.ToLower().Contains("kitten"))
@@ -363,7 +377,10 @@ namespace EditPerson
             {
                 htmlElement.InnerText = "My Kitten Page";
 
-                htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("h2");
+                htmlElementCollection = this.homepageWebBrowser.Document.GetElementsByTagName("h2"); //so here we want to say specifically in the homepage document
+                                                                                                     //make these changes since here we dont have access to the wb variable 
+                                                                                                     //cant make a new one here because it wont know which docuemnt
+                                                                                                     //we are talking about unless its a document completed method**
                 htmlElementCollection[0].InnerText = "Meow!";
                 htmlElementCollection[1].InnerHtml = "<a href='http://www.kittens.com'>Kitties!</a>";
 
@@ -469,14 +486,14 @@ namespace EditPerson
                         continue;
                     }
                 }
-                else
+                else //this means if its the all courses list view but if there was another listview would we have to say else if(lv == this.all coureses listview)**
                 {
                     if (courseSearchTextBox.TextLength > 0)
                     {
                         if (!thisCourse.courseCode.Contains(courseSearchTextBox.Text) &&
                             !thisCourse.description.Contains(courseSearchTextBox.Text))
                         {
-                            continue;
+                            continue;  
                         }
                     }
                 }
@@ -560,7 +577,10 @@ namespace EditPerson
         {
             if( this.Owner != null)
             {
-                this.Owner.Enabled = true;
+                this.Owner.Enabled = true; //unlocks the main form (person list form) when we press just the x on the person edit form because we dont
+                                           //have a case for it, is this usually the case when we would want to havea  form closing to consider
+                                           //if the user presses x instead would we do the same for showdialouge or would the parent form unlock automatically
+                                           //if the x itself was pressed in the child form**
             }
         }
 
@@ -664,7 +684,7 @@ namespace EditPerson
             if( this.typeComboBox.SelectedIndex == 0)
             {
                 student = new Student();
-                student.CourseList = iCourseList.CourseList;
+                student.CourseList = iCourseList.CourseList; //this saves the final list if it was a student or teacher person with their course lists**
                 person = student;
             }
             else
@@ -754,7 +774,7 @@ namespace EditPerson
             if( this.Owner != null )
             {
                 this.Owner.Enabled = true;
-                this.Owner.Focus();
+                this.Owner.Focus(); //why do we want to focus when we have the owner enabled already**
             }
 
             this.Close();
@@ -771,7 +791,7 @@ namespace EditPerson
                 this.specialtyLabel.Visible = false;
                 this.specTextBox.Visible = false;
 
-                this.specTextBox.Tag = true;
+                this.specTextBox.Tag = true; 
 
                 this.gpaLabel.Visible = true;
                 this.gpaTextBox.Visible = true;

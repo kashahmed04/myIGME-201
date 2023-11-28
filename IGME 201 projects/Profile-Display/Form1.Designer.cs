@@ -37,8 +37,6 @@
             this.gameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rankHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.matchupHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.gpa_specHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.photoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -99,17 +97,15 @@
             this.statsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.gameHeader,
             this.timeHeader,
-            this.rankHeader,
-            this.matchupHeader,
-            this.gpa_specHeader});
+            this.rankHeader});
             this.statsListView.FullRowSelect = true;
             this.statsListView.GridLines = true;
             this.statsListView.HideSelection = false;
-            this.statsListView.Location = new System.Drawing.Point(450, 297);
+            this.statsListView.Location = new System.Drawing.Point(427, 274);
             this.statsListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.statsListView.MultiSelect = false;
             this.statsListView.Name = "statsListView";
-            this.statsListView.Size = new System.Drawing.Size(399, 226);
+            this.statsListView.Size = new System.Drawing.Size(483, 322);
             this.statsListView.TabIndex = 57;
             this.statsListView.UseCompatibleStateImageBehavior = false;
             this.statsListView.View = System.Windows.Forms.View.Details;
@@ -130,21 +126,11 @@
             this.rankHeader.Text = "Rank";
             this.rankHeader.Width = 110;
             // 
-            // matchupHeader
-            // 
-            this.matchupHeader.Text = "Matchup %";
-            this.matchupHeader.Width = 107;
-            // 
-            // gpa_specHeader
-            // 
-            this.gpa_specHeader.Text = "get rid";
-            this.gpa_specHeader.Width = 440;
-            // 
             // DisplayProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 588);
+            this.ClientSize = new System.Drawing.Size(947, 622);
             this.Controls.Add(this.statsListView);
             this.Controls.Add(this.dmButton);
             this.Controls.Add(this.bioLabel);
@@ -169,8 +155,6 @@
         private System.Windows.Forms.ColumnHeader gameHeader;
         private System.Windows.Forms.ColumnHeader timeHeader;
         private System.Windows.Forms.ColumnHeader rankHeader;
-        private System.Windows.Forms.ColumnHeader matchupHeader;
-        private System.Windows.Forms.ColumnHeader gpa_specHeader;
     }
 }
 

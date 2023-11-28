@@ -32,13 +32,15 @@
             this.refLabel = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.countdownLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.exitButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.happyPictureBox = new System.Windows.Forms.PictureBox();
+            this.sadPictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.happyPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sadPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // refLabel
@@ -69,14 +71,6 @@
             this.countdownLabel.TabIndex = 2;
             this.countdownLabel.Text = "label1";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(20, 171);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 112);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.webBrowser1);
@@ -105,22 +99,43 @@
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             // 
+            // happyPictureBox
+            // 
+            this.happyPictureBox.Image = global::Sherlock.Properties.Resources.happy;
+            this.happyPictureBox.Location = new System.Drawing.Point(20, 171);
+            this.happyPictureBox.Name = "happyPictureBox";
+            this.happyPictureBox.Size = new System.Drawing.Size(118, 112);
+            this.happyPictureBox.TabIndex = 5;
+            this.happyPictureBox.TabStop = false;
+            // 
+            // sadPictureBox
+            // 
+            this.sadPictureBox.Image = global::Sherlock.Properties.Resources.sad;
+            this.sadPictureBox.Location = new System.Drawing.Point(20, 171);
+            this.sadPictureBox.Name = "sadPictureBox";
+            this.sadPictureBox.Size = new System.Drawing.Size(118, 112);
+            this.sadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.sadPictureBox.TabIndex = 3;
+            this.sadPictureBox.TabStop = false;
+            // 
             // Sherlock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.happyPictureBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.sadPictureBox);
             this.Controls.Add(this.countdownLabel);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.refLabel);
             this.Name = "Sherlock";
             this.Text = "Sherlock";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.happyPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sadPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,11 +146,12 @@
         private System.Windows.Forms.Label refLabel;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label countdownLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox sadPictureBox;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.PictureBox happyPictureBox;
     }
 }
 

@@ -3,32 +3,39 @@
 // {generate:true}
 // {direction:topDown}
 
-
+[+PeopleListInfo||+MakePeopleList()|]
+[+PeopleInfo|+username:string;+gameNames:SortedList;+Times:SortedList;+Rank:SortedList;+bioLabel:string;onlineStatuc:bool;+photoLinks:SortedList||]
 
 [+A:Game|+name:string;+chats:List<Chat>;+meetups:List<Meetup>;|+AddMeetup(meetup:Meetup)]
-[+A:Game]<-[+Chat|+chatName:string;+messages:List<Message>;|+SendMessage(message:Message);]
+[+A:Game]<-.-[+Chat|+chatName:string;+messages:List<Message>;|+SendMessage(message:Message);]
 [+Chat]<-[+Message|text:string;sender:Profile;]
-[+A:Game]<-[+Meetup|+location:string;+date:DateTime;+attending:List<Profile>]
+[+A:Game]<-.-[+Meetup|+location:string;+date:DateTime;+attending:List<Profile>]
 
 [+Profiles||+DMButton__Click();+StatsListView__ItemActivate();-UsernameLabel();-BioLabel();+PhotoPictureBox__Click()]
 
 
-[+A:ALeaderboard||+GameInfo():string|+PlayerInfo():string]
-[+A:ALeaderboard]<-.-[+GameInfo|+game:string|+GameInfo():string:o;]
-[+A:ALeaderboard]<-.-[+PlayerInfo|+username:string|+PlayerInfo():string:o;]
-[+PlayerInfo]<-[+Rank|+playerRank:int|+SortPlayerRank():int]
-[+GameInfo]<-[+Rank]
-[+A:ALeaderboard]<-.-[+FilterBy|+time:int;+score:int|+ByTime()|+ByScore()]
+//[+A:ALeaderboard||+GameInfo():string|+PlayerInfo():string]
+//[+A:ALeaderboard]<-.-[+GameInfo|+game:string|+GameInfo():string:o;]
+//[+A:ALeaderboard]<-.-[+PlayerInfo|+username:string|+PlayerInfo():string:o;]
+[+Leaderboard||+Rank;+FilterBy|]
+//[+PlayerInfo]<-[+Rank|+playerRank:int|+SortPlayerRank():int]
+//[+GameInfo]<-[+Rank]
+//[+Leaderboard]<-.-[+FilterBy|+time:int;+score:int|+ByTime()|+ByScore()]
+//[+Leaderboard]<-.-[+Rank|+playerRank:int|+SortPlayerRank():int]
 
-[+GameInfo]<-[+Profiles] 
-[+PlayerInfo]<-[+Profiles] 
-[+FilterBy]<-[+Profiles] 
-[+Message]<-[+Profiles] 
-[+Rank]<-[+Profiles] 
+//[+GameInfo]<-[+Profiles] 
+//[+PlayerInfo]<-[+Profiles] 
+[+IFilterBy|FilterBy]^[+Profiles] 
+[+IMessage|Message]^[+Profiles] 
+[+Leaderboard]<-[+Profiles] 
 
-//user profile inherits from profile and user details inherits 
-//from game info. and player info.
-//should I inherit from game info. and player info.
-//if rank is already inherited can we just access
-//the info. from there or should I just access them seperately**
-//
+[+Profiles||+DMButton__Click(); +StatsListView__ItemActivate(); -UsernameLabel(); -BioLabel(); +PhotoPictureBox__Click()]
+[+UserProfile|+ViewProfile__Click(); +NextProfileButton__Click(); +preferences:List<int>]
+[+Profiles] ^ [+UserProfile]
+[+ProfileList|Sort(UserProfile):List<UserProfile>]
+[+ProfileList] <- [+UserProfile]
+[+UserDetails|+name:string; +favoriteGames:list<string>]
+[+UserProfile] <- [+UserDetails]
+
+[+HomePage|+Leaderboards__Click();+Match__Click();+Profile__Click();+Chats__Click();+ProfileList__Click()]
+

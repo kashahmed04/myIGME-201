@@ -62,7 +62,7 @@ namespace Dyscord
 
            
 
-            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());  //what is this for*******
+            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());  
             foreach(IPAddress ipAddress in ipHost.AddressList)
             {
                 if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
