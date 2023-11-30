@@ -14,9 +14,6 @@ using System.Windows.Forms;
 //why is my webbrowser have empty space when we change the postition of the bars**
 //the site is different on the top is that ok ow which link should I use**
 
-//is it ok if the green bar moves along as we move the screen or how 
-//would we make it not do that like it does in the executable**
-
 //if we change the radio button after we get everything correct is it ok 
 //if it navigates to their wikepedia site or should the gif always be there after
 //they guess everything right regardless of it they change the radio button same for

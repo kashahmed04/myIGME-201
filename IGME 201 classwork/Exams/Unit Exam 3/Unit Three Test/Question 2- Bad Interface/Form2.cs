@@ -39,20 +39,10 @@ namespace Question_2__Bad_Interface
 
 
             this.webBrowser1.ScriptErrorsSuppressed = true;
-
-            //link not working to go to youtube channel how can we do it and the form opens again after I close it**
-            this.webBrowser1.Navigate("https://www.youtube.com/@flamingo");
-
-         
-            //this.webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser1__DocumentCompleted);
+            this.webBrowser1.Navigate("https://m.youtube.com/watch?v=CEyXche9TMM");
 
         }
 
-
-        //private void webBrowser1__DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        //{
-        //    webBrowser1.Navigate("https://www.youtube.com/@flamingo");
-        //}
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {

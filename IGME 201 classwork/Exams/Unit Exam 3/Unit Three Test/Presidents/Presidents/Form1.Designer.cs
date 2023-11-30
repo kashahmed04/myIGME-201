@@ -71,7 +71,6 @@
             this.browserGroupBox = new System.Windows.Forms.GroupBox();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.exitButton = new System.Windows.Forms.Button();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -494,21 +493,12 @@
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             // 
-            // statusStrip
-            // 
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Location = new System.Drawing.Point(0, 636);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1113, 22);
-            this.statusStrip.TabIndex = 41;
-            this.statusStrip.Text = "statusStrip1";
-            // 
             // progressBar
             // 
-            this.progressBar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.progressBar.Location = new System.Drawing.Point(0, 636);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(888, 22);
+            this.progressBar.Size = new System.Drawing.Size(1113, 22);
             this.progressBar.TabIndex = 42;
             // 
             // errorProvider1
@@ -525,7 +515,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 658);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.browserGroupBox);
             this.Controls.Add(this.pictureBox);
@@ -619,7 +608,6 @@
         private System.Windows.Forms.GroupBox browserGroupBox;
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolTip toolTip;

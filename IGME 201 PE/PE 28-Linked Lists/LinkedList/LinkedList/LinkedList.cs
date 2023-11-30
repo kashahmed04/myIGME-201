@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Threading;
 using LinkedListVisualizer;
 
+
+
+
 namespace LinkedList
 {
     public partial class LinkedList : Form
@@ -55,40 +58,6 @@ namespace LinkedList
         //we can directly create linked list form an array and if we pass array in the constructor in the () then it populates the linked list with each node
         //in the order of the words written in the array (each word is a different node)
 
-        1. So when we created a linked list from an array of strings I just wanted to make sure but each node in the linked list
-        is written according the order of how the strings were written out in the array right?
-        2. So I just wanted to make sure but when we want to add nodes you said that we can't have repeating nodes otherwise we would get a run time error and circular dependency,
-        but for the datatype (if we use .value) we could have repeats of those and we can just do sentence.Last.Value("word") twice and that would not throw an error?
-        I was a bit confused because wouldnt that technically create the same node with same values twice causing an error then?
-        3. Could we use .value with all the built in methods with linked lists to add, remove, or get certain values from them or is there a restriction 
-        to when we can use .value with these built in methods
-        4. In order to reference a node we have to say it's a linkedlistnode and we need to specify the datatype of that node from that specific linked list right? 
-        If the linked list had the object data type and if we wanted to reference a node from that list that was a string would we say it's a string in the <>
-        or an object or would both work?
-        5. In example 5 of the linked list examples, when we remove the first node in the linked list the stored value does not get removed completely from memory
-        because it was declared before we removed the first node right?
-        6. AddAfter and AddBefore take in the targetted value and the value to insert if we want to put something in the middle of the linked list right? And
-        would we usually target a node in the linked list to do AddAfter or AddBefore and not a .value (datatype)?
-        7.  6. Change the last node to 'yesterday'
-           sentence.RemoveLast(); 
-           sentence.AddLast("yesterday");
-
-           //sentence.Last.Value = "yesterday" 
-            For this example here basically the first part was talking about changing the node based on the identifier which used to be away and now we set it to yesterday
-            whereas the second part was just changing what was contained
-            in the node right (the value)?
-        8. For step 9 does it find the first occurrence of a node in a linked list whereas the FindLast finds the last occurrence of the node
-           and they both go through whole linked list to get the node right?
-        9. For example 11 could we have also stored linked list node reference to be a carNode.Next since the nodes in the linked list points in both directions
-        10. For example 14 don't we have to remove the current node though so no values repeat because nodes can't repeat or does the AddAfter and AddBefore automatically 
-        remove the node for us and move it to the specified area whereas the AddFirst and 
-        AddLast does not remove the node?
-        11. For example 16 I wanted to make sure but we have our sentence linked list and we have access to the count which is the number of things in our linked list
-        and we store how many items (the index) will be in our sArray then we do copyTo to copy all of our things from our linked list to our array starting from index 0 in sArray right?
-        12. To remove the first occurrence of something from a linked list I know we talked about using the linked list name.remove(something) but if we wanted to remove
-        something from the middle of a linked list would first have a linkedlistnode reference then we can do a linked list name.remove(the name of the node)? I was confused
-        on how we could remove something specifically from the middle of a linked list.
-
        3. Add new strings to the end (tail) of the Linked List (either add a node directly to end of the list or the datatype
         and it will make the node for us)
            sentence.AddLast("word");
@@ -117,8 +86,8 @@ namespace LinkedList
            sentence.RemoveLast(); 
            sentence.AddLast("yesterday");
 
-            //sentence.Last.Value = "yesterday" //change the data in the last node the yesterday instead of changing the actual node itself like we did above**
-            //can we do addlast and addfirst and last and first with .value or are some only node specific and data specific**
+            //sentence.Last.Value = "yesterday" //change the data in the last node the yesterday instead of changing the actual node itself like we did above
+       
 
        7. Move the last node to be the first node.
            LinkedListNode<string> lastNode = sentence.Last;
@@ -127,8 +96,7 @@ namespace LinkedList
 
        8. Find the last occurence of 'the'.
            LinkedListNode<string> target = sentence.FindLast("the"); 
-            //finds the last occurrance of the data in the linked list (can we do .value for data
-            //or is this only specifically for nodes only)**
+            //finds the last occurrance of the data in the linked list 
            if (target == null)
            {
                // "the" is not found
@@ -160,8 +128,7 @@ namespace LinkedList
        if you try to add a node that already belongs to a list.
 
         //if we try to add a node thats already in the list we will get an exception so we can use a try catch to prevent application from crashing
-        //if we know whats in our linked list is it still necessary to have a try catch and if we know we are not going to have repeating nodes or is it common
-        //to have try and catch when adding and removing nodes from linked lists**
+        
            try
            {
                // try to add carNode before current
@@ -174,7 +141,7 @@ namespace LinkedList
 
 
        13. Remove the node referred to by carNode, and then add it
-       before the node referred to by current. instead of having it after current like we did before**
+       before the node referred to by current. 
            sentence.Remove(carNode);
            sentence.AddBefore(current, carNode);
         
@@ -185,33 +152,39 @@ namespace LinkedList
 
        15. The Remove method finds and removes the
        first node that that has the specified value.
-           sentence.Remove("red"); //find and remove the first node that has the specified data in it**
+           sentence.Remove("red"); //find and remove the first node that has the specified data in it
 
        16. Create an array with the same number of
        elements as the linked list.
            string[] sArray = new string[sentence.Count];
-           sentence.CopyTo(sArray, 0); //why do we put 0 is this the starting index value and the first parameter is the array we are copying from**(6)
-        //why do we have to copy it if we already created the array above with everything from the linked list is it because the first line
-        //creates the array with the index number but the second line is actually putting the items in the array** (7)
+           sentence.CopyTo(sArray, 0); //this is the starting index value and the first parameter is the array we are putting the copied values from the linked list
+        //into
+        //the first line
+        //creates the array with the index number but the second line is actually putting the items in the array
 
-        //we get out linked list and copy it to the array starting at index 0 for the linked list or the array?**(7.5)
+        //we get our linked list and copy it to the array starting at index 0 for the array
 
        17. Walk through a Linked List in forward order
 
         //if we want to walk through the linked list in forward order then we have the linked list pointing to the first thing in our list
         //and while the linkedlist is not equal to null then we set the linkedlistnode to the linkedlistnode.next 
-        //set the node variable equal to itself.next**
+        //set the node variable equal to itself.next
            LinkedListNode<object> linkedListNode = linkedList.First;
 
            while( linkedListNode != null )
            {
-               linkedListNode = linkedListNode.Next; //how does it know there is a .next if above we only declared it with 1 item being the first item**(8)
+               linkedListNode = linkedListNode.Next; //In example 17, how does it know there is a .next for the node in the loop
+                                                       //if above we only declared the linked list node
+                                                       //with 1 item being the first item in the linked list we also had the same case in example 18
+                                                        //but it was with linkedlist.last and linkedlistnode.previous
+
+                                                       //this basically goes to the linked list and goes to the preivous value since
+                                                       //we set the linked list node equal to the last value in the linked list in the above statement**(use for response back)
            }
 
        18. Walk through a Linked List in reverse order
-        //set the node equal to itself.previous to move in backwards order in the linked list while the linkedlist is not null**
-           LinkedListNode<object> linkedListNode = linkedList.Last; //how does it know it has a .previous if we just say .last that means we would only have 1 item
-                                                                    //in our linked list**(9)
+        //set the node equal to itself.previous to move in backwards order in the linked list while the linkedlist is not null
+           LinkedListNode<object> linkedListNode = linkedList.Last; 
 
            while( linkedListNode != null )
            {
@@ -219,7 +192,12 @@ namespace LinkedList
            }
 
        19. Change the Value of a node
-        //the value property would be the cell object class in chutes and ladders**
+        //For example 19 I was a bit confused when you said 
+        //"the value property would be the cell object class in chutes and ladders." So basically each node was an instance of the cell class (each
+        //green block on the gameboard) and to access the node itself we would have to use the .Value to see what's inside the node
+
+        //what happens if we say the node itself and not the value would it still give us the contents of the node regardless or is there a distinction
+        //from getting the node itself and the .Value
            linkedListNode.Value = "new value";
 
        20. Release all the nodes.
@@ -233,13 +211,17 @@ namespace LinkedList
         {
             // 1. create a LinkedList which contains the digits 1 through 10
             //linkedlist is a list of objects and thats because the visualizer class can render strings or intergs in the linked list so we 
-            //need to make it an object so support both the data types**
+            //need to make it an object so support both the data types
+
+            //In the linked list methods you said that we needed to have the linked list be defined as the object data type because our visualizer 
+            //uses both integers and strings based on the method right? Why can't we declare different types of linked lists for each method because it's rather a string
+            //or an integer and not both so there would be no conflict then?
             LinkedList<object> linkedList = new LinkedList<object>();
 
             // 2. Your code here
             for(int i = 1; i <= 10; i++)
             {
-                //add each number to the end of the linked list**
+                //add each number to the end of the linked list
                 linkedList.AddLast(i);
             }
 
@@ -256,7 +238,7 @@ namespace LinkedList
             // 2. Your code here
             for (int i = 1; i <= 10; i++)
             {
-                //add each number to the end of the linked list**
+                //add each number to the end of the linked list
                 linkedList.AddLast(i);
             }
 
@@ -270,13 +252,15 @@ namespace LinkedList
             while(linkedListNode != null)
             {
                 reverseLinkedList.AddLast(linkedListNode.Value);
-                linkedListNode = linkedListNode.Previous;
+                linkedListNode = linkedListNode.Previous; 
             }
             //we have linked list and reverse linked list (2 linked lists)
-            //we can only add data from node to another linked list when we are getting values from one linked list to another**
-            //we are breaking the link and adding new link in the middle and are very efficient for adding data but with arrays and stacks and queues
-            //to add data to an array in general though we need to create new array and copy but for stacks and queues we dont**
-            //linked lists we have to walk through the whole list so it's not efficient for getting data while arrays are**
+            //we can only add the datatype (the current node .Value) to copy a node to go into another linked list
+            //we are breaking the link and adding new link in the middle and are very efficient for adding data but with arrays 
+            //to add data to an array in general we need to create new array and copy but for stacks and queues we dont because they have built in methods?
+            //isn't searching also limited with stacks and queues or can we still go through the whole thing since they are technically arrays?
+            //linked lists we have to walk through the whole list so it's not efficient for getting data while arrays are efficient for getting data because
+            //we can get data by index
 
             // 5. then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(reverseLinkedList);
@@ -289,21 +273,24 @@ namespace LinkedList
             LinkedList<object> linkedList = null;
             LinkedListNode<object> linkedListNode;
             string[] sentence = { "the", "fox", "jumped", "over", "the", "dog" };
-            //what was the other way to declare the array**
+            //what was the other way to declare the array and adding the values**
 
             // 2. Your code here
-            linkedList = new LinkedList<object>(sentence); //why did we do object if its a string**
+            linkedList = new LinkedList<object>(sentence); 
 
             // 3. add "quick" and "brown" before "fox"
-            linkedListNode = linkedList.Find("fox");
+            linkedListNode = linkedList.Find("fox"); 
             linkedList.AddBefore(linkedListNode,"quick");
             linkedList.AddBefore(linkedListNode, "brown");
-            //wouldnt it be brown quick fox since we added it before**
+            //it would be the quick brown fox because when we do AddBefore with the "brown" the "quick" and all the nodes before
+            //the target node gets pushed back one space so we are able to 
+            //add "brown" before the "fox" node
 
             // 4. Your code here
 
             // 5. using example #8, add "lazy" after the last "the"
-            linkedListNode = linkedList.FindLast("the"); //would be null if there was no "the" so we would want to have an error check**
+            linkedListNode = linkedList.FindLast("the"); //would be null if there was no "the" so we would want to have an error check and these two statements
+                                                         //would be in a try block and the catch would be if it was null do something else
             linkedList.AddAfter(linkedListNode, "lazy");
 
             // 6. Your code here
@@ -319,9 +306,11 @@ namespace LinkedList
             // Because I'm sad Clap along if you feel like sadness is the truth sad
             LinkedList<object> linkedList = null;
             LinkedListNode<object> linkedListNode;
-            string[] s = null;
+            string[] s = { "Because", "I'm", "sad", "Clap", "along", " if", "you", "feel", "like", "a", "room", "without", "a", "roof",
+                "Because", "I'm", "sad", "Clap", "along", " if", "you", "feel", "like","sadness", "is", "the", "truth"};
 
             // 2. Your code here
+            linkedList = new LinkedList<object>(s);
 
 
             // 3. replace "sad" with "happy"
@@ -331,6 +320,28 @@ namespace LinkedList
             //     if( (string)linkedListNode.Value == "sad"
 
             // 4. Your code here
+            linkedListNode = linkedList.Find("sad"); //is it ok if we did it like this or is there an alternative way to do it to account for all values of sad**(1)
+                                                     //would it be faster to target specific values then change them like it is here
+                                                     //or just go through the whole linked list and change
+                                                     //them as we go**(2)
+            if ((string)linkedListNode.Value == "sad") //why do we have to cast the node value is it because it's still considered the linked list datatype even though
+                                                       //we are just getting the value??
+            {
+                linkedListNode.Value = "happy";
+            }
+
+            linkedListNode = linkedList.FindLast("sad");
+            if ((string)linkedListNode.Value == "sad")
+            {
+                linkedListNode.Value = "happy";
+            }
+
+            linkedListNode = linkedList.Find("sadness");
+            if ((string)linkedListNode.Value == "sadness")
+            {
+                linkedListNode.Value = "happiness";
+            }
+
 
 
             // 5. then call the visualizer
@@ -344,10 +355,10 @@ namespace LinkedList
             LinkedList<object> linkedList = null;
             LinkedListNode<object> linkedListNode1;
             LinkedListNode<object> linkedListNode2;
-            string[] s = null;
+            string[] s = {"The", "Spain", "in", "rain", "falls", "plain", "on", "the", "mainly"};
 
             // 2. Your code here
-
+            linkedList = new LinkedList<object>(s);
 
             // 3. manipulate the list using Find(), Remove(), AddBefore() and/or AddAfter() to result in
             // "The rain in Spain falls mainly on the plain"
@@ -355,6 +366,29 @@ namespace LinkedList
             // you may not use string arguments in your Add method calls
 
             // 4. Your code here
+            linkedListNode1 = linkedList.Find("Spain");
+            linkedListNode2 = linkedList.Find("rain");
+
+            linkedList.Remove(linkedListNode2);
+            linkedList.AddBefore(linkedListNode1, linkedListNode2);
+
+            linkedListNode1 = linkedList.Find("Spain");
+            linkedListNode2 = linkedList.Find("in");
+
+            linkedList.Remove(linkedListNode2);
+            linkedList.AddBefore(linkedListNode1, linkedListNode2);
+
+            linkedListNode1 = linkedList.Find("plain");
+            linkedListNode2 = linkedList.Find("mainly");
+
+            linkedList.Remove(linkedListNode2);
+            linkedList.AddBefore(linkedListNode1, linkedListNode2);
+
+            linkedListNode1 = linkedList.Find("the");
+            linkedListNode2 = linkedList.Find("plain");
+
+            linkedList.Remove(linkedListNode2);
+            linkedList.AddAfter(linkedListNode1, linkedListNode2);
 
 
             // 5. then call the visualizer
@@ -373,7 +407,56 @@ namespace LinkedList
             // your Add methods must use 2 LinkedListNode arguments like examples #13 and #14 
             // you may not use string arguments in your Add method calls
 
+            //for this code here could we have just gotten the M to the last entry where it should be 
+            //then go through and do AddBefore based on that M entry so each value we add, the other nodes before the target node
+            //gets pushed back and closer to the start as we
+            //do AddBefore and eventually everything would be in order (Ex. doing AddBefore on M with D, then I, then the rest of the letters in order
+            //from first letter to last in DIRTYROOM then it would spell it out because each time we do AddBefore everything before the target node gets pushed back 1 space
+            //so theres room to add before the node for the newest value)**
+
+            //could we have also done AddLast for each value in the word starting from the D to the end of the word because then each 
+            //letter would be pushed back one space when we do AddLast because we are adding a value to the end of the linked list**
+
+            //AddFirst is similar but instead it would move everything forward one space instead of back for AddLast because we want to make a node the first
+            //entry in the linked list**
+
+            //for AddAfter that pushes everything after the specificed node
+            //forward 1 space right so there's room to add the new node in front of the specified linked list node**(6)
             // Your code here
+            linkedListNode1 = anagram.Find("I");
+            linkedListNode2 = anagram.Find("D");
+
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2, linkedListNode1);
+
+            linkedListNode2 = anagram.Find("R");
+
+            anagram.Remove(linkedListNode2);
+            anagram.AddAfter(linkedListNode1, linkedListNode2);
+
+            linkedListNode1 = anagram.Find("T");
+
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2 , linkedListNode1);
+
+            linkedListNode2 = anagram.Find("Y");
+            anagram.Remove(linkedListNode2);
+            anagram.AddAfter(linkedListNode1, linkedListNode2);
+
+            linkedListNode1 = anagram.FindLast("R");
+            
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2, linkedListNode1);
+
+            linkedListNode1 = anagram.Find("M");
+
+            anagram.Remove(linkedListNode1);
+            anagram.AddLast(linkedListNode1);
+            
+
+
+
+
 
             // then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(anagram);

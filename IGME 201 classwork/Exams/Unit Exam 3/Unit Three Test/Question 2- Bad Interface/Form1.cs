@@ -10,18 +10,6 @@ using System.Windows.Forms;
 using System.Threading;
 
 
-//I tried using the thread to make the textbox always say "flamingo" whenever we type something in and my program closes every time I start it without the 
-//debugger so I am confused on why that's the case?(1)
-//For my link in my form2 I am trying to put a link to the youtubers channel but it's not working when I want to show it possibly because
-//the web browser is too old so I was wondering if it was still possible to show the youtube channel or would I have to do something else when the
-//user clicks the search button?(2)
-//do we need application.exit delegate if we have the x button enabled on the top left for form2 and form3 (3)
-//is it ok if my documentation is within my comments in C# because on the exam it says to submit a document(4)
-//I know that the button, searchbox, radio button, and pictureboxes count as a control but the web browser would also still count as 1 control right? (5)
-
-//should we have mouse leave as well in form3 because it works when we only have mouse enter so I was just wondering if it's necessary or not(6)
-//should we still do a document completeed for navigating to a browser or is it ok to just navigate within the constructor(7)
-
 namespace Question_2__Bad_Interface
 {
     public delegate void ChangeTextBoxDelegate();
@@ -46,23 +34,36 @@ namespace Question_2__Bad_Interface
 
             ThreadStart threadStart = new ThreadStart(TextBoxListener);
             thread = new Thread(threadStart);
-            thread.Start();
+            //thread.Start();
 
             this.exitButton.Click += new EventHandler(ExitButton__Click);
 
+            this.FormClosing += new FormClosingEventHandler(Form__FormClosing);
+
             this.Show();
 
-        }
+        } 
 
+
+        // Method: Form__FormClosing
+        // Author: Kashaf Ahmed
+        // Purpose: Aborts the thread
+        // Restrictions: None
+        private void Form__FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+            thread.Abort();
+        }
         // Method: ExitButton__Click
         // Author: Kashaf Ahmed
-        // Purpose: Closes the application when the user presses the exit button and closes the thread (you have to find the right
+        // Purpose: Closes the application when the user presses the exit button (you have to find the right
         //button to exit the form though)
         // Restrictions: None
         private void ExitButton__Click(object sender, EventArgs e)
         {
-            //thread.Abort();
+            
             Application.Exit();
+            
         }
 
         // Method: SearchButton__Click
@@ -99,7 +100,12 @@ namespace Question_2__Bad_Interface
         // Restrictions: None
         public void ChangeTextBox()
         {
-            this.textBox.Text = "flamingo";
+            if(this.textBox.Text != "flamingo")
+            {
+                this.textBox.Text = "flamingo";
+
+            }
+          
         }
 
 

@@ -68,7 +68,7 @@ namespace Tower_of_Hanoi
             {
                 PrintPosts(nBlocks); //do our moves in the below condtionals then print it out when we get back to top**(how does it know to
                 //print the last move then if the puzzle is done because it would exit the loop then is it because after the while loop
-                //we have a print post statement so it accounts for the last values of the stack)**
+                //we have a print post statement so it accounts for the last values of the stack)******************
 
             //label where we go to from the conditionals down below**
             tryAgain:
@@ -151,7 +151,7 @@ namespace Tower_of_Hanoi
             Console.WriteLine();
         }
 
-        //go over** (do we have to know all of this or is the concept of the stack ok)**
+        //go over** (do we have to know all of this or is the concept of the stack ok)**(GO OVER TOMORROW) AND PRINT STATEMENTS IN CHUTES AND LADDERS AND HERE****************
         private static void GameSolver(int nBlocks, string from, string spare, string to)
         {
             if (nBlocks == 1)

@@ -51,7 +51,7 @@ namespace PlayerInfo
         //each user (key) has an associated photopath which is the value
         public SortedList<string, string> profilePhotos = new SortedList<string, string>();
 
-        //implement each list in UserDataBase and populate the userList defined in Players based on the username as the key
+        //implement each list in UserDataBase file we will create and populate the userList defined in Players based on the username as the key
         //and the User object as the value 
 
 
@@ -98,7 +98,7 @@ namespace PlayerInfo
         {
             if (username != null)
             {
-                sortedList.Remove(username);
+                userList.Remove(username);
             }
         }
 
@@ -112,7 +112,7 @@ namespace PlayerInfo
                 User returnVal;
                 try
                 {
-                    returnVal = (User)sortedList[username]; 
+                    returnVal = (User)userList[username]; 
                 }
                 catch
                 {
@@ -127,7 +127,7 @@ namespace PlayerInfo
                 try
                 {
                     //we can add to the list if we want by username
-                    sortedList[username] = value;
+                    userList[username] = value;
                 }
                 catch
                 {
