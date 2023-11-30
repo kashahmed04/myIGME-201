@@ -179,7 +179,7 @@ namespace LinkedList
                                                         //but it was with linkedlist.last and linkedlistnode.previous
 
                                                        //this basically goes to the linked list and goes to the preivous value since
-                                                       //we set the linked list node equal to the last value in the linked list in the above statement**(use for response back)
+                                                       //we set the linked list node equal to the last value in the linked list in the above statement
            }
 
        18. Walk through a Linked List in reverse order
@@ -273,7 +273,7 @@ namespace LinkedList
             LinkedList<object> linkedList = null;
             LinkedListNode<object> linkedListNode;
             string[] sentence = { "the", "fox", "jumped", "over", "the", "dog" };
-            //what was the other way to declare the array and adding the values**
+            //what was the other way to declare the array and adding the values(1)**
 
             // 2. Your code here
             linkedList = new LinkedList<object>(sentence); 
@@ -320,12 +320,11 @@ namespace LinkedList
             //     if( (string)linkedListNode.Value == "sad"
 
             // 4. Your code here
-            linkedListNode = linkedList.Find("sad"); //is it ok if we did it like this or is there an alternative way to do it to account for all values of sad**(1)
+            linkedListNode = linkedList.Find("sad"); //is it ok if we did it like this or is there an alternative way to do it to account for all values of sad**(2)
                                                      //would it be faster to target specific values then change them like it is here
                                                      //or just go through the whole linked list and change
-                                                     //them as we go**(2)
-            if ((string)linkedListNode.Value == "sad") //why do we have to cast the node value is it because it's still considered the linked list datatype even though
-                                                       //we are just getting the value??
+                                                     //them as we go**(3)
+            if ((string)linkedListNode.Value == "sad") 
             {
                 linkedListNode.Value = "happy";
             }
@@ -412,16 +411,18 @@ namespace LinkedList
             //gets pushed back and closer to the start as we
             //do AddBefore and eventually everything would be in order (Ex. doing AddBefore on M with D, then I, then the rest of the letters in order
             //from first letter to last in DIRTYROOM then it would spell it out because each time we do AddBefore everything before the target node gets pushed back 1 space
-            //so theres room to add before the node for the newest value)**
+            //so theres room to add before the node for the newest value)(4)**
 
             //could we have also done AddLast for each value in the word starting from the D to the end of the word because then each 
-            //letter would be pushed back one space when we do AddLast because we are adding a value to the end of the linked list**
-
-            //AddFirst is similar but instead it would move everything forward one space instead of back for AddLast because we want to make a node the first
-            //entry in the linked list**
+            //letter would be pushed back one space when we do AddLast because we are adding a value to the end of the linked list
 
             //for AddAfter that pushes everything after the specificed node
-            //forward 1 space right so there's room to add the new node in front of the specified linked list node**(6)
+            //forward 1 space right so there's room to add the new node in front of the specified linked list node and for AddBefore it would just
+            //push everything back 1 space before the specified node?**(5)
+
+            //could we have also done AddFirst here but instead it would move everything forward one space instead of back for AddLast so we would start with the last
+            //letter (M) and do AddFirst with all the letters in backwards order??**(6)
+
             // Your code here
             linkedListNode1 = anagram.Find("I");
             linkedListNode2 = anagram.Find("D");

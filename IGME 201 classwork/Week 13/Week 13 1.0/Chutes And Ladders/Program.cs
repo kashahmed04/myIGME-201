@@ -607,7 +607,7 @@ namespace Chutes_And_Ladders
  *array element to figure it out and we are not able to split out or discard the items and an array we look through one item at a time*******
  *binary trees uses log2(100) (log2(N)) (the 100 is the size of our data from our guessing game) and it splits the binary tree in half as we move on in our guesses*******
  *is log2(N) the most efficient in terms of searching right (the time complexities are used for how long it takes to search something up based
- *on the data type right)******
+ *on the data type right)****************************************(ASK TOMORROW)
  *
  *
  *

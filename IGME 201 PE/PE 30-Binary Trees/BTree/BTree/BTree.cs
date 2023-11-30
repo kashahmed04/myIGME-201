@@ -160,18 +160,27 @@ namespace BTree
             // Exercise #1
             // insert 30 random numbers between 1 and 51
 
-            BTree root = null;
-            BTree node;
+            BTree root = null; //we need a root node 
+            BTree node; //node we are adding 
             Random random = new Random();
 
-            this.richTextBox.Clear();
+            this.richTextBox.Clear(); //clear the rich textbox 
 
             // Your code here
 
+            for (int i = 0; i < 30; ++i)
+            {
+                node = new BTree(random.Next(51) + 1, root); //can't we say 52 why do we do plus 1**
+
+                if (i == 0)
+                {
+                    root = node; //add the child to our tree because root will be not null**
+                }
+            }
 
             this.richTextBox.Text += "\n";
 
-            BTree.TraverseAscending(root);
+            BTree.TraverseAscending(root); //print our our tree in ascending order from low to high**
 
             VisualizeBinaryTree visualizeBinaryTree = new VisualizeBinaryTree(root);
         }
@@ -183,6 +192,11 @@ namespace BTree
             // with 7 optimally distributed data points (setting isData = false) 
             // then insert 30 random numbers between 1 and 51
 
+            //insert 7 data points that are not data and it's just used to create skeleton of tree and we want to know our 7 data points
+            //we want to have value in the middle of 1 and 51 (25 or 26) that would be the root of our tree then between 1 and 25 the middle number would be 12
+            //and the middle between 25 and 51 would be 37 and between 1 and 12 would be 6 and between 12 and 25 would be 18 between 25 and 37 would be 31 and between
+            //37 and 51 would be 43 (gets us log2(N) performance)
+
             BTree root = null;
             BTree node;
             Random random = new Random();
@@ -191,6 +205,22 @@ namespace BTree
 
 
             // Your code here
+            //create our root node which is median between 1-51
+            node = new BTree(25, root, false); //we pass in a tree node as the root**
+            root = node; //create the node and set the root to our node**
+                         //pass in root to each of those new nodes**
+            node = new BTree(12, root, false);
+            node = new BTree(37, root, false);
+            node = new BTree(6, root, false);
+            node = new BTree(18, root, false);
+            node = new BTree(31, root, false);
+            node = new BTree(12, root, false); //we want to create our tree so it's going to perform for those random numbers**
+            //and thsee are the children of the root node and we set the is data to false because we don't want to use those nodes for data and
+            //we inster those 30 random numbers**
+
+            //our data is a phone book but M is not an entry in our phonebook and we will eventually add the data in them eventually and each entry has data in it
+            //but its not the data in the phone book 
+            //whe we populate tree without priming it first then instead populating then it becomes unbalnced 
 
 
             for (int i = 0; i < 30; ++i)
