@@ -170,11 +170,11 @@ namespace BTree
 
             for (int i = 0; i < 30; ++i)
             {
-                node = new BTree(random.Next(51) + 1, root); //can't we say 52 why do we do plus 1**
+                node = new BTree(random.Next(51) + 1, root); 
 
                 if (i == 0)
                 {
-                    root = node; //add the child to our tree because root will be not null**
+                    root = node; 
                 }
             }
 
@@ -214,18 +214,18 @@ namespace BTree
             node = new BTree(6, root, false);
             node = new BTree(18, root, false);
             node = new BTree(31, root, false);
-            node = new BTree(12, root, false); //we want to create our tree so it's going to perform for those random numbers**
+            node = new BTree(43, root, false); //we want to create our tree so it's going to perform for those random numbers**
             //and thsee are the children of the root node and we set the is data to false because we don't want to use those nodes for data and
             //we inster those 30 random numbers**
 
             //our data is a phone book but M is not an entry in our phonebook and we will eventually add the data in them eventually and each entry has data in it
             //but its not the data in the phone book 
-            //whe we populate tree without priming it first then instead populating then it becomes unbalnced 
+            //when its an unbalanced tree we populate tree without priming it first then instead populating the nodes with data then it becomes unbalnced** 
 
 
             for (int i = 0; i < 30; ++i)
             {
-                node = new BTree(random.Next(1, 52), root);
+                node = new BTree(random.Next(1, 52), root); //why dont we have a third parameter here**
             }
 
             this.richTextBox.Text += "\n";
@@ -247,6 +247,23 @@ namespace BTree
             this.richTextBox.Clear();
 
             // Your code here
+            node = new BTree("THE", root);
+            root = node; 
+            node = new BTree("AT", root);
+            node = new BTree("IN", root);
+            node = new BTree("OUT", root);
+            node = new BTree("YES", root);
+            node = new BTree("NO", root);
+            node = new BTree("MAYBE", root);
+            node = new BTree("POSSIBLY", root);
+            node = new BTree("MONKEY", root);
+            node = new BTree("CAT", root);
+            node = new BTree("DOG", root);
+            node = new BTree("FISH", root);
+            node = new BTree("TIGER", root);
+            node = new BTree("LION", root);
+            node = new BTree("TREE", root);
+
 
 
             this.richTextBox.Text += "\n";
@@ -268,6 +285,26 @@ namespace BTree
             BTree root = null;
 
             // Your code here
+            node = new BTree("THE", root);
+            node = new BTree("AT", root);
+            node = new BTree("IN", root);
+            node = new BTree("OUT", root);
+            node = new BTree("YES", root);
+            node = new BTree("NO", root);
+            node = new BTree("MAYBE", root);
+            node = new BTree("POSSIBLY", root);
+            node = new BTree("MONKEY", root);
+            node = new BTree("CAT", root);
+            node = new BTree("DOG", root);
+            node = new BTree("FISH", root);
+            node = new BTree("TIGER", root);
+            node = new BTree("LION", root);
+            node = new BTree("TREE", root);
+
+            node = new BTree("NO", root, false);
+            root = node;
+            node = new BTree("FISH", root, false);
+            node = new BTree("TIGER", root, false);
 
 
             this.richTextBox.Text += "\n";

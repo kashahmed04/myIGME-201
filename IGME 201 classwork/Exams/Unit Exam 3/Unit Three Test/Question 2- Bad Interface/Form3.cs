@@ -20,7 +20,8 @@ namespace Question_2__Bad_Interface
         // Purpose: When the radio button is checked we open this form and it displays cursed flamingo
         //images and I set the image location for each picture box and event handlers for when we hover over
         //each image so it changes the color of the background. User can press the x button at the top of
-        //the screen on the left to exit this form.
+        //the screen on the left to exit this form. (You can only press the radio button once though and when you
+        //exit that form you can't get back to it unless you restart the application)
         // Restrictions: None
         public Form3()
         {
@@ -44,14 +45,24 @@ namespace Question_2__Bad_Interface
             this.pictureBox3.MouseEnter += new EventHandler(PictureBox5__MouseEnter);
 
             this.pictureBox6.MouseEnter += new EventHandler(PictureBox6__MouseEnter);
+
+            this.FormClosing += new FormClosingEventHandler(Form__FormClosing);
         }
 
-
+        // Method: Form__FormClosing
+        // Author: Kashaf Ahmed
+        // Purpose: Closes the form when the user wants to exit the current form
+        // Restrictions: None
+        private void Form__FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+            this.Dispose(); 
+        }
 
         // Method: PictureBox1__MouseEnter
         // Author: Kashaf Ahmed
         // Purpose: Changes the background color to yellow when
-        //the first image is hovered over
+        // the first image is hovered over
         // Restrictions: None
         private void PictureBox1__MouseEnter(object sender, EventArgs e)
         {
@@ -62,7 +73,7 @@ namespace Question_2__Bad_Interface
         // Method: PictureBox2__MouseEnter
         // Author: Kashaf Ahmed
         // Purpose: Changes the background color to cyan when
-        //the second image is hovered over
+        // the second image is hovered over
         // Restrictions: None
         private void PictureBox2__MouseEnter(object sender, EventArgs e)
         {
@@ -73,7 +84,7 @@ namespace Question_2__Bad_Interface
         // Method: PictureBox3__MouseEnter
         // Author: Kashaf Ahmed
         // Purpose: Changes the background color to lime green when
-        //the third image is hovered over
+        // the third image is hovered over
         // Restrictions: None
         private void PictureBox3__MouseEnter(object sender, EventArgs e)
         {
@@ -83,7 +94,7 @@ namespace Question_2__Bad_Interface
         // Method: PictureBox4__MouseEnter
         // Author: Kashaf Ahmed
         // Purpose: Changes the background color to orange when
-        //the fourth image is hovered over
+        // the fourth image is hovered over
         // Restrictions: None
         private void PictureBox4__MouseEnter(object sender, EventArgs e)
         {
@@ -93,7 +104,7 @@ namespace Question_2__Bad_Interface
         // Method: PictureBox5__MouseEnter
         // Author: Kashaf Ahmed
         // Purpose: Changes the background color to red when
-        //the fifth image is hovered over
+        // the fifth image is hovered over
         // Restrictions: None
         private void PictureBox5__MouseEnter(object sender, EventArgs e)
         {
@@ -103,7 +114,7 @@ namespace Question_2__Bad_Interface
         // Method: PictureBox6__MouseEnter
         // Author: Kashaf Ahmed
         // Purpose: Changes the background color to hot pink when
-        //the sixth image is hovered over
+        // the sixth image is hovered over
         // Restrictions: None
         private void PictureBox6__MouseEnter(object sender, EventArgs e)
         {

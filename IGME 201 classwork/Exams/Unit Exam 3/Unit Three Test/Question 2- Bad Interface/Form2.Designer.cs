@@ -47,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.webBrowser1);
             this.Name = "Form2";
-            this.Text = "Flamingo Youtube Channel";
+            this.Text = "Flamingo Video";
             this.ResumeLayout(false);
 
         }

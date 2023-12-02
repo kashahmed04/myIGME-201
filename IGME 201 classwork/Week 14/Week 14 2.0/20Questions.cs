@@ -10,10 +10,6 @@ using System.Net;
 // be sure to add the System.Web assembly as a reference
 using System.Web;
 
-//1 So for binary trees I wanted to make sure so for the traversals you said that the pre-order is good for making an exact copy of a binary tree,
-//post-order is good for deleting nodes from a binary tree, and in order was good for reading trees in ascending or descending order and it's also good
-//for making an exact copy of a binary tree too right? I just want to make sure I am not missing anything**
-
 /*
  * Binary tree guessing game:
  * The guessing game is modeled on how a binary tree works and a binary tree always checks to see if the value is greater than or less
@@ -54,7 +50,7 @@ using System.Web;
  * and post order traveral 
  * 
  * Pre order traversal is the traversal we would use to duplicate a binary tree (make an exact copy) and with each number we read we put that into a new tree and get
- * an exact copy**
+ * an exact copy
  * 
  * post order traversal is good for deleting nodes from a tree from bottom to top and we might want to remove a whole level of a tree so we use post order**
  * 
@@ -65,9 +61,9 @@ using System.Web;
  * if we do this recursively it goes all to the left most nodes then goes to parent node then the right most data**
  * 
  * pre order duplictates the tree we preocess to currnt node then left and right child and it processes all the non-leaf nodes (have children) before the leaf nodes(
- * the children)**
+ * the children)
  * 
- * post order traversal to delete tree from bottom up we prrocess the left then right child then the current (exploers all leaf nodes before non-leaf nodes)**
+ * post order traversal to delete tree from bottom up we prrocess the left then right child then the current (exploers all leaf nodes before non-leaf nodes)
  * 
  * 
  * 

@@ -16,7 +16,7 @@ namespace Question_2__Bad_Interface
         // Class: Form2
         // Author: Kashaf Ahmed
         // Purpose: Form that runs when the search button is clicked on the main form and sets up the 
-        //web browser to go to flamingos youtube channel.** User can press the x button at the top of
+        //web browser to go to a flamingo video. User can press the x button at the top of
         //the screen on the left to exit this form.
         // Restrictions: None
         public Form2()
@@ -41,8 +41,22 @@ namespace Question_2__Bad_Interface
             this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.Navigate("https://m.youtube.com/watch?v=CEyXche9TMM");
 
+            this.FormClosing += new FormClosingEventHandler(Form__FormClosing);
+
         }
 
+        // Method: Form__FormClosing
+        // Author: Kashaf Ahmed
+        // Purpose: Closes the form and the web browser control when the user presses wants to exit the application
+        // Restrictions: None
+        private void Form__FormClosing(object sender, FormClosingEventArgs e)
+        {
+            webBrowser1.Stop();
+
+            webBrowser1.Dispose();
+
+            this.Dispose();
+        }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {

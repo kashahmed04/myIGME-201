@@ -24,13 +24,13 @@ namespace BTree
         // the "greater than or equal to" branch off of this node
         public BTree gteChild;
 
-        //the data in our tree for each node or our whole tree**
+        //the data in our tree for each node or our whole tree*********
         // the data contained in this node
         public object data;
         //////////////////////////////////////////////////////////
 
 
-        // a boolean to indicate if this is actual data or seed data to prime the tree**
+        // a boolean to indicate if this is actual data or seed data to prime the tree******
         public bool isData;
 
         // internal counter which is needed by the visualizer
@@ -51,7 +51,7 @@ namespace BTree
         //we can pass in the data stored into this node and the root is it exists yet and if the node
         //contains data or not and if we populate tree in a random way (random button does it with values from 1 and 100 and each time its going to add
         //a new value to a tree and it adds then as it gets the values and it follows the rule of the tree and less numbers than the current node go to left but
-        //if its greater than or equal to the node then we go to the right**)
+        //if its greater than or equal to the node then we go to the right******)
 
         //first number added was 57 which is the root node of our tree and the next number that was added was 64 then it goes to the root and it says its greater
         //than 57 so it goes to the right branch because its greater than 57 next it was 57 so its less than 57 so it goes to the less than branch of the
@@ -59,7 +59,7 @@ namespace BTree
         //we can only create balances tree by inserting numbers in optimal order and it means that the root of the tree should be the median value of our data which
         //is the middle most value in our data so our root node shoud be 50 because it's the middle most value and each node should be the median value 
         //as we move down (we can either sort our data before we insert into tree or instead what is recommended is to add a flag to see if it's data or not
-        //and its a way of priming the tree so it performs in an optimal way)**
+        //and its a way of priming the tree so it performs in an optimal way)*******
 
         //if we want to use a primed tree we want to have our tree structured in a way so that when we do alphabetical search it performs as best as it can 
         //populate middle letter first then F is between A and M and we get the median value each time we move down**
@@ -69,12 +69,12 @@ namespace BTree
         //and in this case the root is 11 which is useless because it's unbalanced and the isData boolean lets us build the tree withour any data and these nodes
         //or not data and they are all set as not data and the tree has no data in it yet  but it has a skeletal structure and it allows us to create our tree
         //in a balanced order then when we put data in the tree will still be balanced so we can exclude half of our tree from our searches when we want to search
-        //for specific data (if we dont make it balanced we dont get log(N) performance)**
+        //for specific data (if we dont make it balanced we dont get log(N) performance)******
 
         //so basically without data stored in the nodes it makes the tree balanced (skeleton) otherwise if theres data it would be unbalanced**
 
-        //the random tree we built because we inserted the random data it was not balanced**
-        public BTree(object nData, BTree root, bool isData = true) //if the node contains data or a seed node (skeleton node)** (is this a check or a initialization)**
+        //the random tree we built because we inserted the random data it was not balanced******
+        public BTree(object nData, BTree root, bool isData = true) //if the node contains data or a seed node (skeleton node)****** (is this a check or a initialization)******
         {
             //we pass in the data we add to our tree and our root and it cretes a new BTree node and if the root is not null then we 
             //add the node to our root of our tree**

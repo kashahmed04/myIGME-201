@@ -18,7 +18,7 @@ namespace Question_2__Bad_Interface
     // Author: Kashaf Ahmed
     // Purpose: Main form for Flamingo interface that sets up delegates (events) for if the radio button was
     //checked, if the search button was clicked, and if the exit button was clicked. Also, I set up the thread
-    //here for if anything is typed, make it say flamingo instead within the textbox**
+    //here for if anything is typed, make it say flamingo instead within the textbox
     //Why I chose this theme: I like watching flamingo and I thought why not there was not really much of a reason
     //as to why I chose this theme other than that.
     // Restrictions: None
@@ -34,13 +34,14 @@ namespace Question_2__Bad_Interface
 
             ThreadStart threadStart = new ThreadStart(TextBoxListener);
             thread = new Thread(threadStart);
-            //thread.Start();
 
             this.exitButton.Click += new EventHandler(ExitButton__Click);
 
             this.FormClosing += new FormClosingEventHandler(Form__FormClosing);
 
             this.Show();
+
+            thread.Start();
 
         } 
 
@@ -68,7 +69,7 @@ namespace Question_2__Bad_Interface
 
         // Method: SearchButton__Click
         // Author: Kashaf Ahmed
-        // Purpose: If the search button was clicked we want to show a new form
+        // Purpose: If the search button was clicked we want to show a new form which is a flamingo video
         // Restrictions: None
         private void SearchButton__Click(object sender, EventArgs e)
         {
@@ -78,7 +79,7 @@ namespace Question_2__Bad_Interface
 
         // Method: RadioButton__CheckedChanged
         // Author: Kashaf Ahmed
-        // Purpose: If the radio button was checked we want to show a new form
+        // Purpose: If the radio button was checked we want to show a new form with images 
         // Restrictions: None
         private void RadioButton__CheckedChanged(object sender, EventArgs e)
         {
@@ -96,7 +97,7 @@ namespace Question_2__Bad_Interface
         // Method: ChangeTextBox
         // Author: Kashaf Ahmed
         // Purpose: Delegate method for the thread so that whenever the user types something the text will say flamingo 
-        //all the time**
+        //all the time
         // Restrictions: None
         public void ChangeTextBox()
         {
@@ -111,7 +112,7 @@ namespace Question_2__Bad_Interface
 
          //Method: TextBoxListener
          //Author: Kashaf Ahmed
-         //Purpose: Sets up the delegate method for the thread**
+         //Purpose: Sets up the delegate method for the thread 
          //Restrictions: None
         public void TextBoxListener()
         {
