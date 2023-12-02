@@ -18,7 +18,13 @@ namespace Question_2__Bad_Interface
     // Author: Kashaf Ahmed
     // Purpose: Main form for Flamingo interface that sets up delegates (events) for if the radio button was
     //checked, if the search button was clicked, and if the exit button was clicked. Also, I set up the thread
-    //here for if anything is typed, make it say flamingo instead within the textbox
+    //here for if anything is typed, make it say flamingo instead within the textbox. When the user tries to type something
+    //in the textbox it always will say flamingo, when the user presses search it will take them to another form which is a 
+    //web browser control that shows a flamingo video, when the user presses the radio button it will take them to a form full
+    //of images where they can hover over the images to change the background color of the form (user can only press the radio button once
+    //and once they exit that form they can't press the radio button to access it again and they have to restart the application),
+    //and for each form we can exit with the bar on the top of the screen with the x button but on the main form the user has
+    //to guess which button is the real exit button.
     //Why I chose this theme: I like watching flamingo and I thought why not there was not really much of a reason
     //as to why I chose this theme other than that.
     // Restrictions: None
