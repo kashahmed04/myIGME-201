@@ -9,20 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//take away the x button on top left of screen at the end**
-
-//why is my webbrowser have empty space when we change the postition of the bars**
-//the site is different on the top is that ok ow which link should I use**
-
-//if we change the radio button after we get everything correct is it ok 
-//if it navigates to their wikepedia site or should the gif always be there after
-//they guess everything right regardless of it they change the radio button same for
-//the party radio buttons**
-
-//check to see if everything is met when we enter everything correctly**
-//and we don't do validation but we can still enter just numbers when it's correct right and that when we type in 34
-//the results for when everything is correct don't show but if we type in 3 for last value then it shows up**
-
 
 namespace Presidents
 {
@@ -34,7 +20,7 @@ namespace Presidents
     // to validate the textboxes and set up their tooltips to say "which number president?" I also set up the tags for each president so we can ensure
     // the user enters the correct values as well as set the default president to be selected and the delegates for the images if they are hovered over or not.
     // I also set the checkchanged for if a radio button was selected for each president and party and set up the delegate for when the web browser
-    // is done loading. Finally, I set up the delegates for the timer and exit button and disabled the exit button.
+    // is done loading. Finally, I set up the delegates for the timer and exit button and disabled the exit button as well as set the interval and value for the timer.
     // Restrictions: None
     public partial class PresidentsForm : Form
     {
@@ -132,7 +118,7 @@ namespace Presidents
             this.exitButton.Enabled = false;
 
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new EventHandler(Timer1__Tick); //check interval**
+            this.timer1.Tick += new EventHandler(Timer1__Tick); 
 
             this.progressBar.Maximum = 240;
             this.progressBar.Value = this.progressBar.Maximum;
@@ -225,7 +211,7 @@ namespace Presidents
         // Restrictions: None
         private void PresidentButton__CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton rb = (RadioButton)sender; //does it matter if I did a bunch of if statements or is it bad**
+            RadioButton rb = (RadioButton)sender; 
 
             if (rb.Checked)
             {
@@ -343,7 +329,7 @@ namespace Presidents
                 }
 
             }
-            //links are a bit different but stilll wikepedia is that ok**
+           
 
         }
 

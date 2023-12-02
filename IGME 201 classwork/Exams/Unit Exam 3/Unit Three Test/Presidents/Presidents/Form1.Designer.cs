@@ -514,6 +514,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 658);
+            this.ControlBox = false;
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.browserGroupBox);
