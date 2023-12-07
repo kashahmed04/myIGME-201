@@ -12,7 +12,7 @@ namespace Profile_Display
 {
     public partial class DisplayProfile : Form
     {
-        public DisplayProfile()
+        public DisplayProfile(Form form) //take in the player object
         {
             //get the listview fixed because there is an extra column****
             InitializeComponent();
@@ -23,14 +23,14 @@ namespace Profile_Display
            // this.statsListView.MouseEnter += new EventHandler(StatsListView__MouseEnter);//when the hover on the stats maybe make it bigger
            // this.statsListView.MouseLeave += new EventHandler(StatsListView__MouseLeave);//when the user stops hovering make the listview go back to it's orignial size 
 
-            //display all info. from the lists here
+            //display all info. from the lists here (display profile picture here too)**
 
         }
 
         private void DmButton__Click(object sender, EventArgs e)
         {
             //open the chat for the specific form
-            //maybe close this form completely or just disbale it until the user closes out of the message class 
+            //close form
         }
 
         //private void StatsListView__MouseEnter(object sender, EventArgs e)
@@ -44,6 +44,11 @@ namespace Profile_Display
         //    this.statsListView.Width /= 2;
         //    this.statsListView.Height /= 2;
         //}
+
+        public void PaintListView(string username) //take in the player and implement their data in the listview 
+        {
+
+        }
 
 
 

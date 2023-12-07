@@ -38,7 +38,7 @@ namespace PlayerInfo
     {
 
         public string username;
-        public int bioLabel;
+        public string bioLabel;
         public bool onlineStatus;
 
         //sorted list that takes in the username as the key and the games as a value (could use a tuple for the value to store multiple values in)

@@ -108,13 +108,14 @@ namespace BTree
         private void PrimedButton__Click(object sender, EventArgs e)
         {
             // Prime a tree to hold alphabetical information
+            //why would this be considered primed if isData is set to true by default for all values**
 
             this.richTextBox.Clear();
 
             BTree node = null;
             BTree root = null;
             
-            node = new BTree("M", null);
+            node = new BTree("M", null); 
             root = node;
 
             node = new BTree("F", root);
@@ -210,22 +211,25 @@ namespace BTree
             root = node; //create the node and set the root to our node**
                          //pass in root to each of those new nodes**
             node = new BTree(12, root, false);
-            node = new BTree(37, root, false);
+            node = new BTree(37, root, false); 
             node = new BTree(6, root, false);
-            node = new BTree(18, root, false);
-            node = new BTree(31, root, false);
+            node = new BTree(18, root, false); //is this median value of 25 and 12 now for the right child** (how does it work)
+            node = new BTree(31, root, false); //is this the median value between 25 and 37 for the left child** (how does it work)
             node = new BTree(43, root, false); //we want to create our tree so it's going to perform for those random numbers**
-            //and thsee are the children of the root node and we set the is data to false because we don't want to use those nodes for data and
-            //we inster those 30 random numbers**
+                                               //and thsee are the children of the root node and we set the is data to false because we don't want to use those nodes for data and
+                                               //we inster those 30 random numbers**
 
             //our data is a phone book but M is not an entry in our phonebook and we will eventually add the data in them eventually and each entry has data in it
             //but its not the data in the phone book 
-            //when its an unbalanced tree we populate tree without priming it first then instead populating the nodes with data then it becomes unbalnced** 
+            //when its an unbalanced tree we populate tree without priming it first but for primed trees there is no data and we sort first then
+            //add the data** 
 
+           
 
             for (int i = 0; i < 30; ++i)
             {
-                node = new BTree(random.Next(1, 52), root); //why dont we have a third parameter here**
+                node = new BTree(random.Next(1, 52), root); //how does this know to add the values in accordance to the median node and 
+                //how does it work when isData is true and not false**
             }
 
             this.richTextBox.Text += "\n";
@@ -247,28 +251,29 @@ namespace BTree
             this.richTextBox.Clear();
 
             // Your code here
-            node = new BTree("THE", root);
+            node = new BTree("THE", root); 
             root = node; 
             node = new BTree("AT", root);
             node = new BTree("IN", root);
             node = new BTree("OUT", root);
             node = new BTree("YES", root);
             node = new BTree("NO", root);
-            node = new BTree("MAYBE", root);
-            node = new BTree("POSSIBLY", root);
+            node = new BTree("ZEBRA", root);
+            node = new BTree("EGGS", root);
             node = new BTree("MONKEY", root);
             node = new BTree("CAT", root);
             node = new BTree("DOG", root);
             node = new BTree("FISH", root);
             node = new BTree("TIGER", root);
             node = new BTree("LION", root);
-            node = new BTree("TREE", root);
+            node = new BTree("PIZZA", root);
 
 
 
             this.richTextBox.Text += "\n";
 
-            BTree.TraverseAscending(root);
+            BTree.TraverseAscending(root); //calling the in order traversal and prints out tree
+            //and first line is the order which we are writing the data to the tree and the line above is the next line 
 
             VisualizeBinaryTree visualizeBinaryTree = new VisualizeBinaryTree(root);
         }
@@ -285,26 +290,91 @@ namespace BTree
             BTree root = null;
 
             // Your code here
+            
+            //node = new BTree("MONKEY", root, false); 
+            //root = node;
+            //node = new BTree("FISH", root, false);
+            //node = new BTree("CAT", root, false);
+            //node = new BTree("AT", root, false);
+            //node = new BTree("EGGS", root, false);
+            //node = new BTree("DOG", root, false);
+            //node = new BTree("IN", root, false);
+            //node = new BTree("LION", root, false);
+            //node = new BTree("PIZZA", root, false);
+            //node = new BTree("OUT", root, false);
+            //node = new BTree("NO", root, false);
+            //node = new BTree("THE", root, false);
+            //node = new BTree("TIGER", root, false);
+            //node = new BTree("YES", root, false);
+            //node = new BTree("ZEBRA", root, false);
+            ////add letters in the right order otherwise we get unbalanced tree 
+            ////root node needs to be median then get median of each half of the data 
+            //node = new BTree("JUGGLING", root, false);
+            //node = new BTree("ICE", root);
+            //node = new BTree("GAMES", root);
+            //node = new BTree("SKATEBOARD", root);
+            //node = new BTree("RAMP", root);
+            //node = new BTree("CAR", root);
+            //node = new BTree("HAMMOCK", root);
+            //node = new BTree("CHICKEN WINGS", root);
+            //node = new BTree("LOOK", root);
+            //node = new BTree("FIFA", root);
+            //node = new BTree("ZELDA", root);
+            //node = new BTree("MARIO", root);
+            //node = new BTree("LUIGI", root);
+            //node = new BTree("ANIMAL CROSSING", root);
+            //node = new BTree("SUMMER", root);
+
+            node = new BTree("M", null);
+            root = node;
+
+            node = new BTree("F", root, false);
+            node = new BTree("C", root, false);
+            node = new BTree("B", root, false);
+            node = new BTree("A", root, false);
+            node = new BTree("E", root, false);
+            node = new BTree("D", root, false);
+
+            node = new BTree("J", root, false);
+            node = new BTree("I", root, false);
+            node = new BTree("H", root, false);
+            node = new BTree("G", root, false);
+            node = new BTree("L", root, false);
+            node = new BTree("K", root, false);
+
+            node = new BTree("P", root, false);
+            node = new BTree("O", root, false);
+            node = new BTree("N", root, false);
+            node = new BTree("T", root, false);
+            node = new BTree("S", root, false);
+            node = new BTree("R", root, false);
+            node = new BTree("Q", root, false);
+
+            node = new BTree("W", root, false);
+            node = new BTree("V", root, false);
+            node = new BTree("U", root, false);
+            node = new BTree("X", root, false);
+            node = new BTree("Y", root, false);
+            node = new BTree("Z", root, false);
+            //false because they are seed nodes and not actual data then add actual data after which (then add previous strings from above)
+
             node = new BTree("THE", root);
             node = new BTree("AT", root);
             node = new BTree("IN", root);
             node = new BTree("OUT", root);
             node = new BTree("YES", root);
             node = new BTree("NO", root);
-            node = new BTree("MAYBE", root);
-            node = new BTree("POSSIBLY", root);
+            node = new BTree("ZEBRA", root);
+            node = new BTree("EGGS", root);
             node = new BTree("MONKEY", root);
             node = new BTree("CAT", root);
             node = new BTree("DOG", root);
             node = new BTree("FISH", root);
             node = new BTree("TIGER", root);
             node = new BTree("LION", root);
-            node = new BTree("TREE", root);
+            node = new BTree("PIZZA", root);
 
-            node = new BTree("NO", root, false);
-            root = node;
-            node = new BTree("FISH", root, false);
-            node = new BTree("TIGER", root, false);
+
 
 
             this.richTextBox.Text += "\n";
@@ -334,7 +404,46 @@ namespace BTree
             BTree root = null;
 
             // Your code here
+            node = new BTree("M", null);
+            root = node;
 
+            node = new BTree("F", root); 
+            node = new BTree("C", root);
+            nodeToDelete = new BTree("C", null);
+            BTree.DeleteNode(nodeToDelete, root);
+            BTree.TraverseAscending(root);
+            node = new BTree("B", root);
+            node = new BTree("A", root);
+            nodeToDelete = new BTree("A", null);
+            BTree.DeleteNode(nodeToDelete, root);
+            BTree.TraverseAscending(root);
+            node = new BTree("E", root);
+            node = new BTree("D", root);
+
+            node = new BTree("J", root);
+            node = new BTree("I", root);
+            nodeToDelete = new BTree("I", null);
+            BTree.DeleteNode(nodeToDelete, root);
+            BTree.TraverseAscending(root);
+            node = new BTree("H", root);
+            node = new BTree("G", root);
+            node = new BTree("L", root);
+            node = new BTree("K", root);
+
+            node = new BTree("P", root);
+            node = new BTree("O", root);
+            node = new BTree("N", root);
+            node = new BTree("T", root);
+            node = new BTree("S", root);
+            node = new BTree("R", root);
+            node = new BTree("Q", root);
+
+            node = new BTree("W", root);
+            node = new BTree("V", root);
+            node = new BTree("U", root);
+            node = new BTree("X", root);
+            node = new BTree("Y", root);
+            node = new BTree("Z", root);
 
             this.richTextBox.Text += "\n";
             BTree.TraverseAscending(root);
@@ -349,9 +458,11 @@ namespace BTree
             // enhance the overloads to support the Person object and compare using Person.age using:                
             //     if (a.data.GetType() == typeof(Person))
 
+           
+
 
             // create at least 15 new Person objects which correspond to members of your family
-            // insert them into the tree starting with yourself
+            // insert them into the tree starting with yourself (thsee start off as random then the next part is making them primed right)**
             this.richTextBox.Clear();
 
             BTree node = null;
@@ -361,6 +472,39 @@ namespace BTree
             Person person = null;
 
             // Your code here
+            person = new Person("Kash",19);
+            node = new BTree(person, root);
+            root = node;
+            person = new Person("Violet", 19); 
+            node = new BTree(person, root);
+            person = new Person("Eliana", 19);
+            node = new BTree(person, root);
+            person = new Person("Maria", 25);
+            node = new BTree(person, root);
+            person = new Person("Amelia", 25);
+            node = new BTree(person, root);
+            person = new Person("Kayla", 30);
+            node = new BTree(person, root);
+            person = new Person("Linochska", 30);
+            node = new BTree(person, root);
+            person = new Person("Connor", 60);
+            node = new BTree(person, root);
+            person = new Person("Neme", 60);
+            node = new BTree(person, root);
+            person = new Person("Minna", 80);
+            node = new BTree(person, root);
+            person = new Person("Hope", 85);
+            node = new BTree(person, root);
+            person = new Person("Delfino", 48);
+            node = new BTree(person, root);
+            person = new Person("Jenson", 24);
+            node = new BTree(person, root);
+            person = new Person("Nicole", 19);
+            node = new BTree(person, root);
+            person = new Person("Rio", 30);
+            node = new BTree(person, root);
+
+
 
 
             this.richTextBox.Text += "\n";
@@ -384,6 +528,41 @@ namespace BTree
             Person person = null;
 
             // Your code here
+
+            person = new Person("Delfino", 48);
+            node = new BTree(person, root, false);
+            root = node;
+            person = new Person("Amelia", 25);
+            node = new BTree(person, root, false);
+            person = new Person("Rio", 30);
+            node = new BTree(person, root, false);
+            person = new Person("Kash", 19);
+            node = new BTree(person, root, false);
+            person = new Person("Neme", 60);
+            node = new BTree(person, root, false);
+            person = new Person("Minna", 80);
+            node = new BTree(person, root, false);
+
+            person = new Person("Nicole", 19);
+            node = new BTree(person, root);
+            person = new Person("Violet", 19);
+            node = new BTree(person, root);
+            person = new Person("Eliana", 19);
+            node = new BTree(person, root);
+            person = new Person("Maria", 25);
+            node = new BTree(person, root);
+            person = new Person("Amelia", 25);
+            node = new BTree(person, root);
+            person = new Person("Kayla", 30);
+            node = new BTree(person, root);
+            person = new Person("Linochska", 30);
+            node = new BTree(person, root);
+            person = new Person("Connor", 60);
+            node = new BTree(person, root);
+            person = new Person("Hope", 85);
+            node = new BTree(person, root);
+            person = new Person("Jenson", 24);
+            node = new BTree(person, root);
 
 
             this.richTextBox.Text += "\n";

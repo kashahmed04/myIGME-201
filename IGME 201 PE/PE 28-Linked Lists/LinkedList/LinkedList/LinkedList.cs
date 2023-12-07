@@ -114,7 +114,7 @@ namespace LinkedList
            LinkedListNode<string> target = sentence.Find("car");
 
        10. Add 'sporty' and 'red' before 'car':
-           sentence.AddBefore(target, "sporty");
+           sentence.AddBefore(target, "sporty"); //this would say sporty red car**
            sentence.AddBefore(target, "red");
 
        11. Keep a reference to the 'car' node
@@ -252,7 +252,7 @@ namespace LinkedList
             while(linkedListNode != null)
             {
                 reverseLinkedList.AddLast(linkedListNode.Value);
-                linkedListNode = linkedListNode.Previous; 
+                linkedListNode = linkedListNode.Previous;  
             }
             //we have linked list and reverse linked list (2 linked lists)
             //we can only add the datatype (the current node .Value) to copy a node to go into another linked list
