@@ -90,23 +90,6 @@ using System.Web;
  * each edge could have a direction that defined them (in our example there are no arrows and we can travel however we want (undirected graph))
  * but with directed graph we have arrows that tell us where to go
  * 
- * 1. Are graphs still considered trees because they don't have a root and they don't have rules that apply to them like trees do, but they do establish 
- * relationships between verticies and have levels/depth so I was just a bit confused if they were considered trees or not.
- * 2. The 2 ways to make copy of a tree are pre order traversal method in a depth first search
- * and the other way is breadth first top down traversal right?
- * 3. In terms of terminology, if 2 verticies are connected by and edge then the 2 veritices are adjacent while the path is seuqence of verticies to get 
- * from one vertex to another right?
- * 4.For the linked list representation of an adjacency list, the source was the head of the list and everything else on the right of the head was the verticies that are connected 
- * with this head in the linked list right?
- * 5. For the adjacency matrix, if a vertex has no edge coming out of it but has edges coming into it would the whole row for that source vertex still be false? The
- * adjacency matrix only accounts for edges coming out of the current vertex to add into our row right?
- * 6. For the adjacency list, that accounts for edges coming in and out of vertex right? So if there was an edge coming out of the vertex and an edge coming into
- * the vertex then our adjacency list would have 2 vertecies in it right? Or does it only account for edges coming out of the vertex to add to the array
- * like the adjacency matrix?
- * 7. For adjancency lists if there is no edge associated with the vertex at all would we just leave an empty array there for that vertex or not even make
- * the array at all
- * 8. 
- * 
  * Diksjras shortest path:
  * wieghted graph means wieghts on edges and non-wieghted graph means no wieghts on edges
  * if 2 verticies connected by and edge then its adjacent and the path is seuqence of verticies to get from one vertext to another
