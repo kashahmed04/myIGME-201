@@ -14,11 +14,11 @@ namespace Singleton
         void SavePlayerSettings();
     }
 
-    public class PlayerInfo : IPlayerInfo 
+    public class PlayerInfo : IPlayerInfo
     {
         private static PlayerInfo instance = new PlayerInfo();
 
-        public static Info info = new Info("dschuh",4, 99, ["spear","water","bottle","hammer","sonic screwdriver","cannonball","wood","Scooby snack","Hydra","poisonous potato","dead bush","repair powder"],"DFGU99-1454");
+        public static Info info = new Info("dschuh", 4, 99, ["spear", "water", "bottle", "hammer", "sonic screwdriver", "cannonball", "wood", "Scooby snack", "Hydra", "poisonous potato", "dead bush", "repair powder"],"DFGU99-1454");
 
         public static PlayerInfo GetInstance()
         {
@@ -32,7 +32,7 @@ namespace Singleton
 
         public void LoadPlayerSettings()
         {
-            //string p = JsonConvert.SerializeObject();
+            string p = JsonConvert.SerializeObject(info);
 
         }
 

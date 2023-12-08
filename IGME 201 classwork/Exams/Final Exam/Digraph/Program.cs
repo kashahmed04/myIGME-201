@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Digraph
 {
+    //Enumerated type to hold the colors
     enum EColor
     {
        Red,
@@ -20,10 +22,17 @@ namespace Digraph
        Purple,
        Green
     }
+
+    // Class: Program
+    // Author: Kashaf Ahmed
+    // Purpose: Creates the adjacency matrix, and lists for the nodes and their edges connections then implement Dijkstra's shortest
+    // path algorithm and do a depth first search. I had two adjacency lists, one for the specific connections for each node and the weights associated
+    // with the nodes. I also create the game list which will hold the nodes.
+    // Restrictions: None
     internal class Program
     {
         
-
+        //extra adjacency matrix 
         //static bool[,] colorsGraph = new bool[,]
         //{
         //            // Red     Darkblue   Gray    Lightblue    Orange    Yellow    Purple    Green
@@ -61,7 +70,7 @@ namespace Digraph
 
         };
 
-        static int[][] connectColor = new int[][] {
+        static int[][] connectColor = new int[][] { //these are gray is it ok**
             new int[] { (int)EColor.Darkblue,(int)EColor.Gray },
             new int[] { (int)EColor.Yellow, (int)EColor.Lightblue },
             new int[] { (int)EColor.Lightblue,(int)EColor.Orange },
@@ -70,10 +79,6 @@ namespace Digraph
             new int[] { (int)EColor.Darkblue,(int)EColor.Gray },
             new int[] { (int)EColor.Purple },
             new int[] { (int)EColor.Yellow },
-            
-            //would we have weight here for the colors instead of the colors themselves
-            //an array for connections and an array for the weights and just replace connections with weights with each spot in the array
-            //(2 arrays)
 
 
         };
@@ -93,34 +98,17 @@ namespace Digraph
 
         };
 
-        //public static void DepthFirstPreOrderTraversal(Node node)
-        //{ 
-        //    if (node != null)
-        //    {
-        //        DepthFirstPreOrderTraversal(node.leftVertex);
-        //        DepthFirstPreOrderTraversal(node.rightVertex);
-        //    }
-        //}
-
-
-        //public class Node
-        //{
-        //    public EColor color;
-        //    public Node leftVertex;
-        //    public Node rightVertex;
-        //    public bool vistedLeftVertex;
-        //    public bool visitedRightVertex;
-        //
-        //    public Node(EColor color)
-        //    {
-        //        this.color = color;
-        //    }
-        //}
-
         static List<Node> game = new List<Node>();
 
+        // Method: Main
+        // Author: Kashaf Ahmed
+        // Purpose: First, add the nodes to the game list, then for each node add the edges associated with that node and their weights, then sort
+        // the edges for each node. After, we create a shortest path list which calls the GetShortestPathDijkstra() method, then go through each node 
+        //in the shortest path list we got back from the method to input the shortest path.
+        // Restrictions: None
         static void Main(string[] args)
         {
+            //Checks if connections are correct
             //check for jagged array to go through enumerated type
             //for(int i = 0; i < numColor.Length; i++)
             //{
@@ -143,70 +131,58 @@ namespace Digraph
             //    }
             //}
 
-            //Red  Darkblue Gray Yellow Green Lightblue Orange Purple
             game.Add(new Node((int)EColor.Red));
             game.Add(new Node((int)EColor.Darkblue));
             game.Add(new Node((int)EColor.Gray));
-            game.Add(new Node((int)EColor.Yellow));
-            game.Add(new Node((int)EColor.Green));
             game.Add(new Node((int)EColor.Lightblue));
             game.Add(new Node((int)EColor.Orange));
+            game.Add(new Node((int)EColor.Yellow));
             game.Add(new Node((int)EColor.Purple));
+            game.Add(new Node((int)EColor.Green));
 
             //Red
             game[(int)EColor.Red].AddEdge(1, game[(int)EColor.Darkblue]);
             game[(int)EColor.Red].AddEdge(5, game[(int)EColor.Gray]);
             game[(int)EColor.Red].edges.Sort();
-            //game[(int)EColor.Red].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
 
 
             //Darkblue
             game[(int)EColor.Darkblue].AddEdge(8, game[(int)EColor.Yellow]);
             game[(int)EColor.Darkblue].AddEdge(1, game[(int)EColor.Lightblue]);
             game[(int)EColor.Darkblue].edges.Sort();
-            //game[(int)EColor.Darkblue].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
 
 
             //Gray
             game[(int)EColor.Gray].AddEdge(0, game[(int)EColor.Lightblue]);
             game[(int)EColor.Gray].AddEdge(1, game[(int)EColor.Orange]);
             game[(int)EColor.Gray].edges.Sort();
-            //game[(int)EColor.Gray].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
 
 
             //Yellow
             game[(int)EColor.Yellow].AddEdge(6, game[(int)EColor.Green]);
             game[(int)EColor.Yellow].edges.Sort();
-            //game[(int)EColor.Yellow].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
 
             //Green
-            //game[(int)EColor.Green].edges.Sort();
-            game[(int)EColor.Green].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
+            game[(int)EColor.Green].edges.Sort();
 
 
             //Lightblue 
             game[(int)EColor.Lightblue].AddEdge(1, game[(int)EColor.Darkblue]);
             game[(int)EColor.Lightblue].AddEdge(0, game[(int)EColor.Gray]);
             game[(int)EColor.Lightblue].edges.Sort();
-            //game[(int)EColor.Lightblue].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
 
 
             //Orange
             game[(int)EColor.Orange].AddEdge(1, game[(int)EColor.Purple]);
             game[(int)EColor.Orange].edges.Sort();
-            //game[(int)EColor.Orange].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
 
 
             //Purple
             game[(int)EColor.Purple].AddEdge(1, game[(int)EColor.Yellow]);
             game[(int)EColor.Purple].edges.Sort();
-            //game[(int)EColor.Purple].edges.Sort((e1, e2) => e1.cost.CompareTo(e2.cost));
 
 
             List<Node> shortestPath = GetShortestPathDijkstra();
-
-            // Sort the shortestPath list based on the nState variable
-            //shortestPath = shortestPath.OrderBy(node => node.nState).ToList();
 
 
             //red, darkblue, lightblue, gray, orange, purple, yellow, green
@@ -220,6 +196,11 @@ namespace Digraph
 
         }
 
+        // Method: GetShortestPathDijkstra
+        // Author: Kashaf Ahmed
+        // Purpose: This is called when we create the shortest path list and it goes through and calls the build shortest path method
+        // then after the shortest path is built, we reverse the list then return it
+        // Restrictions: None
         static public List<Node> GetShortestPathDijkstra()
         { 
             DijkstraSearch();
@@ -227,9 +208,15 @@ namespace Digraph
             shortestPath.Add(game[(int)EColor.Green]);
             BuildShortestPath(shortestPath, game[(int)EColor.Green]);
             shortestPath.Reverse();
-            return (shortestPath);
+            return (shortestPath); 
         }
 
+        // Method: BuildShortestPath
+        // Author: Kashaf Ahmed
+        // Purpose: Builds the shortest path based on the list that was passed in and the last node which is the green node
+        // and if the nearest to start variable is null we don't do anything and exit the method, otherwise, we add the nearest to start node to
+        // the list and keep calling the function recursively
+        // Restrictions: None
         static private void BuildShortestPath(List<Node> list, Node node)
         {
           
@@ -242,11 +229,12 @@ namespace Digraph
             BuildShortestPath(list, node.nearestToStart);
         }
 
-        static private int NodeOrderBy(Node n)
-        {
-            return n.minCostToStart; 
-        }
-
+        // Method: DijkstraSearch
+        // Author: Kashaf Ahmed
+        // Purpose: Goes through and searches for the cheapest connections associated with a node
+        // and once we are at the end of the path (the green node because there are no connections),
+        // then we exit the method**
+        // Restrictions: None
         static private void DijkstraSearch()
     
         {
@@ -259,10 +247,6 @@ namespace Digraph
         
 
             prioQueue.Add(start);
-
-            //bool hitEnd = false;
-          
-
             do
             {
                 prioQueue.Sort();
@@ -294,14 +278,18 @@ namespace Digraph
 
                 if (node == game[(int)EColor.Green]) 
                 {
-                    //hitEnd = true;
                     return;
                 }
-                //||hitEnd == false;
             } while (prioQueue.Any()); 
         }
     }
 
+
+    // Class: Node
+    // Author: Kashaf Ahmed
+    // Purpose: Creates the state of the node, the edges list, the costs of each edge, and if they 
+    // have been visited or not. There s also an add edge method and compare to method which we use above with our nodes**
+    // Restrictions: None
     public class Node : IComparable<Node>
     {
         public int nState; 
@@ -329,6 +317,11 @@ namespace Digraph
         }
     }
 
+    // Class: Edge
+    // Author: Kashaf Ahmed
+    // Purpose: For each edge there is a cost and the node connected to the edge,
+    // and it has a compare to method which compares the costs of the edges**
+    // Restrictions: None
     public class Edge : IComparable<Edge>
     {
         public int cost;
