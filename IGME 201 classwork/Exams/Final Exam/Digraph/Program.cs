@@ -8,6 +8,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
+//check console output and the comments**
+//for loop for each node and call the function to do the depth first traversal**
+//check if depth first is correct because its recursion so is it ok if it goes backwards from green to red**
+
 namespace Digraph
 {
     //Enumerated type to hold the colors
@@ -58,27 +62,27 @@ namespace Digraph
           // /* Purple */ { -1   , -1   , -1   , -1   , -1   , 1  , -1   , -1 },
           // /* Green*/ { -1   , -1   , -1   , -1   , -1   , -1    , -1   , -1 }
 
-                     //Red  Darkblue Gray Yellow Green Lightblue Orange Purple
+                     //Red  Darkblue Gray Lighblue Orange Yellow Purple Green
            /* Red */ { -1  , 1   , 5   , -1   , -1   , -1   , -1   , -1 },
-           /* Darkblue */ { -1, -1, -1   , 8    , -1   , 1   , -1   , -1 },
-           /* Gray */ {-1   , -1   , -1   , -1  , 1   , 0   , 1   , -1 },
-           /* Yellow */ { -1   , -1   , -1   , -1   , 6   , -1   , -1   , -1 },
-           /* Green*/ { -1   , -1   , -1   , -1   , -1   , -1    , -1   , -1 },
+           /* Darkblue */ { -1, -1, -1   , 1    , -1   , 8   , -1   , -1 },
+           /* Gray */ {-1   , -1   , -1   , 0  , 1   , -1   , -1   , -1 },
            /* Lightblue*/ { -1 , 1   , 0   , -1   , -1   , -1   , -1   , -1 },
-           /* Orange*/ { -1   , -1   , -1   , -1   , -1   , -1   , -1    , 1 },
-           /* Purple */ { -1   , -1   , -1   , 1   , -1   , -1  , -1   , -1 }
+           /* Orange */ { -1   , -1   , -1   , -1   , -1   , -1   , 1   , -1 },
+           /* Yellow*/ { -1   , -1   , -1   , -1   , -1   , -1    , -1   , 6 },
+           /*Purple*/ { -1   , -1   , -1   , -1   , -1   , 1   , -1    , -1 },
+           /* Green */ { -1   , -1   , -1   , 1   , -1   , -1  , -1   , -1 }
 
         };
 
-        static int[][] connectColor = new int[][] { //these are gray is it ok**
+        static int[][] connectColor = new int[][] { 
             new int[] { (int)EColor.Darkblue,(int)EColor.Gray },
             new int[] { (int)EColor.Yellow, (int)EColor.Lightblue },
             new int[] { (int)EColor.Lightblue,(int)EColor.Orange },
-            new int[] { (int)EColor.Green },
-            null,
-            new int[] { (int)EColor.Darkblue,(int)EColor.Gray },
+            new int[] { (int)EColor.Darkblue, (int)EColor.Gray },
             new int[] { (int)EColor.Purple },
+            new int[] { (int)EColor.Green },
             new int[] { (int)EColor.Yellow },
+            null
 
 
         };
@@ -87,13 +91,13 @@ namespace Digraph
             //2D array for the weights associated with each vertex
             new int[] { 1,5 },
             new int[] { 8, 1 },
-            new int[] { 0, 1 },
-            new int[] { 6 },
-            null,
             new int[] { 1, 0 },
+            new int[] { 0, 1 },
             new int[] { 1 },
+            new int[] { 6 },
             new int[] { 1 },
- 
+            null
+
 
 
         };
@@ -186,15 +190,56 @@ namespace Digraph
 
 
             //red, darkblue, lightblue, gray, orange, purple, yellow, green
+            Console.WriteLine("Dijkstra's Shortest Path: ");
             foreach (Node spNode in shortestPath)
             {
                 Console.WriteLine((EColor)spNode.nState);
 
             }
+            Console.WriteLine();
+            Console.WriteLine("Depth First Search: ");
+
+            foreach (Node node in game)
+            {
+                node.visited = false;
+            }
 
 
+            DepthFirstPreOrderTraversal(game[0]);
 
         }
+
+        // Method: DepthFirstPreOrderTraversal
+        // Author: Kashaf Ahmed
+        // Purpose: If the node is not null (base case), go through the columns of the weighted graph, 
+        // and we get the current node at the ith entry and we see if its not -1 or if the node is not visited,
+        // then we set the node being visited to true, and call the method recursively for each node in the game list.
+        // After, we print out each node color**
+        // Restrictions: None
+        public static void DepthFirstPreOrderTraversal(Node node) //check if its correct**
+        {
+            if (node != null)
+            {
+                for(int i = 0; i < weightedGraph.GetLength(1); i++) //go through all the columns and not the rows
+                {
+                    if(weightedGraph[game.IndexOf(node), i] != -1 && game[i].visited != true) //node we are on and the i is the entries in the list 
+                    { //if the next node is not visited then visit it
+                        node.visited = true;
+                        //Console.WriteLine((EColor)game[i].nState); gives us the entire sequence in reverse order 
+                        DepthFirstPreOrderTraversal(game[i]); //get the current entry in the array and make it a node if its not negative 1 and do the search 
+                    }
+                   
+                    
+                }
+
+                
+                Console.WriteLine((EColor)node.nState); //gets the green node
+
+                //is this ok that it prints in backwards order or how would we fix it to go from red to green**
+
+            }
+        }
+
 
         // Method: GetShortestPathDijkstra
         // Author: Kashaf Ahmed
