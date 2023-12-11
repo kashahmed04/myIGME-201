@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 //check console output and the comments**
 //for loop for each node and call the function to do the depth first traversal**
@@ -108,7 +112,8 @@ namespace Digraph
         // Author: Kashaf Ahmed
         // Purpose: First, add the nodes to the game list, then for each node add the edges associated with that node and their weights, then sort
         // the edges for each node. After, we create a shortest path list which calls the GetShortestPathDijkstra() method, then go through each node 
-        //in the shortest path list we got back from the method to input the shortest path.
+        // in the shortest path list we got back from the method to show the shortest path. After, we set each node to not be visited so we can do 
+        // our depth first search as well as call the depth first search method with the red node.
         // Restrictions: None
         static void Main(string[] args)
         {
@@ -204,38 +209,40 @@ namespace Digraph
                 node.visited = false;
             }
 
-
             DepthFirstPreOrderTraversal(game[0]);
+
+           
 
         }
 
         // Method: DepthFirstPreOrderTraversal
         // Author: Kashaf Ahmed
-        // Purpose: If the node is not null (base case), go through the columns of the weighted graph, 
-        // and we get the current node at the ith entry and we see if its not -1 or if the node is not visited,
-        // then we set the node being visited to true, and call the method recursively for each node in the game list.
-        // After, we print out each node color**
+        // Purpose: If the node is node null, write our nodes into the console as we go through the digraph and set the nodes to be visited
+        // then grab all of its conection points and if there is connection points starting from its left most node check if it has not
+        // been visited and its not null. If so, call the method recursively until a null node is found on that side, and repeat until every node is visited.
         // Restrictions: None
-        public static void DepthFirstPreOrderTraversal(Node node) //check if its correct**
+        public static void DepthFirstPreOrderTraversal(Node node) 
         {
+
             if (node != null)
             {
-                for(int i = 0; i < weightedGraph.GetLength(1); i++) //go through all the columns and not the rows
+
+                Console.WriteLine((EColor)node.nState);
+                node.visited = true;
+
+                int[] connections = connectColor[game.IndexOf(node)];
+
+                if (connections != null)
                 {
-                    if(weightedGraph[game.IndexOf(node), i] != -1 && game[i].visited != true) //node we are on and the i is the entries in the list 
-                    { //if the next node is not visited then visit it
-                        node.visited = true;
-                        //Console.WriteLine((EColor)game[i].nState); gives us the entire sequence in reverse order 
-                        DepthFirstPreOrderTraversal(game[i]); //get the current entry in the array and make it a node if its not negative 1 and do the search 
+                    for (int i = 0; i < connections.Length; i++)
+                    {
+                        if (game[connections[i]] != null && game[connections[i]].visited != true)
+                        {
+                            DepthFirstPreOrderTraversal(game[connections[i]]);
+                        }
                     }
-                   
-                    
+
                 }
-
-                
-                Console.WriteLine((EColor)node.nState); //gets the green node
-
-                //is this ok that it prints in backwards order or how would we fix it to go from red to green**
 
             }
         }
