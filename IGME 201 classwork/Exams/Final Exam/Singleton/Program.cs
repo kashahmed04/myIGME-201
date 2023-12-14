@@ -56,7 +56,7 @@ namespace Singleton
             playerInfo = JsonConvert.DeserializeObject<object>(p);
             Console.WriteLine(playerInfo); //are these ok and this is ok if we write out to the console**
             
-            //deserialize converts into a JSON object and serialize converts into a string right**
+            //deserialize converts into a class object (whatever the class object is) object and serialize converts into a JSON (which is a string)  
 
 
         }

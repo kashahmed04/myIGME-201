@@ -12,8 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-//check console output and the comments**
-//for loop for each node and call the function to do the depth first traversal**
+//check console output and the comments for the dijsktras shortest path and depth first search**
 //check if depth first is correct because its recursion so is it ok if it goes backwards from green to red**
 
 namespace Digraph
@@ -340,7 +339,7 @@ namespace Digraph
     // Class: Node
     // Author: Kashaf Ahmed
     // Purpose: Creates the state of the node, the edges list, the costs of each edge, and if they 
-    // have been visited or not. There s also an add edge method and compare to method which we use above with our nodes**
+    // have been visited or not. Theres also an add edge method and compare to method which we use above with our nodes**
     // Restrictions: None
     public class Node : IComparable<Node>
     {

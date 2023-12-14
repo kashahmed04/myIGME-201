@@ -60,7 +60,7 @@ namespace Stacks
             {
                 if(stack.Count == 0)
                 {
-                    Console.WriteLine("Stack is empty"); //we can throw an error if the stack is empty or could do int? to return null if there is nothing in the stack**
+                    Console.WriteLine("Stack is empty"); 
                     return null;
                 }
 

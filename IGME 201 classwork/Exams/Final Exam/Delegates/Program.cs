@@ -22,6 +22,7 @@ using static System.Net.Mime.MediaTypeNames;
 //are these ok and what would be any other ways to write it**
 //it only has to look different**
 //we can use math.round when we need to right or would we use the method we created**
+//is it ok we left the console sttaements not commented or do we you want them commented**
 
 namespace Delegates
 {
