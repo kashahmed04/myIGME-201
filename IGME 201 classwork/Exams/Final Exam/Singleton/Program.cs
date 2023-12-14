@@ -54,7 +54,7 @@ namespace Singleton
             string p = reader.ReadToEnd();
             reader.Close();
             playerInfo = JsonConvert.DeserializeObject<object>(p);
-            Console.WriteLine(playerInfo); //are these ok and this is ok if we write out to the console**
+            Console.WriteLine(playerInfo); 
             
             //deserialize converts into a class object (whatever the class object is) object and serialize converts into a JSON (which is a string)  
 

@@ -18,11 +18,6 @@ using static System.Net.Mime.MediaTypeNames;
 ///         nAnswer = processDivMult(n1, n2);
 ///        
 
-//can we do myRounder then the number for which delegate method it is**
-//are these ok and what would be any other ways to write it**
-//it only has to look different**
-//we can use math.round when we need to right or would we use the method we created**
-//is it ok we left the console sttaements not commented or do we you want them commented**
 
 namespace Delegates
 {
@@ -136,6 +131,7 @@ namespace Delegates
             //check answer
             Console.WriteLine(myRounder6(2.534522, 4));
 
+            //more further abbreviated lambda expression
             MyRounder myRounder7 = (d, n) => Rounds(d,n);
 
             //check answer
