@@ -12,8 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-//check console output and the comments for the dijsktras shortest path and depth first search**
-//check if depth first is correct because its recursion so is it ok if it goes backwards from green to red**
+
 
 namespace Digraph
 {
@@ -55,15 +54,7 @@ namespace Digraph
 
         static int[,] weightedGraph = new int[,] { 
             
-          //          // Red     Darkblue   Gray    Lightblue    Orange    Yellow    Purple    Green
-          // /* Red */ { -1  , 1   , 5   , -1   , -1   , -1   , -1   , -1 },
-          // /* Darkblue */ { -1, -1, -1   , 1    , -1   , 8   , -1   , -1 },
-          // /* Gray */ {-1   , -1   , -1   , 0  , 1   , -1   , -1   , -1 },
-          // /* Lightblue*/ { -1 , 1   , 0   , -1   , -1   , -1   , -1   , -1 },
-          // /* Orange*/ { -1   , -1   , -1   , -1   , -1   , -1   , 1    , -1 },
-          // /* Yellow */ { -1   , -1   , -1   , -1   , -1   , -1   , -1   , 6 }, //put in left to right order (is this ok)**
-          // /* Purple */ { -1   , -1   , -1   , -1   , -1   , 1  , -1   , -1 },
-          // /* Green*/ { -1   , -1   , -1   , -1   , -1   , -1    , -1   , -1 }
+
 
                      //Red  Darkblue Gray Lighblue Orange Yellow Purple Green
            /* Red */ { -1  , 1   , 5   , -1   , -1   , -1   , -1   , -1 },
@@ -78,6 +69,8 @@ namespace Digraph
         };
 
         static int[][] connectColor = new int[][] { 
+            //The adjacency lists in in accordance to the order I add 
+            //the nodes in my game list
             new int[] { (int)EColor.Darkblue,(int)EColor.Gray },
             new int[] { (int)EColor.Yellow, (int)EColor.Lightblue },
             new int[] { (int)EColor.Lightblue,(int)EColor.Orange },
@@ -284,7 +277,7 @@ namespace Digraph
         // Author: Kashaf Ahmed
         // Purpose: Goes through and searches for the cheapest connections associated with a node
         // and once we are at the end of the path (the green node because there are no connections),
-        // then we exit the method**
+        // then we exit the method
         // Restrictions: None
         static private void DijkstraSearch()
     
@@ -339,7 +332,7 @@ namespace Digraph
     // Class: Node
     // Author: Kashaf Ahmed
     // Purpose: Creates the state of the node, the edges list, the costs of each edge, and if they 
-    // have been visited or not. Theres also an add edge method and compare to method which we use above with our nodes**
+    // have been visited or not. Theres also an add edge method and compare to method which we use above with our nodes
     // Restrictions: None
     public class Node : IComparable<Node>
     {
@@ -371,7 +364,7 @@ namespace Digraph
     // Class: Edge
     // Author: Kashaf Ahmed
     // Purpose: For each edge there is a cost and the node connected to the edge,
-    // and it has a compare to method which compares the costs of the edges**
+    // and it has a compare to method which compares the costs of the edges
     // Restrictions: None
     public class Edge : IComparable<Edge>
     {
